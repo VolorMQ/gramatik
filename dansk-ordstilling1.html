@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ordstilling – hovedsætninger</title>
+  <style>
+    :root{
+      --bg:#fafafa;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --blue:#2563eb;
+      --red:#ef4444;
+      --green:#10b981;
+      --amber:#f59e0b;
+      --violet:#8b5cf6;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
+    .page{max-width:980px;margin:32px auto;padding:0 16px}
+    h1{font-size:22px;margin:0 0 16px}
+    .caption{margin:10px 0 6px;color:#111827;font-weight:700}
+    table{width:100%;border-collapse:collapse;border:1px solid var(--line);background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04);margin-bottom:16px}
+    th,td{border:1px solid var(--line);padding:10px;vertical-align:middle;text-align:center}
+    th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;background:#f8fafc;color:#111827}
+    td{font-size:15px;height:42px}
+    .subj{color:var(--blue)}
+    .v1{color:var(--red)}
+    .adv{color:var(--amber)}
+    .v23{color:var(--red)}
+    .obj{color:var(--green)}
+    .sted{color:var(--violet)}
+    #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
+    #check-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Hovedsætninger – Ligefrem ordstilling</h1>
+
+    <div class="caption">Skema</div>
+    <table class="schema" aria-label="Ligefrem ordstilling – skema">
+      <thead>
+        <tr>
+          <th class="subj">subjekt</th>
+          <th class="v1">verbum 1</th>
+          <th class="adv">adverbium</th>
+          <th class="v23">verbum 2–3</th>
+          <th class="obj">objekt</th>
+          <th class="sted">sted/tid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="sentence-row">
+          <td data-type="subjekt"></td>
+          <td data-type="verbum1"></td>
+          <td data-type="adverbium"></td>
+          <td data-type="verbum2"></td>
+          <td data-type="objekt"></td>
+          <td data-type="sted/tid"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caption">Ord at placere</div>
+    <div id="word-pool">
+      <!-- Здесь JS добавит перемешанные слова из JSON -->
+    </div>
+
+    <button id="check-button">Tjek</button>
+
+  </div>
+
+  <script>
+    let words = [];
+
+    // Загружаем JSON с словами
+    fetch('words.json')
+      .then(response => response.json())
+      .then(data => {
+        words = data.words;
+        initWordPool();
+      })
+      .catch(err => console.error("Fejl ved indlæsning af ord:", err));
+
+    function initWordPool() {
+      const pool = document.getElementById('word-pool');
+      const shuffled = words.sort(() => Math.random() - 0.5);
+      shuffled.forEach(w => {
+        const div = document.createElement('div');
+        div.textContent = w.word;
+        div.dataset.type = w.type;
+        div.classList.add('word');
+        pool.appendChild(div);
+        div.addEventListener('click', () => placeWord(div));
+      });
+    }
+
+    function placeWord(wordDiv) {
+      const row = document.getElementById('sentence-row');
+      const type = wordDiv.dataset.type;
+      const cell = row.querySelector(`td[data-type="${type}"]`);
+      if (cell && !cell.textContent) {
+        cell.textContent = wordDiv.textContent;
+        cell.dataset.placed = "true";
+        wordDiv.remove();
+      }
+    }
+
+    document.getElementById('check-button').addEventListener('click', () => {
+      const row = document.getElementById('sentence-row');
+      row.querySelectorAll('td').forEach(td => {
+        if (td.dataset.placed === "true") {
+          td.style.backgroundColor = '#d1fae5'; // зеленый для правильных слов
+        }
+      });
+    });
+  </script>
+</body>
+</html>
