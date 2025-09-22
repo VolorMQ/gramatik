@@ -1,198 +1,199 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ordstilling – hovedsætninger</title>
-  <style>
-    :root{
-      --bg:#fafafa;
-      --ink:#1f2937;
-      --line:#e5e7eb;
-      --blue:#2563eb;
-      --red:#ef4444;
-      --green:#10b981;
-      --amber:#f59e0b;
-      --violet:#8b5cf6;
-    }
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
-    .page{max-width:980px;margin:32px auto;padding:0 16px}
-    h1{font-size:22px;margin:0 0 16px}
-    table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:16px}
-    th,td{border:1px solid var(--line);padding:10px;text-align:center;height:42px}
-    th{font-size:12px;text-transform:uppercase;background:#f8fafc}
-    .subj{color:var(--blue)}
-    .v1{color:var(--red)}
-    .adv{color:var(--amber)}
-    .v23{color:var(--red)}
-    .obj{color:var(--green)}
-    .sted{color:var(--violet)}
-    #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-    .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
-    #check-button, #new-set-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
-    #translation{margin-top:12px;font-weight:600;color:var(--green);display:none}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ordstilling – hovedsætninger</title>
+<style>
+:root{
+  --bg:#fafafa;
+  --ink:#1f2937;
+  --line:#e5e7eb;
+  --blue:#2563eb;
+  --red:#ef4444;
+  --green:#10b981;
+  --amber:#f59e0b;
+  --violet:#8b5cf6;
+}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
+.page{max-width:980px;margin:32px auto;padding:0 16px}
+h1{font-size:22px;margin:0 0 16px}
+table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:16px}
+th,td{border:1px solid var(--line);padding:10px;text-align:center;height:42px}
+th{font-size:12px;text-transform:uppercase;background:#f8fafc}
+.subj{color:var(--blue)}
+.v1{color:var(--red)}
+.adv{color:var(--amber)}
+.v23{color:var(--red)}
+.obj{color:var(--green)}
+.sted{color:var(--violet)}
+#word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
+.cell{min-width:80px; min-height:40px}
+#check-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+#translation{margin-top:12px;font-weight:600;color:var(--green);display:none}
+</style>
 </head>
 <body>
 <div class="page">
-  <h1>Hovedsætninger – Ligefrem ordstilling</h1>
+<h1>Hovedsætninger – Ligefrem ordstilling</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th class="subj">subjekt</th>
-        <th class="v1">verbum 1</th>
-        <th class="adv">adverbium</th>
-        <th class="v23">verbum 2–3</th>
-        <th class="obj">objekt</th>
-        <th class="sted">sted/tid</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr id="sentence-row">
-        <td data-type="subjekt"></td>
-        <td data-type="verbum1"></td>
-        <td data-type="adverbium"></td>
-        <td data-type="verbum2"></td>
-        <td data-type="objekt"></td>
-        <td data-type="sted/tid"></td>
-      </tr>
-    </tbody>
-  </table>
+<table>
+<thead>
+<tr>
+<th class="subj">subjekt</th>
+<th class="v1">verbum 1</th>
+<th class="adv">adverbium</th>
+<th class="v23">verbum 2–3</th>
+<th class="obj">objekt</th>
+<th class="sted">sted/tid</th>
+</tr>
+</thead>
+<tbody>
+<tr id="sentence-row">
+<td data-type="subjekt" class="cell"></td>
+<td data-type="verbum1" class="cell"></td>
+<td data-type="adverbium" class="cell"></td>
+<td data-type="verbum2" class="cell"></td>
+<td data-type="objekt" class="cell"></td>
+<td data-type="sted/tid" class="cell"></td>
+</tr>
+</tbody>
+</table>
 
-  <div id="word-pool"></div>
-  <button id="check-button">Tjek</button>
-  <button id="new-set-button">Nyt sæt ord</button>
-  <div id="translation"></div>
+<div id="word-pool"></div>
+<button id="check-button">Tjek</button>
+<div id="translation"></div>
 </div>
 
 <script>
-let allWords = [];
-let poolWords = [];
+let sentences = [];
+let currentSentence = null;
 
-fetch('words.json')
+// Загружаем JSON с массивом предложений
+fetch('sentences.json')
   .then(res => res.json())
   .then(data => {
-    allWords = data.words;
-    generateWordSet();
+    sentences = data.sentences;
+
+    // выбираем случайное предложение
+    currentSentence = sentences[Math.floor(Math.random() * sentences.length)];
+
+    initWordPool();
   })
   .catch(err => console.error("Fejl ved indlæsning af ord:", err));
-
-function generateWordSet() {
-  const types = ["subjekt","verbum1","adverbium","verbum2","objekt","sted/tid"];
-  let selected = [];
-
-  types.forEach(t => {
-    const filtered = allWords.filter(w => w.type === t);
-    const shuffled = filtered.sort(() => Math.random() - 0.5);
-    selected.push(...shuffled.slice(0,3));
-  });
-
-  // Перемешиваем с проверкой типа
-  poolWords = [];
-  while(selected.length){
-    for(let i=0;i<selected.length;i++){
-      const lastType = poolWords.length ? poolWords[poolWords.length-1].type : null;
-      if(selected[i].type !== lastType){
-        poolWords.push(selected[i]);
-        selected.splice(i,1);
-        break;
-      }
-    }
-    if(poolWords.length < 18 && selected.length===18-poolWords.length){
-      poolWords.push(...selected);
-      break;
-    }
-  }
-
-  initWordPool();
-  clearSentenceRow();
-}
 
 function initWordPool() {
   const pool = document.getElementById('word-pool');
   pool.innerHTML = "";
-  poolWords.forEach(w => {
+
+  // создаём массив слов: по одному слову каждого типа из текущего предложения
+  let wordsArray = [];
+  for (let key in currentSentence) {
+    let wordObj = {...currentSentence[key]};
+    if (key === 'subjekt') wordObj.word = wordObj.word.toLowerCase();
+    wordsArray.push(wordObj);
+  }
+
+  // перемешиваем массив слов
+  shuffleArray(wordsArray);
+
+  // добавляем все слова в пул
+  wordsArray.forEach(w => {
     const div = document.createElement('div');
     div.textContent = w.word;
     div.dataset.type = w.type;
     div.dataset.translation = w.translation;
+    div.dataset.fromSentence = JSON.stringify(w); // сохраняем для проверки
     div.classList.add('word');
-    div.setAttribute('draggable', 'true');
-    div.addEventListener('dragstart', dragStart);
+    div.draggable = true;
+
+    div.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', JSON.stringify({
+        word: w.word,
+        type: w.type,
+        translation: w.translation,
+        originalDiv: div
+      }));
+    });
+
     pool.appendChild(div);
   });
-}
 
-function clearSentenceRow() {
-  const row = document.getElementById('sentence-row');
-  row.querySelectorAll('td').forEach(td => {
-    td.textContent = "";
-    td.dataset.placed = "";
-    td.dataset.translation = "";
-    td.dataset.typePlaced = "";
-    td.addEventListener('dragover', dragOver);
-    td.addEventListener('drop', dropWord);
-    td.style.backgroundColor = "";
+  // делаем ячейки droppable
+  document.querySelectorAll('#sentence-row td').forEach(td => {
+    td.addEventListener('dragover', e => e.preventDefault());
+    td.addEventListener('drop', e => {
+      e.preventDefault();
+      const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+
+      // вернуть старое слово на место, если есть
+      if (td.dataset.word) {
+        const oldDiv = document.createElement('div');
+        oldDiv.textContent = td.dataset.word;
+        oldDiv.dataset.type = td.dataset.type;
+        oldDiv.dataset.translation = td.dataset.translation;
+        oldDiv.dataset.fromSentence = td.dataset.fromSentence;
+        oldDiv.classList.add('word');
+        oldDiv.draggable = true;
+        oldDiv.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', JSON.stringify({
+            word: oldDiv.textContent,
+            type: oldDiv.dataset.type,
+            translation: oldDiv.dataset.translation,
+            originalDiv: oldDiv
+          }));
+        });
+        document.getElementById('word-pool').appendChild(oldDiv);
+      }
+
+      td.textContent = data.word;
+      td.dataset.word = data.word;
+      td.dataset.translation = data.translation;
+      td.dataset.type = data.type;
+      td.dataset.fromSentence = data.fromSentence;
+
+      // удалить перетягиваемый div
+      if (data.originalDiv && data.originalDiv.parentNode) {
+        data.originalDiv.parentNode.removeChild(data.originalDiv);
+      }
+    });
   });
-  document.getElementById('translation').style.display = "none";
 }
 
-function dragStart(e) {
-  e.dataTransfer.setData('text/plain', JSON.stringify({
-    word: this.textContent,
-    type: this.dataset.type,
-    translation: this.dataset.translation
-  }));
-}
-
-function dragOver(e) { e.preventDefault(); }
-
-function dropWord(e) {
-  e.preventDefault();
-  const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-  const pool = document.getElementById('word-pool');
-
-  // Если ячейка занята, возвращаем слово обратно в pool
-  if(this.textContent){
-    const oldDiv = document.createElement('div');
-    oldDiv.textContent = this.textContent;
-    oldDiv.dataset.type = this.dataset.typePlaced;
-    oldDiv.dataset.translation = this.dataset.translation;
-    oldDiv.classList.add('word');
-    oldDiv.setAttribute('draggable','true');
-    oldDiv.addEventListener('dragstart', dragStart);
-    pool.appendChild(oldDiv);
+// перемешивание
+function shuffleArray(arr) {
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-
-  this.textContent = data.word;
-  this.dataset.translation = data.translation;
-  this.dataset.typePlaced = data.type;
-  this.dataset.placed = "true";
-
-  // Удаляем слово из pool
-  Array.from(pool.children).forEach(div => {
-    if(div.textContent === data.word) div.remove();
-  });
 }
 
 document.getElementById('check-button').addEventListener('click', () => {
-  const row = document.getElementById('sentence-row');
+  const row = document.querySelector('#sentence-row');
   let translations = [];
   row.querySelectorAll('td').forEach(td => {
-    if(td.dataset.placed === "true"){
-      td.style.backgroundColor = (td.dataset.typePlaced === td.dataset.type) ? '#d1fae5' : '#fca5a5';
-      translations.push(`${td.textContent} → ${td.dataset.translation}`);
-    } else td.style.backgroundColor = '#fca5a5';
-  });
-  const tr = document.getElementById('translation');
-  if(translations.length){
-    tr.innerHTML = translations.join("<br>");
-    tr.style.display = "block";
-  }
-});
+    if (!td.dataset.word) return;
 
-document.getElementById('new-set-button').addEventListener('click', generateWordSet);
+    const correctWord = currentSentence[td.dataset.type].word;
+    const wordObj = JSON.parse(td.dataset.fromSentence);
+
+    if (td.dataset.word === correctWord ||
+       (td.dataset.type==='subjekt' && td.dataset.word===correctWord.toLowerCase())) {
+      td.style.backgroundColor = '#d1fae5'; // зелёный
+    } else if (td.dataset.type === wordObj.type) {
+      td.style.backgroundColor = '#fcd34d'; // жёлтый – правильный тип, но не из текущего предложения
+    } else {
+      td.style.backgroundColor = '#fecaca'; // красный – неверно
+    }
+
+    translations.push(`${td.dataset.word} → ${td.dataset.translation}`);
+  });
+
+  const tr = document.getElementById("translation");
+  tr.innerHTML = translations.join("<br>");
+  tr.style.display = "block";
+});
 </script>
 </body>
 </html>

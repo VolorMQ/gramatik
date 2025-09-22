@@ -1,0 +1,28 @@
+{
+  "sentences": [
+    {
+      "subjekt": {"word": "jeg", "type": "subjekt", "translation": "я"},
+      "verbum1": {"word": "læser", "type": "verbum1", "translation": "читаю"},
+      "adverbium": {"word": "højt", "type": "adverbium", "translation": "вслух"},
+      "verbum2": {"word": "tager", "type": "verbum2", "translation": "беру"},
+      "objekt": {"word": "computer", "type": "objekt", "translation": "компьютер"},
+      "sted/tid": {"word": "på arbejde", "type": "sted/tid", "translation": "на работе"}
+    },
+    {
+      "subjekt": {"word": "du", "type": "subjekt", "translation": "ты"},
+      "verbum1": {"word": "skriver", "type": "verbum1", "translation": "пишешь"},
+      "adverbium": {"word": "hurtigt", "type": "adverbium", "translation": "быстро"},
+      "verbum2": {"word": "finder", "type": "verbum2", "translation": "находишь"},
+      "objekt": {"word": "nøgle", "type": "objekt", "translation": "ключ"},
+      "sted/tid": {"word": "i Aalborg", "type": "sted/tid", "translation": "в Ольборге"}
+    },
+    {
+      "subjekt": {"word": "han", "type": "subjekt", "translation": "он"},
+      "verbum1": {"word": "spiser", "type": "verbum1", "translation": "ест"},
+      "adverbium": {"word": "ofte", "type": "adverbium", "translation": "часто"},
+      "verbum2": {"word": "køber", "type": "verbum2", "translation": "покупает"},
+      "objekt": {"word": "kaffe", "type": "objekt", "translation": "кофе"},
+      "sted/tid": {"word": "hjemme", "type": "sted/tid", "translation": "дома"}
+    }
+  ]
+}
