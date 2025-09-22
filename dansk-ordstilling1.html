@@ -78,7 +78,6 @@ fetch('words.json')
   })
   .catch(err => console.error("Fejl ved indlæsning af ord:", err));
 
-// Выбираем по 3 слова каждого типа и перемешиваем так, чтобы подряд не шли одинаковые типы
 function generateWordSet() {
   const types = ["subjekt","verbum1","adverbium","verbum2","objekt","sted/tid"];
   let selected = [];
@@ -91,8 +90,8 @@ function generateWordSet() {
 
   // Перемешиваем с проверкой типа
   poolWords = [];
-  while(selected.length) {
-    for(let i=0;i<selected.length;i++) {
+  while(selected.length){
+    for(let i=0;i<selected.length;i++){
       const lastType = poolWords.length ? poolWords[poolWords.length-1].type : null;
       if(selected[i].type !== lastType){
         poolWords.push(selected[i]);
@@ -100,8 +99,7 @@ function generateWordSet() {
         break;
       }
     }
-    if(poolWords.length < 18 && selected.length===18-poolWords.length){ 
-      // если не можем выбрать без повторов, добавляем оставшиеся
+    if(poolWords.length < 18 && selected.length===18-poolWords.length){
       poolWords.push(...selected);
       break;
     }
@@ -153,16 +151,29 @@ function dragOver(e) { e.preventDefault(); }
 function dropWord(e) {
   e.preventDefault();
   const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-  if(!this.textContent){
-    this.textContent = data.word;
-    this.dataset.translation = data.translation;
-    this.dataset.typePlaced = data.type;
-    this.dataset.placed = "true";
-    const pool = document.getElementById('word-pool');
-    Array.from(pool.children).forEach(div => {
-      if(div.textContent === data.word) div.remove();
-    });
+  const pool = document.getElementById('word-pool');
+
+  // Если ячейка занята, возвращаем слово обратно в pool
+  if(this.textContent){
+    const oldDiv = document.createElement('div');
+    oldDiv.textContent = this.textContent;
+    oldDiv.dataset.type = this.dataset.typePlaced;
+    oldDiv.dataset.translation = this.dataset.translation;
+    oldDiv.classList.add('word');
+    oldDiv.setAttribute('draggable','true');
+    oldDiv.addEventListener('dragstart', dragStart);
+    pool.appendChild(oldDiv);
   }
+
+  this.textContent = data.word;
+  this.dataset.translation = data.translation;
+  this.dataset.typePlaced = data.type;
+  this.dataset.placed = "true";
+
+  // Удаляем слово из pool
+  Array.from(pool.children).forEach(div => {
+    if(div.textContent === data.word) div.remove();
+  });
 }
 
 document.getElementById('check-button').addEventListener('click', () => {
