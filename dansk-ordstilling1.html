@@ -1,127 +1,163 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ordstilling – hovedsætninger</title>
-<style>
-:root{
-  --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb;
-  --blue:#2563eb; --red:#ef4444; --green:#10b981;
-  --amber:#f59e0b; --violet:#8b5cf6;
-}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
-.page{max-width:980px;margin:32px auto;padding:0 16px}
-h1{font-size:22px;margin:0 0 16px}
-table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:16px}
-th,td{border:1px solid var(--line);padding:10px;text-align:center;height:42px}
-th{font-size:12px;text-transform:uppercase;background:#f8fafc}
-.subj{color:var(--blue)} .v1{color:var(--red)} .adv{color:var(--amber)}
-.v23{color:var(--red)} .obj{color:var(--green)} .sted{color:var(--violet)}
-#word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
-#check-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
-#translation{margin-top:12px;font-weight:600;color:var(--green);display:none}
-td{min-width:80px;}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ordstilling – hovedsætninger</title>
+  <style>
+    :root{
+      --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb; 
+      --blue:#2563eb; --red:#ef4444; --green:#10b981; 
+      --amber:#f59e0b; --violet:#8b5cf6;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
+    .page{max-width:980px;margin:32px auto;padding:0 16px}
+    h1{font-size:22px;margin:0 0 16px}
+    table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:16px}
+    th,td{border:1px solid var(--line);padding:10px;text-align:center;height:42px}
+    th{font-size:12px;text-transform:uppercase;background:#f8fafc}
+    #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
+    .cell{min-width:80px}
+    #check-button,#new-set-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;margin-right:8px}
+    #translation{margin-top:12px;font-weight:600;color:var(--green);display:none}
+  </style>
 </head>
 <body>
-<div class="page">
-<h1>Hovedsætninger – Ligefrem ordstilling</h1>
+  <div class="page">
+    <h1>Hovedsætninger – Ligefrem ordstilling</h1>
 
-<table>
-<thead>
-<tr>
-<th class="subj">subjekt</th>
-<th class="v1">verbum 1</th>
-<th class="adv">adverbium</th>
-<th class="v23">verbum 2–3</th>
-<th class="obj">objekt</th>
-<th class="sted">sted/tid</th>
-</tr>
-</thead>
-<tbody>
-<tr id="sentence-row">
-<td data-type="subjekt" ondragover="allowDrop(event)" ondrop="dropWord(event)"></td>
-<td data-type="verbum1" ondragover="allowDrop(event)" ondrop="dropWord(event)"></td>
-<td data-type="adverbium" ondragover="allowDrop(event)" ondrop="dropWord(event)"></td>
-<td data-type="verbum2" ondragover="allowDrop(event)" ondrop="dropWord(event)"></td>
-<td data-type="objekt" ondragover="allowDrop(event)" ondrop="dropWord(event)"></td>
-<td data-type="sted/tid" ondragover="allowDrop(event)" ondrop="dropWord(event)"></td>
-</tr>
-</tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th>subjekt</th>
+          <th>verbum 1</th>
+          <th>adverbium</th>
+          <th>verbum 2–3</th>
+          <th>objekt</th>
+          <th>sted/tid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="sentence-row">
+          <td class="cell" data-type="subjekt"></td>
+          <td class="cell" data-type="verbum1"></td>
+          <td class="cell" data-type="adverbium"></td>
+          <td class="cell" data-type="verbum2"></td>
+          <td class="cell" data-type="objekt"></td>
+          <td class="cell" data-type="sted/tid"></td>
+        </tr>
+      </tbody>
+    </table>
 
-<div id="word-pool"></div>
-<button id="check-button">Tjek</button>
-<div id="translation"></div>
-</div>
+    <div id="word-pool"></div>
+    <button id="check-button">Tjek</button>
+    <button id="new-set-button">Nyt sæt ord</button>
+    <div id="translation"></div>
+  </div>
 
-<script>
-let words = [];
+  <script>
+    let allWords = [];
+    let poolWords = [];
 
-fetch('words.json')
-  .then(res => res.json())
-  .then(data => {
-    words = data.words;
-    initWordPool();
-  })
-  .catch(err => console.error("Fejl ved indlæsning af ord:", err));
+    fetch('words.json')
+      .then(res => res.json())
+      .then(data => {
+        allWords = data.words;
+        generateWordSet();
+      })
+      .catch(err => console.error("Fejl ved indlæsning af ord:", err));
 
-function initWordPool() {
-  const pool = document.getElementById('word-pool');
-  pool.innerHTML = "";
-  const shuffled = [...words].sort(() => Math.random() - 0.5);
-  shuffled.forEach(w => {
-    const div = document.createElement('div');
-    div.textContent = w.word;
-    div.dataset.type = w.type;
-    div.dataset.translation = w.translation;
-    div.classList.add('word');
-    div.draggable = true;
-    div.id = `word-${Math.random().toString(36).substr(2,9)}`;
-    div.addEventListener('dragstart', dragWord);
-    pool.appendChild(div);
-  });
-}
-
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function dragWord(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function dropWord(ev) {
-  ev.preventDefault();
-  const cell = ev.currentTarget;
-  if(cell.textContent) return; // если ячейка занята
-  const id = ev.dataTransfer.getData("text");
-  const wordDiv = document.getElementById(id);
-  if(wordDiv.dataset.type === cell.dataset.type){
-    cell.textContent = wordDiv.textContent;
-    cell.dataset.translation = wordDiv.dataset.translation;
-    cell.dataset.placed = "true";
-    wordDiv.remove();
-  }
-}
-
-document.getElementById('check-button').addEventListener('click', () => {
-  const row = document.getElementById('sentence-row');
-  let translations = [];
-  row.querySelectorAll('td').forEach(td => {
-    if(td.dataset.placed==="true"){
-      td.style.backgroundColor="#d1fae5";
-      translations.push(`${td.textContent} → ${td.dataset.translation}`);
+    function generateWordSet() {
+      const types = ["subjekt","verbum1","adverbium","verbum2","objekt","sted/tid"];
+      poolWords = [];
+      types.forEach(t=>{
+        const filtered = allWords.filter(w=>w.type===t);
+        const shuffled = filtered.sort(()=>Math.random()-0.5);
+        poolWords.push(...shuffled.slice(0,3));
+      });
+      initWordPool();
+      clearSentenceRow();
     }
-  });
-  if(translations.length){
-    const tr = document.getElementById('translation');
-    tr.innerHTML = translations.join("<br>");
-    tr.style.display="block";
-  }
-});
-</script>
+
+    function initWordPool() {
+      const pool = document.getElementById('word-pool');
+      pool.innerHTML = "";
+      poolWords.forEach(w=>{
+        const div = document.createElement('div');
+        div.textContent = w.word;
+        div.dataset.type = w.type;
+        div.dataset.translation = w.translation;
+        div.classList.add('word');
+        div.setAttribute('draggable','true');
+        div.addEventListener('dragstart', dragStart);
+        pool.appendChild(div);
+      });
+    }
+
+    function clearSentenceRow() {
+      const row = document.getElementById('sentence-row');
+      row.querySelectorAll('td').forEach(td=>{
+        td.textContent = "";
+        td.dataset.placed = "";
+        td.dataset.translation = "";
+        td.addEventListener('dragover', dragOver);
+        td.addEventListener('drop', dropWord);
+        td.style.backgroundColor = "";
+      });
+      document.getElementById('translation').style.display="none";
+    }
+
+    function dragStart(e){
+      e.dataTransfer.setData('text/plain', JSON.stringify({
+        word: this.textContent,
+        type: this.dataset.type,
+        translation: this.dataset.translation
+      }));
+    }
+
+    function dragOver(e){
+      e.preventDefault();
+    }
+
+    function dropWord(e){
+      e.preventDefault();
+      const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+      if(!this.textContent){
+        this.textContent = data.word;
+        this.dataset.translation = data.translation;
+        this.dataset.typePlaced = data.type; // сохраняем оригинальный тип
+        this.dataset.placed = "true";
+        const pool = document.getElementById('word-pool');
+        Array.from(pool.children).forEach(div=>{
+          if(div.textContent===data.word) div.remove();
+        });
+      }
+    }
+
+    document.getElementById('check-button').addEventListener('click',()=>{
+      const row = document.getElementById('sentence-row');
+      let translations = [];
+      row.querySelectorAll('td').forEach(td=>{
+        if(td.dataset.placed==="true"){
+          if(td.dataset.typePlaced===td.dataset.type){
+            td.style.backgroundColor='#d1fae5'; // зеленый, если правильный тип
+          } else {
+            td.style.backgroundColor='#fca5a5'; // красный, если неверный тип
+          }
+          translations.push(`${td.textContent} → ${td.dataset.translation}`);
+        } else {
+          td.style.backgroundColor='#fca5a5'; // пустые ячейки красные
+        }
+      });
+      const tr = document.getElementById('translation');
+      if(translations.length){
+        tr.innerHTML = translations.join("<br>");
+        tr.style.display="block";
+      }
+    });
+
+    document.getElementById('new-set-button').addEventListener('click',generateWordSet);
+  </script>
 </body>
 </html>
