@@ -1,194 +1,148 @@
 {
   "sentences": [
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Drengen","translation":"Мальчик"},
-        "verbum1":{"word":"øver","translation":"упражняется"},
-        "adverbium":{"word":"flittigt","translation":"усердно"},
-        "verbium2-3":{"word":"for at mestre","translation":"чтобы овладеть"},
-        "objekt":{"word":"akkorderne","translation":"аккордами"},
-        "sted/tid":{"word":"om aftenen","translation":"по вечерам"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"fordi","translation":"потому что"},
-        "subjekt":{"word":"han","translation":"он"},
-        "adverbium":{"word":"gerne","translation":"охотно"},
-        "verbium1":{"word":"vil","translation":"хочет"},
-        "verbium2-3":{"word":"optræde på scenen","translation":"выступать на сцене"},
-        "objekt":{"word":"for publikum","translation":"для публики"},
-        "sted/tid":{"word":"næste år","translation":"в следующем году"}
-      }
+      "subj": {"word": "Farmor", "translation": "бабушка"},
+      "v1": {"word": "besøger", "translation": "навещает"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "os", "translation": "нас"},
+      "sted": {"word": "i huset", "translation": "в доме"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "vi", "translation": "мы"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "spiser", "translation": "едим"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "kage", "translation": "торт"},
+      "sted2": {"word": "sammen", "translation": "вместе"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Pigen","translation":"Девочка"},
-        "verbum1":{"word":"læser","translation":"читает/учится"},
-        "adverbium":{"word":"nøje","translation":"тщательно"},
-        "verbium2-3":{"word":"for at forberede sig","translation":"чтобы подготовиться"},
-        "objekt":{"word":"til eksamen","translation":"к экзамену"},
-        "sted/tid":{"word":"hver aften","translation":"каждый вечер"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"fordi","translation":"потому что"},
-        "subjekt":{"word":"hun","translation":"она"},
-        "adverbium":{"word":"flittigt","translation":"усердно"},
-        "verbium1":{"word":"vil","translation":"хочет"},
-        "verbium2-3":{"word":"bestå prøven","translation":"сдать экзамен"},
-        "objekt":{"word":"med gode resultater","translation":"с хорошими результатами"},
-        "sted/tid":{"word":"i juni","translation":"в июне"}
-      }
+      "subj": {"word": "Peter", "translation": "Петер"},
+      "v1": {"word": "går", "translation": "идёт"},
+      "adv": {"word": "hurtigt", "translation": "быстро"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "", "translation": ""},
+      "sted": {"word": "til skolen", "translation": "в школу"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "han", "translation": "он"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "hilser", "translation": "приветствует"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "læreren", "translation": "учителя"},
+      "sted2": {"word": "på vej", "translation": "по пути"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Familien","translation":"Семья"},
-        "verbum1":{"word":"samles","translation":"собирается"},
-        "adverbium":{"word":"ofte","translation":"часто"},
-        "verbium2-3":{"word":"for at spise","translation":"чтобы поесть"},
-        "objekt":{"word":"aftensmad","translation":"ужин"},
-        "sted/tid":{"word":"i deres hjem","translation":"у них дома"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"når","translation":"когда"},
-        "subjekt":{"word":"bedsteforældrene","translation":"бабушка и дедушка"},
-        "adverbium":{"word":"lejlighedsvis","translation":"время от времени"},
-        "verbium1":{"word":"besøger","translation":"посещают"},
-        "verbium2-3":{"word":"familien","translation":"семью"},
-        "objekt":{"word":"med gaver","translation":"с подарками"},
-        "sted/tid":{"word":"i weekenden","translation":"по выходным"}
-      }
+      "subj": {"word": "Vi", "translation": "Мы"},
+      "v1": {"word": "ser", "translation": "видим"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "fugle", "translation": "птиц"},
+      "sted": {"word": "i haven", "translation": "в саду"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "vi", "translation": "мы"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "fodrer", "translation": "кормим"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "dem", "translation": "их"},
+      "sted2": {"word": "hver morgen", "translation": "каждое утро"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Han","translation":"Он"},
-        "verbum1":{"word":"drikker","translation":"пьёт"},
-        "adverbium":{"word":"roligt","translation":"спокойно"},
-        "verbium2-3":{"word":"og læser","translation":"и читает"},
-        "objekt":{"word":"avisen","translation":"газету"},
-        "sted/tid":{"word":"ved køkkenbordet om morgenen","translation":"за кухонным столом утром"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"mens","translation":"в то время как"},
-        "subjekt":{"word":"hun","translation":"она"},
-        "adverbium":{"word":"stille","translation":"тихо"},
-        "verbium1":{"word":"spiser","translation":"ест"},
-        "verbium2-3":{"word":"sin morgenmad","translation":"свою утреннюю еду"},
-        "objekt":{"word":"ved siden af ham","translation":"рядом с ним"},
-        "sted/tid":{"word":"hver morgen","translation":"каждое утро"}
-      }
+      "subj": {"word": "Min bror", "translation": "Мой брат"},
+      "v1": {"word": "spiller", "translation": "играет"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "fodbold", "translation": "в футбол"},
+      "sted": {"word": "i parken", "translation": "в парке"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "han", "translation": "он"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "møder", "translation": "встречает"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "sine venner", "translation": "своих друзей"},
+      "sted2": {"word": "ved banen", "translation": "на поле"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Vi","translation":"Мы"},
-        "verbum1":{"word":"arbejder","translation":"работаем"},
-        "adverbium":{"word":"ofte","translation":"часто"},
-        "verbium2-3":{"word":"og mødes online","translation":"и встречаемся онлайн"},
-        "objekt":{"word":"med kollegerne","translation":"с коллегами"},
-        "sted/tid":{"word":"hele dagen","translation":"весь день"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"fordi","translation":"потому что"},
-        "subjekt":{"word":"kontoret","translation":"офис"},
-        "adverbium":{"word":"midlertidigt","translation":"временно"},
-        "verbium1":{"word":"er","translation":"является/закрыт"},
-        "verbium2-3":{"word":"lukket","translation":"закрыт"},
-        "objekt":{"word":"på grund af renovering","translation":"из-за ремонта"},
-        "sted/tid":{"word":"denne uge","translation":"на этой неделе"}
-      }
+      "subj": {"word": "Vi", "translation": "Мы"},
+      "v1": {"word": "går", "translation": "ходим"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "en tur", "translation": "на прогулку"},
+      "sted": {"word": "i skoven", "translation": "в лесу"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "vi", "translation": "мы"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "finder", "translation": "находим"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "bær", "translation": "ягоды"},
+      "sted2": {"word": "på stierne", "translation": "на тропинках"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Lægen","translation":"Врач"},
-        "verbum1":{"word":"undersøger","translation":"осматривает"},
-        "adverbium":{"word":"nøje","translation":"тщательно"},
-        "verbium2-3":{"word":"og noterer","translation":"и записывает"},
-        "objekt":{"word":"fundene","translation":"находки/данные"},
-        "sted/tid":{"word":"på klinikken","translation":"в клинике"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"fordi","translation":"потому что"},
-        "subjekt":{"word":"symptomerne","translation":"симптомы"},
-        "adverbium":{"word":"alvorligt","translation":"серьёзно"},
-        "verbium1":{"word":"bekymrer","translation":"тревожат"},
-        "verbium2-3":{"word":"lægen","translation":"врача"},
-        "objekt":{"word":"og kræver yderligere undersøgelser","translation":"и требуют дополнительных обследований"},
-        "sted/tid":{"word":"i dag","translation":"сегодня"}
-      }
+      "subj": {"word": "Min mor", "translation": "Моя мама"},
+      "v1": {"word": "koger", "translation": "готовит"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "middag", "translation": "обед"},
+      "sted": {"word": "i køkkenet", "translation": "на кухне"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "vi", "translation": "мы"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "spiser", "translation": "едим"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "sammen", "translation": "вместе"},
+      "sted2": {"word": "hver dag", "translation": "каждый день"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Eleverne","translation":"Ученики"},
-        "verbum1":{"word":"øver","translation":"упражняются"},
-        "adverbium":{"word":"flittigt","translation":"усердно"},
-        "verbium2-3":{"word":"og diskuterer","translation":"и обсуждают"},
-        "objekt":{"word":"teksterne","translation":"тексты"},
-        "sted/tid":{"word":"i biblioteket hver uge","translation":"в библиотеке каждую неделю"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"når","translation":"когда"},
-        "subjekt":{"word":"de","translation":"они"},
-        "adverbium":{"word":"grundigt","translation":"тщательно"},
-        "verbium1":{"word":"forbereder","translation":"подготавливаются"},
-        "verbium2-3":{"word":"sig til prøven","translation":"к экзамену"},
-        "objekt":{"word":"med noter","translation":"с заметками"},
-        "sted/tid":{"word":"hver weekend","translation":"каждый уикенд"}
-      }
+      "subj": {"word": "Børnene", "translation": "Дети"},
+      "v1": {"word": "leger", "translation": "играют"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "ude", "translation": "на улице"},
+      "sted": {"word": "i haven", "translation": "в саду"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "de", "translation": "они"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "bygger", "translation": "строят"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "huler", "translation": "шалаши"},
+      "sted2": {"word": "i træerne", "translation": "на деревьях"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Far","translation":"Папа"},
-        "verbum1":{"word":"lægger sig","translation":"ложится"},
-        "adverbium":{"word":"tidligt","translation":"рано"},
-        "verbium2-3":{"word":"og sover godt","translation":"и спит хорошо"},
-        "objekt":{"word":"hele natten","translation":"всю ночь"},
-        "sted/tid":{"word":"om aftenen","translation":"вечером"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"fordi","translation":"потому что"},
-        "subjekt":{"word":"han","translation":"он"},
-        "adverbium":{"word":"altid","translation":"всегда"},
-        "verbium1":{"word":"skal","translation":"должен"},
-        "verbium2-3":{"word":"stå op tidligt","translation":"вставать рано"},
-        "objekt":{"word":"til arbejde","translation":"на работу"},
-        "sted/tid":{"word":"i morgen","translation":"завтра"}
-      }
+      "subj": {"word": "Jeg", "translation": "Я"},
+      "v1": {"word": "læser", "translation": "читаю"},
+      "adv": {"word": "tit", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "bøger", "translation": "книги"},
+      "sted": {"word": "i sengen", "translation": "в кровати"},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "jeg", "translation": "я"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "noterer", "translation": "делаю заметки"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "idéer", "translation": "идеи"},
+      "sted2": {"word": "i min notesbog", "translation": "в блокноте"}
     },
     {
-      "hovedsætning": {
-        "subjekt":{"word":"Kokken","translation":"Повар"},
-        "verbum1":{"word":"tilbereder","translation":"припасает/готовит"},
-        "adverbium":{"word":"hurtigt","translation":"быстро"},
-        "verbium2-3":{"word":"og smager","translation":"и пробует"},
-        "objekt":{"word":"saucen","translation":"соус"},
-        "sted/tid":{"word":"i køkkenet hver aften","translation":"на кухне каждый вечер"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"mens","translation":"в то время как"},
-        "subjekt":{"word":"tjeneren","translation":"официант"},
-        "adverbium":{"word":"omhyggeligt","translation":"тщательно"},
-        "verbium1":{"word":"dækker","translation":"накрывает"},
-        "verbium2-3":{"word":"bordene","translation":"столы"},
-        "objekt":{"word":"med servietter","translation":"с салфетками"},
-        "sted/tid":{"word":"til gæsterne","translation":"для гостей"}
-      }
-    },
-    {
-      "hovedsætning": {
-        "subjekt":{"word":"Hun","translation":"Она"},
-        "verbum1":{"word":"ringer","translation":"звонит"},
-        "adverbium":{"word":"straks","translation":"сразу"},
-        "verbium2-3":{"word":"og forklarer","translation":"и объясняет"},
-        "objekt":{"word":"symptomerne","translation":"симптомы"},
-        "sted/tid":{"word":"i telefonen i dag","translation":"по телефону сегодня"}
-      },
-      "ledsætning": {
-        "L-Konjuktion":{"word":"fordi","translation":"потому что"},
-        "subjekt":{"word":"hun","translation":"она"},
-        "adverbium":{"word":"meget","translation":"сильно"},
-        "verbium1":{"word":"føler","translation":"чувствует"},
-        "verbium2-3":{"word":"sig dårlig","translation":"себя плохо"},
-        "objekt":{"word":"med mavesmerter","translation":"с болью в животе"},
-        "sted/tid":{"word":"i dag","translation":"сегодня"}
-      }
+      "subj": {"word": "Vi", "translation": "Мы"},
+      "v1": {"word": "kører", "translation": "едем"},
+      "adv": {"word": "ofte", "translation": "часто"},
+      "v23": {"word": "", "translation": ""},
+      "obj": {"word": "til stranden", "translation": "на пляж"},
+      "sted": {"word": "", "translation": ""},
+      "koma": {"word": ",", "translation": ""},
+      "lkonj": {"word": "og", "translation": "и"},
+      "subj2": {"word": "vi", "translation": "мы"},
+      "adv2": {"word": "", "translation": ""},
+      "v1_2": {"word": "bader", "translation": "купаемся"},
+      "v23_2": {"word": "", "translation": ""},
+      "obj2": {"word": "i havet", "translation": "в море"},
+      "sted2": {"word": "", "translation": ""}
     }
   ]
 }
