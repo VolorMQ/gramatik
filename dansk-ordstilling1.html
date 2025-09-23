@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Ordstilling – hovedsætninger</title>
 <style>
 :root{
-  --bg:#fafafa;
-  --ink:#1f2937;
-  --line:#e5e7eb;
-  --blue:#2563eb;
-  --red:#ef4444;
-  --green:#10b981;
-  --amber:#f59e0b;
-  --violet:#8b5cf6;
+  --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb;
+  --blue:#2563eb; --red:#ef4444; --green:#10b981; --amber:#f59e0b; --violet:#8b5cf6;
 }
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
 .page{max-width:980px;margin:32px auto;padding:0 16px}
@@ -29,170 +23,144 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .sted{color:var(--violet)}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
-.cell{min-width:80px; min-height:40px}
 #check-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
-#translation{margin-top:12px;font-weight:600;color:var(--green);display:none}
 </style>
 </head>
 <body>
 <div class="page">
-<h1>Hovedsætninger – Ligefrem ordstilling</h1>
+  <h1>Hovedsætninger – Ligefrem ordstilling</h1>
 
-<table>
-<thead>
-<tr>
-<th class="subj">subjekt</th>
-<th class="v1">verbum 1</th>
-<th class="adv">adverbium</th>
-<th class="v23">verbum 2–3</th>
-<th class="obj">objekt</th>
-<th class="sted">sted/tid</th>
-</tr>
-</thead>
-<tbody>
-<tr id="sentence-row">
-<td data-type="subjekt" class="cell"></td>
-<td data-type="verbum1" class="cell"></td>
-<td data-type="adverbium" class="cell"></td>
-<td data-type="verbum2" class="cell"></td>
-<td data-type="objekt" class="cell"></td>
-<td data-type="sted/tid" class="cell"></td>
-</tr>
-</tbody>
-</table>
+  <table>
+    <thead>
+      <tr>
+        <th class="subj">subjekt</th>
+        <th class="v1">verbum 1</th>
+        <th class="adv">adverbium</th>
+        <th class="v23">verbum 2–3</th>
+        <th class="obj">objekt</th>
+        <th class="sted">sted/tid</th>
+      </tr>
+    </thead>
+    <tbody id="sentence-rows">
+      <!-- 3 строки предложений будут добавлены скриптом -->
+    </tbody>
+  </table>
 
-<div id="word-pool"></div>
-<button id="check-button">Tjek</button>
-<div id="translation"></div>
+  <div id="word-pool"></div>
+  <button id="check-button">Tjek</button>
 </div>
 
 <script>
 let sentences = [];
-let currentSentence = null;
+let selectedSentences = [];
+let wordsPool = [];
 
-// Загружаем JSON с массивом предложений
 fetch('sentences.json')
   .then(res => res.json())
   .then(data => {
     sentences = data.sentences;
-
-    // выбираем случайное предложение
-    currentSentence = sentences[Math.floor(Math.random() * sentences.length)];
-
-    initWordPool();
+    initSentences();
   })
-  .catch(err => console.error("Fejl ved indlæsning af ord:", err));
+  .catch(err => console.error("Fejl ved indlæsning af JSON:", err));
 
-function initWordPool() {
+function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+function initSentences(){
+  selectedSentences = shuffle([...sentences]).slice(0,3);
+
+  const tbody = document.getElementById('sentence-rows');
+  tbody.innerHTML = "";
+
+  selectedSentences.forEach((s,i)=>{
+    const tr = document.createElement('tr');
+    tr.dataset.index = i;
+    ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
+      const td = document.createElement('td');
+      td.dataset.type = type;
+      td.dataset.correctWord = s[type]?.word || "";
+      td.dataset.correctType = type;
+      td.dataset.sentenceIndex = i;
+      td.addEventListener('dragover', ev=>ev.preventDefault());
+      td.addEventListener('drop', ev=>dropWord(ev,td));
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  wordsPool = [];
+  ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
+    let typeWords = selectedSentences.map((s, idx)=>({ ...s[type], sentenceIndex: idx })).filter(w=>w.word);
+    typeWords = shuffle(typeWords);
+    typeWords.forEach(w=>{
+      wordsPool.push({word:w.word, type:type, translation:w.translation, sentenceIndex:w.sentenceIndex, inPool:true});
+    });
+  });
+
+  wordsPool = shuffle(wordsPool);
+  renderWordPool();
+}
+
+function renderWordPool(){
   const pool = document.getElementById('word-pool');
   pool.innerHTML = "";
-
-  // создаём массив слов: по одному слову каждого типа из текущего предложения
-  let wordsArray = [];
-  for (let key in currentSentence) {
-    let wordObj = {...currentSentence[key]};
-    if (key === 'subjekt') wordObj.word = wordObj.word.toLowerCase();
-    wordsArray.push(wordObj);
-  }
-
-  // перемешиваем массив слов
-  shuffleArray(wordsArray);
-
-  // добавляем все слова в пул
-  wordsArray.forEach(w => {
+  wordsPool.forEach((w,i)=>{
+    if(!w.inPool) return;
     const div = document.createElement('div');
-    div.textContent = w.word;
-    div.dataset.type = w.type;
-    div.dataset.translation = w.translation;
-    div.dataset.fromSentence = JSON.stringify(w); // сохраняем для проверки
     div.classList.add('word');
+    div.textContent = w.word;
+    div.dataset.index = i;
     div.draggable = true;
-
-    div.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text/plain', JSON.stringify({
-        word: w.word,
-        type: w.type,
-        translation: w.translation,
-        originalDiv: div
-      }));
+    div.addEventListener('dragstart', ev=>{
+      ev.dataTransfer.setData('text/plain', i);
     });
-
     pool.appendChild(div);
   });
+}
 
-  // делаем ячейки droppable
-  document.querySelectorAll('#sentence-row td').forEach(td => {
-    td.addEventListener('dragover', e => e.preventDefault());
-    td.addEventListener('drop', e => {
-      e.preventDefault();
-      const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+function dropWord(ev, td){
+  ev.preventDefault();
+  const idx = ev.dataTransfer.getData('text/plain');
+  const wordObj = wordsPool[idx];
 
-      // вернуть старое слово на место, если есть
-      if (td.dataset.word) {
-        const oldDiv = document.createElement('div');
-        oldDiv.textContent = td.dataset.word;
-        oldDiv.dataset.type = td.dataset.type;
-        oldDiv.dataset.translation = td.dataset.translation;
-        oldDiv.dataset.fromSentence = td.dataset.fromSentence;
-        oldDiv.classList.add('word');
-        oldDiv.draggable = true;
-        oldDiv.addEventListener('dragstart', (e) => {
-          e.dataTransfer.setData('text/plain', JSON.stringify({
-            word: oldDiv.textContent,
-            type: oldDiv.dataset.type,
-            translation: oldDiv.dataset.translation,
-            originalDiv: oldDiv
-          }));
-        });
-        document.getElementById('word-pool').appendChild(oldDiv);
+  if(td.dataset.wordIndex !== undefined){
+    wordsPool[td.dataset.wordIndex].inPool = true;
+  }
+
+  td.textContent = wordObj.word;
+  td.dataset.wordIndex = idx;
+  wordsPool[idx].inPool = false;
+  renderWordPool();
+}
+
+document.getElementById('check-button').addEventListener('click', ()=>{
+  document.querySelectorAll('#sentence-rows tr').forEach(tr=>{
+    tr.querySelectorAll('td').forEach(td=>{
+      const correctWord = td.dataset.correctWord;
+      const correctType = td.dataset.correctType;
+      const sentenceIndex = td.dataset.sentenceIndex;
+      const filled = td.dataset.wordIndex !== undefined;
+
+      if(!correctWord && !filled){
+        td.style.backgroundColor = '';
+        return;
       }
 
-      td.textContent = data.word;
-      td.dataset.word = data.word;
-      td.dataset.translation = data.translation;
-      td.dataset.type = data.type;
-      td.dataset.fromSentence = data.fromSentence;
+      if(filled){
+        const idx = td.dataset.wordIndex;
+        const wordObj = wordsPool[idx];
 
-      // удалить перетягиваемый div
-      if (data.originalDiv && data.originalDiv.parentNode) {
-        data.originalDiv.parentNode.removeChild(data.originalDiv);
+        if(wordObj.word === correctWord){
+          td.style.backgroundColor = '#d1fae5'; // зеленый
+        } else if(wordObj.type === correctType){
+          td.style.backgroundColor = '#fef08a'; // желтый
+        } else {
+          td.style.backgroundColor = '#f87171'; // красный
+        }
+      } else {
+        td.style.backgroundColor = '#f87171'; // пусто, а должно быть слово
       }
     });
   });
-}
-
-// перемешивание
-function shuffleArray(arr) {
-  for(let i=arr.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-}
-
-document.getElementById('check-button').addEventListener('click', () => {
-  const row = document.querySelector('#sentence-row');
-  let translations = [];
-  row.querySelectorAll('td').forEach(td => {
-    if (!td.dataset.word) return;
-
-    const correctWord = currentSentence[td.dataset.type].word;
-    const wordObj = JSON.parse(td.dataset.fromSentence);
-
-    if (td.dataset.word === correctWord ||
-       (td.dataset.type==='subjekt' && td.dataset.word===correctWord.toLowerCase())) {
-      td.style.backgroundColor = '#d1fae5'; // зелёный
-    } else if (td.dataset.type === wordObj.type) {
-      td.style.backgroundColor = '#fcd34d'; // жёлтый – правильный тип, но не из текущего предложения
-    } else {
-      td.style.backgroundColor = '#fecaca'; // красный – неверно
-    }
-
-    translations.push(`${td.dataset.word} → ${td.dataset.translation}`);
-  });
-
-  const tr = document.getElementById("translation");
-  tr.innerHTML = translations.join("<br>");
-  tr.style.display = "block";
 });
 </script>
 </body>

@@ -1,28 +1,164 @@
 {
   "sentences": [
     {
-      "subjekt": {"word": "jeg", "type": "subjekt", "translation": "я"},
-      "verbum1": {"word": "læser", "type": "verbum1", "translation": "читаю"},
-      "adverbium": {"word": "højt", "type": "adverbium", "translation": "вслух"},
-      "verbum2": {"word": "tager", "type": "verbum2", "translation": "беру"},
-      "objekt": {"word": "computer", "type": "objekt", "translation": "компьютер"},
-      "sted/tid": {"word": "på arbejde", "type": "sted/tid", "translation": "на работе"}
+      "subjekt": {"word":"jeg","translation":"я"},
+      "verbum1": {"word":"kan","translation":"могу"},
+      "adverbium": {"word":"godt","translation":"хорошо"},
+      "verbum2": {"word":"lide","translation":"люблю"},
+      "objekt": {"word":"musik","translation":"музыку"},
+      "sted/tid": {"word":"i stuen","translation":"в гостиной"}
     },
     {
-      "subjekt": {"word": "du", "type": "subjekt", "translation": "ты"},
-      "verbum1": {"word": "skriver", "type": "verbum1", "translation": "пишешь"},
-      "adverbium": {"word": "hurtigt", "type": "adverbium", "translation": "быстро"},
-      "verbum2": {"word": "finder", "type": "verbum2", "translation": "находишь"},
-      "objekt": {"word": "nøgle", "type": "objekt", "translation": "ключ"},
-      "sted/tid": {"word": "i Aalborg", "type": "sted/tid", "translation": "в Ольборге"}
+      "subjekt": {"word":"hun","translation":"она"},
+      "verbum1": {"word":"vil","translation":"хочет"},
+      "adverbium": {"word":"gerne","translation":"охотно"},
+      "verbum2": {"word":"læse","translation":"читать"},
+      "objekt": {"word":"en bog","translation":"книгу"},
+      "sted/tid": {"word":"på biblioteket","translation":"в библиотеке"}
     },
     {
-      "subjekt": {"word": "han", "type": "subjekt", "translation": "он"},
-      "verbum1": {"word": "spiser", "type": "verbum1", "translation": "ест"},
-      "adverbium": {"word": "ofte", "type": "adverbium", "translation": "часто"},
-      "verbum2": {"word": "køber", "type": "verbum2", "translation": "покупает"},
-      "objekt": {"word": "kaffe", "type": "objekt", "translation": "кофе"},
-      "sted/tid": {"word": "hjemme", "type": "sted/tid", "translation": "дома"}
+      "subjekt": {"word":"de","translation":"они"},
+      "verbum1": {"word":"skal","translation":"должны"},
+      "adverbium": {"word":"snart","translation":"скоро"},
+      "verbum2": {"word":"spille","translation":"играть"},
+      "objekt": {"word":"fodbold","translation":"футбол"},
+      "sted/tid": {"word":"i hallen","translation":"в зале"}
+    },
+    {
+      "subjekt": {"word":"vi","translation":"мы"},
+      "verbum1": {"word":"må","translation":"должны"},
+      "adverbium": {"word":"altid","translation":"всегда"},
+      "verbum2": {"word":"hjælpe","translation":"помогать"},
+      "objekt": {"word":"børnene","translation":"детям"},
+      "sted/tid": {"word":"i skolen","translation":"в школе"}
+    },
+    {
+      "subjekt": {"word":"du","translation":"ты"},
+      "verbum1": {"word":"kan","translation":"можешь"},
+      "adverbium": {"word":"hurtigt","translation":"быстро"},
+      "verbum2": {"word":"finde","translation":"найти"},
+      "objekt": {"word":"nøglen","translation":"ключ"},
+      "sted/tid": {"word":"i tasken","translation":"в сумке"}
+    },
+    {
+      "subjekt": {"word":"han","translation":"он"},
+      "verbum1": {"word":"vil","translation":"хочет"},
+      "adverbium": {"word":"gerne","translation":"охотно"},
+      "verbum2": {"word":"købe","translation":"купить"},
+      "objekt": {"word":"en computer","translation":"компьютер"},
+      "sted/tid": {"word":"i butikken","translation":"в магазине"}
+    },
+    {
+      "subjekt": {"word":"søsteren","translation":"сестра"},
+      "verbum1": {"word":"kan","translation":"может"},
+      "adverbium": {"word":"smukt","translation":"красиво"},
+      "verbum2": {"word":"synge","translation":"петь"},
+      "objekt": {"word":"en sang","translation":"песню"},
+      "sted/tid": {"word":"i kirken","translation":"в церкви"}
+    },
+    {
+      "subjekt": {"word":"vi","translation":"мы"},
+      "verbum1": {"word":"skal","translation":"должны"},
+      "adverbium": {"word":"snart","translation":"скоро"},
+      "verbum2": {"word":"lave","translation":"готовить"},
+      "objekt": {"word":"mad","translation":"еду"},
+      "sted/tid": {"word":"i køkkenet","translation":"на кухне"}
+    },
+    {
+      "subjekt": {"word":"læreren","translation":"учитель"},
+      "verbum1": {"word":"kan","translation":"может"},
+      "adverbium": {"word":"tydeligt","translation":"ясно"},
+      "verbum2": {"word":"forklare","translation":"объяснять"},
+      "objekt": {"word":"reglen","translation":"правило"},
+      "sted/tid": {"word":"i klassen","translation":"в классе"}
+    },
+    {
+      "subjekt": {"word":"børnene","translation":"дети"},
+      "verbum1": {"word":"vil","translation":"хотят"},
+      "adverbium": {"word":"gerne","translation":"охотно"},
+      "verbum2": {"word":"lege","translation":"играть"},
+      "objekt": {"word":"spil","translation":"в игры"},
+      "sted/tid": {"word":"i haven","translation":"в саду"}
+    },
+    {
+      "subjekt": {"word":"han","translation":"он"},
+      "verbum1": {"word":"spiller","translation":"играет"},
+      "adverbium": {"word":"godt","translation":"хорошо"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"guitar","translation":"на гитаре"},
+      "sted/tid": {"word":"i stuen","translation":"в гостиной"}
+    },
+    {
+      "subjekt": {"word":"vi","translation":"мы"},
+      "verbum1": {"word":"arbejder","translation":"работаем"},
+      "adverbium": {"word":"hårdt","translation":"усердно"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"projektet","translation":"над проектом"},
+      "sted/tid": {"word":"på kontoret","translation":"в офисе"}
+    },
+    {
+      "subjekt": {"word":"søsteren","translation":"сестра"},
+      "verbum1": {"word":"maler","translation":"рисует"},
+      "adverbium": {"word":"smukt","translation":"красиво"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"et billede","translation":"картину"},
+      "sted/tid": {"word":"i stuen","translation":"в гостиной"}
+    },
+    {
+      "subjekt": {"word":"katten","translation":"кот"},
+      "verbum1": {"word":"ser","translation":"смотрит"},
+      "adverbium": {"word":"roligt","translation":"спокойно"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"fuglen","translation":"на птицу"},
+      "sted/tid": {"word":"i vinduet","translation":"в окне"}
+    },
+    {
+      "subjekt": {"word":"hunden","translation":"собака"},
+      "verbum1": {"word":"fanger","translation":"ловит"},
+      "adverbium": {"word":"hurtigt","translation":"быстро"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"bolden","translation":"мяч"},
+      "sted/tid": {"word":"i haven","translation":"в саду"}
+    },
+    {
+      "subjekt": {"word":"pigen","translation":"девочка"},
+      "verbum1": {"word":"læser","translation":"читает"},
+      "adverbium": {"word":"stille","translation":"тихо"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"en bog","translation":"книгу"},
+      "sted/tid": {"word":"i sengen","translation":"в кровати"}
+    },
+    {
+      "subjekt": {"word":"drengen","translation":"мальчик"},
+      "verbum1": {"word":"skriver","translation":"пишет"},
+      "adverbium": {"word":"hurtigt","translation":"быстро"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"brevet","translation":"письмо"},
+      "sted/tid": {"word":"på bordet","translation":"на столе"}
+    },
+    {
+      "subjekt": {"word":"moren","translation":"мама"},
+      "verbum1": {"word":"laver","translation":"готовит"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"mad","translation":"еду"},
+      "sted/tid": {"word":"i køkkenet","translation":"на кухне"}
+    },
+    {
+      "subjekt": {"word":"faderen","translation":"отец"},
+      "verbum1": {"word":"reparerer","translation":"чинит"},
+      "adverbium": {"word":"flittigt","translation":"усердно"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"bilen","translation":"машину"},
+      "sted/tid": {"word":"i garagen","translation":"в гараже"}
+    },
+    {
+      "subjekt": {"word":"vennerne","translation":"друзья"},
+      "verbum1": {"word":"drikker","translation":"пьют"},
+      "adverbium": {"word":"sammen","translation":"вместе"},
+      "verbum2": {"word":"","translation":""},
+      "objekt": {"word":"kaffe","translation":"кофе"},
+      "sted/tid": {"word":"på caféen","translation":"в кафе"}
     }
   ]
 }
