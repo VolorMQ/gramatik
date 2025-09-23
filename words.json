@@ -7,7 +7,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "os", "translation": "нас"},
       "sted": {"word": "i huset", "translation": "в доме"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "vi", "translation": "мы"},
       "adv2": {"word": "", "translation": ""},
@@ -23,7 +23,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "", "translation": ""},
       "sted": {"word": "til skolen", "translation": "в школу"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "han", "translation": "он"},
       "adv2": {"word": "", "translation": ""},
@@ -39,7 +39,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "fugle", "translation": "птиц"},
       "sted": {"word": "i haven", "translation": "в саду"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "vi", "translation": "мы"},
       "adv2": {"word": "", "translation": ""},
@@ -55,7 +55,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "fodbold", "translation": "в футбол"},
       "sted": {"word": "i parken", "translation": "в парке"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "han", "translation": "он"},
       "adv2": {"word": "", "translation": ""},
@@ -71,7 +71,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "en tur", "translation": "на прогулку"},
       "sted": {"word": "i skoven", "translation": "в лесу"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "vi", "translation": "мы"},
       "adv2": {"word": "", "translation": ""},
@@ -87,7 +87,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "middag", "translation": "обед"},
       "sted": {"word": "i køkkenet", "translation": "на кухне"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "vi", "translation": "мы"},
       "adv2": {"word": "", "translation": ""},
@@ -103,7 +103,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "ude", "translation": "на улице"},
       "sted": {"word": "i haven", "translation": "в саду"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "de", "translation": "они"},
       "adv2": {"word": "", "translation": ""},
@@ -119,7 +119,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "bøger", "translation": "книги"},
       "sted": {"word": "i sengen", "translation": "в кровати"},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "jeg", "translation": "я"},
       "adv2": {"word": "", "translation": ""},
@@ -135,7 +135,7 @@
       "v23": {"word": "", "translation": ""},
       "obj": {"word": "til stranden", "translation": "на пляж"},
       "sted": {"word": "", "translation": ""},
-      "koma": {"word": ",", "translation": ""},
+
       "lkonj": {"word": "og", "translation": "и"},
       "subj2": {"word": "vi", "translation": "мы"},
       "adv2": {"word": "", "translation": ""},
