@@ -106,7 +106,7 @@ function initSentences(){
 
   wordsPool = shuffle(wordsPool);
   renderWordPool();
-  updateTranslation(); // показываем перевод изначально (subjekt)
+  updateTranslation();
 }
 
 function renderWordPool(){
@@ -134,16 +134,18 @@ function dropWord(ev, td){
   const wordObj = wordsPool[idx];
   const oldWordIndex = td.dataset.wordIndex;
 
+  // вставляем слово в ячейку
   td.textContent = wordObj.word;
   td.dataset.wordIndex = idx;
   wordsPool[idx].inPool = false;
 
+  // если там было старое слово (не подсказка), возвращаем его в пул
   if(oldWordIndex!==undefined && oldWordIndex!=-1){
     wordsPool[oldWordIndex].inPool = true;
   }
 
   renderWordPool();
-  updateTranslation(); // обновляем перевод после вставки
+  updateTranslation();
 }
 
 function clearHighlights(){
@@ -185,12 +187,27 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
     const randomCell = cells[Math.floor(Math.random()*cells.length)];
     const type = randomCell.dataset.type;
     const correctWord = selectedSentences[rowIdx][type];
-    if(!randomCell.textContent || randomCell.textContent!==correctWord.word){
+
+    const idx = randomCell.dataset.wordIndex;
+    let needInsert = false;
+    if(!randomCell.textContent) {
+      needInsert = true;
+    } else if(idx!==undefined && idx!=-1) {
+      const wordObj = wordsPool[idx];
+      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
+        needInsert = true;
+        wordsPool[idx].inPool = true; // старое слово возвращаем в пул
+      }
+    }
+
+    if(needInsert){
       randomCell.textContent = correctWord.word;
-      randomCell.dataset.wordIndex = -1;
+      randomCell.dataset.wordIndex = -1; // помечаем как подсказку
     }
   });
-  updateTranslation(); // обновляем перевод после подсказки
+
+  renderWordPool();    // обновляем пул слов, удаляя вставленные
+  updateTranslation(); // обновляем перевод
   document.getElementById('hint-button').disabled = true;
 });
 
@@ -200,27 +217,27 @@ document.getElementById('reset-button').addEventListener('click', ()=>{
   document.getElementById('hint-button').disabled = false;
 });
 
-// Функция обновления перевода
+// Обновление перевода
 function updateTranslation(){
-  const translationsDiv = document.getElementById('translation');
-  translationsDiv.innerHTML = '';
-
+  const translationDiv = document.getElementById('translation');
+  translationDiv.innerHTML = '';
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
-    const parts = [];
     tr.querySelectorAll('td').forEach(td=>{
       const idx = td.dataset.wordIndex;
-      let translation = '';
       if(idx!==undefined){
+        let text = '';
         if(idx==-1){ // подсказка
           const type = td.dataset.type;
-          translation = selectedSentences[rowIdx][type].translation;
+          text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
         } else {
-          translation = wordsPool[idx].translation;
+          const wordObj = wordsPool[idx];
+          text = wordObj.word + ' → ' + wordObj.translation;
         }
-        if(td.textContent) parts.push(`${td.textContent} → ${translation}`);
+        const p = document.createElement('div');
+        p.textContent = text;
+        translationDiv.appendChild(p);
       }
     });
-    if(parts.length) translationsDiv.innerHTML += parts.join(' | ') + '<br>';
   });
 }
 </script>
