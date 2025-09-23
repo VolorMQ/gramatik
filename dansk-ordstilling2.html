@@ -21,6 +21,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .v23{color:var(--red)}
 .obj{color:var(--green)}
 .sted{color:var(--violet)}
+td.question{font-weight:900;font-size:24px;color:var(--red);}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
 #buttons{margin-top:12px;display:flex;gap:8px}
@@ -42,6 +43,7 @@ button:disabled{opacity:0.5;cursor:default}
         <th class="v23">verbum 2–3</th>
         <th class="obj">objekt</th>
         <th class="sted">sted/tid</th>
+        <th>❓</th>
       </tr>
     </thead>
     <tbody id="sentence-rows"></tbody>
@@ -61,7 +63,7 @@ let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
 
-fetch('sentences1.json')
+fetch('sentences.json')
   .then(res => res.json())
   .then(data => {
     sentences = data.sentences;
@@ -76,7 +78,6 @@ function initSentences(){
   const tbody = document.getElementById('sentence-rows');
   tbody.innerHTML = "";
 
-  // новый порядок колонок для инверсии
   const columnOrder = ['verbum1','subjekt','adverbium','verbum2','objekt','sted/tid'];
 
   selectedSentences.forEach((s,i)=>{
@@ -85,7 +86,7 @@ function initSentences(){
     columnOrder.forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
-      if(type==='subjekt'){ // сразу помещаем подсказку
+      if(type==='subjekt'){
         td.textContent = s.subjekt.word;
         td.dataset.wordIndex = -1;
       } else {
@@ -94,6 +95,13 @@ function initSentences(){
       }
       tr.appendChild(td);
     });
+
+    // добавляем вопросительный знак в конце
+    const qTd = document.createElement('td');
+    qTd.classList.add('question');
+    qTd.textContent = '❓';
+    tr.appendChild(qTd);
+
     tbody.appendChild(tr);
   });
 
