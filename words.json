@@ -1,166 +1,130 @@
 {
   "sentences": [
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Farmor","translation":"бабушка"},
-        "verbium1": {"word":"besøger","translation":"навещает"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"os","translation":"нас"},
-        "sted/tid": {"word":"i huset","translation":"в доме"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"vi","translation":"мы"},
-        "verbium1": {"word":"spiser","translation":"едим"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"kage","translation":"торт"},
-        "sted/tid": {"word":"sammen","translation":"вместе"}
-      }
+      "subjekt": {"word":"Farmor","translation":"бабушка"},
+      "verbum1": {"word":"besøger","translation":"навещает"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"os","translation":"нас"},
+      "sted/tid": {"word":"i huset","translation":"в доме"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"vi","translation":"мы"},
+      "verbum1_2": {"word":"spiser","translation":"едим"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"kage","translation":"торт"},
+      "sted/tid2": {"word":"sammen","translation":"вместе"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Peter","translation":"Петер"},
-        "verbium1": {"word":"går","translation":"идёт"},
-        "adverbium": {"word":"hurtigt","translation":"быстро"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"","translation":""},
-        "sted/tid": {"word":"til skolen","translation":"в школу"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"han","translation":"он"},
-        "verbium1": {"word":"hilser","translation":"приветствует"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"læreren","translation":"учителя"},
-        "sted/tid": {"word":"på vej","translation":"по пути"}
-      }
+      "subjekt": {"word":"Peter","translation":"Петер"},
+      "verbum1": {"word":"går","translation":"идёт"},
+      "adverbium": {"word":"hurtigt","translation":"быстро"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"","translation":""},
+      "sted/tid": {"word":"til skolen","translation":"в школу"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"han","translation":"он"},
+      "verbum1_2": {"word":"hilser","translation":"приветствует"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"læreren","translation":"учителя"},
+      "sted/tid2": {"word":"på vej","translation":"по пути"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Vi","translation":"Мы"},
-        "verbium1": {"word":"ser","translation":"видим"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"fugle","translation":"птиц"},
-        "sted/tid": {"word":"i haven","translation":"в саду"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"vi","translation":"мы"},
-        "verbium1": {"word":"fodrer","translation":"кормим"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"dem","translation":"их"},
-        "sted/tid": {"word":"hver morgen","translation":"каждое утро"}
-      }
+      "subjekt": {"word":"Vi","translation":"Мы"},
+      "verbum1": {"word":"ser","translation":"видим"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"fugle","translation":"птиц"},
+      "sted/tid": {"word":"i haven","translation":"в саду"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"vi","translation":"мы"},
+      "verbum1_2": {"word":"fodrer","translation":"кормим"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"dem","translation":"их"},
+      "sted/tid2": {"word":"hver morgen","translation":"каждое утро"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Min bror","translation":"Мой брат"},
-        "verbium1": {"word":"spiller","translation":"играет"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"fodbold","translation":"в футбол"},
-        "sted/tid": {"word":"i parken","translation":"в парке"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"han","translation":"он"},
-        "verbium1": {"word":"møder","translation":"встречает"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"sine venner","translation":"своих друзей"},
-        "sted/tid": {"word":"ved banen","translation":"на поле"}
-      }
+      "subjekt": {"word":"Min bror","translation":"Мой брат"},
+      "verbum1": {"word":"spiller","translation":"играет"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"fodbold","translation":"в футбол"},
+      "sted/tid": {"word":"i parken","translation":"в парке"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"han","translation":"он"},
+      "verbum1_2": {"word":"møder","translation":"встречает"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"sine venner","translation":"своих друзей"},
+      "sted/tid2": {"word":"ved banen","translation":"на поле"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Vi","translation":"Мы"},
-        "verbium1": {"word":"går","translation":"ходим"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"en tur","translation":"на прогулку"},
-        "sted/tid": {"word":"i skoven","translation":"в лесу"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"и","translation":"и"},
-        "subjekt": {"word":"vi","translation":"мы"},
-        "verbium1": {"word":"finder","translation":"находим"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"bær","translation":"ягоды"},
-        "sted/tid": {"word":"på stierne","translation":"на тропинках"}
-      }
+      "subjekt": {"word":"Vi","translation":"Мы"},
+      "verbum1": {"word":"går","translation":"ходим"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"en tur","translation":"на прогулку"},
+      "sted/tid": {"word":"i skoven","translation":"в лесу"},
+      "L-Konjuktion": {"word":"и","translation":"и"},
+      "subjekt2": {"word":"vi","translation":"мы"},
+      "verbum1_2": {"word":"finder","translation":"находим"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"bær","translation":"ягоды"},
+      "sted/tid2": {"word":"på stierne","translation":"на тропинках"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Min mor","translation":"Моя мама"},
-        "verbium1": {"word":"koger","translation":"готовит"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"middag","translation":"обед"},
-        "sted/tid": {"word":"i køkkenet","translation":"на кухне"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"vi","translation":"мы"},
-        "verbium1": {"word":"spiser","translation":"едим"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"sammen","translation":"вместе"},
-        "sted/tid": {"word":"hver dag","translation":"каждый день"}
-      }
+      "subjekt": {"word":"Min mor","translation":"Моя мама"},
+      "verbum1": {"word":"koger","translation":"готовит"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"middag","translation":"обед"},
+      "sted/tid": {"word":"i køkkenet","translation":"на кухне"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"vi","translation":"мы"},
+      "verbum1_2": {"word":"spiser","translation":"едим"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"sammen","translation":"вместе"},
+      "sted/tid2": {"word":"hver dag","translation":"каждый день"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Børnene","translation":"Дети"},
-        "verbium1": {"word":"leger","translation":"играют"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"ude","translation":"на улице"},
-        "sted/tid": {"word":"i haven","translation":"в саду"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"de","translation":"они"},
-        "verbium1": {"word":"bygger","translation":"строят"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"huler","translation":"шалаши"},
-        "sted/tid": {"word":"i træerne","translation":"на деревьях"}
-      }
+      "subjekt": {"word":"Børnene","translation":"Дети"},
+      "verbum1": {"word":"leger","translation":"играют"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"ude","translation":"на улице"},
+      "sted/tid": {"word":"i haven","translation":"в саду"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"de","translation":"они"},
+      "verbum1_2": {"word":"bygger","translation":"строят"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"huler","translation":"шалаши"},
+      "sted/tid2": {"word":"i træerne","translation":"на деревьях"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Jeg","translation":"Я"},
-        "verbium1": {"word":"læser","translation":"читаю"},
-        "adverbium": {"word":"tit","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"bøger","translation":"книги"},
-        "sted/tid": {"word":"i sengen","translation":"в кровати"}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"og","translation":"и"},
-        "subjekt": {"word":"jeg","translation":"я"},
-        "verbium1": {"word":"noterer","translation":"делаю заметки"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"idéer","translation":"идеи"},
-        "sted/tid": {"word":"i min notesbog","translation":"в блокноте"}
-      }
+      "subjekt": {"word":"Jeg","translation":"Я"},
+      "verbum1": {"word":"læser","translation":"читаю"},
+      "adverbium": {"word":"tit","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"bøger","translation":"книги"},
+      "sted/tid": {"word":"i sengen","translation":"в кровати"},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"jeg","translation":"я"},
+      "verbum1_2": {"word":"noterer","translation":"делаю заметки"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"idéer","translation":"идеи"},
+      "sted/tid2": {"word":"i min notesbog","translation":"в блокноте"}
     },
     {
-      "hovedsætning": {
-        "subjekt": {"word":"Vi","translation":"Мы"},
-        "verbium1": {"word":"kører","translation":"едем"},
-        "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"til stranden","translation":"на пляж"},
-        "sted/tid": {"word":"","translation":""}
-      },
-      "ledsætning": {
-        "L-Konjuktion": {"word":"и","translation":"и"},
-        "subjekt": {"word":"vi","translation":"мы"},
-        "verbium1": {"word":"bader","translation":"купаемся"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"i havet","translation":"в море"},
-        "sted/tid": {"word":"","translation":""}
-      }
+      "subjekt": {"word":"Vi","translation":"Мы"},
+      "verbum1": {"word":"kører","translation":"едем"},
+      "adverbium": {"word":"ofte","translation":"часто"},
+      "verbum2-3": {"word":"","translation":""},
+      "objekt": {"word":"til stranden","translation":"на пляж"},
+      "sted/tid": {"word":"","translation":""},
+      "L-Konjuktion": {"word":"og","translation":"и"},
+      "subjekt2": {"word":"vi","translation":"мы"},
+      "verbum1_2": {"word":"bader","translation":"купаемся"},
+      "verbum2-3_2": {"word":"","translation":""},
+      "objekt2": {"word":"i havet","translation":"в море"},
+      "sted/tid2": {"word":"","translation":""}
     }
   ]
 }
