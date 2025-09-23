@@ -190,7 +190,7 @@
         "sted/tid":{"word":"i dag","translation":"сегодня"}
       }
     },
-	    {
+	{
       "hovedsætning": {
         "subjekt":{"word":"Manden","translation":"Мужчина"},
         "verbum1":{"word":"kører","translation":"едет"},
@@ -551,7 +551,7 @@
         "sted/tid":{"word":"i travle perioder","translation":"в напряжённые периоды"}
       }
     },
-	    {
+	{
       "hovedsætning": {
         "subjekt":{"word":"Moren","translation":"Мама"},
         "verbum1":{"word":"forbereder","translation":"готовит"},
