@@ -1,84 +1,159 @@
 {
   "sentences": [
     {
-      "subjekt1": {"word": "Farmor", "translation": "бабушка"},
-      "verbum1_1": {"word": "besøger", "translation": "навещает"},
-      "adverbium1": {"word": "ofte", "translation": "часто"},
-      "verbium2-3_1": {"word": "", "translation": ""},
-      "objekt1": {"word": "os", "translation": "нас"},
-      "sted/tid1": {"word": "i huset", "translation": "в доме"},
-      
-      "lkonj": {"word": "og", "translation": "и"},
+      "subjekt": {"word": "Farmor", "translation": "бабушка"},
+      "verbium1": {"word": "besøger", "translation": "навещает"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "os", "translation": "нас"},
+      "sted/tid": {"word": "i huset", "translation": "в доме"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "vi", "translation": "мы"},
       "adverbium2": {"word": "", "translation": ""},
-      "verbum1_2": {"word": "spiser", "translation": "едим"},
+      "verbium1_2": {"word": "spiser", "translation": "едим"},
       "verbium2-3_2": {"word": "", "translation": ""},
       "objekt2": {"word": "kage", "translation": "торт"},
       "sted/tid2": {"word": "sammen", "translation": "вместе"}
     },
     {
-      "subjekt1": {"word": "Peter", "translation": "Петер"},
-      "verbum1_1": {"word": "går", "translation": "идёт"},
-      "adverbium1": {"word": "hurtigt", "translation": "быстро"},
-      "verbium2-3_1": {"word": "", "translation": ""},
-      "objekt1": {"word": "", "translation": ""},
-      "sted/tid1": {"word": "til skolen", "translation": "в школу"},
-      
-      "lkonj": {"word": "og", "translation": "и"},
+      "subjekt": {"word": "Peter", "translation": "Петер"},
+      "verbium1": {"word": "går", "translation": "идёт"},
+      "adverbium": {"word": "hurtigt", "translation": "быстро"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "", "translation": ""},
+      "sted/tid": {"word": "til skolen", "translation": "в школу"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "han", "translation": "он"},
       "adverbium2": {"word": "", "translation": ""},
-      "verbum1_2": {"word": "hilser", "translation": "приветствует"},
+      "verbium1_2": {"word": "hilser", "translation": "приветствует"},
       "verbium2-3_2": {"word": "", "translation": ""},
       "objekt2": {"word": "læreren", "translation": "учителя"},
       "sted/tid2": {"word": "på vej", "translation": "по пути"}
     },
     {
-      "subjekt1": {"word": "Vi", "translation": "Мы"},
-      "verbum1_1": {"word": "ser", "translation": "видим"},
-      "adverbium1": {"word": "ofte", "translation": "часто"},
-      "verbium2-3_1": {"word": "", "translation": ""},
-      "objekt1": {"word": "fugle", "translation": "птиц"},
-      "sted/tid1": {"word": "i haven", "translation": "в саду"},
-      
-      "lkonj": {"word": "og", "translation": "и"},
+      "subjekt": {"word": "Vi", "translation": "Мы"},
+      "verbium1": {"word": "ser", "translation": "видим"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "fugle", "translation": "птиц"},
+      "sted/tid": {"word": "i haven", "translation": "в саду"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "vi", "translation": "мы"},
       "adverbium2": {"word": "", "translation": ""},
-      "verbum1_2": {"word": "fodrer", "translation": "кормим"},
+      "verbium1_2": {"word": "fodrer", "translation": "кормим"},
       "verbium2-3_2": {"word": "", "translation": ""},
       "objekt2": {"word": "dem", "translation": "их"},
       "sted/tid2": {"word": "hver morgen", "translation": "каждое утро"}
     },
     {
-      "subjekt1": {"word": "Min bror", "translation": "Мой брат"},
-      "verbum1_1": {"word": "spiller", "translation": "играет"},
-      "adverbium1": {"word": "ofte", "translation": "часто"},
-      "verbium2-3_1": {"word": "", "translation": ""},
-      "objekt1": {"word": "fodbold", "translation": "в футбол"},
-      "sted/tid1": {"word": "i parken", "translation": "в парке"},
-      
-      "lkonj": {"word": "og", "translation": "и"},
+      "subjekt": {"word": "Min bror", "translation": "Мой брат"},
+      "verbium1": {"word": "spiller", "translation": "играет"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "fodbold", "translation": "в футбол"},
+      "sted/tid": {"word": "i parken", "translation": "в парке"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "han", "translation": "он"},
       "adverbium2": {"word": "", "translation": ""},
-      "verbum1_2": {"word": "møder", "translation": "встречает"},
+      "verbium1_2": {"word": "møder", "translation": "встречает"},
       "verbium2-3_2": {"word": "", "translation": ""},
       "objekt2": {"word": "sine venner", "translation": "своих друзей"},
       "sted/tid2": {"word": "ved banen", "translation": "на поле"}
     },
     {
-      "subjekt1": {"word": "Vi", "translation": "Мы"},
-      "verbum1_1": {"word": "går", "translation": "ходим"},
-      "adverbium1": {"word": "ofte", "translation": "часто"},
-      "verbium2-3_1": {"word": "", "translation": ""},
-      "objekt1": {"word": "en tur", "translation": "на прогулку"},
-      "sted/tid1": {"word": "i skoven", "translation": "в лесу"},
-      
-      "lkonj": {"word": "og", "translation": "и"},
+      "subjekt": {"word": "Vi", "translation": "Мы"},
+      "verbium1": {"word": "går", "translation": "ходим"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "en tur", "translation": "на прогулку"},
+      "sted/tid": {"word": "i skoven", "translation": "в лесу"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "vi", "translation": "мы"},
       "adverbium2": {"word": "", "translation": ""},
-      "verbum1_2": {"word": "finder", "translation": "находим"},
+      "verbium1_2": {"word": "finder", "translation": "находим"},
       "verbium2-3_2": {"word": "", "translation": ""},
       "objekt2": {"word": "bær", "translation": "ягоды"},
       "sted/tid2": {"word": "på stierne", "translation": "на тропинках"}
-    }
-  ]
-}
+    },
+    {
+      "subjekt": {"word": "Min mor", "translation": "Моя мама"},
+      "verbium1": {"word": "koger", "translation": "готовит"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "middag", "translation": "обед"},
+      "sted/tid": {"word": "i køkkenet", "translation": "на кухне"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
+      "subjekt2": {"word": "vi", "translation": "мы"},
+      "adverbium2": {"word": "", "translation": ""},
+      "verbium1_2": {"word": "spiser", "translation": "едим"},
+      "verbium2-3_2": {"word": "", "translation": ""},
+      "objekt2": {"word": "sammen", "translation": "вместе"},
+      "sted/tid2": {"word": "hver dag", "translation": "каждый день"}
+    },
+    {
+      "subjekt": {"word": "Børnene", "translation": "Дети"},
+      "verbium1": {"word": "leger", "translation": "играют"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "ude", "translation": "на улице"},
+      "sted/tid": {"word": "i haven", "translation": "в саду"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
+      "subjekt2": {"word": "de", "translation": "они"},
+      "adverbium2": {"word": "", "translation": ""},
+      "verbium1_2": {"word": "bygger", "translation": "строят"},
+      "verbium2-3_2": {"word": "", "translation": ""},
+      "objekt2": {"word": "huler", "translation": "шалаши"},
+      "sted/tid2": {"word": "i træerne", "translation": "на деревьях"}
+    },
+    {
+      "subjekt": {"word": "Jeg", "translation": "Я"},
+      "verbium1": {"word": "læser", "translation": "читаю"},
+      "adverbium": {"word": "tit", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "bøger", "translation": "книги"},
+      "sted/tid": {"word": "i sengen", "translation": "в кровати"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
+      "subjekt2": {"word": "jeg", "translation": "я"},
+      "adverbium2": {"word": "", "translation": ""},
+      "verbium1_2": {"word": "noterer", "translation": "делаю заметки"},
+      "verbium2-3_2": {"word": "", "translation": ""},
+      "objekt2": {"word": "idéer", "translation": "идеи"},
+      "sted/tid2": {"word": "i min notesbog", "translation": "в блокноте"}
+    },
+    {
+      "subjekt": {"word": "Vi", "translation": "Мы"},
+      "verbium1": {"word": "kører", "translation": "едем"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "til stranden", "translation": "на пляж"},
+      "sted/tid": {"word": "", "translation": ""},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
+      "subjekt2": {"word": "vi", "translation": "мы"},
+      "adverbium2": {"word": "", "translation": ""},
+      "verbium1_2": {"word": "bader", "translation": "купаемся"},
+      "verbium2-3_2": {"word": "", "translation": ""},
+      "objekt2": {"word": "i havet", "translation": "в море"},
+      "sted/tid2": {"word": "", "translation": ""}
+    },
+    {
+      "subjekt": {"word": "Hun", "translation": "Она"},
+      "verbium1": {"word": "læser", "translation": "читает"},
+      "adverbium": {"word": "ofte", "translation": "часто"},
+      "verbium2-3": {"word": "", "translation": ""},
+      "objekt": {"word": "aviser", "translation": "газеты"},
+      "sted/tid": {"word": "i stuen", "translation": "в гостиной"},
+
+      "L-Konjuktion": {"word": "og", "translation": "и"},
+      "subjekt2": {"word": "hun", "translation": "она"},
+      "adverbium2": {"word": "", "translation": ""},
+      "verbium1_2": {"word": "drikker", "translation": "пьёт"},
+      "verbium2-3_2":
