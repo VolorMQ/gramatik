@@ -203,6 +203,13 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
     if(needInsert){
       randomCell.textContent = correctWord.word;
       randomCell.dataset.wordIndex = -1; // помечаем как подсказку
+	        // Убираем слово подсказки из пула
+      for(let i=0;i<wordsPool.length;i++){
+        const w = wordsPool[i];
+        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
+          w.inPool = false;
+        }
+      }
     }
   });
 
