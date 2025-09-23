@@ -7,7 +7,7 @@
       "verbium2-3_1": {"word": "", "translation": ""},
       "objekt1": {"word": "os", "translation": "нас"},
       "sted/tid1": {"word": "i huset", "translation": "в доме"},
-
+      
       "lkonj": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "vi", "translation": "мы"},
       "adverbium2": {"word": "", "translation": ""},
@@ -23,7 +23,7 @@
       "verbium2-3_1": {"word": "", "translation": ""},
       "objekt1": {"word": "", "translation": ""},
       "sted/tid1": {"word": "til skolen", "translation": "в школу"},
-
+      
       "lkonj": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "han", "translation": "он"},
       "adverbium2": {"word": "", "translation": ""},
@@ -39,7 +39,7 @@
       "verbium2-3_1": {"word": "", "translation": ""},
       "objekt1": {"word": "fugle", "translation": "птиц"},
       "sted/tid1": {"word": "i haven", "translation": "в саду"},
-
+      
       "lkonj": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "vi", "translation": "мы"},
       "adverbium2": {"word": "", "translation": ""},
@@ -55,7 +55,7 @@
       "verbium2-3_1": {"word": "", "translation": ""},
       "objekt1": {"word": "fodbold", "translation": "в футбол"},
       "sted/tid1": {"word": "i parken", "translation": "в парке"},
-
+      
       "lkonj": {"word": "og", "translation": "и"},
       "subjekt2": {"word": "han", "translation": "он"},
       "adverbium2": {"word": "", "translation": ""},
@@ -63,6 +63,22 @@
       "verbium2-3_2": {"word": "", "translation": ""},
       "objekt2": {"word": "sine venner", "translation": "своих друзей"},
       "sted/tid2": {"word": "ved banen", "translation": "на поле"}
+    },
+    {
+      "subjekt1": {"word": "Vi", "translation": "Мы"},
+      "verbum1_1": {"word": "går", "translation": "ходим"},
+      "adverbium1": {"word": "ofte", "translation": "часто"},
+      "verbium2-3_1": {"word": "", "translation": ""},
+      "objekt1": {"word": "en tur", "translation": "на прогулку"},
+      "sted/tid1": {"word": "i skoven", "translation": "в лесу"},
+      
+      "lkonj": {"word": "og", "translation": "и"},
+      "subjekt2": {"word": "vi", "translation": "мы"},
+      "adverbium2": {"word": "", "translation": ""},
+      "verbum1_2": {"word": "finder", "translation": "находим"},
+      "verbium2-3_2": {"word": "", "translation": ""},
+      "objekt2": {"word": "bær", "translation": "ягоды"},
+      "sted/tid2": {"word": "på stierne", "translation": "на тропинках"}
     }
   ]
 }
