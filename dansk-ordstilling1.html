@@ -7,7 +7,8 @@
 <style>
 :root{
   --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb;
-  --blue:#2563eb; --red:#ef4444; --green:#10b981; --amber:#f59e0b; --violet:#8b5cf6;
+  --blue:#2563eb; --red:#ef4444; --green:#10b981;
+  --amber:#f59e0b; --violet:#8b5cf6;
 }
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
 .page{max-width:980px;margin:32px auto;padding:0 16px}
@@ -41,7 +42,9 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
         <th class="sted">sted/tid</th>
       </tr>
     </thead>
-    <tbody id="sentence-rows"></tbody>
+    <tbody id="sentence-rows">
+      <!-- Сюда будут вставлены 3 случайных предложения -->
+    </tbody>
   </table>
 
   <div id="word-pool"></div>
@@ -65,36 +68,33 @@ function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 
 function initSentences(){
   selectedSentences = shuffle([...sentences]).slice(0,3);
-
   const tbody = document.getElementById('sentence-rows');
   tbody.innerHTML = "";
 
-  selectedSentences.forEach((s,i)=>{
+  selectedSentences.forEach((s,rowIdx)=>{
     const tr = document.createElement('tr');
-    tr.dataset.index = i;
+    tr.dataset.index = rowIdx;
     ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
-      td.dataset.correctWord = s[type]?.word || "";
-      td.dataset.correctType = type;
-      td.dataset.sentenceIndex = i;
       td.addEventListener('dragover', ev=>ev.preventDefault());
       td.addEventListener('drop', ev=>dropWord(ev,td));
-
-      // Помещаем сразу субъект для понимания начала предложения
-      if(type==='subjekt') td.textContent = s[type]?.word || "";
-
+      // Вставляем сразу subjekt
+      if(type==='subjekt'){
+        td.textContent = s.subjekt.word.toLowerCase();
+        td.dataset.subjektFixed = "true";
+      }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
 
-  // Создаем пул слов (без субъектов, т.к. они уже в таблице)
+  // Создаем пул слов (по 3 слова каждого типа)
   wordsPool = [];
   ['verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
-    let typeWords = selectedSentences.map((s, idx)=>({ ...s[type], sentenceIndex: idx })).filter(w=>w.word);
+    let typeWords = selectedSentences.map(s=>s[type]).filter(w=>w && w.word);
     typeWords = shuffle(typeWords);
-    typeWords.forEach(w=>{
+    typeWords.forEach((w,i)=>{
       wordsPool.push({word:w.word, type:type, translation:w.translation, sentenceIndex:w.sentenceIndex, inPool:true});
     });
   });
@@ -111,6 +111,7 @@ function renderWordPool(){
     const div = document.createElement('div');
     div.classList.add('word');
     div.textContent = w.word;
+    div.dataset.type = w.type;
     div.dataset.index = i;
     div.draggable = true;
     div.addEventListener('dragstart', ev=>{
@@ -125,9 +126,10 @@ function dropWord(ev, td){
   const idx = ev.dataTransfer.getData('text/plain');
   const wordObj = wordsPool[idx];
 
-  // Если в ячейке уже было слово, вернуть его в пул
-  if(td.dataset.wordIndex !== undefined){
-    wordsPool[td.dataset.wordIndex].inPool = true;
+  // Если в ячейке было слово, вернуть его обратно
+  if(td.dataset.wordIndex!==undefined){
+    const oldIdx = td.dataset.wordIndex;
+    wordsPool[oldIdx].inPool = true;
   }
 
   td.textContent = wordObj.word;
@@ -137,30 +139,26 @@ function dropWord(ev, td){
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
-  document.querySelectorAll('#sentence-rows tr').forEach(tr=>{
+  document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
-      const correctWord = td.dataset.correctWord;
-      const correctType = td.dataset.correctType;
-      const filled = td.dataset.wordIndex !== undefined;
-
-      if(!correctWord && !filled){
-        td.style.backgroundColor = '';
-        return;
-      }
-
-      if(filled){
+      if(td.dataset.subjektFixed) return; // субьект не подсвечиваем
+      if(td.dataset.wordIndex!==undefined){
         const idx = td.dataset.wordIndex;
         const wordObj = wordsPool[idx];
-
-        if(wordObj.word === correctWord){
+        const correctWordObj = selectedSentences[rowIdx][td.dataset.type];
+        if(correctWordObj && wordObj.word === correctWordObj.word){
           td.style.backgroundColor = '#d1fae5'; // зеленый
-        } else if(wordObj.type === correctType){
-          td.style.backgroundColor = '#fef08a'; // желтый
         } else {
-          td.style.backgroundColor = '#f87171'; // красный
+          // если слово того же типа, но не из этого предложения
+          const typeMatch = selectedSentences[rowIdx] && Object.values(selectedSentences[rowIdx]).some(
+            w => w && w.type===wordObj.type && w.word!==wordObj.word
+          );
+          td.style.backgroundColor = typeMatch ? '#fef08a' : '#f87171'; // желтый или красный
         }
       } else {
-        td.style.backgroundColor = '#f87171'; // пусто, а должно быть слово
+        const correctWord = selectedSentences[rowIdx][td.dataset.type];
+        // пустая ячейка правильная, если в предложении пусто
+        td.style.backgroundColor = (!correctWord || !correctWord.word) ? '' : '#f87171';
       }
     });
   });
