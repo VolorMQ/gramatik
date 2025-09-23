@@ -41,9 +41,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
         <th class="sted">sted/tid</th>
       </tr>
     </thead>
-    <tbody id="sentence-rows">
-      <!-- 3 строки предложений будут добавлены скриптом -->
-    </tbody>
+    <tbody id="sentence-rows"></tbody>
   </table>
 
   <div id="word-pool"></div>
@@ -82,13 +80,18 @@ function initSentences(){
       td.dataset.sentenceIndex = i;
       td.addEventListener('dragover', ev=>ev.preventDefault());
       td.addEventListener('drop', ev=>dropWord(ev,td));
+
+      // Помещаем сразу субъект для понимания начала предложения
+      if(type==='subjekt') td.textContent = s[type]?.word || "";
+
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
 
+  // Создаем пул слов (без субъектов, т.к. они уже в таблице)
   wordsPool = [];
-  ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
+  ['verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
     let typeWords = selectedSentences.map((s, idx)=>({ ...s[type], sentenceIndex: idx })).filter(w=>w.word);
     typeWords = shuffle(typeWords);
     typeWords.forEach(w=>{
@@ -122,6 +125,7 @@ function dropWord(ev, td){
   const idx = ev.dataTransfer.getData('text/plain');
   const wordObj = wordsPool[idx];
 
+  // Если в ячейке уже было слово, вернуть его в пул
   if(td.dataset.wordIndex !== undefined){
     wordsPool[td.dataset.wordIndex].inPool = true;
   }
@@ -137,7 +141,6 @@ document.getElementById('check-button').addEventListener('click', ()=>{
     tr.querySelectorAll('td').forEach(td=>{
       const correctWord = td.dataset.correctWord;
       const correctType = td.dataset.correctType;
-      const sentenceIndex = td.dataset.sentenceIndex;
       const filled = td.dataset.wordIndex !== undefined;
 
       if(!correctWord && !filled){
