@@ -7,8 +7,7 @@
 <style>
 :root{
   --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb;
-  --blue:#2563eb; --red:#ef4444; --green:#10b981;
-  --amber:#f59e0b; --violet:#8b5cf6;
+  --blue:#2563eb; --red:#ef4444; --green:#10b981; --amber:#f59e0b; --violet:#8b5cf6;
 }
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
 .page{max-width:980px;margin:32px auto;padding:0 16px}
@@ -25,7 +24,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
 #check-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
-#translation{margin-top:16px;font-weight:600;color:#10b981}
+#translation{margin-top:12px;font-weight:600;color:#10b981}
 </style>
 </head>
 <body>
@@ -43,7 +42,9 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
         <th class="sted">sted/tid</th>
       </tr>
     </thead>
-    <tbody id="sentence-rows"></tbody>
+    <tbody id="sentence-rows">
+      <!-- 3 строки предложений -->
+    </tbody>
   </table>
 
   <div id="word-pool"></div>
@@ -52,7 +53,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 </div>
 
 <script>
-let sentences = [];
+let sentences = []; // Загружаем JSON с предложениями
 let selectedSentences = [];
 let wordsPool = [];
 
@@ -71,32 +72,28 @@ function initSentences(){
   const tbody = document.getElementById('sentence-rows');
   tbody.innerHTML = "";
 
-  selectedSentences.forEach((s,rowIdx)=>{
+  // Добавляем строки и сразу вставляем subjekt
+  selectedSentences.forEach((s,i)=>{
     const tr = document.createElement('tr');
-    tr.dataset.index = rowIdx;
+    tr.dataset.index = i;
     ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
+      if(type==='subjekt') td.textContent = s[type].word; // сразу показываем субъект
       td.addEventListener('dragover', ev=>ev.preventDefault());
       td.addEventListener('drop', ev=>dropWord(ev,td));
-      if(type==='subjekt'){
-        td.textContent = s.subjekt.word.toLowerCase();
-        td.dataset.subjektFixed = "true";
-      }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
 
+  // Формируем пул слов (по 3 слова каждого типа)
   wordsPool = [];
-  ['verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
-    let typeWords = selectedSentences.map(s=>s[type]).filter(w=>w && w.word);
+  ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
+    let typeWords = selectedSentences.map((s,idx)=>s[type] ? {...s[type], sentenceIndex: idx} : null).filter(Boolean);
     typeWords = shuffle(typeWords);
-    typeWords.forEach((w,i)=>{
-      wordsPool.push({word:w.word, type:type, translation:w.translation, sentenceIndex:w.sentenceIndex, inPool:true});
-    });
+    typeWords.forEach(w=>wordsPool.push({...w, inPool:true}));
   });
-
   wordsPool = shuffle(wordsPool);
   renderWordPool();
 }
@@ -113,6 +110,8 @@ function renderWordPool(){
     div.dataset.index = i;
     div.draggable = true;
     div.addEventListener('dragstart', ev=>{
+      // сброс всех подсветок при перетаскивании
+      document.querySelectorAll('#sentence-rows td').forEach(cell => cell.style.backgroundColor = '');
       ev.dataTransfer.setData('text/plain', i);
     });
     pool.appendChild(div);
@@ -124,9 +123,9 @@ function dropWord(ev, td){
   const idx = ev.dataTransfer.getData('text/plain');
   const wordObj = wordsPool[idx];
 
+  // Если в ячейке что-то было, вернуть старое слово в пул
   if(td.dataset.wordIndex!==undefined){
-    const oldIdx = td.dataset.wordIndex;
-    wordsPool[oldIdx].inPool = true;
+    wordsPool[td.dataset.wordIndex].inPool = true;
   }
 
   td.textContent = wordObj.word;
@@ -136,34 +135,29 @@ function dropWord(ev, td){
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
-  const translations = [];
+  let translations = [];
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
-      if(td.dataset.subjektFixed){
-        translations.push(td.textContent + " → " + selectedSentences[rowIdx].subjekt.translation);
-        return;
-      }
       if(td.dataset.wordIndex!==undefined){
         const idx = td.dataset.wordIndex;
         const wordObj = wordsPool[idx];
-        const correctWordObj = selectedSentences[rowIdx][td.dataset.type];
-        translations.push(wordObj.word + " → " + wordObj.translation);
-        if(correctWordObj && wordObj.word === correctWordObj.word){
-          td.style.backgroundColor = '#d1fae5';
-        } else {
-          const typeMatch = selectedSentences[rowIdx] && Object.values(selectedSentences[rowIdx]).some(
-            w => w && w.type===wordObj.type && w.word!==wordObj.word
-          );
-          td.style.backgroundColor = typeMatch ? '#fef08a' : '#f87171';
-        }
-      } else {
         const correctWord = selectedSentences[rowIdx][td.dataset.type];
-        td.style.backgroundColor = (!correctWord || !correctWord.word) ? '' : '#f87171';
+        if(!correctWord && td.textContent===''){ 
+          td.style.backgroundColor = ''; // пустая ячейка правильна
+          return;
+        }
+        if(wordObj.word === correctWord.word){
+          td.style.backgroundColor = '#d1fae5'; // зеленый
+        } else if(wordObj.type === td.dataset.type){
+          td.style.backgroundColor = '#fef08a'; // желтый
+        } else {
+          td.style.backgroundColor = '#fca5a5'; // красный
+        }
+        translations.push(`${td.textContent} → ${wordObj.translation}`);
       }
     });
   });
-  const trEl = document.getElementById('translation');
-  trEl.innerHTML = translations.join("<br>");
+  document.getElementById('translation').innerHTML = translations.join('<br>');
 });
 </script>
 </body>
