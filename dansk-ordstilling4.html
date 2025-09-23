@@ -71,7 +71,7 @@ let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
 
-fetch('sentences2.json')
+fetch('words.json')
   .then(res => res.json())
   .then(data => {
     sentences = data.sentences;
