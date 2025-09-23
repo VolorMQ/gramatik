@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ligefrem ordstilling (normal), Ledsætninger</title>
+<style>
+:root{
+  --bg:#fafafa; --ink:#111827; --line:#e5e7eb;
+  --blue:#2563eb; --red:#ef4444; --green:#10b981; --amber:#f59e0b; --violet:#8b5cf6;
+}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+.page{max-width:1100px;margin:28px auto;padding:0 16px}
+h1{font-size:20px;margin:6px 0 12px}
+table{width:100%;border-collapse:collapse;border:1px solid var(--line);background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+th,td{border:1px solid var(--line);padding:8px;vertical-align:middle;text-align:center;font-size:14px}
+th{background:#f8fafc;font-size:12px;text-transform:uppercase}
+td{height:44px}
+.label{display:inline-block;padding:.15rem .5rem;border-radius:.35rem;background:#eef2ff;color:#3730a3;font-weight:700}
+#word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.word{padding:6px 10px;border-radius:8px;background:#eef2ff;color:#0f172a;font-weight:700;cursor:grab;user-select:none}
+#buttons{margin-top:12px;display:flex;gap:8px}
+button{padding:8px 14px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700}
+button:disabled{opacity:.45;cursor:default}
+#translation{margin-top:12px;font-weight:600;color:#0b7a3b}
+td.placeholder{background:#f9fafb;color:#9ca3af}
+td[draggable="false"]{cursor:default}
+.koma{font-weight:900;font-size:20px}
+.highlight-correct{background:#d1fae5 !important}
+.highlight-partial{background:#fef08a !important}
+.highlight-wrong{background:#fecaca !important}
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1>Ligefrem ordstilling (normal), Ledsætninger</h1>
+
+    <table aria-label="Eksamenstabel">
+      <thead>
+        <tr>
+          <!-- Hovedsætning -->
+          <th class="subj">subjekt</th>
+          <th class="v1">verbum 1</th>
+          <th class="adv">adverbium</th>
+          <th class="v23">verbum 2–3</th>
+          <th class="obj">objekt</th>
+          <th class="sted">sted/tid</th>
+
+          <!-- Komma -->
+          <th class="koma">,</th>
+
+          <!-- Ledsætning -->
+          <th class="lkonj">L-Konjuktion</th>
+          <th class="subj">subjekt</th>
+          <th class="adv">adverbium</th>
+          <th class="v1">verbum1</th>
+          <th class="v23">verbum2-3</th>
+          <th class="obj">objekt</th>
+          <th class="sted">sted/tid</th>
+        </tr>
+      </thead>
+      <tbody id="sentence-rows"></tbody>
+    </table>
+
+    <div id="word-pool" aria-live="polite"></div>
+
+    <div id="buttons">
+      <button id="check-button">Tjek</button>
+      <button id="hint-button">Hjælp</button>
+      <button id="reset-button">Nulstil</button>
+    </div>
+
+    <div id="translation" aria-live="polite"></div>
+  </div>
+
+<script>
+/* Структура ожидаемого JSON:
+{
+ "sentences": [
+  {
+    "hovedsætning": {
+      "subjekt": {"word":"Drengen","translation":"..."},
+      "verbum1": {"word":"læser","translation":"..."},
+      "adverbium": {"word":"ofte","translation":"..."},
+      "verbium2-3": {"word":"og forstår","translation":"..."},
+      "objekt": {"word":"historierne","translation":"..."},
+      "sted/tid": {"word":"i bogen","translation":"..."}
+    },
+    "ledsætning": {
+      "L-Konjuktion": {"word":"fordi","translation":"..."},
+      "subjekt": {"word":"han","translation":"..."},
+      "adverbium": {"word":"arbejder","translation":"..."},
+      "verbum1": {"word":"flittigt","translation":"..."},
+      "verbium2-3": {"word":"med sine opgaver","translation":"..."},
+      "objekt": {"word":"i klassen","translation":"..."},
+      "sted/tid": {"word":"hver dag","translation":"..."}
+    }
+  },
+  ...
+ ]
+}
+*/
+
+let sentences = [];
+let selectedSentences = [];
+let wordsPool = [];
+
+// Типы колонок для главной и подчинённой частей:
+const mainTypes = ['subjekt','verbum1','adverbium','verbium2-3','objekt','sted/tid'];
+const ledTypes  = ['L-Konjuktion','subjekt','adverbium','verbum1','verbium2-3','objekt','sted/tid'];
+
+// Загрузка JSON с предложениями
+fetch('words.json')
+  .then(r=>r.json())
+  .then(data=>{
+    sentences = data.sentences || [];
+    initSentences();
+  })
+  .catch(err=>{
+    console.error("Fejl ved indlæsning af words.json:", err);
+    document.getElementById('sentence-rows').innerHTML = '<tr><td colspan="14" style="color:#b91c1c;padding:12px;text-align:center">Kunne ikke indlæse words.json — se konsol.</td></tr>';
+  });
+
+function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+function initSentences(){
+  // случайный набор предложений (оставим 3 строк — как ранее). При желании можно увеличить.
+  selectedSentences = shuffle([...sentences]).slice(0,3);
+  const tbody = document.getElementById('sentence-rows');
+  tbody.innerHTML = '';
+
+  selectedSentences.forEach((s, rowIdx)=>{
+    const tr = document.createElement('tr');
+    tr.dataset.index = rowIdx;
+
+    // создаём ячейки главной части
+    mainTypes.forEach((type, colIdx)=>{
+      const td = document.createElement('td');
+      td.dataset.type = type;
+      td.dataset.section = 'hoved';
+      // prefill hoved subjekt (первое слово главного предложения)
+      if(type === 'subjekt'){
+        td.textContent = s.hovedsætning.subjekt.word;
+        td.dataset.wordIndex = -1; // подсказка/фиксированное слово
+        td.classList.add('placeholder');
+        td.draggable = false;
+      } else {
+        td.addEventListener('dragover', ev=>ev.preventDefault());
+        td.addEventListener('drop', ev=>dropWord(ev, td));
+      }
+      tr.appendChild(td);
+    });
+
+    // comma cell (неперетаскиваемая)
+    const commaTd = document.createElement('td');
+    commaTd.classList.add('koma');
+    commaTd.textContent = ',';
+    commaTd.dataset.section = 'comma';
+    commaTd.draggable = false;
+    tr.appendChild(commaTd);
+
+    // ledsætning cells
+    ledTypes.forEach((type, idx)=>{
+      const td = document.createElement('td');
+      td.dataset.type = type;
+      td.dataset.section = 'ledsætning';
+      // НЕ заполняем подсказкой здесь (led subjekt тоже draggable)
+      td.addEventListener('dragover', ev=>ev.preventDefault());
+      td.addEventListener('drop', ev=>dropWord(ev, td));
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+
+  // Собираем пул слов: для каждой выбранной строки — все типы, которые можно перетаскивать.
+  wordsPool = [];
+  selectedSentences.forEach((s, sentenceIndex)=>{
+    // main (включаем все кроме главного subjekt, т.к. он уже вставлен)
+    mainTypes.forEach(type=>{
+      if(type === 'subjekt') return;
+      const cell = s.hovedsætning[type];
+      if(cell && cell.word){
+        wordsPool.push({word:cell.word, translation: cell.translation || '', type:type, section:'hoved', sentenceIndex, inPool:true});
+      }
+    });
+    // ledsætning — включаем все (включая L-Konjuktion и subjekt_leds)
+    ledTypes.forEach(type=>{
+      const cell = s.ledsætning[type];
+      if(cell && cell.word){
+        wordsPool.push({word:cell.word, translation: cell.translation || '', type:type, section:'ledsætning', sentenceIndex, inPool:true});
+      }
+    });
+  });
+
+  // Перемешаем пул и отрисуем
+  wordsPool = shuffle(wordsPool);
+  renderWordPool();
+  updateTranslation();
+  document.getElementById('hint-button').disabled = false;
+  clearHighlights();
+}
+
+function renderWordPool(){
+  const pool = document.getElementById('word-pool');
+  pool.innerHTML = '';
+  wordsPool.forEach((w,i)=>{
+    if(!w.inPool) return;
+    const div = document.createElement('div');
+    div.className = 'word';
+    div.textContent = w.word;
+    div.dataset.index = i;
+    div.dataset.type = w.type;
+    div.draggable = true;
+    div.addEventListener('dragstart', ev=>{
+      ev.dataTransfer.setData('text/plain', i);
+      clearHighlights();
+    });
+    pool.appendChild(div);
+  });
+}
+
+function dropWord(ev, td){
+  ev.preventDefault();
+  const idx = ev.dataTransfer.getData('text/plain');
+  if(!idx && idx !== 0) return;
+  const wordObj = wordsPool[idx];
+  if(!wordObj) return;
+  // Проверяем секцию соответствия: td.dataset.section должен соответствовать wordObj.section OR some types (e.g. L-Konjuktion belongs to ledsætning)
+  // Но мы позволяем положить любой тип в любую ячейку — проверка покажет затем.
+  const oldWordIndex = td.dataset.wordIndex;
+
+  // Если ячейка уже содержала подсказку (-1), и пользователь хочет заменить — не даём (подсказка фиксирована)
+  if(oldWordIndex !== undefined && oldWordIndex == -1) return;
+
+  // Вставляем слово
+  td.textContent = wordObj.word;
+  td.dataset.wordIndex = idx;
+  wordsPool[idx].inPool = false;
+
+  // Если там было старое слово (индекс), вернуть его в пул
+  if(oldWordIndex !== undefined && oldWordIndex !== '' && oldWordIndex != -1){
+    wordsPool[oldWordIndex].inPool = true;
+  }
+
+  renderWordPool();
+  updateTranslation();
+}
+
+function clearHighlights(){
+  document.querySelectorAll('#sentence-rows td').forEach(td=>{
+    td.classList.remove('
