@@ -25,6 +25,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
 #check-button{margin-top:12px;padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+#translation{margin-top:16px;font-weight:600;color:#10b981}
 </style>
 </head>
 <body>
@@ -42,13 +43,12 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
         <th class="sted">sted/tid</th>
       </tr>
     </thead>
-    <tbody id="sentence-rows">
-      <!-- Сюда будут вставлены 3 случайных предложения -->
-    </tbody>
+    <tbody id="sentence-rows"></tbody>
   </table>
 
   <div id="word-pool"></div>
   <button id="check-button">Tjek</button>
+  <div id="translation"></div>
 </div>
 
 <script>
@@ -79,7 +79,6 @@ function initSentences(){
       td.dataset.type = type;
       td.addEventListener('dragover', ev=>ev.preventDefault());
       td.addEventListener('drop', ev=>dropWord(ev,td));
-      // Вставляем сразу subjekt
       if(type==='subjekt'){
         td.textContent = s.subjekt.word.toLowerCase();
         td.dataset.subjektFixed = "true";
@@ -89,7 +88,6 @@ function initSentences(){
     tbody.appendChild(tr);
   });
 
-  // Создаем пул слов (по 3 слова каждого типа)
   wordsPool = [];
   ['verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
     let typeWords = selectedSentences.map(s=>s[type]).filter(w=>w && w.word);
@@ -126,7 +124,6 @@ function dropWord(ev, td){
   const idx = ev.dataTransfer.getData('text/plain');
   const wordObj = wordsPool[idx];
 
-  // Если в ячейке было слово, вернуть его обратно
   if(td.dataset.wordIndex!==undefined){
     const oldIdx = td.dataset.wordIndex;
     wordsPool[oldIdx].inPool = true;
@@ -139,29 +136,34 @@ function dropWord(ev, td){
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
+  const translations = [];
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
-      if(td.dataset.subjektFixed) return; // субьект не подсвечиваем
+      if(td.dataset.subjektFixed){
+        translations.push(td.textContent + " → " + selectedSentences[rowIdx].subjekt.translation);
+        return;
+      }
       if(td.dataset.wordIndex!==undefined){
         const idx = td.dataset.wordIndex;
         const wordObj = wordsPool[idx];
         const correctWordObj = selectedSentences[rowIdx][td.dataset.type];
+        translations.push(wordObj.word + " → " + wordObj.translation);
         if(correctWordObj && wordObj.word === correctWordObj.word){
-          td.style.backgroundColor = '#d1fae5'; // зеленый
+          td.style.backgroundColor = '#d1fae5';
         } else {
-          // если слово того же типа, но не из этого предложения
           const typeMatch = selectedSentences[rowIdx] && Object.values(selectedSentences[rowIdx]).some(
             w => w && w.type===wordObj.type && w.word!==wordObj.word
           );
-          td.style.backgroundColor = typeMatch ? '#fef08a' : '#f87171'; // желтый или красный
+          td.style.backgroundColor = typeMatch ? '#fef08a' : '#f87171';
         }
       } else {
         const correctWord = selectedSentences[rowIdx][td.dataset.type];
-        // пустая ячейка правильная, если в предложении пусто
         td.style.backgroundColor = (!correctWord || !correctWord.word) ? '' : '#f87171';
       }
     });
   });
+  const trEl = document.getElementById('translation');
+  trEl.innerHTML = translations.join("<br>");
 });
 </script>
 </body>
