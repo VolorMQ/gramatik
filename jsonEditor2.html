@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Редактор sentences2.json</title>
+<style>
+body { font-family: Arial; margin: 20px; }
+button { margin: 5px; }
+table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+th, td { border: 1px solid #ccc; padding: 5px; text-align: center; }
+input { width: 90%; box-sizing: border-box; margin: 2px 0; }
+.delete-btn { cursor: pointer; color: red; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Редактор Library (sentences2.json)</h1>
+
+<button onclick="addSentence()">Добавить предложение</button>
+<button onclick="saveToLocalFile()">Скачать sentences2.json</button>
+
+<table id="jsonTable">
+<thead>
+<tr>
+<th>L-Konjuktion</th><th>subjekt</th><th>adverbium</th><th>verbium1</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th><th>Удалить</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+
+<script>
+let jsonData = [];
+
+// Загрузка файла
+async function loadFromServer() {
+  try {
+    const response = await fetch('sentences2.json');
+    const data = await response.json();
+    if (Array.isArray(data.sentences)) {
+      jsonData = data.sentences;
+      renderTable();
+    } else {
+      alert("Неверная структура JSON");
+    }
+  } catch (e) {
+    alert("Ошибка загрузки sentences2.json с сервера");
+  }
+}
+
+// Отрисовка таблицы
+function renderTable() {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  jsonData.forEach((sentence, index) => {
+    const tr = document.createElement('tr');
+    ['L-Konjuktion','subjekt','adverbium','verbium1','verbium2-3','objekt','sted/tid'].forEach(key => {
+      const td = document.createElement('td');
+      td.innerHTML = `<input type="text" value="${sentence[key].word}" placeholder="word"
+        oninput="updateCell(${index}, '${key}', 'word', this.value)">
+        <input type="text" value="${sentence[key].translation}" placeholder="translation"
+        oninput="updateCell(${index}, '${key}', 'translation', this.value)">`;
+      tr.appendChild(td);
+    });
+
+    const delTd = document.createElement('td');
+    delTd.innerHTML = `<span class="delete-btn" onclick="deleteSentence(${index})">&#10006;</span>`;
+    tr.appendChild(delTd);
+
+    tbody.appendChild(tr);
+  });
+}
+
+function updateCell(rowIndex, key, prop, value) {
+  jsonData[rowIndex][key][prop] = value;
+}
+
+function addSentence() {
+  const emptySentence = {
+    "L-Konjuktion":{"word":"","translation":""},
+    "subjekt":{"word":"","translation":""},
+    "adverbium":{"word":"","translation":""},
+    "verbium1":{"word":"","translation":""},
+    "verbium2-3":{"word":"","translation":""},
+    "objekt":{"word":"","translation":""},
+    "sted/tid":{"word":"","translation":""}
+  };
+  jsonData.push(emptySentence);
+  renderTable();
+}
+
+function deleteSentence(index) {
+  jsonData.splice(index,1);
+  renderTable();
+}
+
+// Сохранение: скачиваем JSON файл
+function saveToLocalFile() {
+  const blob = new Blob([JSON.stringify({ sentences: jsonData }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'sentences2.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Инициализация
+loadFromServer();
+</script>
+
+</body>
+</html>
