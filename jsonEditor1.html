@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Редактор sentences</title>
+<style>
+body { font-family: Arial; margin: 20px; }
+select, button, label { margin: 5px; }
+table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+th, td { border: 1px solid #ccc; padding: 5px; text-align: center; }
+input { width: 90%; box-sizing: border-box; margin: 2px 0; }
+.delete-btn { cursor: pointer; color: red; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Редактор sentences</h1>
+
+<label>Выберите базу: 
+  <select id="fileSelect">
+    <option value="sentences.json">Normal</option>
+    <option value="sentences1.json">Invertion</option>
+  </select>
+</label>
+
+<label>
+  <input type="checkbox" id="editBoth" onchange="toggleEditBoth()"> Редактировать обе базы одновременно
+</label>
+
+<div id="selectedBases" style="margin:5px; font-weight:bold;"></div>
+
+<button onclick="addSentence()">Добавить предложение</button>
+<button onclick="saveToLocalFile()">Скачать JSON</button>
+
+<table id="jsonTable">
+<thead>
+<tr>
+<th>subjekt</th><th>verbum1</th><th>adverbium</th><th>verbum2</th><th>objekt</th><th>sted/tid</th><th>Удалить</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+
+<script>
+let jsonData = [];      // данные для текущей таблицы
+let jsonData2 = [];     // данные второй базы
+let currentFile = 'sentences.json';
+let editBoth = false;
+
+// Загрузка выбранной базы
+async function loadSelectedFile() {
+  currentFile = document.getElementById('fileSelect').value;
+  try {
+    const response = await fetch(currentFile);
+    const data = await response.json();
+    if (Array.isArray(data.sentences)) {
+      jsonData = data.sentences;
+      renderTable();
+    } else {
+      alert("Неверная структура JSON в " + currentFile);
+      jsonData = [];
+      renderTable();
+    }
+  } catch (e) {
+    alert("Ошибка загрузки " + currentFile);
+    jsonData = [];
+    renderTable();
+  }
+}
+
+// Загрузка второй базы
+async function loadSecondFile() {
+  try {
+    const response = await fetch('sentences1.json');
+    const data = await response.json();
+    if (Array.isArray(data.sentences)) {
+      jsonData2 = data.sentences;
+    } else {
+      jsonData2 = [];
+    }
+  } catch {
+    jsonData2 = [];
+  }
+}
+
+// Переключение галочки редактирования обеих баз
+function toggleEditBoth() {
+  editBoth = document.getElementById('editBoth').checked;
+  const select = document.getElementById('fileSelect');
+  const label = document.getElementById('selectedBases');
+  if(editBoth){
+    select.disabled = true;
+    label.textContent = 'Редактируем одновременно: Normal (sentences.json) и Invertion (sentences1.json)';
+    loadSelectedFile();  // загрузка первой базы
+    loadSecondFile();    // загрузка второй базы
+  } else {
+    select.disabled = false;
+    const name = select.value === 'sentences.json' ? 'Normal' : 'Invertion';
+    label.textContent = name + ' (' + select.value + ')';
+    loadSelectedFile();
+  }
+}
+
+// Отрисовка таблицы
+function renderTable() {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  jsonData.forEach((sentence, index) => {
+    const tr = document.createElement('tr');
+    ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(key => {
+      const td = document.createElement('td');
+      td.innerHTML = `<input type="text" value="${sentence[key].word}" placeholder="word"
+        oninput="updateCell(${index}, '${key}', 'word', this.value)">
+        <input type="text" value="${sentence[key].translation}" placeholder="translation"
+        oninput="updateCell(${index}, '${key}', 'translation', this.value)">`;
+      tr.appendChild(td);
+    });
+
+    const delTd = document.createElement('td');
+    delTd.innerHTML = `<span class="delete-btn" onclick="deleteSentence(${index})">&#10006;</span>`;
+    tr.appendChild(delTd);
+
+    tbody.appendChild(tr);
+  });
+}
+
+// Обновление ячейки
+function updateCell(rowIndex, key, prop, value) {
+  jsonData[rowIndex][key][prop] = value;
+  if(editBoth && jsonData2[rowIndex]) jsonData2[rowIndex][key][prop] = value;
+}
+
+// Добавление предложения
+function addSentence() {
+  const emptySentence = {
+    "subjekt":{"word":"","translation":""},
+    "verbum1":{"word":"","translation":""},
+    "adverbium":{"word":"","translation":""},
+    "verbum2":{"word":"","translation":""},
+    "objekt":{"word":"","translation":""},
+    "sted/tid":{"word":"","translation":""}
+  };
+  jsonData.push(emptySentence);
+  if(editBoth) jsonData2.push(JSON.parse(JSON.stringify(emptySentence)));
+  renderTable();
+}
+
+// Удаление предложения
+function deleteSentence(index) {
+  jsonData.splice(index,1);
+  if(editBoth) jsonData2.splice(index,1);
+  renderTable();
+}
+
+// Сохранение: скачиваем JSON файлы
+function saveToLocalFile() {
+  const blob1 = new Blob([JSON.stringify({ sentences: jsonData }, null, 2)], { type: 'application/json' });
+  const url1 = URL.createObjectURL(blob1);
+  const a1 = document.createElement('a');
+  a1.href = url1;
+  a1.download = 'sentences.json';
+  a1.click();
+  URL.revokeObjectURL(url1);
+
+  if(editBoth){
+    const blob2 = new Blob([JSON.stringify({ sentences: jsonData2 }, null, 2)], { type: 'application/json' });
+    const url2 = URL.createObjectURL(blob2);
+    const a2 = document.createElement('a');
+    a2.href = url2;
+    a2.download = 'sentences1.json';
+    a2.click();
+    URL.revokeObjectURL(url2);
+  }
+}
+
+// Инициализация
+document.getElementById('selectedBases').textContent =
+  document.getElementById('fileSelect').value === 'sentences.json' ? 
+  'Normal (sentences.json)' : 'Invertion (sentences1.json)';
+
+loadSelectedFile();
+</script>
+
+</body>
+</html>
