@@ -23,7 +23,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .sted{color:var(--violet)}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
-.word.selected{border:2px solid var(--blue)}
+.word.selected{outline:2px solid #2563eb;}
 .pool-blank{background:#fff3bf;border:1px dashed #f59e0b;color:#92400e;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
@@ -62,7 +62,7 @@ button:disabled{opacity:0.5;cursor:default}
 let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
-let selectedWordIndex = null;
+let selectedWordIndex = null; // выбранное слово из пула
 
 fetch('sentences.json')
   .then(res => res.json())
@@ -85,8 +85,12 @@ function initSentences(){
     ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
-      td.dataset.wordIndex = -1;
-      td.addEventListener('click', ()=>insertWord(td));
+      td.dataset.wordIndex = (type==='subjekt')?-1:null;
+      if(type==='subjekt'){ 
+        td.textContent = s.subjekt.word;
+      } else {
+        td.addEventListener('click', ()=>insertWord(td));
+      }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
@@ -112,12 +116,14 @@ function renderWordPool(){
   wordsPool.forEach((w,i)=>{
     if(!w.inPool) return;
     const div = document.createElement('div');
-    div.textContent = w.word || '(blank)';
     div.className = w.type==='blank'?'word pool-blank':'word';
-    if(selectedWordIndex===i) div.classList.add('selected');
+    div.textContent = w.word || '(blank)';
+    div.dataset.index = i;
     div.addEventListener('click', ()=>{
       selectedWordIndex = i;
-      renderWordPool();
+      // визуально выделяем выбранное слово
+      document.querySelectorAll('#word-pool .word').forEach(el=>el.classList.remove('selected'));
+      div.classList.add('selected');
     });
     pool.appendChild(div);
   });
@@ -127,7 +133,7 @@ function insertWord(td){
   if(selectedWordIndex===null) return;
   const wordObj = wordsPool[selectedWordIndex];
   const oldIdx = td.dataset.wordIndex;
-  if(oldIdx!=-1 && wordsPool[oldIdx]) wordsPool[oldIdx].inPool = true;
+  if(oldIdx!==null && oldIdx!=-1 && wordsPool[oldIdx]) wordsPool[oldIdx].inPool = true;
   td.textContent = wordObj.word;
   td.dataset.wordIndex = selectedWordIndex;
   wordsPool[selectedWordIndex].inPool = false;
@@ -136,16 +142,34 @@ function insertWord(td){
   updateTranslation();
 }
 
+function clearHighlights(){
+  document.querySelectorAll('#sentence-rows td').forEach(td=>{
+    td.style.backgroundColor='';
+  });
+}
+
 document.getElementById('check-button').addEventListener('click', ()=>{
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       const type = td.dataset.type;
       const correctWord = selectedSentences[rowIdx][type];
       const idx = td.dataset.wordIndex;
-      if(idx==-1){ td.style.backgroundColor='#d1fae5'; return; }
-      const wordObj = wordsPool[idx];
-      const expected = correctWord?.word||'';
-      td.style.backgroundColor = wordObj.word===expected?'#d1fae5':'#f87171';
+      if(idx===undefined) return;
+
+      if(idx==-1){
+        td.style.backgroundColor='#d1fae5';
+      } else {
+        const wordObj = wordsPool[idx];
+        const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
+
+        if(wordObj.type === 'blank'){
+          td.style.backgroundColor = (expected==='') ? '#d1fae5' : '#f87171';
+        } else {
+          if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
+          } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
+          } else { td.style.backgroundColor='#f87171'; }
+        }
+      }
     });
   });
 });
@@ -157,11 +181,35 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
     const randomCell = cells[Math.floor(Math.random()*cells.length)];
     const type = randomCell.dataset.type;
     const correctWord = selectedSentences[rowIdx][type];
-    randomCell.textContent = correctWord.word;
-    randomCell.dataset.wordIndex = -1;
+
+    const idx = randomCell.dataset.wordIndex;
+    let needInsert = false;
+    if(!randomCell.textContent) {
+      needInsert = true;
+    } else if(idx!==undefined && idx!=-1) {
+      const wordObj = wordsPool[idx];
+      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
+        needInsert = true;
+        if(wordsPool[idx] && wordsPool[idx].type !== 'blank') wordsPool[idx].inPool = true;
+      }
+    }
+
+    if(needInsert){
+      randomCell.textContent = correctWord.word;
+      randomCell.dataset.wordIndex = -1;
+
+      for(let i=0;i<wordsPool.length;i++){
+        const w = wordsPool[i];
+        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
+          w.inPool = false;
+        }
+      }
+    }
   });
-  document.getElementById('hint-button').disabled = true;
+
+  renderWordPool();
   updateTranslation();
+  document.getElementById('hint-button').disabled = true;
 });
 
 document.getElementById('reset-button').addEventListener('click', ()=>{
@@ -171,21 +219,26 @@ document.getElementById('reset-button').addEventListener('click', ()=>{
 
 function updateTranslation(){
   const translationDiv = document.getElementById('translation');
-  translationDiv.innerHTML='';
+  translationDiv.innerHTML = '';
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       const idx = td.dataset.wordIndex;
-      let text='';
-      if(idx==-1){
-        text = td.textContent + ' → ' + selectedSentences[rowIdx][td.dataset.type].translation;
-      } else {
-        const w = wordsPool[idx];
-        if(w.type!=='blank') text = w.word + ' → ' + w.translation;
-      }
-      if(text){
-        const p = document.createElement('div');
-        p.textContent = text;
-        translationDiv.appendChild(p);
+      if(idx!==undefined){
+        let text = '';
+        if(idx==-1){
+          const type = td.dataset.type;
+          text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
+        } else {
+          const wordObj = wordsPool[idx];
+          if(wordObj.type !== 'blank'){
+            text = wordObj.word + ' → ' + wordObj.translation;
+          }
+        }
+        if(text){
+          const p = document.createElement('div');
+          p.textContent = text;
+          translationDiv.appendChild(p);
+        }
       }
     });
   });
