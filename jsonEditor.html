@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <title>Редактор words.json</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 20px; }
-  table { border-collapse: collapse; width: 100%; margin-top: 10px; }
-  th, td { border: 1px solid #ccc; padding: 5px; text-align: center; }
-  input { width: 90%; box-sizing: border-box; }
-  button { margin: 5px; }
-  .delete-btn { cursor: pointer; color: red; font-weight: bold; }
+body { font-family: Arial; margin: 20px; }
+table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+th, td { border: 1px solid #ccc; padding: 5px; text-align: center; }
+input { width: 90%; box-sizing: border-box; }
+button { margin: 5px; }
+.delete-btn { cursor: pointer; color: red; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -17,22 +17,22 @@
 <h1>Редактор words.json</h1>
 
 <button onclick="addSentence()">Добавить предложение</button>
-<button onclick="saveToServer()">Сохранить на сервер</button>
+<button onclick="saveToGitHub()">Сохранить на GitHub</button>
 
 <table id="jsonTable">
-  <thead>
-    <tr>
-      <th colspan="6">Hovedsætning</th>
-      <th colspan="6">Ledsætning</th>
-      <th>Удалить</th>
-    </tr>
-    <tr>
-      <th>subjekt</th><th>verbium1</th><th>adverbium</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th>
-      <th>L-Konjuktion</th><th>subjekt</th><th>verbium1</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="tableBody"></tbody>
+<thead>
+<tr>
+<th colspan="6">Hovedsætning</th>
+<th colspan="6">Ledsætning</th>
+<th>Удалить</th>
+</tr>
+<tr>
+<th>subjekt</th><th>verbium1</th><th>adverbium</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th>
+<th>L-Konjuktion</th><th>subjekt</th><th>verbium1</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
 </table>
 
 <script>
@@ -41,7 +41,7 @@ let jsonData = [];
 // Загрузка words.json с сервера
 async function loadFromServer() {
   try {
-    const response = await fetch('words.json');
+    const response = await fetch('words.json'); // относительный путь
     const data = await response.json();
     if (Array.isArray(data.sentences)) {
       jsonData = data.sentences;
@@ -116,18 +116,43 @@ function deleteSentence(index) {
   renderTable();
 }
 
-// Сохранение на сервер
-async function saveToServer() {
+// Сохранение на GitHub через API
+async function saveToGitHub() {
+  const token = "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"; // твой токен
+  const owner = "volormq";
+  const repo = "gramatik";
+  const path = "words.json"; 
+  const branch = "gh-pages";
+
+  const content = btoa(JSON.stringify({sentences: jsonData}, null, 2));
+
   try {
-    const response = await fetch('save-json', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({sentences: jsonData})
+    // Получаем SHA последнего коммита файла
+    const resGet = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`);
+    const dataGet = await resGet.json();
+    const sha = dataGet.sha;
+
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: "Update words.json",
+        content: content,
+        sha: sha,
+        branch: branch
+      })
     });
-    if (response.ok) alert('words.json успешно сохранён на сервере!');
-    else alert('Ошибка сохранения');
+
+    if (res.ok) alert("words.json успешно обновлён на GitHub!");
+    else {
+      const err = await res.json();
+      alert("Ошибка при обновлении файла: " + JSON.stringify(err));
+    }
   } catch (e) {
-    alert('Ошибка соединения с сервером');
+    alert('Ошибка соединения с GitHub: ' + e);
   }
 }
 
