@@ -119,7 +119,7 @@ function deleteSentence(index) {
 // Сохранение на сервер
 async function saveToServer() {
   try {
-    const response = await fetch('/save-json', {
+    const response = await fetch('save-json', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({sentences: jsonData})
