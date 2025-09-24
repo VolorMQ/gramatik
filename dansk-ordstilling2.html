@@ -23,7 +23,8 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .sted{color:var(--violet)}
 td.question{font-weight:900;font-size:24px;color:var(--red);}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
+.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
+.pool-blank{background:#fff3bf;border:1px dashed #f59e0b;color:#92400e;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 button:disabled{opacity:0.5;cursor:default}
@@ -33,6 +34,11 @@ button:disabled{opacity:0.5;cursor:default}
 <body>
 <div class="page">
   <h1>Hovedspørgsmål – Omvendt ordstilling</h1>
+
+  <!-- Мобильный переключатель -->
+  <label style="display:block;margin-bottom:12px;font-weight:600">
+    <input type="checkbox" id="mobil-toggle"> MobilVersion (tap)
+  </label>
 
   <table class="schema">
     <thead>
@@ -62,7 +68,13 @@ button:disabled{opacity:0.5;cursor:default}
 let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
-let selectedWordIndex = null;
+let mobilMode = false;
+
+const mobilToggle = document.getElementById('mobil-toggle');
+mobilToggle.addEventListener('change', () => {
+  mobilMode = mobilToggle.checked;
+  renderWordPool();
+});
 
 fetch('sentences1.json')
   .then(res => res.json())
@@ -91,14 +103,17 @@ function initSentences(){
         td.textContent = s.subjekt.word;
         td.dataset.wordIndex = -1;
       } else {
-        td.addEventListener('click', ()=>placeWord(td));
+        td.addEventListener('dragover', ev=>ev.preventDefault());
+        td.addEventListener('drop', ev=>dropWord(ev,td));
       }
       tr.appendChild(td);
     });
+
     const qTd = document.createElement('td');
     qTd.classList.add('question');
     qTd.textContent = '❓';
     tr.appendChild(qTd);
+
     tbody.appendChild(tr);
   });
 
@@ -111,6 +126,9 @@ function initSentences(){
     });
   });
 
+  // Специальный blank токен
+  wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
+
   wordsPool = shuffle(wordsPool);
   renderWordPool();
   updateTranslation();
@@ -122,39 +140,66 @@ function renderWordPool(){
   wordsPool.forEach((w,i)=>{
     if(!w.inPool) return;
     const div = document.createElement('div');
-    div.classList.add('word');
-    div.textContent = w.word;
+    if(w.type === 'blank'){
+      div.classList.add('word','pool-blank');
+      div.textContent = '(blank)';
+    } else {
+      div.classList.add('word');
+      div.textContent = w.word;
+    }
     div.dataset.type = w.type;
     div.dataset.index = i;
-    div.addEventListener('click', ()=>{
-      selectedWordIndex = i;
-      document.querySelectorAll('.word').forEach(el=>el.style.outline='');
-      div.style.outline='2px solid red';
-    });
+
+    if(mobilMode){
+      div.onclick = ev => {
+        const td = document.querySelector(`#sentence-rows td[data-type="${w.type}"]:not([data-word-index])`);
+        if(td){
+          dropWord({dataTransfer:{getData:()=>i}}, td);
+        }
+      };
+      div.draggable = false;
+      div.ondragstart = null;
+    } else {
+      div.draggable = true;
+      div.ondragstart = ev => {
+        ev.dataTransfer.setData('text/plain', i);
+        clearHighlights();
+      };
+      div.onclick = null;
+    }
+
     pool.appendChild(div);
   });
 }
 
-function placeWord(td){
-  if(selectedWordIndex===null) return;
-  const idx = selectedWordIndex;
+function dropWord(ev, td){
+  ev.preventDefault();
+  const idx = ev.dataTransfer.getData('text/plain');
   const wordObj = wordsPool[idx];
   const oldWordIndex = td.dataset.wordIndex;
 
-  td.textContent = wordObj.word;
-  td.dataset.wordIndex = idx;
-  wordsPool[idx].inPool = false;
+  if(wordObj.type === 'blank'){
+    td.textContent = '';
+    td.dataset.wordIndex = idx;
+  } else {
+    td.textContent = wordObj.word;
+    td.dataset.wordIndex = idx;
+    wordsPool[idx].inPool = false;
+  }
 
   if(oldWordIndex!==undefined && oldWordIndex!=-1){
     const oldIdx = Number(oldWordIndex);
-    if(!isNaN(oldIdx) && wordsPool[oldIdx]){
+    if(!isNaN(oldIdx) && wordsPool[oldIdx] && wordsPool[oldIdx].type !== 'blank'){
       wordsPool[oldIdx].inPool = true;
     }
   }
 
-  selectedWordIndex = null;
   renderWordPool();
   updateTranslation();
+}
+
+function clearHighlights(){
+  document.querySelectorAll('#sentence-rows td').forEach(td=>td.style.backgroundColor='');
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
@@ -164,14 +209,18 @@ document.getElementById('check-button').addEventListener('click', ()=>{
       const correctWord = selectedSentences[rowIdx][type];
       const idx = td.dataset.wordIndex;
       if(idx===undefined) return;
-      if(idx==-1){
-        td.style.backgroundColor='#d1fae5';
+
+      if(idx==-1){ td.style.backgroundColor='#d1fae5';
       } else {
         const wordObj = wordsPool[idx];
-        const expected = correctWord ? correctWord.word : '';
-        if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
-        } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
-        } else { td.style.backgroundColor='#f87171'; }
+        const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
+        if(wordObj.type === 'blank'){
+          td.style.backgroundColor = (expected==='') ? '#d1fae5' : '#f87171';
+        } else {
+          if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
+          } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
+          } else { td.style.backgroundColor='#f87171'; }
+        }
       }
     });
   });
@@ -186,15 +235,15 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
     const correctWord = selectedSentences[rowIdx][type];
     const idx = randomCell.dataset.wordIndex;
     let needInsert = false;
-    if(!randomCell.textContent) {
-      needInsert = true;
-    } else if(idx!==undefined && idx!=-1) {
+    if(!randomCell.textContent) needInsert = true;
+    else if(idx!==undefined && idx!=-1){
       const wordObj = wordsPool[idx];
       if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
         needInsert = true;
-        wordsPool[idx].inPool = true;
+        if(wordsPool[idx] && wordsPool[idx].type !== 'blank') wordsPool[idx].inPool = true;
       }
     }
+
     if(needInsert){
       randomCell.textContent = correctWord.word;
       randomCell.dataset.wordIndex = -1;
@@ -206,6 +255,7 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
       }
     }
   });
+
   renderWordPool();
   updateTranslation();
   document.getElementById('hint-button').disabled = true;
@@ -232,7 +282,9 @@ function updateTranslation(){
           if(!w || !w.inPool){
             text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
           } else {
-            text = w.word + ' → ' + w.translation;
+            if(w.type !== 'blank'){
+              text = w.word + ' → ' + w.translation;
+            }
           }
         }
       }
