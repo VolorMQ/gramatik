@@ -7,7 +7,7 @@
 body { font-family: Arial; margin: 20px; }
 table { border-collapse: collapse; width: 100%; margin-top: 10px; }
 th, td { border: 1px solid #ccc; padding: 5px; text-align: center; }
-input { width: 90%; box-sizing: border-box; }
+input { width: 90%; box-sizing: border-box; margin: 2px 0; }
 button { margin: 5px; }
 .delete-btn { cursor: pointer; color: red; font-weight: bold; }
 </style>
@@ -17,7 +17,7 @@ button { margin: 5px; }
 <h1>Редактор words.json</h1>
 
 <button onclick="addSentence()">Добавить предложение</button>
-<button onclick="saveToGitHub()">Сохранить на GitHub</button>
+<button onclick="saveToGitHubActions()">Сохранить на GitHub</button>
 
 <table id="jsonTable">
 <thead>
@@ -38,10 +38,10 @@ button { margin: 5px; }
 <script>
 let jsonData = [];
 
-// Загрузка words.json с сервера
+// Загрузка words.json из корня репозитория
 async function loadFromServer() {
   try {
-    const response = await fetch('words.json'); // относительный путь
+    const response = await fetch('words.json');
     const data = await response.json();
     if (Array.isArray(data.sentences)) {
       jsonData = data.sentences;
@@ -79,8 +79,12 @@ function renderTable() {
 
 function createCell(obj, rowIndex, part, key) {
   const td = document.createElement('td');
-  td.innerHTML = `<input type="text" value="${obj.word}" placeholder="word" oninput="updateCell(${rowIndex}, '${part}', '${key}', 'word', this.value)">
-                  <input type="text" value="${obj.translation}" placeholder="translation" oninput="updateCell(${rowIndex}, '${part}', '${key}', 'translation', this.value)">`;
+  td.innerHTML = `
+    <input type="text" value="${obj.word}" placeholder="word" 
+      oninput="updateCell(${rowIndex}, '${part}', '${key}', 'word', this.value)">
+    <input type="text" value="${obj.translation}" placeholder="translation" 
+      oninput="updateCell(${rowIndex}, '${part}', '${key}', 'translation', this.value)">
+  `;
   return td;
 }
 
@@ -90,22 +94,8 @@ function updateCell(rowIndex, part, key, prop, value) {
 
 function addSentence() {
   const emptySentence = {
-    "hovedsætning": {
-      "subjekt": {"word":"","translation":""},
-      "verbium1": {"word":"","translation":""},
-      "adverbium": {"word":"","translation":""},
-      "verbium2-3": {"word":"","translation":""},
-      "objekt": {"word":"","translation":""},
-      "sted/tid": {"word":"","translation":""}
-    },
-    "ledsætning": {
-      "L-Konjuktion": {"word":"","translation":""},
-      "subjekt": {"word":"","translation":""},
-      "verbium1": {"word":"","translation":""},
-      "verbium2-3": {"word":"","translation":""},
-      "objekt": {"word":"","translation":""},
-      "sted/tid": {"word":"","translation":""}
-    }
+    "hovedsætning": { "subjekt":{"word":"","translation":""}, "verbium1":{"word":"","translation":""}, "adverbium":{"word":"","translation":""}, "verbium2-3":{"word":"","translation":""}, "objekt":{"word":"","translation":""}, "sted/tid":{"word":"","translation":""} },
+    "ledsætning": { "L-Konjuktion":{"word":"","translation":""}, "subjekt":{"word":"","translation":""}, "verbium1":{"word":"","translation":""}, "verbium2-3":{"word":"","translation":""}, "objekt":{"word":"","translation":""}, "sted/tid":{"word":"","translation":""} }
   };
   jsonData.push(emptySentence);
   renderTable();
@@ -116,43 +106,30 @@ function deleteSentence(index) {
   renderTable();
 }
 
-// Сохранение на GitHub через API
-async function saveToGitHub() {
-  const token = "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"; // твой токен
-  const owner = "volormq";
-  const repo = "gramatik";
-  const path = "words.json"; 
-  const branch = "gh-pages";
+// Отправка JSON на GitHub Actions workflow
+async function saveToGitHubActions() {
+  const jsonString = JSON.stringify({ sentences: jsonData }, null, 2);
 
-  const content = btoa(JSON.stringify({sentences: jsonData}, null, 2));
-
-  try {
-    // Получаем SHA последнего коммита файла
-    const resGet = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`);
-    const dataGet = await resGet.json();
-    const sha = dataGet.sha;
-
-    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-      method: 'PUT',
+  const response = await fetch(
+    'https://api.github.com/repos/VolorMQ/gramatik/actions/workflows/update-words.yml/dispatches',
+    {
+      method: 'POST',
       headers: {
-        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github+json',
+        'Authorization': 'token YOUR_PERSONAL_ACCESS_TOKEN', // замени на свой токен
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        message: "Update words.json",
-        content: content,
-        sha: sha,
-        branch: branch
+        ref: 'main',
+        inputs: { json: jsonString }
       })
-    });
-
-    if (res.ok) alert("words.json успешно обновлён на GitHub!");
-    else {
-      const err = await res.json();
-      alert("Ошибка при обновлении файла: " + JSON.stringify(err));
     }
-  } catch (e) {
-    alert('Ошибка соединения с GitHub: ' + e);
+  );
+
+  if (response.ok) alert("Запрос на обновление words.json отправлен!");
+  else {
+    const err = await response.json();
+    alert("Ошибка: " + JSON.stringify(err));
   }
 }
 
