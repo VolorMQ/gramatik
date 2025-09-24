@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ordstilling – hovedsætninger</title>
+<title>Ordstilling – hovedspørgsmål</title>
 <style>
 :root{
   --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb;
@@ -24,6 +24,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 td.question{font-weight:900;font-size:24px;color:var(--red);}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
+.pool-blank{background:#fff3bf;border:1px dashed #f59e0b;color:#92400e;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 button:disabled{opacity:0.5;cursor:default}
@@ -32,7 +33,7 @@ button:disabled{opacity:0.5;cursor:default}
 </head>
 <body>
 <div class="page">
-  <h1>Hovedsætninger – Omvendt ordstilling</h1>
+  <h1>Hovedspørgsmål – Omvendt ordstilling</h1>
 
   <table class="schema">
     <thead>
@@ -114,6 +115,9 @@ function initSentences(){
     });
   });
 
+  // --- Добавляем специальный blank токен ---
+  wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
+
   wordsPool = shuffle(wordsPool);
   renderWordPool();
   updateTranslation();
@@ -125,8 +129,13 @@ function renderWordPool(){
   wordsPool.forEach((w,i)=>{
     if(!w.inPool) return;
     const div = document.createElement('div');
-    div.classList.add('word');
-    div.textContent = w.word;
+    if(w.type === 'blank'){
+      div.classList.add('word','pool-blank');
+      div.textContent = '(blank)';
+    } else {
+      div.classList.add('word');
+      div.textContent = w.word;
+    }
     div.dataset.type = w.type;
     div.dataset.index = i;
     div.draggable = true;
@@ -144,12 +153,24 @@ function dropWord(ev, td){
   const wordObj = wordsPool[idx];
   const oldWordIndex = td.dataset.wordIndex;
 
-  td.textContent = wordObj.word;
-  td.dataset.wordIndex = idx;
-  wordsPool[idx].inPool = false;
+  // вставляем слово в ячейку
+  if(wordObj.type === 'blank'){
+    // blank — оставляем ячейку пустой, но ставим индекс blank-а; blank не убираем из пула
+    td.textContent = '';
+    td.dataset.wordIndex = idx;
+  } else {
+    td.textContent = wordObj.word;
+    td.dataset.wordIndex = idx;
+    wordsPool[idx].inPool = false;
+  }
 
+  // если там было старое слово (не подсказка), возвращаем его в пул
   if(oldWordIndex!==undefined && oldWordIndex!=-1){
-    wordsPool[oldWordIndex].inPool = true;
+    const oldIdx = Number(oldWordIndex);
+    if(!isNaN(oldIdx) && wordsPool[oldIdx] && wordsPool[oldIdx].type !== 'blank'){
+      wordsPool[oldIdx].inPool = true;
+    }
+    // если old был blank — он всегда inPool=true, ничего не меняем
   }
 
   renderWordPool();
@@ -161,6 +182,7 @@ function clearHighlights(){
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
+
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       const type = td.dataset.type;
@@ -168,18 +190,29 @@ document.getElementById('check-button').addEventListener('click', ()=>{
       const idx = td.dataset.wordIndex;
       if(idx===undefined) return;
 
-      if(idx==-1){ td.style.backgroundColor='#d1fae5';
+      if(idx==-1){ // подсказка
+        td.style.backgroundColor='#d1fae5';
       } else {
         const wordObj = wordsPool[idx];
-        if(wordObj.word===correctWord.word){ td.style.backgroundColor='#d1fae5';
-        } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
-        } else { td.style.backgroundColor='#f87171'; }
+        const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
+
+        // Если вставлен blank: wordObj.type === 'blank' и wordObj.word === ''
+        if(wordObj.type === 'blank'){
+          // blank считается правильным только если эталон пустой
+          if(expected === '') td.style.backgroundColor = '#d1fae5';
+          else td.style.backgroundColor = '#f87171';
+        } else {
+          if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
+          } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
+          } else { td.style.backgroundColor='#f87171'; }
+        }
       }
     });
   });
 });
 
 document.getElementById('hint-button').addEventListener('click', ()=>{
+
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     const cells = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.wordIndex != -1);
     if(cells.length===0) return;
@@ -187,14 +220,31 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
     const type = randomCell.dataset.type;
     const correctWord = selectedSentences[rowIdx][type];
 
-    randomCell.textContent = correctWord.word;
-    randomCell.dataset.wordIndex = -1;
-
-    wordsPool.forEach(w=>{
-      if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
-        w.inPool = false;
+    const idx = randomCell.dataset.wordIndex;
+    let needInsert = false;
+    if(!randomCell.textContent) {
+      needInsert = true;
+    } else if(idx!==undefined && idx!=-1) {
+      const wordObj = wordsPool[idx];
+      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
+        needInsert = true;
+        // возврат старого в пул (если не blank)
+        if(wordsPool[idx] && wordsPool[idx].type !== 'blank') wordsPool[idx].inPool = true;
       }
-    });
+    }
+
+    if(needInsert){
+      randomCell.textContent = correctWord.word;
+      randomCell.dataset.wordIndex = -1;
+
+      // Убираем слово подсказки из пула (если такое есть)
+      for(let i=0;i<wordsPool.length;i++){
+        const w = wordsPool[i];
+        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
+          w.inPool = false;
+        }
+      }
+    }
   });
 
   renderWordPool();
@@ -223,7 +273,12 @@ function updateTranslation(){
           if(!w || !w.inPool){
             text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
           } else {
-            text = w.word + ' → ' + w.translation;
+            // если это blank, w.word == '' -> не показываем перевод
+            if(w.type === 'blank'){
+              // ничего
+            } else {
+              text = w.word + ' → ' + w.translation;
+            }
           }
         }
       }
