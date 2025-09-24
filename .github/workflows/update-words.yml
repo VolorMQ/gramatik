@@ -17,15 +17,14 @@ jobs:
         ref: main
 
     - name: Записать JSON
-      run: echo '${{ github.event.inputs.json }}' > public/words.json
+      run: echo '${{ github.event.inputs.json }}' > words.json
 
     - name: Commit и push
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git add public/words.json
+        git add words.json
         git commit -m "Update words.json via Actions"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
