@@ -22,7 +22,8 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .obj{color:var(--green)}
 .sted{color:var(--violet)}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
+.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
+.word.selected{border:2px solid var(--blue)}
 .pool-blank{background:#fff3bf;border:1px dashed #f59e0b;color:#92400e;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
@@ -57,11 +58,11 @@ button:disabled{opacity:0.5;cursor:default}
   <div id="translation"></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script>
 let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
+let selectedWordIndex = null;
 
 fetch('sentences.json')
   .then(res => res.json())
@@ -85,6 +86,7 @@ function initSentences(){
       const td = document.createElement('td');
       td.dataset.type = type;
       td.dataset.wordIndex = -1;
+      td.addEventListener('click', ()=>insertWord(td));
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
@@ -112,46 +114,26 @@ function renderWordPool(){
     const div = document.createElement('div');
     div.textContent = w.word || '(blank)';
     div.className = w.type==='blank'?'word pool-blank':'word';
-    div.dataset.index = i;
+    if(selectedWordIndex===i) div.classList.add('selected');
+    div.addEventListener('click', ()=>{
+      selectedWordIndex = i;
+      renderWordPool();
+    });
     pool.appendChild(div);
   });
+}
 
-  // Interact.js draggable
-  interact('.word').draggable({
-    inertia: true,
-    autoScroll: true,
-    listeners: {
-      move (event) {
-        const target = event.target;
-        target.style.transform = `translate(${event.dx + (parseFloat(target.getAttribute('data-x'))||0)}px, ${event.dy + (parseFloat(target.getAttribute('data-y'))||0)}px)`;
-        target.setAttribute('data-x', (parseFloat(target.getAttribute('data-x'))||0)+event.dx);
-        target.setAttribute('data-y', (parseFloat(target.getAttribute('data-y'))||0)+event.dy);
-      },
-      end(event){
-        event.target.style.transform='';
-        event.target.removeAttribute('data-x');
-        event.target.removeAttribute('data-y');
-      }
-    }
-  });
-
-  // Dropzone для td
-  interact('#sentence-rows td').dropzone({
-    accept: '.word',
-    overlap: 0.5,
-    ondrop(event){
-      const wordIdx = event.relatedTarget.dataset.index;
-      const td = event.target;
-      const wordObj = wordsPool[wordIdx];
-      const oldIdx = td.dataset.wordIndex;
-      if(oldIdx != -1 && wordsPool[oldIdx]) wordsPool[oldIdx].inPool = true;
-      td.textContent = wordObj.word;
-      td.dataset.wordIndex = wordIdx;
-      wordsPool[wordIdx].inPool = false;
-      renderWordPool();
-      updateTranslation();
-    }
-  });
+function insertWord(td){
+  if(selectedWordIndex===null) return;
+  const wordObj = wordsPool[selectedWordIndex];
+  const oldIdx = td.dataset.wordIndex;
+  if(oldIdx!=-1 && wordsPool[oldIdx]) wordsPool[oldIdx].inPool = true;
+  td.textContent = wordObj.word;
+  td.dataset.wordIndex = selectedWordIndex;
+  wordsPool[selectedWordIndex].inPool = false;
+  selectedWordIndex = null;
+  renderWordPool();
+  updateTranslation();
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
