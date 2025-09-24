@@ -104,7 +104,7 @@ function initSentences(){
       wordsPool.push({word:w.word,type:type,translation:w.translation,sentenceIndex:w.sentenceIndex,inPool:true});
     });
   });
-  wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
+
   wordsPool = shuffle(wordsPool);
   renderWordPool();
   updateTranslation();
