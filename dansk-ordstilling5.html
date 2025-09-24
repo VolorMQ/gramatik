@@ -139,50 +139,41 @@ function initUI(){
 }
 
 function buildTable(){
-  const tbody = document.getElementById('sentence-rows'); tbody.innerHTML = '';
-  selectedSentences.forEach((s, rowIdx) => {
-    const tr = document.createElement('tr'); tr.dataset.row = String(rowIdx);
-    const makeCell = (text, fixed, part, key) => {
-      const td = document.createElement('td');
-      td.dataset.part = part; td.dataset.key = key; td.dataset.row = String(rowIdx);
-      if(fixed){ td.textContent = text || ''; td.dataset.uid = 'fixed'; }
-      else { td.textContent = ''; td.dataset.uid = ''; td.addEventListener('dragover', e=>e.preventDefault()); td.addEventListener('drop', e=>dropWord(e, td)); td.classList.add('blank-cell'); }
+  const tbody=document.getElementById('sentence-rows'); tbody.innerHTML='';
+  selectedSentences.forEach((s,rowIdx)=>{
+    const tr=document.createElement('tr'); tr.dataset.row=rowIdx;
+    const makeCell=(text,fixed,part,key)=>{
+      const td=document.createElement('td');
+      td.dataset.part=part; td.dataset.key=key; td.dataset.row=rowIdx;
+      if(fixed){ td.textContent=text||''; td.dataset.uid='fixed'; }
+      else { td.textContent=''; td.dataset.uid=''; td.addEventListener('dragover',e=>e.preventDefault()); td.addEventListener('drop',e=>dropWord(e,td)); td.classList.add('blank-cell'); }
       return td;
     };
-    const h = s.hovedsætning || {}; const L = s.ledsætning || {};
+    const h=s.hovedsætning||{}; const L=s.ledsætning||{};
 
-    // переставляем verb1 и subjekt для вопросительного
-    tr.appendChild(makeCell(getCorrectFieldFrom(h,'verbum1').word, false, 'hoved', 'verbum1'));
-    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word, false, 'hoved', 'subjekt'));
-    tr.appendChild(makeCell('', false, 'hoved', 'adverbium'));
-    tr.appendChild(makeCell('', false, 'hoved', 'verbum2_3'));
-    tr.appendChild(makeCell('', false, 'hoved', 'objekt'));
-    tr.appendChild(makeCell('', false, 'hoved', 'stedtid'));
+    // Переставляем verbum1 → subjekt, subjekt фиксировано
+    tr.appendChild(makeCell('',false,'hoved','verbum1'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word,true,'hoved','subjekt'));
+    tr.appendChild(makeCell('',false,'hoved','adverbium'));
+    tr.appendChild(makeCell('',false,'hoved','verbum2_3'));
+    tr.appendChild(makeCell('',false,'hoved','objekt'));
+    tr.appendChild(makeCell('',false,'hoved','stedtid'));
 
     // comma
-    const commaTd = document.createElement('td');
-    commaTd.textContent = ',';
-    commaTd.dataset.uid = 'fixed';
-    commaTd.dataset.part = 'punct';
-    commaTd.dataset.key = 'comma';
-    tr.appendChild(commaTd);
+    const commaTd=document.createElement('td'); commaTd.textContent=','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
 
     // L-Konjuktion fixed and subjekt(leds)
-    tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word, true, 'leds', 'L-Konjuktion'));
-    tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word, true, 'leds', 'subjekt'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word,true,'leds','L-Konjuktion'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word,true,'leds','subjekt'));
 
-    tr.appendChild(makeCell('', false, 'leds', 'verbum1'));
-    tr.appendChild(makeCell('', false, 'leds', 'verbum2_3'));
-    tr.appendChild(makeCell('', false, 'leds', 'objekt'));
-    tr.appendChild(makeCell('', false, 'leds', 'stedtid'));
+    // leds: verbum1, verbum2_3, objekt, stedtid
+    tr.appendChild(makeCell('',false,'leds','verbum1'));
+    tr.appendChild(makeCell('',false,'leds','verbum2_3'));
+    tr.appendChild(makeCell('',false,'leds','objekt'));
+    tr.appendChild(makeCell('',false,'leds','stedtid'));
 
-    // вопросительный знак в конце строки
-    const qTd = document.createElement('td');
-    qTd.textContent = '?';
-    qTd.dataset.uid = 'fixed';
-    qTd.dataset.part = 'punct';
-    qTd.dataset.key = 'question';
-    tr.appendChild(qTd);
+    // В конце знак вопроса
+    const qTd=document.createElement('td'); qTd.textContent='?'; qTd.dataset.uid='fixed'; tr.appendChild(qTd);
 
     tbody.appendChild(tr);
   });
