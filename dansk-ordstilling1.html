@@ -23,8 +23,6 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .sted{color:var(--violet)}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
-.word.selected{outline:2px solid #2563eb;}
-.pool-blank{background:#fff3bf;border:1px dashed #f59e0b;color:#92400e;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 button:disabled{opacity:0.5;cursor:default}
@@ -62,7 +60,7 @@ button:disabled{opacity:0.5;cursor:default}
 let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
-let selectedWordIndex = null; // выбранное слово из пула
+let selectedWordIndex = null; // для клика
 
 fetch('sentences.json')
   .then(res => res.json())
@@ -85,11 +83,11 @@ function initSentences(){
     ['subjekt','verbum1','adverbium','verbum2','objekt','sted/tid'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
-      td.dataset.wordIndex = (type==='subjekt')?-1:null;
       if(type==='subjekt'){ 
         td.textContent = s.subjekt.word;
+        td.dataset.wordIndex = -1;
       } else {
-        td.addEventListener('click', ()=>insertWord(td));
+        td.addEventListener('click', ()=>cellClick(td));
       }
       tr.appendChild(td);
     });
@@ -104,7 +102,7 @@ function initSentences(){
       wordsPool.push({word:w.word,type:type,translation:w.translation,sentenceIndex:w.sentenceIndex,inPool:true});
     });
   });
-  wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
+
   wordsPool = shuffle(wordsPool);
   renderWordPool();
   updateTranslation();
@@ -116,38 +114,44 @@ function renderWordPool(){
   wordsPool.forEach((w,i)=>{
     if(!w.inPool) return;
     const div = document.createElement('div');
-    div.className = w.type==='blank'?'word pool-blank':'word';
-    div.textContent = w.word || '(blank)';
+    div.classList.add('word');
+    div.textContent = w.word;
+    div.dataset.type = w.type;
     div.dataset.index = i;
+
     div.addEventListener('click', ()=>{
       selectedWordIndex = i;
-      // визуально выделяем выбранное слово
-      document.querySelectorAll('#word-pool .word').forEach(el=>el.classList.remove('selected'));
-      div.classList.add('selected');
+      document.querySelectorAll('#word-pool .word').forEach(el=>el.style.outline="");
+      div.style.outline="2px solid #2563eb";
     });
+
     pool.appendChild(div);
   });
 }
 
-function insertWord(td){
+function cellClick(td){
   if(selectedWordIndex===null) return;
   const wordObj = wordsPool[selectedWordIndex];
-  const oldIdx = td.dataset.wordIndex;
-  if(oldIdx!==null && oldIdx!=-1 && wordsPool[oldIdx]) wordsPool[oldIdx].inPool = true;
+  if(!wordObj) return;
+
+  const oldWordIndex = td.dataset.wordIndex;
   td.textContent = wordObj.word;
   td.dataset.wordIndex = selectedWordIndex;
   wordsPool[selectedWordIndex].inPool = false;
+
+  if(oldWordIndex!==undefined && oldWordIndex!=-1){
+    const oldIdx = Number(oldWordIndex);
+    if(!isNaN(oldIdx) && wordsPool[oldIdx]){
+      wordsPool[oldIdx].inPool = true;
+    }
+  }
+
   selectedWordIndex = null;
   renderWordPool();
   updateTranslation();
 }
 
-function clearHighlights(){
-  document.querySelectorAll('#sentence-rows td').forEach(td=>{
-    td.style.backgroundColor='';
-  });
-}
-
+// дальше всё оставлено как есть (check, hint, reset, updateTranslation)
 document.getElementById('check-button').addEventListener('click', ()=>{
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
@@ -161,14 +165,9 @@ document.getElementById('check-button').addEventListener('click', ()=>{
       } else {
         const wordObj = wordsPool[idx];
         const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
-
-        if(wordObj.type === 'blank'){
-          td.style.backgroundColor = (expected==='') ? '#d1fae5' : '#f87171';
-        } else {
-          if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
-          } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
-          } else { td.style.backgroundColor='#f87171'; }
-        }
+        if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
+        } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
+        } else { td.style.backgroundColor='#f87171'; }
       }
     });
   });
@@ -181,32 +180,15 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
     const randomCell = cells[Math.floor(Math.random()*cells.length)];
     const type = randomCell.dataset.type;
     const correctWord = selectedSentences[rowIdx][type];
-
-    const idx = randomCell.dataset.wordIndex;
-    let needInsert = false;
-    if(!randomCell.textContent) {
-      needInsert = true;
-    } else if(idx!==undefined && idx!=-1) {
-      const wordObj = wordsPool[idx];
-      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
-        needInsert = true;
-        if(wordsPool[idx] && wordsPool[idx].type !== 'blank') wordsPool[idx].inPool = true;
-      }
-    }
-
-    if(needInsert){
-      randomCell.textContent = correctWord.word;
-      randomCell.dataset.wordIndex = -1;
-
-      for(let i=0;i<wordsPool.length;i++){
-        const w = wordsPool[i];
-        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
-          w.inPool = false;
-        }
+    randomCell.textContent = correctWord.word;
+    randomCell.dataset.wordIndex = -1;
+    for(let i=0;i<wordsPool.length;i++){
+      const w = wordsPool[i];
+      if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
+        w.inPool = false;
       }
     }
   });
-
   renderWordPool();
   updateTranslation();
   document.getElementById('hint-button').disabled = true;
@@ -230,9 +212,7 @@ function updateTranslation(){
           text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
         } else {
           const wordObj = wordsPool[idx];
-          if(wordObj.type !== 'blank'){
-            text = wordObj.word + ' → ' + wordObj.translation;
-          }
+          if(wordObj){ text = wordObj.word + ' → ' + wordObj.translation; }
         }
         if(text){
           const p = document.createElement('div');

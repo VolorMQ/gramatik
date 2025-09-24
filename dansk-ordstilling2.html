@@ -24,7 +24,6 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 td.question{font-weight:900;font-size:24px;color:var(--red);}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:pointer;user-select:none}
-.pool-blank{background:#fff3bf;border:1px dashed #f59e0b;color:#92400e;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 button:disabled{opacity:0.5;cursor:default}
@@ -88,10 +87,11 @@ function initSentences(){
     columnOrder.forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
-      td.addEventListener('click',()=>placeWord(td));
       if(type==='subjekt'){
         td.textContent = s.subjekt.word;
         td.dataset.wordIndex = -1;
+      } else {
+        td.addEventListener('click', ()=>placeWord(td));
       }
       tr.appendChild(td);
     });
@@ -99,7 +99,6 @@ function initSentences(){
     qTd.classList.add('question');
     qTd.textContent = '❓';
     tr.appendChild(qTd);
-
     tbody.appendChild(tr);
   });
 
@@ -112,9 +111,7 @@ function initSentences(){
     });
   });
 
-  // blank token оставляем
-  wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
-
+  wordsPool = shuffle(wordsPool);
   renderWordPool();
   updateTranslation();
 }
@@ -125,39 +122,40 @@ function renderWordPool(){
   wordsPool.forEach((w,i)=>{
     if(!w.inPool) return;
     const div = document.createElement('div');
-    if(w.type==='blank'){
-      div.classList.add('word','pool-blank');
-      div.textContent='(blank)';
-    } else {
-      div.classList.add('word');
-      div.textContent=w.word;
-    }
-    div.dataset.index = i;
+    div.classList.add('word');
+    div.textContent = w.word;
     div.dataset.type = w.type;
-    div.addEventListener('click',()=>selectedWordIndex=i);
+    div.dataset.index = i;
+    div.addEventListener('click', ()=>{
+      selectedWordIndex = i;
+      document.querySelectorAll('.word').forEach(el=>el.style.outline='');
+      div.style.outline='2px solid red';
+    });
     pool.appendChild(div);
   });
 }
 
 function placeWord(td){
   if(selectedWordIndex===null) return;
-  const wordObj = wordsPool[selectedWordIndex];
-  const oldIdx = td.dataset.wordIndex;
-  td.textContent = wordObj.type==='blank' ? '' : wordObj.word;
-  td.dataset.wordIndex = selectedWordIndex;
-  if(wordObj.type!=='blank') wordsPool[selectedWordIndex].inPool = false;
+  const idx = selectedWordIndex;
+  const wordObj = wordsPool[idx];
+  const oldWordIndex = td.dataset.wordIndex;
 
-  if(oldIdx!==undefined && oldIdx!=-1){
-    const prev = Number(oldIdx);
-    if(!isNaN(prev) && wordsPool[prev] && wordsPool[prev].type!=='blank') wordsPool[prev].inPool = true;
+  td.textContent = wordObj.word;
+  td.dataset.wordIndex = idx;
+  wordsPool[idx].inPool = false;
+
+  if(oldWordIndex!==undefined && oldWordIndex!=-1){
+    const oldIdx = Number(oldWordIndex);
+    if(!isNaN(oldIdx) && wordsPool[oldIdx]){
+      wordsPool[oldIdx].inPool = true;
+    }
   }
 
   selectedWordIndex = null;
   renderWordPool();
   updateTranslation();
 }
-
-function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.style.backgroundColor=''); }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
@@ -166,12 +164,14 @@ document.getElementById('check-button').addEventListener('click', ()=>{
       const correctWord = selectedSentences[rowIdx][type];
       const idx = td.dataset.wordIndex;
       if(idx===undefined) return;
-      if(idx==-1){ td.style.backgroundColor='#d1fae5'; }
-      else {
+      if(idx==-1){
+        td.style.backgroundColor='#d1fae5';
+      } else {
         const wordObj = wordsPool[idx];
-        const expected = correctWord && correctWord.word ? correctWord.word : '';
-        if(wordObj.type==='blank'){ td.style.backgroundColor = expected==='' ? '#d1fae5' : '#f87171'; }
-        else { td.style.backgroundColor = wordObj.word===expected ? '#d1fae5' : '#f87171'; }
+        const expected = correctWord ? correctWord.word : '';
+        if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
+        } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
+        } else { td.style.backgroundColor='#f87171'; }
       }
     });
   });
@@ -179,14 +179,34 @@ document.getElementById('check-button').addEventListener('click', ()=>{
 
 document.getElementById('hint-button').addEventListener('click', ()=>{
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
-    const cells = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.wordIndex!=-1);
+    const cells = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.wordIndex != -1);
     if(cells.length===0) return;
     const randomCell = cells[Math.floor(Math.random()*cells.length)];
     const type = randomCell.dataset.type;
     const correctWord = selectedSentences[rowIdx][type];
-    randomCell.textContent = correctWord.word;
-    randomCell.dataset.wordIndex = -1;
+    const idx = randomCell.dataset.wordIndex;
+    let needInsert = false;
+    if(!randomCell.textContent) {
+      needInsert = true;
+    } else if(idx!==undefined && idx!=-1) {
+      const wordObj = wordsPool[idx];
+      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
+        needInsert = true;
+        wordsPool[idx].inPool = true;
+      }
+    }
+    if(needInsert){
+      randomCell.textContent = correctWord.word;
+      randomCell.dataset.wordIndex = -1;
+      for(let i=0;i<wordsPool.length;i++){
+        const w = wordsPool[i];
+        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
+          w.inPool = false;
+        }
+      }
+    }
   });
+  renderWordPool();
   updateTranslation();
   document.getElementById('hint-button').disabled = true;
 });
@@ -201,10 +221,25 @@ function updateTranslation(){
   translationDiv.innerHTML='';
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
-      const idx = td.dataset.wordIndex;
-      if(idx!==undefined && idx!=-1){
-        const w = wordsPool[idx];
-        translationDiv.innerHTML += `<div>${w.word} → ${w.translation}</div>`;
+      const type = td.dataset.type;
+      let text = '';
+      if(td.dataset.wordIndex == -1){
+        text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
+      } else {
+        const idx = td.dataset.wordIndex;
+        if(idx!==undefined){
+          const w = wordsPool[idx];
+          if(!w || !w.inPool){
+            text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
+          } else {
+            text = w.word + ' → ' + w.translation;
+          }
+        }
+      }
+      if(text){
+        const p = document.createElement('div');
+        p.textContent=text;
+        translationDiv.appendChild(p);
       }
     });
   });
