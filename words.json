@@ -5,7 +5,7 @@
         "subjekt": {"word":"Farmor","translation":"бабушка"},
         "verbium1": {"word":"besøger","translation":"навещает"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at tale","translation":"чтобы поговорить"},
         "objekt": {"word":"os","translation":"нас"},
         "sted/tid": {"word":"i huset","translation":"в доме"}
       },
@@ -13,7 +13,7 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"spiser","translation":"едим"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at nyde","translation":"чтобы насладиться"},
         "objekt": {"word":"kage","translation":"торт"},
         "sted/tid": {"word":"sammen","translation":"вместе"}
       }
@@ -23,15 +23,15 @@
         "subjekt": {"word":"Peter","translation":"Петер"},
         "verbium1": {"word":"går","translation":"идёт"},
         "adverbium": {"word":"hurtigt","translation":"быстро"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at nå","translation":"чтобы успеть"},
+        "objekt": {"word":"til skolen","translation":"в школу"},
         "sted/tid": {"word":"til skolen","translation":"в школу"}
       },
       "ledsætning": {
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"han","translation":"он"},
         "verbium1": {"word":"hilser","translation":"приветствует"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at præsentere","translation":"чтобы представить"},
         "objekt": {"word":"læreren","translation":"учителя"},
         "sted/tid": {"word":"på vej","translation":"по пути"}
       }
@@ -41,7 +41,7 @@
         "subjekt": {"word":"Vi","translation":"Мы"},
         "verbium1": {"word":"ser","translation":"видим"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at finde","translation":"чтобы найти"},
         "objekt": {"word":"fugle","translation":"птиц"},
         "sted/tid": {"word":"i haven","translation":"в саду"}
       },
@@ -49,7 +49,7 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"fodrer","translation":"кормим"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at hjælpe","translation":"чтобы помочь"},
         "objekt": {"word":"dem","translation":"их"},
         "sted/tid": {"word":"hver morgen","translation":"каждое утро"}
       }
@@ -59,7 +59,7 @@
         "subjekt": {"word":"Min bror","translation":"Мой брат"},
         "verbium1": {"word":"spiller","translation":"играет"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at vinde","translation":"чтобы победить"},
         "objekt": {"word":"fodbold","translation":"в футбол"},
         "sted/tid": {"word":"i parken","translation":"в парке"}
       },
@@ -67,7 +67,7 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"han","translation":"он"},
         "verbium1": {"word":"møder","translation":"встречает"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at diskutere","translation":"чтобы обсудить"},
         "objekt": {"word":"sine venner","translation":"своих друзей"},
         "sted/tid": {"word":"ved banen","translation":"на поле"}
       }
@@ -77,25 +77,25 @@
         "subjekt": {"word":"Vi","translation":"Мы"},
         "verbium1": {"word":"går","translation":"ходим"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
-        "objekt": {"word":"en tur","translation":"на прогулку"},
+        "verbium2-3": {"word":"for at udforske","translation":"чтобы исследовать"},
+        "objekt": {"word":"en tur","translation":"прогулку"},
         "sted/tid": {"word":"i skoven","translation":"в лесу"}
       },
       "ledsætning": {
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"finder","translation":"находим"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at plukke","translation":"чтобы собрать"},
         "objekt": {"word":"bær","translation":"ягоды"},
         "sted/tid": {"word":"på stierne","translation":"на тропинках"}
       }
     },
-    {
+	{
       "hovedsætning": {
         "subjekt": {"word":"Min mor","translation":"Моя мама"},
         "verbium1": {"word":"koger","translation":"готовит"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at imponere","translation":"чтобы впечатлить"},
         "objekt": {"word":"middag","translation":"обед"},
         "sted/tid": {"word":"i køkkenet","translation":"на кухне"}
       },
@@ -103,7 +103,7 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"spiser","translation":"едим"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at nyde","translation":"чтобы насладиться"},
         "objekt": {"word":"sammen","translation":"вместе"},
         "sted/tid": {"word":"hver dag","translation":"каждый день"}
       }
@@ -113,7 +113,7 @@
         "subjekt": {"word":"Børnene","translation":"Дети"},
         "verbium1": {"word":"leger","translation":"играют"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at lære","translation":"чтобы учиться"},
         "objekt": {"word":"ude","translation":"на улице"},
         "sted/tid": {"word":"i haven","translation":"в саду"}
       },
@@ -121,7 +121,7 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"de","translation":"они"},
         "verbium1": {"word":"bygger","translation":"строят"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at skabe","translation":"чтобы создавать"},
         "objekt": {"word":"huler","translation":"шалаши"},
         "sted/tid": {"word":"i træerne","translation":"на деревьях"}
       }
@@ -131,7 +131,7 @@
         "subjekt": {"word":"Jeg","translation":"Я"},
         "verbium1": {"word":"læser","translation":"читаю"},
         "adverbium": {"word":"tit","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at forstå","translation":"чтобы понять"},
         "objekt": {"word":"bøger","translation":"книги"},
         "sted/tid": {"word":"i sengen","translation":"в кровати"}
       },
@@ -139,7 +139,7 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"jeg","translation":"я"},
         "verbium1": {"word":"noterer","translation":"делаю заметки"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at huske","translation":"чтобы запомнить"},
         "objekt": {"word":"idéer","translation":"идеи"},
         "sted/tid": {"word":"i min notesbog","translation":"в блокноте"}
       }
@@ -149,7 +149,7 @@
         "subjekt": {"word":"Vi","translation":"Мы"},
         "verbium1": {"word":"kører","translation":"едем"},
         "adverbium": {"word":"ofte","translation":"часто"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at nå","translation":"чтобы успеть"},
         "objekt": {"word":"til stranden","translation":"на пляж"},
         "sted/tid": {"word":"","translation":""}
       },
@@ -157,9 +157,477 @@
         "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"bader","translation":"купаемся"},
-        "verbium2-3": {"word":"","translation":""},
+        "verbium2-3": {"word":"for at køle os","translation":"чтобы охладиться"},
         "objekt": {"word":"i havet","translation":"в море"},
         "sted/tid": {"word":"","translation":""}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Farmor","translation":"Бабушка"},
+        "verbium1": {"word":"syr","translation":"шьет"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at lave","translation":"чтобы сделать"},
+        "objekt": {"word":"tøj","translation":"одежду"},
+        "sted/tid": {"word":"i stuen","translation":"в гостиной"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"hjælper","translation":"помогаем"},
+        "verbium2-3": {"word":"for at færdiggøre","translation":"чтобы завершить"},
+        "objekt": {"word":"projekter","translation":"проекты"},
+        "sted/tid": {"word":"sammen","translation":"вместе"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Peter","translation":"Петер"},
+        "verbium1": {"word":"træner","translation":"тренируется"},
+        "adverbium": {"word":"dagligt","translation":"ежедневно"},
+        "verbium2-3": {"word":"for at blive","translation":"чтобы стать"},
+        "objekt": {"word":"stærk","translation":"сильным"},
+        "sted/tid": {"word":"i hallen","translation":"в зале"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"han","translation":"он"},
+        "verbium1": {"word":"møder","translation":"встречает"},
+        "verbium2-3": {"word":"for at lære","translation":"чтобы изучить"},
+        "objekt": {"word":"nye øvelser","translation":"новые упражнения"},
+        "sted/tid": {"word":"med venner","translation":"с друзьями"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"maler","translation":"красим"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at dekorere","translation":"чтобы украсить"},
+        "objekt": {"word":"væggene","translation":"стены"},
+        "sted/tid": {"word":"i huset","translation":"в доме"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"hænger","translation":"вешаем"},
+        "verbium2-3": {"word":"for at vise","translation":"чтобы показать"},
+        "objekt": {"word":"malerier","translation":"картины"},
+        "sted/tid": {"word":"på væggene","translation":"на стенах"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Min søster","translation":"Моя сестра"},
+        "verbium1": {"word":"spiller","translation":"играет"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at forbedre","translation":"чтобы улучшить"},
+        "objekt": {"word":"violin","translation":"скрипку"},
+        "sted/tid": {"word":"på sit værelse","translation":"в своей комнате"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"hun","translation":"она"},
+        "verbium1": {"word":"øver","translation":"репетирует"},
+        "verbium2-3": {"word":"for at mestre","translation":"чтобы освоить"},
+        "objekt": {"word":"melodier","translation":"мелодии"},
+        "sted/tid": {"word":"hver dag","translation":"каждый день"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"skriver","translation":"пишем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at fortælle","translation":"чтобы рассказать"},
+        "objekt": {"word":"historier","translation":"истории"},
+        "sted/tid": {"word":"i skolen","translation":"в школе"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"illustrerer","translation":"иллюстрируем"},
+        "verbium2-3": {"word":"for at gøre","translation":"чтобы сделать"},
+        "objekt": {"word":"dem levende","translation":"их живыми"},
+        "sted/tid": {"word":"i klassen","translation":"в классе"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Min far","translation":"Мой отец"},
+        "verbium1": {"word":"bygger","translation":"строит"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at reparere","translation":"чтобы починить"},
+        "objekt": {"word":"møbler","translation":"мебель"},
+        "sted/tid": {"word":"i garagen","translation":"в гараже"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"hjælper","translation":"помогаем"},
+        "verbium2-3": {"word":"for at færdiggøre","translation":"чтобы закончить"},
+        "objekt": {"word":"arbejdet","translation":"работу"},
+        "sted/tid": {"word":"sammen","translation":"вместе"}
+      }
+    },
+	{
+      "hovedsætning": {
+        "subjekt": {"word":"Katten","translation":"Кот"},
+        "verbium1": {"word":"jager","translation":"охотится"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at fange","translation":"чтобы поймать"},
+        "objekt": {"word":"mus","translation":"мышей"},
+        "sted/tid": {"word":"i haven","translation":"в саду"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"den","translation":"он"},
+        "verbium1": {"word":"leger","translation":"играет"},
+        "verbium2-3": {"word":"for at styrke","translation":"чтобы укрепить"},
+        "objekt": {"word":"sine færdigheder","translation":"свои навыки"},
+        "sted/tid": {"word":"om aftenen","translation":"вечером"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Hunden","translation":"Собака"},
+        "verbium1": {"word":"løber","translation":"бегает"},
+        "adverbium": {"word":"dagligt","translation":"ежедневно"},
+        "verbium2-3": {"word":"for at finde","translation":"чтобы найти"},
+        "objekt": {"word":"pinden","translation":"палку"},
+        "sted/tid": {"word":"i parken","translation":"в парке"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"den","translation":"она"},
+        "verbium1": {"word":"leger","translation":"играет"},
+        "verbium2-3": {"word":"for at underholde","translation":"чтобы развлекать"},
+        "objekt": {"word":"børnene","translation":"детей"},
+        "sted/tid": {"word":"på græsset","translation":"на траве"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"planter","translation":"сажаем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at skabe","translation":"чтобы создать"},
+        "objekt": {"word":"blomster","translation":"цветы"},
+        "sted/tid": {"word":"i haven","translation":"в саду"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"vander","translation":"поливаем"},
+        "verbium2-3": {"word":"for at holde","translation":"чтобы сохранить"},
+        "objekt": {"word":"dem sunde","translation":"их здоровыми"},
+        "sted/tid": {"word":"hver morgen","translation":"каждое утро"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Min bror","translation":"Мой брат"},
+        "verbium1": {"word":"cykler","translation":"ездит на велосипеде"},
+        "adverbium": {"word":"hurtigt","translation":"быстро"},
+        "verbium2-3": {"word":"for at nå","translation":"чтобы успеть"},
+        "objekt": {"word":"skolen","translation":"в школу"},
+        "sted/tid": {"word":"om morgenen","translation":"утром"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"han","translation":"он"},
+        "verbium1": {"word":"hilser","translation":"приветствует"},
+        "verbium2-3": {"word":"for at møde","translation":"чтобы встретить"},
+        "objekt": {"word":"læreren","translation":"учителя"},
+        "sted/tid": {"word":"på vejen","translation":"по пути"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"spiller","translation":"играем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at konkurrere","translation":"чтобы соревноваться"},
+        "objekt": {"word":"skak","translation":"в шахматы"},
+        "sted/tid": {"word":"i fritidsklubben","translation":"в кружке"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"analyserer","translation":"анализируем"},
+        "verbium2-3": {"word":"for at forstå","translation":"чтобы понять"},
+        "objekt": {"word":"trækene","translation":"ходы"},
+        "sted/tid": {"word":"bagefter","translation":"после"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Jeg","translation":"Я"},
+        "verbium1": {"word":"skriver","translation":"пишу"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at lære","translation":"чтобы учиться"},
+        "objekt": {"word":"dagbog","translation":"дневник"},
+        "sted/tid": {"word":"hjemme","translation":"дома"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"jeg","translation":"я"},
+        "verbium1": {"word":"tegner","translation":"рисую"},
+        "verbium2-3": {"word":"for at beskrive","translation":"чтобы описать"},
+        "objekt": {"word":"dagens begivenheder","translation":"события дня"},
+        "sted/tid": {"word":"på papir","translation":"на бумаге"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Min søster","translation":"Моя сестра"},
+        "verbium1": {"word":"læser","translation":"читает"},
+        "adverbium": {"word":"tit","translation":"часто"},
+        "verbium2-3": {"word":"for at forstå","translation":"чтобы понять"},
+        "objekt": {"word":"bøger","translation":"книги"},
+        "sted/tid": {"word":"i sit værelse","translation":"в своей комнате"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"hun","translation":"она"},
+        "verbium1": {"word":"diskuterer","translation":"обсуждает"},
+        "verbium2-3": {"word":"for at forklare","translation":"чтобы объяснить"},
+        "objekt": {"word":"indholdet","translation":"содержание"},
+        "sted/tid": {"word":"med mig","translation":"со мной"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"laver","translation":"делаем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at eksperimentere","translation":"чтобы экспериментировать"},
+        "objekt": {"word":"mad","translation":"еду"},
+        "sted/tid": {"word":"i køkkenet","translation":"на кухне"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"smager","translation":"пробуем"},
+        "verbium2-3": {"word":"for at bedømme","translation":"чтобы оценить"},
+        "objekt": {"word":"retterne","translation":"блюда"},
+        "sted/tid": {"word":"sammen","translation":"вместе"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Farmor","translation":"Бабушка"},
+        "verbium1": {"word":"strikker","translation":"вяжет"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at lave","translation":"чтобы сделать"},
+        "objekt": {"word":"sokker","translation":"носки"},
+        "sted/tid": {"word":"i stuen","translation":"в гостиной"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"hjælper","translation":"помогаем"},
+        "verbium2-3": {"word":"for at færdiggøre","translation":"чтобы закончить"},
+        "objekt": {"word":"arbejdet","translation":"работу"},
+        "sted/tid": {"word":"sammen","translation":"вместе"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Peter","translation":"Петер"},
+        "verbium1": {"word":"skriver","translation":"пишет"},
+        "adverbium": {"word":"hurtigt","translation":"быстро"},
+        "verbium2-3": {"word":"for at færdiggøre","translation":"чтобы закончить"},
+        "objekt": {"word":"opgaver","translation":"задания"},
+        "sted/tid": {"word":"på skolen","translation":"в школе"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"han","translation":"он"},
+        "verbium1": {"word":"tjekker","translation":"проверяет"},
+        "verbium2-3": {"word":"for at rette","translation":"чтобы исправить"},
+        "objekt": {"word":"fejlene","translation":"ошибки"},
+        "sted/tid": {"word":"bagefter","translation":"после"}
+      }
+    },    
+	{
+      "hovedsætning": {
+        "subjekt": {"word":"Katten","translation":"Кот"},
+        "verbium1": {"word":"jager","translation":"охотится"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at fange","translation":"чтобы поймать"},
+        "objekt": {"word":"mus","translation":"мышей"},
+        "sted/tid": {"word":"i haven","translation":"в саду"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"den","translation":"он"},
+        "verbium1": {"word":"leger","translation":"играет"},
+        "verbium2-3": {"word":"for at styrke","translation":"чтобы укрепить"},
+        "objekt": {"word":"sine færdigheder","translation":"свои навыки"},
+        "sted/tid": {"word":"om aftenen","translation":"вечером"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Hunden","translation":"Собака"},
+        "verbium1": {"word":"løber","translation":"бегает"},
+        "adverbium": {"word":"dagligt","translation":"ежедневно"},
+        "verbium2-3": {"word":"for at finde","translation":"чтобы найти"},
+        "objekt": {"word":"pinden","translation":"палку"},
+        "sted/tid": {"word":"i parken","translation":"в парке"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"den","translation":"она"},
+        "verbium1": {"word":"leger","translation":"играет"},
+        "verbium2-3": {"word":"for at underholde","translation":"чтобы развлекать"},
+        "objekt": {"word":"børnene","translation":"детей"},
+        "sted/tid": {"word":"på græsset","translation":"на траве"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"planter","translation":"сажаем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at skabe","translation":"чтобы создать"},
+        "objekt": {"word":"blomster","translation":"цветы"},
+        "sted/tid": {"word":"i haven","translation":"в саду"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"vander","translation":"поливаем"},
+        "verbium2-3": {"word":"for at holde","translation":"чтобы сохранить"},
+        "objekt": {"word":"dem sunde","translation":"их здоровыми"},
+        "sted/tid": {"word":"hver morgen","translation":"каждое утро"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Min bror","translation":"Мой брат"},
+        "verbium1": {"word":"cykler","translation":"ездит на велосипеде"},
+        "adverbium": {"word":"hurtigt","translation":"быстро"},
+        "verbium2-3": {"word":"for at nå","translation":"чтобы успеть"},
+        "objekt": {"word":"skolen","translation":"в школу"},
+        "sted/tid": {"word":"om morgenen","translation":"утром"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"han","translation":"он"},
+        "verbium1": {"word":"hilser","translation":"приветствует"},
+        "verbium2-3": {"word":"for at møde","translation":"чтобы встретить"},
+        "objekt": {"word":"læreren","translation":"учителя"},
+        "sted/tid": {"word":"på vejen","translation":"по пути"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"spiller","translation":"играем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at konkurrere","translation":"чтобы соревноваться"},
+        "objekt": {"word":"skak","translation":"в шахматы"},
+        "sted/tid": {"word":"i fritidsklubben","translation":"в кружке"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"analyserer","translation":"анализируем"},
+        "verbium2-3": {"word":"for at forstå","translation":"чтобы понять"},
+        "objekt": {"word":"trækene","translation":"ходы"},
+        "sted/tid": {"word":"bagefter","translation":"после"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Jeg","translation":"Я"},
+        "verbium1": {"word":"skriver","translation":"пишу"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at lære","translation":"чтобы учиться"},
+        "objekt": {"word":"dagbog","translation":"дневник"},
+        "sted/tid": {"word":"hjemme","translation":"дома"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"jeg","translation":"я"},
+        "verbium1": {"word":"tegner","translation":"рисую"},
+        "verbium2-3": {"word":"for at beskrive","translation":"чтобы описать"},
+        "objekt": {"word":"dagens begivenheder","translation":"события дня"},
+        "sted/tid": {"word":"på papir","translation":"на бумаге"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Min søster","translation":"Моя сестра"},
+        "verbium1": {"word":"læser","translation":"читает"},
+        "adverbium": {"word":"tit","translation":"часто"},
+        "verbium2-3": {"word":"for at forstå","translation":"чтобы понять"},
+        "objekt": {"word":"bøger","translation":"книги"},
+        "sted/tid": {"word":"i sit værelse","translation":"в своей комнате"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"hun","translation":"она"},
+        "verbium1": {"word":"diskuterer","translation":"обсуждает"},
+        "verbium2-3": {"word":"for at forklare","translation":"чтобы объяснить"},
+        "objekt": {"word":"indholdet","translation":"содержание"},
+        "sted/tid": {"word":"med mig","translation":"со мной"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Vi","translation":"Мы"},
+        "verbium1": {"word":"laver","translation":"делаем"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at eksperimentere","translation":"чтобы экспериментировать"},
+        "objekt": {"word":"mad","translation":"еду"},
+        "sted/tid": {"word":"i køkkenet","translation":"на кухне"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"smager","translation":"пробуем"},
+        "verbium2-3": {"word":"for at bedømme","translation":"чтобы оценить"},
+        "objekt": {"word":"retterne","translation":"блюда"},
+        "sted/tid": {"word":"sammen","translation":"вместе"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Farmor","translation":"Бабушка"},
+        "verbium1": {"word":"strikker","translation":"вяжет"},
+        "adverbium": {"word":"ofte","translation":"часто"},
+        "verbium2-3": {"word":"for at lave","translation":"чтобы сделать"},
+        "objekt": {"word":"sokker","translation":"носки"},
+        "sted/tid": {"word":"i stuen","translation":"в гостиной"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"vi","translation":"мы"},
+        "verbium1": {"word":"hjælper","translation":"помогаем"},
+        "verbium2-3": {"word":"for at færdiggøre","translation":"чтобы закончить"},
+        "objekt": {"word":"arbejdet","translation":"работу"},
+        "sted/tid": {"word":"sammen","translation":"вместе"}
+      }
+    },
+    {
+      "hovedsætning": {
+        "subjekt": {"word":"Peter","translation":"Петер"},
+        "verbium1": {"word":"skriver","translation":"пишет"},
+        "adverbium": {"word":"hurtigt","translation":"быстро"},
+        "verbium2-3": {"word":"for at færdiggøre","translation":"чтобы закончить"},
+        "objekt": {"word":"opgaver","translation":"задания"},
+        "sted/tid": {"word":"på skolen","translation":"в школе"}
+      },
+      "ledsætning": {
+        "L-Konjuktion": {"word":"og","translation":"и"},
+        "subjekt": {"word":"han","translation":"он"},
+        "verbium1": {"word":"tjekker","translation":"проверяет"},
+        "verbium2-3": {"word":"for at rette","translation":"чтобы исправить"},
+        "objekt": {"word":"fejlene","translation":"ошибки"},
+        "sted/tid": {"word":"bagefter","translation":"после"}
       }
     }
   ]
