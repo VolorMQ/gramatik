@@ -151,17 +151,13 @@ function buildTable(){
     };
     const h = s.hovedsætning || {}; const L = s.ledsætning || {};
 
-    // Swap første to ord: verbum1, subjekt
-    tr.appendChild(makeCell('', false, 'hoved', 'verbum1')); // пустая для verbum1
-    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word, true, 'hoved', 'subjekt')); // фиксируем subjekt
+    // переставляем verb1 и subjekt для вопросительного
+    tr.appendChild(makeCell(getCorrectFieldFrom(h,'verbum1').word, false, 'hoved', 'verbum1'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word, false, 'hoved', 'subjekt'));
     tr.appendChild(makeCell('', false, 'hoved', 'adverbium'));
     tr.appendChild(makeCell('', false, 'hoved', 'verbum2_3'));
     tr.appendChild(makeCell('', false, 'hoved', 'objekt'));
-
-    // Sted/tid с вопросом
-    const stedTd = makeCell(getCorrectFieldFrom(h,'stedtid').word, false, 'hoved', 'stedtid');
-    if(stedTd.textContent) stedTd.textContent += '?'; else stedTd.textContent = '?';
-    tr.appendChild(stedTd);
+    tr.appendChild(makeCell('', false, 'hoved', 'stedtid'));
 
     // comma
     const commaTd = document.createElement('td');
@@ -175,15 +171,23 @@ function buildTable(){
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word, true, 'leds', 'L-Konjuktion'));
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word, true, 'leds', 'subjekt'));
 
-    // leds: verbum1, verbum2_3, objekt, stedtid
     tr.appendChild(makeCell('', false, 'leds', 'verbum1'));
     tr.appendChild(makeCell('', false, 'leds', 'verbum2_3'));
     tr.appendChild(makeCell('', false, 'leds', 'objekt'));
     tr.appendChild(makeCell('', false, 'leds', 'stedtid'));
 
+    // вопросительный знак в конце строки
+    const qTd = document.createElement('td');
+    qTd.textContent = '?';
+    qTd.dataset.uid = 'fixed';
+    qTd.dataset.part = 'punct';
+    qTd.dataset.key = 'question';
+    tr.appendChild(qTd);
+
     tbody.appendChild(tr);
   });
 }
+
 
 function buildPool(){
   wordsMaster = [];
