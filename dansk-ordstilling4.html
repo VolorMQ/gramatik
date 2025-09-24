@@ -28,7 +28,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .pool-hoved{background:var(--hoved);border:1px solid rgba(37,99,235,0.08)}
 .pool-leds{background:var(--leds);border:1px solid rgba(139,92,246,0.08)}
 .pool-blank{background:var(--blank-bg);border:1px dashed #9ca3af;color:#6b7280;font-weight:700}
-#buttons{margin-top:12px;display:flex;gap:8px}
+#buttons{margin-top:12px;display:flex;gap:8px;align-items:center}
 button{padding:8px 14px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700}
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:var(--green)}
@@ -37,15 +37,15 @@ button:disabled{opacity:0.5;cursor:default}
 .wrong{background: #fee2e2 !important}
 .info{margin-top:8px;color:#374151;font-size:13px}
 .blank-cell{background:#fff;border:2px dashed #e5e7eb}
-.selected-tap{outline:2px solid red !important;}
+.tap-selected{outline:2px solid red !important;}
 </style>
 </head>
 <body>
 <div class="page">
   <h1>Hoved + Ledsætninger (3 sætninger)</h1>
-  <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em> — при проверке это будет считаться правильным.</div>
+  <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em>.</div>
 
-  <label><input type="checkbox" id="mobil-version"> MobilVersion (tap вместо drag&drop)</label>
+  <label><input type="checkbox" id="mobil-toggle"> MobilVersion</label>
 
   <table aria-label="Hoved + Ledsætninger">
     <thead>
@@ -71,7 +71,7 @@ button:disabled{opacity:0.5;cursor:default}
   <div id="legend" aria-hidden="false">
     <div class="legend-item"><span class="legend-swatch legend-hoved" aria-hidden="true"></span>Слова из <strong>hovedsætning</strong></div>
     <div class="legend-item"><span class="legend-swatch legend-leds" aria-hidden="true"></span>Слова из <strong>ledsætning</strong></div>
-    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span>Специальный <strong>blank</strong> (пустой) токен</div>
+    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span>Специальный <strong>blank</strong></div>
   </div>
 
   <div id="word-pool" aria-live="polite"></div>
@@ -83,90 +83,233 @@ button:disabled{opacity:0.5;cursor:default}
   </div>
 
   <div id="translation"></div>
-  <div class="info">Если эталон пустой — оставь ячейку пустой или используй <em>blank</em>. Это будет отмечено как правильно (зелёным).</div>
+  <div class="info">Если эталон пустой — оставь ячейку пустой или используй <em>blank</em>.</div>
 </div>
 
 <script>
-let allSentences=[], selectedIdx=[], selectedSentences=[], wordsMaster=[], uidCounter=1, selectedWordUid=null;
+let allSentences = [];
+let selectedIdx = [];
+let selectedSentences = [];
+let wordsMaster = [];
+let uidCounter = 1;
+let tapMode = false;
+let selectedWordUid = null;
 
 fetch('words.json')
-.then(r=>r.json())
-.then(d=>{if(!d||!Array.isArray(d.sentences))throw new Error('words.json должен содержать массив sentences'); allSentences=d.sentences; pickThreeRandom();})
-.catch(err=>{console.error(err);document.body.insertAdjacentHTML('afterbegin',`<div style="color:#b91c1c;padding:12px;">Ошибка загрузки words.json: ${err.message}</div>`);});
+  .then(r => r.json())
+  .then(d => {
+    if(!d || !Array.isArray(d.sentences)) throw new Error('words.json должен содержать массив sentences');
+    allSentences = d.sentences;
+    pickThreeRandom();
+  })
+  .catch(err => { console.error(err); });
 
-function shuffle(arr){return arr.sort(()=>Math.random()-0.5);}
-function getField(obj,...keys){for(const k of keys)if(obj&&(k in obj)&&obj[k]&&typeof obj[k].word!=='undefined')return obj[k];return{word:'',translation:''};}
-function getCorrectFieldFrom(sectionObj,logicalKey){if(!sectionObj)return{word:'',translation:''};switch(logicalKey){case'subjekt':return getField(sectionObj,'subjekt');case'verbum1':return getField(sectionObj,'verbum1','verbium1','verbum1_1','verbium1_1');case'adverbium':return getField(sectionObj,'adverbium','adverbium1');case'verbum2_3':return getField(sectionObj,'verbium2-3','verbum2-3','verbum2_3','verbum2_3');case'objekt':return getField(sectionObj,'objekt');case'stedtid':return getField(sectionObj,'sted/tid','sted_tid','stedtid');case'L-Konjuktion':return getField(sectionObj,'L-Konjuktion','lkonj','L-Konj');default:return getField(sectionObj,logicalKey);}}
-
-function pickThreeRandom(){if(!allSentences.length)return; const indices=Array.from(allSentences.keys());shuffle(indices); selectedIdx=indices.slice(0,Math.min(3,indices.length)); selectedSentences=selectedIdx.map(i=>allSentences[i]); initUI();}
-function initUI(){uidCounter=1; buildTable(); buildPool(); renderPool(); clearHighlights(); updateTranslation(); document.getElementById('hint-button').disabled=false;}
-
-function buildTable(){const tbody=document.getElementById('sentence-rows'); tbody.innerHTML=''; selectedSentences.forEach((s,rowIdx)=>{const tr=document.createElement('tr'); tr.dataset.row=String(rowIdx); const makeCell=(text,fixed,part,key)=>{const td=document.createElement('td'); td.dataset.part=part; td.dataset.key=key; td.dataset.row=String(rowIdx); if(fixed){td.textContent=text||''; td.dataset.uid='fixed';}else{td.textContent=''; td.dataset.uid=''; td.classList.add('blank-cell'); td.addEventListener('dragover',e=>e.preventDefault()); td.addEventListener('drop',e=>dropWord(e,td)); td.addEventListener('click',()=>tapCell(td));} return td;}; const h=s.hovedsætning||{}; const L=s.ledsætning||{}; tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word,true,'hoved','subjekt')); tr.appendChild(makeCell('',false,'hoved','verbum1')); tr.appendChild(makeCell('',false,'hoved','adverbium')); tr.appendChild(makeCell('',false,'hoved','verbum2_3')); tr.appendChild(makeCell('',false,'hoved','objekt')); tr.appendChild(makeCell('',false,'hoved','stedtid')); const commaTd=document.createElement('td'); commaTd.textContent=','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd); tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word,true,'leds','L-Konjuktion')); tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word,true,'leds','subjekt')); tr.appendChild(makeCell('',false,'leds','verbum1')); tr.appendChild(makeCell('',false,'leds','verbum2_3')); tr.appendChild(makeCell('',false,'leds','objekt')); tr.appendChild(makeCell('',false,'leds','stedtid')); tbody.appendChild(tr);});}
-
-function buildPool(){wordsMaster=[]; selectedSentences.forEach((s,idx)=>{const h=s.hovedsætning||{}; const L=s.ledsætning||{}; const pushIf=(obj,keys,typeKey,part)=>{const f=getField(obj,...keys); if(f&&f.word){wordsMaster.push({uid:String(uidCounter++), word:f.word, translation:f.translation||'', typeKey, part, sentenceIndex:idx, inPool:true});}}; pushIf(h,['verbum1','verbium1','verbum1_1','verbum1'],'verbum1','hoved'); pushIf(h,['adverbium','adverbium1'],'adverbium','hoved'); pushIf(h,['verbium2-3','verbum2-3','verbium2_3'],'verbum2_3','hoved'); pushIf(h,['objekt'],'objekt','hoved'); pushIf(h,['sted/tid','sted_tid','stedtid'],'stedtid','hoved'); pushIf(L,['verbium1','verbum1','verbium1_1'],'verbum1','leds'); pushIf(L,['verbium2-3','verbum2-3','verbum2_3'],'verbum2_3','leds'); pushIf(L,['objekt'],'objekt','leds'); pushIf(L,['sted/tid','sted_tid','stedtid'],'stedtid','leds');}); wordsMaster.push({uid:'blank', word:'', translation:'', typeKey:'blank', part:'both', sentenceIndex:null, inPool:true, isBlank:true}); wordsMaster=shuffle(wordsMaster);}
-
-function renderPool(){const pool=document.getElementById('word-pool'); pool.innerHTML=''; wordsMaster.forEach(w=>{if(!w.inPool)return; const d=document.createElement('div'); if(w.isBlank){d.className='word pool-blank'; d.textContent='(blank)';} else{d.className='word '+(w.part==='hoved'?'pool-hoved':'pool-leds'); d.textContent=w.word;} d.dataset.uid=w.uid; d.dataset.typeKey=w.typeKey; if(!document.getElementById('mobil-version').checked){d.draggable=true; d.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',w.uid));} else{d.addEventListener('click',()=>selectWordTap(w.uid));} pool.appendChild(d);});}
-
-function selectWordTap(uid){selectedWordUid=uid; document.querySelectorAll('#word-pool .word').forEach(el=>el.classList.remove('selected-tap')); const el=document.querySelector(`#word-pool .word[data-uid="${uid}"]`); if(el) el.classList.add('selected-tap');}
-function tapCell(td){if(!document.getElementById('mobil-version').checked)return; if(!selectedWordUid)return; const wIdx=wordsMaster.findIndex(w=>w.uid===selectedWordUid); if(wIdx===-1)return; const w=wordsMaster[wIdx]; const oldUid=td.dataset.uid; if(oldUid && oldUid!=='fixed' && oldUid!=='' && oldUid!=='blank'){const oldIdx=wordsMaster.findIndex(x=>x.uid===oldUid); if(oldIdx!==-1) wordsMaster[oldIdx].inPool=true;} if(w.isBlank){td.textContent=''; td.dataset.uid='blank';}else{td.textContent=w.word; td.dataset.uid=w.uid; w.inPool=false;} selectedWordUid=null; document.querySelectorAll('#word-pool .word').forEach(el=>el.classList.remove('selected-tap')); renderPool(); clearHighlights(); updateTranslation();}
-
-function findMasterIndexByUid(uid){return wordsMaster.findIndex(x=>String(x.uid)===String(uid));}
-
-function dropWord(ev,td){ev.preventDefault(); const uid=ev.dataTransfer.getData('text/plain'); const mIdx=findMasterIndexByUid(uid); if(mIdx===-1)return; const obj=wordsMaster[mIdx]; const oldUid=td.dataset.uid; if(oldUid && oldUid!=='fixed' && oldUid!=='' && oldUid!=='blank'){const oldIdx=findMasterIndexByUid(oldUid); if(oldIdx!==-1) wordsMaster[oldIdx].inPool=true;} if(obj.isBlank){td.textContent=''; td.dataset.uid='blank';} else{td.textContent=obj.word; td.dataset.uid=obj.uid; obj.inPool=false;} renderPool(); clearHighlights(); updateTranslation();}
-
-function clearHighlights(){document.querySelectorAll('#sentence-rows td').forEach(td=>td.classList.remove('correct','partial','wrong'));}
-
-document.getElementById('check-button').addEventListener('click',()=>{
-  clearHighlights();
-  document.querySelectorAll('#sentence-rows tr').forEach(tr=>{
-    tr.querySelectorAll('td').forEach(td=>{
-      const rowIdx=tr.dataset.row; const key=td.dataset.key; const part=td.dataset.part;
-      if(td.dataset.uid==='fixed') return;
-      const userVal=td.dataset.uid==='blank'?'':td.textContent.trim();
-      const sent=selectedSentences[rowIdx]; const h=sent.hovedsætning||{}; const L=sent.ledsætning||{};
-      const correctWord=(part==='hoved'?getCorrectFieldFrom(h,key).word:getCorrectFieldFrom(L,key).word)||'';
-      if(userVal===correctWord) td.classList.add('correct');
-      else if(userVal!=='' && correctWord.includes(userVal)) td.classList.add('partial');
-      else td.classList.add('wrong');
-    });
-  });
-});
-
-document.getElementById('hint-button').addEventListener('click',()=>{
-  selectedSentences.forEach((s,rowIdx)=>{
-    const h=s.hovedsætning||{}; const L=s.ledsætning||{};
-    document.querySelectorAll(`#sentence-rows tr[data-row="${rowIdx}"] td`).forEach(td=>{
-      if(td.dataset.uid==='fixed')return;
-      const key=td.dataset.key; const part=td.dataset.part;
-      const correctWord=(part==='hoved'?getCorrectFieldFrom(h,key).word:getCorrectFieldFrom(L,key).word)||'';
-      if(correctWord) td.textContent=correctWord; td.dataset.uid='hint';
-    });
-  });
-  renderPool();
-});
-
-document.getElementById('reset-button').addEventListener('click',()=>{initUI();});
-
-function updateTranslation(){
-  let trans='';
-  selectedSentences.forEach((s,rowIdx)=>{
-    const h=s.hovedsætning||{}; const L=s.ledsætning||{};
-    const tr=document.querySelector(`#sentence-rows tr[data-row="${rowIdx}"]`);
-    if(!tr) return;
-    const vals=[];
-    tr.querySelectorAll('td').forEach(td=>{
-      if(td.dataset.uid==='fixed') return;
-      const uid=td.dataset.uid;
-      if(!uid) return;
-      const idx=findMasterIndexByUid(uid); if(idx===-1)return;
-      const w=wordsMaster[idx];
-      if(w && w.translation) vals.push(w.translation);
-    });
-    if(vals.length) trans+=vals.join(' ')+'\n';
-  });
-  document.getElementById('translation').textContent=trans;
+function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+function getField(obj, ...keys){ for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k]; return { word:'', translation:'' }; }
+function getCorrectFieldFrom(sectionObj, logicalKey){
+  if(!sectionObj) return {word:'', translation:''};
+  switch(logicalKey){
+    case 'subjekt': return getField(sectionObj,'subjekt');
+    case 'verbum1': return getField(sectionObj,'verbum1','verbium1','verbum1_1','verbium1_1');
+    case 'adverbium': return getField(sectionObj,'adverbium','adverbium1');
+    case 'verbum2_3': return getField(sectionObj,'verbium2-3','verbum2-3','verbum2_3','verbium2_3');
+    case 'objekt': return getField(sectionObj,'objekt');
+    case 'stedtid': return getField(sectionObj,'sted/tid','sted_tid','stedtid');
+    case 'L-Konjuktion': return getField(sectionObj,'L-Konjuktion','lkonj','L-Konj');
+    default: return getField(sectionObj, logicalKey);
+  }
 }
 
+function pickThreeRandom(){
+  if(!allSentences.length) return;
+  const indices = Array.from(allSentences.keys());
+  shuffle(indices);
+  selectedIdx = indices.slice(0, Math.min(3, indices.length));
+  selectedSentences = selectedIdx.map(i => allSentences[i]);
+  initUI();
+}
+
+function initUI(){
+  uidCounter = 1;
+  buildTable();
+  buildPool();
+  renderPool();
+  clearHighlights();
+  updateTranslation();
+  document.getElementById('hint-button').disabled = false;
+}
+
+function buildTable(){
+  const tbody = document.getElementById('sentence-rows'); tbody.innerHTML = '';
+  selectedSentences.forEach((s, rowIdx) => {
+    const tr = document.createElement('tr'); tr.dataset.row = String(rowIdx);
+    const makeCell = (text, fixed, part, key) => {
+      const td = document.createElement('td');
+      td.dataset.part = part; td.dataset.key = key; td.dataset.row = String(rowIdx);
+      if(fixed){ td.textContent = text || ''; td.dataset.uid = 'fixed'; }
+      else {
+        td.textContent = ''; td.dataset.uid = '';
+        td.addEventListener('dragover', e=>e.preventDefault());
+        td.addEventListener('drop', e=>dropWord(e, td));
+        td.addEventListener('click', ()=>tapInsert(td));
+        td.classList.add('blank-cell');
+      }
+      return td;
+    };
+    const h = s.hovedsætning || {}; const L = s.ledsætning || {};
+    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word, true, 'hoved', 'subjekt'));
+    tr.appendChild(makeCell('', false, 'hoved', 'verbum1'));
+    tr.appendChild(makeCell('', false, 'hoved', 'adverbium'));
+    tr.appendChild(makeCell('', false, 'hoved', 'verbum2_3'));
+    tr.appendChild(makeCell('', false, 'hoved', 'objekt'));
+    tr.appendChild(makeCell('', false, 'hoved', 'stedtid'));
+    const commaTd = document.createElement('td'); commaTd.textContent = ','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
+    tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word, true, 'leds', 'L-Konjuktion'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word, true, 'leds', 'subjekt'));
+    tr.appendChild(makeCell('', false, 'leds', 'verbum1'));
+    tr.appendChild(makeCell('', false, 'leds', 'verbum2_3'));
+    tr.appendChild(makeCell('', false, 'leds', 'objekt'));
+    tr.appendChild(makeCell('', false, 'leds', 'stedtid'));
+    tbody.appendChild(tr);
+  });
+}
+
+function buildPool(){
+  wordsMaster = [];
+  selectedSentences.forEach((s, idx)=>{
+    const h = s.hovedsætning||{}; const L = s.ledsætning||{};
+    const pushIf = (obj, keys, typeKey, part)=>{
+      const f = getField(obj, ...keys);
+      if(f && f.word){
+        wordsMaster.push({ uid: String(uidCounter++), word: f.word, translation: f.translation||'', typeKey, part, sentenceIndex: idx, inPool: true });
+      }
+    };
+    pushIf(h, ['verbum1','verbium1','verbum1_1','verbum1'], 'verbum1', 'hoved');
+    pushIf(h, ['adverbium','adverbium1'], 'adverbium', 'hoved');
+    pushIf(h, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'hoved');
+    pushIf(h, ['objekt'], 'objekt', 'hoved');
+    pushIf(h, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'hoved');
+    pushIf(L, ['verbium1','verbum1','verbium1_1'], 'verbum1', 'leds');
+    pushIf(L, ['verbium2-3','verbum2-3','verbum2_3'], 'verbum2_3', 'leds');
+    pushIf(L, ['objekt'], 'objekt', 'leds');
+    pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
+  });
+  wordsMaster.push({uid:'blank', word:'', translation:'', typeKey:'blank', part:'both', sentenceIndex:null, inPool:true, isBlank:true});
+  wordsMaster = shuffle(wordsMaster);
+}
+
+function renderPool(){
+  const pool = document.getElementById('word-pool'); pool.innerHTML = '';
+  wordsMaster.forEach(w=>{
+    if(!w.inPool) return;
+    const d = document.createElement('div');
+    if(w.isBlank){ d.className='word pool-blank'; d.textContent='(blank)'; }
+    else { d.className='word '+(w.part==='hoved'?'pool-hoved':'pool-leds'); d.textContent=w.word; }
+    d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey; d.draggable=true;
+    d.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', w.uid));
+    d.addEventListener('click', ()=>tapSelectWord(w.uid));
+    pool.appendChild(d);
+  });
+}
+
+function findMasterIndexByUid(uid){ return wordsMaster.findIndex(x => String(x.uid) === String(uid)); }
+
+function dropWord(ev, td){
+  ev.preventDefault();
+  if(tapMode) return; 
+  const uid = ev.dataTransfer.getData('text/plain'); 
+  const mIdx = findMasterIndexByUid(uid);
+  if(mIdx===-1) return;
+  const obj = wordsMaster[mIdx];
+  const oldUid = td.dataset.uid;
+  if(oldUid && oldUid!=='fixed' && oldUid!=='' && oldUid!=='blank'){
+    const oldIdx = findMasterIndexByUid(oldUid);
+    if(oldIdx!==-1) wordsMaster[oldIdx].inPool=true;
+  }
+  if(obj.isBlank){ td.textContent=''; td.dataset.uid='blank'; }
+  else { td.textContent=obj.word; td.dataset.uid=obj.uid; obj.inPool=false; }
+  renderPool(); clearHighlights(); updateTranslation();
+}
+
+function tapSelectWord(uid){
+  if(!tapMode) return;
+  selectedWordUid = uid;
+  document.querySelectorAll('#word-pool .word').forEach(w=>w.classList.remove('tap-selected'));
+  const div = document.querySelector('#word-pool .word[data-uid="'+uid+'"]'); if(div) div.classList.add('tap-selected');
+}
+
+function tapInsert(td){
+  if(!tapMode || !selectedWordUid) return;
+  const objIdx = findMasterIndexByUid(selectedWordUid); if(objIdx===-1) return;
+  const obj = wordsMaster[objIdx];
+  const oldUid = td.dataset.uid;
+  if(oldUid && oldUid!=='fixed' && oldUid!=='' && oldUid!=='blank'){
+    const oldIdx = findMasterIndexByUid(oldUid); if(oldIdx!==-1) wordsMaster[oldIdx].inPool=true;
+  }
+  if(obj.isBlank){ td.textContent=''; td.dataset.uid='blank'; }
+  else { td.textContent=obj.word; td.dataset.uid=obj.uid; obj.inPool=false; }
+  selectedWordUid=null;
+  document.querySelectorAll('#word-pool .word').forEach(w=>w.classList.remove('tap-selected'));
+  renderPool(); clearHighlights(); updateTranslation();
+}
+
+document.getElementById('mobil-toggle').addEventListener('change', e=>{
+  tapMode = e.target.checked;
+  document.getElementById('word-pool').style.cursor = tapMode ? 'pointer' : 'grab';
+});
+
+function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.classList.remove('correct','partial','wrong')); }
+
+document.getElementById('check-button').addEventListener('click', ()=>{
+  clearHighlights();
+  const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
+  rows.forEach((tr,rowIdx)=>{
+    Array.from(tr.querySelectorAll('td')).forEach(td=>{
+      const key = td.dataset.key; if(!key) return;
+      if(td.dataset.uid==='fixed'){ td.classList.add('correct'); return; }
+      const expectedField = (td.dataset.part==='hoved')?getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key):getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key);
+      const expectedWord = expectedField?expectedField.word||'':'';
+      const uid = td.dataset.uid;
+      if(expectedWord===''){ if(!uid||uid==='blank'||td.textContent.trim()===''){ td.classList.add('correct'); } else td.classList.add('wrong'); return; }
+      if(!uid||uid===''){ td.classList.add('wrong'); return; }
+      if(uid==='blank'){ td.classList.add('wrong'); return; }
+      const mIdx = findMasterIndexByUid(uid); if(mIdx!==-1){ const w=wordsMaster[mIdx]; if(w.word===expectedWord) td.classList.add('correct'); else if(w.typeKey===td.dataset.key) td.classList.add('partial'); else td.classList.add('wrong'); } else { if(td.textContent===expectedWord) td.classList.add('correct'); else td.classList.add('wrong'); }
+    });
+  });
+  updateTranslation();
+});
+
+document.getElementById('hint-button').addEventListener('click', ()=>{
+  const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
+  rows.forEach((tr,rowIdx)=>{
+    const emptiesH = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.part==='hoved' && td.dataset.key && td.dataset.uid!== 'fixed' && getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,td.dataset.key).word);
+    if(emptiesH.length>0){ const td=emptiesH[Math.floor(Math.random()*emptiesH.length)]; const f=getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,td.dataset.key); td.textContent=f.word; td.dataset.uid='fixed'; const pIdx = wordsMaster.findIndex(w=>!w.isBlank && w.word===f.word && w.part==='hoved' && w.sentenceIndex===rowIdx && w.typeKey===td.dataset.key); if(pIdx!==-1) wordsMaster[pIdx].inPool = false; }
+
+    const emptiesL = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.part==='leds' && td.dataset.key && td.dataset.uid!=='fixed' && getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,td.dataset.key).word);
+    if(emptiesL.length>0){ const td=emptiesL[Math.floor(Math.random()*emptiesL.length)]; const f=getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,td.dataset.key); td.textContent=f.word; td.dataset.uid='fixed'; const pIdx = wordsMaster.findIndex(w=>!w.isBlank && w.word===f.word && w.part==='leds' && w.sentenceIndex===rowIdx && w.typeKey===td.dataset.key); if(pIdx!==-1) wordsMaster[pIdx].inPool=false; }
+  });
+  renderPool(); updateTranslation(); document.getElementById('hint-button').disabled=true;
+});
+
+document.getElementById('reset-button').addEventListener('click', ()=>{
+  document.getElementById('hint-button').disabled=false;
+  pickThreeRandom();
+});
+
+function updateTranslation(){
+  const root=document.getElementById('translation'); root.innerHTML='';
+  const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
+  rows.forEach((tr,rowIdx)=>{
+    Array.from(tr.querySelectorAll('td')).forEach(td=>{
+      const key=td.dataset.key; if(!key) return;
+      const uid=td.dataset.uid; let text=td.textContent||'';
+      if(uid==='fixed'){ const part=td.dataset.part; const field=(part==='hoved')?getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key):getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key); if(field && field.translation) text+=' → '+field.translation; }
+      else if(uid){ if(uid!=='blank'){ const mIdx=findMasterIndexByUid(uid); if(mIdx!==-1){ const w=wordsMaster[mIdx]; if(w && w.translation) text+=' → '+w.translation; } } }
+      else return;
+      if(text){ const d=document.createElement('div'); d.textContent=text; root.appendChild(d); }
+    });
+  });
+}
 </script>
 </body>
 </html>
