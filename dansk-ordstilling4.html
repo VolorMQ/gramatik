@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Hoved + Ledsætninger (поддержка твоего JSON)</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Hoved+Ledsætninger — 1 sætning</title>
 <style>
 :root{
   --bg:#fafafa; --ink:#1f2937; --line:#e5e7eb;
   --blue:#2563eb; --red:#ef4444; --green:#10b981; --amber:#f59e0b; --violet:#8b5cf6; --purple:#9333ea;
 }
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
-.page{max-width:1200px;margin:24px auto;padding:0 16px}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+.page{max-width:1100px;margin:28px auto;padding:0 16px}
 h1{font-size:20px;margin:0 0 12px}
+.note{font-size:13px;color:#374151;margin-bottom:10px}
 table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:12px}
-th,td{border:1px solid var(--line);padding:8px;text-align:center;min-height:40px}
+th,td{border:1px solid var(--line);padding:10px;text-align:center;min-height:44px}
 th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.word{padding:6px 10px;border-radius:6px;background:#eef2ff;color:#3730a3;font-weight:600;cursor:grab;user-select:none}
+.word{padding:8px 12px;border-radius:8px;background:#eef2ff;color:#3730a3;font-weight:700;cursor:grab;user-select:none}
 #buttons{margin-top:12px;display:flex;gap:8px}
-button{padding:8px 12px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+button{padding:8px 14px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700}
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:#10b981}
 .correct{background:#d1fae5 !important}
@@ -28,9 +29,10 @@ button:disabled{opacity:0.5;cursor:default}
 </head>
 <body>
 <div class="page">
-  <h1>Hoved + Ledsætninger (работает с nested JSON)</h1>
+  <h1>Hoved + Ledsætninger (1 sætning)</h1>
+  <div class="note">Показано одно предложение. Перетаскивай слова из пула в пустые ячейки. Нажми <strong>Tjek</strong> для проверки, <strong>Hjælp</strong> — подсказка, <strong>Nulstil</strong> — новое предложение.</div>
 
-  <table class="schema" aria-label="Hoved + Ledsætninger">
+  <table aria-label="Hoved + Ledsætninger">
     <thead>
       <tr>
         <th>subjekt</th>
@@ -39,7 +41,7 @@ button:disabled{opacity:0.5;cursor:default}
         <th>verbum2-3</th>
         <th>objekt</th>
         <th>sted/tid</th>
-        <th>,</th>
+        <th>comma</th>
         <th>L-Konjuktion</th>
         <th>subjekt (leds)</th>
         <th>verbum1 (leds)</th>
@@ -52,218 +54,157 @@ button:disabled{opacity:0.5;cursor:default}
   </table>
 
   <div id="word-pool" aria-live="polite"></div>
+
   <div id="buttons">
     <button id="check-button">Tjek</button>
     <button id="hint-button">Hjælp</button>
     <button id="reset-button">Nulstil</button>
   </div>
+
   <div id="translation"></div>
 </div>
 
 <script>
 /*
-Ожидаемый JSON: words.json с массивом sentences,
-каждый элемент имеет поля: hovedsætning (объект) и ledsætning (объект).
-Пример:
-{
-  "sentences":[
-    {
-      "hovedsætning": { "subjekt":{word:..,translation:..}, "verbium1": {...}, ... },
-      "ledsætning": { "L-Konjuktion": {...}, "subjekt": {...}, ... }
-    }, ...
-  ]
-}
+Ожидаемый words.json: {"sentences":[ { "hovedsætning": {...}, "ledsætning": {...} }, ... ]}
+Каждый внутренний объект имеет поля вида { word:"...", translation:"..." }.
 */
 
 let sentences = [];
-let wordsPool = []; // объекты { uid, word, translation, typeKey, part:'hoved'|'leds', sentenceIndex, inPool }
-
+let activeIndex = 0;        // индекс текущего предложения (показываем один)
+let wordsPool = [];        // { uid, word, translation, typeKey, part, inPool }
 let uidCounter = 1;
 
 fetch('words.json')
-  .then(res => res.json())
+  .then(r => r.json())
   .then(data => {
-    if(!data || !Array.isArray(data.sentences)){
-      throw new Error('JSON не содержит sentences[]');
-    }
+    if(!data || !Array.isArray(data.sentences)) throw new Error('words.json должен содержать массив sentences');
     sentences = data.sentences;
-    initSentences();
+    pickRandomSentence();
   })
   .catch(err => {
-    console.error("Fejl ved indlæsning af JSON:", err);
-    document.body.insertAdjacentHTML('afterbegin', `<div style="color:red;padding:12px;">Ошибка загрузки JSON: ${err.message}</div>`);
+    console.error(err);
+    document.body.insertAdjacentHTML('afterbegin', `<div style="color:#b91c1c;padding:12px;">Ошибка загрузки words.json: ${err.message}</div>`);
   });
 
-function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+function shuffle(a){ return a.sort(()=>Math.random()-0.5); }
 
-// помощник: безопасно получить поле, игнорируя мелкие расхождения имен
 function getField(obj, ...keys){
-  for(const k of keys){
-    if(!obj) continue;
-    if(k in obj && obj[k] && typeof obj[k].word !== 'undefined') return obj[k];
-  }
-  return { word:'', translation:'' };
+  for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k];
+  return {word:'', translation:''};
 }
 
-function initSentences(){
+function pickRandomSentence(){
+  if(!sentences.length) return;
+  activeIndex = Math.floor(Math.random()*sentences.length);
+  initUI();
+}
+
+function initUI(){
   uidCounter = 1;
   const tbody = document.getElementById('sentence-rows');
   tbody.innerHTML = '';
 
-  // показываем все предложения (или можно ограничить первые N)
-  sentences.forEach((s, i) => {
-    const tr = document.createElement('tr');
-    tr.dataset.index = i;
+  const s = sentences[activeIndex];
+  const h = s.hovedsætning || {};
+  const L = s.ledsætning || {};
 
-    // HOVED (используем гибкие ключи: verbium/verbum/verbium1/verbum1)
-    const hovedKeys = {
-      subjekt: ['subjekt'],
-      verbum1: ['verbium1','verbum1','verbum1','verbum1'], // допускаем варианты
-      adverbium: ['adverbium'],
-      verbum2_3: ['verbium2-3','verbum2-3','verbium2_3','verbum2_3'],
-      objekt: ['objekt'],
-      stedtid: ['sted/tid','sted_tid','stedtid','sted/tid']
-    };
+  // Определим ключи (жёстко для этого интерфейса)
+  const addCell = (text, fixed, part, key) => {
+    const td = document.createElement('td');
+    td.dataset.part = part;
+    td.dataset.key = key;
+    if(fixed){
+      td.textContent = text || '';
+      td.dataset.uid = 'fixed';
+    } else {
+      td.textContent = '';
+      td.dataset.uid = '';
+      td.addEventListener('dragover', e => e.preventDefault());
+      td.addEventListener('drop', e => dropWord(e, td));
+    }
+    return td;
+  };
 
-    const ledsKeys = {
-      LKonj: ['L-Konjuktion','L-Konjuktion','lkonj','L-Konj'],
-      subjekt: ['subjekt'],
-      verbum1: ['verbium1','verbum1','verbium1'],
-      verbum2_3: ['verbium2-3','verbum2-3','verbium2_3'],
-      objekt: ['objekt'],
-      stedtid: ['sted/tid','sted_tid','stedtid']
-    };
+  const tr = document.createElement('tr');
 
-    // Создаём ячейки для hoved
-    const addCell = (text, isFixed, part, typeKey) => {
-      const td = document.createElement('td');
-      td.dataset.part = part; // 'hoved' или 'leds'
-      td.dataset.key = typeKey; // логический ключ (например 'verbum1' или 'stedtid')
-      if(isFixed){
-        td.textContent = text;
-        td.dataset.uid = 'fixed';
-      } else {
-        td.textContent = '';
-        td.dataset.uid = '';
-        td.addEventListener('dragover', ev => ev.preventDefault());
-        td.addEventListener('drop', ev => dropWord(ev, td));
-      }
-      return td;
-    };
+  // Hovedsætning: subjekt (фикс), verbum1, adverbium, verbum2-3, objekt, sted/tid
+  tr.appendChild(addCell(getField(h,'subjekt').word, true, 'hoved', 'subjekt'));
+  tr.appendChild(addCell('', false, 'hoved', 'verbum1'));
+  tr.appendChild(addCell('', false, 'hoved', 'adverbium'));
+  tr.appendChild(addCell('', false, 'hoved', 'verbum2_3'));
+  tr.appendChild(addCell('', false, 'hoved', 'objekt'));
+  tr.appendChild(addCell('', false, 'hoved', 'stedtid'));
 
-    // Hoved: subjekt (фикс), verbum1 (пустая), adverbium (пустая), verbum2-3 (пустая), objekt, sted/tid
-    const h = s.hovedsætning || {};
-    const hf_subj = getField(h, ...hovedKeys.subjekt).word || '';
-    tr.appendChild(addCell(hf_subj, true, 'hoved', 'subjekt'));
+  // comma
+  const commaTd = document.createElement('td');
+  commaTd.textContent = ',';
+  commaTd.dataset.uid = 'fixed';
+  tr.appendChild(commaTd);
 
-    const hf_v1 = getField(h, ...hovedKeys.verbum1).word || '';
-    tr.appendChild(addCell(hf_v1, hf_v1!=='', 'hoved', 'verbum1'));
+  // L-Konjuktion (фикс)
+  tr.appendChild(addCell(getField(L,'L-Konjuktion','lkonj').word, true, 'leds', 'L-Konjuktion'));
 
-    const hf_adv = getField(h, ...hovedKeys.adverbium).word || '';
-    tr.appendChild(addCell(hf_adv, hf_adv!=='', 'hoved', 'adverbium'));
+  // Ledsætning: subjekt (фикс), verbum1, verbum2-3, objekt, sted/tid
+  tr.appendChild(addCell(getField(L,'subjekt').word, true, 'leds', 'subjekt'));
+  tr.appendChild(addCell('', false, 'leds', 'verbum1'));
+  tr.appendChild(addCell('', false, 'leds', 'verbum2_3'));
+  tr.appendChild(addCell('', false, 'leds', 'objekt'));
+  tr.appendChild(addCell('', false, 'leds', 'stedtid'));
 
-    const hf_v23 = getField(h, ...hovedKeys.verbum2_3).word || '';
-    tr.appendChild(addCell(hf_v23, hf_v23!=='', 'hoved', 'verbum2_3'));
+  tbody.appendChild(tr);
 
-    const hf_obj = getField(h, ...hovedKeys.objekt).word || '';
-    tr.appendChild(addCell(hf_obj, hf_obj!=='', 'hoved', 'objekt'));
-
-    const hf_sted = getField(h, ...hovedKeys.stedtid).word || '';
-    tr.appendChild(addCell(hf_sted, hf_sted!=='', 'hoved', 'stedtid'));
-
-    // запятая как фиксированный столбец
-    const commaTd = document.createElement('td');
-    commaTd.textContent = ',';
-    commaTd.dataset.part = 'punct';
-    commaTd.dataset.key = 'comma';
-    commaTd.dataset.uid = 'fixed';
-    tr.appendChild(commaTd);
-
-    // L-Konjuktion (фикс) — берем из ledsætning
-    const L = s.ledsætning || {};
-    const lkonj = getField(L, ...ledsKeys.LKonj).word || '';
-    const lkonjTd = document.createElement('td');
-    lkonjTd.textContent = lkonj;
-    lkonjTd.dataset.part = 'leds';
-    lkonjTd.dataset.key = 'L-Konjuktion';
-    lkonjTd.dataset.uid = 'fixed';
-    tr.appendChild(lkonjTd);
-
-    // Ledsætning: subjekt (фикс), verbum1, verbum2-3, objekt, sted/tid
-    const lf_subj = getField(L, ...ledsKeys.subjekt).word || '';
-    tr.appendChild(addCell(lf_subj, true, 'leds', 'subjekt'));
-
-    const lf_v1 = getField(L, ...ledsKeys.verbum1).word || '';
-    tr.appendChild(addCell(lf_v1, lf_v1!=='', 'leds', 'verbum1'));
-
-    const lf_v23 = getField(L, ...ledsKeys.verbum2_3).word || '';
-    tr.appendChild(addCell(lf_v23, lf_v23!=='', 'leds', 'verbum2_3'));
-
-    const lf_obj = getField(L, ...ledsKeys.objekt).word || '';
-    tr.appendChild(addCell(lf_obj, lf_obj!=='', 'leds', 'objekt'));
-
-    const lf_sted = getField(L, ...ledsKeys.stedtid).word || '';
-    tr.appendChild(addCell(lf_sted, lf_sted!=='', 'leds', 'stedtid'));
-
-    tbody.appendChild(tr);
-  });
-
-  // build pool: берем только перетаскиваемые поля из обеих частей
+  // Build pool only from current sentence (чтобы уменьшить сложность)
   wordsPool = [];
-  sentences.forEach((s, idx) => {
-    const h = s.hovedsætning || {};
-    const L = s.ledsætning || {};
+  const pushIf = (obj, keys, typeKey, part) => {
+    const f = getField(obj, ...keys);
+    if(f && f.word){
+      wordsPool.push({
+        uid: String(uidCounter++),
+        word: f.word,
+        translation: f.translation || '',
+        typeKey,
+        part,
+        inPool: true
+      });
+    }
+  };
 
-    // helper to push if present
-    const pushIf = (obj, keys, typeKey, part) => {
-      const f = getField(obj, ...keys);
-      if(f && f.word){
-        wordsPool.push({
-          uid: uidCounter++,
-          word: f.word,
-          translation: f.translation||'',
-          typeKey: typeKey,
-          part: part, // 'hoved' или 'leds'
-          sentenceIndex: idx,
-          inPool: true
-        });
-      }
-    };
+  // Hoved fields (we use common field names to search)
+  pushIf(h, ['verbum1','verbium1','verbum1_1','verbum1'], 'verbum1', 'hoved');
+  pushIf(h, ['adverbium','adverbium1'], 'adverbium', 'hoved');
+  pushIf(h, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'hoved');
+  pushIf(h, ['objekt'], 'objekt', 'hoved');
+  pushIf(h, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'hoved');
 
-    // поля для пула (те, которые ранее были draggable)
-    pushIf(h, ['verbum1','verbium1','verbum1_1','verbium1_1'], 'verbum1', 'hoved');
-    pushIf(h, ['adverbium','adverbium1'], 'adverbium', 'hoved');
-    pushIf(h, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'hoved');
-    pushIf(h, ['objekt'], 'objekt', 'hoved');
-    pushIf(h, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'hoved');
+  // Leds fields
+  pushIf(L, ['verbium1','verbum1','verbium1_1'], 'verbum1', 'leds');
+  pushIf(L, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'leds');
+  pushIf(L, ['objekt'], 'objekt', 'leds');
+  pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
 
-    pushIf(L, ['verbium1','verbum1','verbium1_1','verbum1_1'], 'verbum1', 'leds');
-    pushIf(L, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'leds');
-    pushIf(L, ['objekt'], 'objekt', 'leds');
-    pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
-    // заметка: субъект и L-Konjuktion не в пуле
-  });
-
+  // shuffle & render pool
   wordsPool = shuffle(wordsPool);
   renderWordPool();
+  clearHighlights();
   updateTranslation();
 }
 
 function renderWordPool(){
   const pool = document.getElementById('word-pool');
   pool.innerHTML = '';
-  wordsPool.forEach(w => {
+  wordsPool.forEach(w=>{
     if(!w.inPool) return;
-    const div = document.createElement('div');
-    div.className = 'word';
-    div.textContent = w.word;
-    div.dataset.uid = w.uid;
-    div.dataset.typeKey = w.typeKey;
-    div.draggable = true;
-    div.addEventListener('dragstart', ev => {
-      ev.dataTransfer.setData('text/plain', String(w.uid));
+    const d = document.createElement('div');
+    d.className = 'word';
+    d.textContent = w.word;
+    d.draggable = true;
+    d.dataset.uid = w.uid;
+    d.dataset.typeKey = w.typeKey;
+    d.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', w.uid);
     });
-    pool.appendChild(div);
+    pool.appendChild(d);
   });
 }
 
@@ -274,21 +215,21 @@ function findPoolIndexByUid(uid){
 function dropWord(ev, td){
   ev.preventDefault();
   const uid = ev.dataTransfer.getData('text/plain');
-  const poolIdx = findPoolIndexByUid(uid);
-  if(poolIdx === -1) return;
-  const wordObj = wordsPool[poolIdx];
+  const pIdx = findPoolIndexByUid(uid);
+  if(pIdx === -1) return;
+  const obj = wordsPool[pIdx];
 
-  // вернуть старое слово в пул (если было)
+  // вернуть старое слово в пул, если оно было не fixed
   const oldUid = td.dataset.uid;
-  if(oldUid && oldUid !== 'fixed'){
+  if(oldUid && oldUid !== 'fixed' && oldUid !== ''){
     const oldIdx = findPoolIndexByUid(oldUid);
     if(oldIdx !== -1) wordsPool[oldIdx].inPool = true;
   }
 
-  // вставляем новое
-  td.textContent = wordObj.word;
-  td.dataset.uid = String(wordObj.uid);
-  wordObj.inPool = false;
+  // вставить новое
+  td.textContent = obj.word;
+  td.dataset.uid = obj.uid;
+  obj.inPool = false;
 
   renderWordPool();
   clearHighlights();
@@ -296,105 +237,104 @@ function dropWord(ev, td){
 }
 
 function clearHighlights(){
-  document.querySelectorAll('#sentence-rows td').forEach(td => {
-    td.classList.remove('correct','partial','wrong');
-  });
+  document.querySelectorAll('#sentence-rows td').forEach(td => td.classList.remove('correct','partial','wrong'));
 }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
   clearHighlights();
-  document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx) => {
-    tr.querySelectorAll('td').forEach(td => {
-      const uid = td.dataset.uid;
-      const part = td.dataset.part;
-      const key = td.dataset.key;
-      // игнорируем пунктуацию/фиксированные поля
-      if(!key || uid === 'fixed' || uid === '') return;
+  const tr = document.querySelector('#sentence-rows tr');
+  if(!tr) return;
+  const cells = Array.from(tr.querySelectorAll('td'));
+  cells.forEach(td => {
+    const key = td.dataset.key;
+    if(!key) return;
+    if(td.dataset.uid === 'fixed') { td.classList.add('correct'); return; }
 
-      const correctField = (part === 'hoved') ? (sentences[rowIdx].hovedsætning || {})[key] : (sentences[rowIdx].ledsætning || {})[key];
-      const correctWord = correctField ? (correctField.word||'') : '';
+    const expectedField = (td.dataset.part === 'hoved') ? (sentences[activeIndex].hovedsætning || {})[key] : (sentences[activeIndex].ledsætning || {})[key];
+    const expectedWord = expectedField ? (expectedField.word || '') : '';
 
-      const poolIdx = findPoolIndexByUid(uid);
-      if(poolIdx === -1){
-        // возможно подсказка (uid не соответствует ни одной записи) — считаем правильным, если текст совпадает
-        if(td.textContent === correctWord) td.classList.add('correct'); else td.classList.add('wrong');
-      } else {
-        const wordObj = wordsPool[poolIdx];
-        if(wordObj.word === correctWord) td.classList.add('correct');
-        else if(wordObj.typeKey === key) td.classList.add('partial');
-        else td.classList.add('wrong');
-      }
-    });
+    const uid = td.dataset.uid;
+    if(!uid) {
+      // пустая ячейка — пометим как wrong (или можно игнорировать)
+      td.classList.add('wrong');
+      return;
+    }
+
+    const pIdx = findPoolIndexByUid(uid);
+    if(pIdx !== -1){
+      const w = wordsPool[pIdx];
+      // если объект в массиве, но inPool может быть false — он всё равно хранит слово
+      if(w.word === expectedWord) td.classList.add('correct');
+      else if(w.typeKey === key) td.classList.add('partial');
+      else td.classList.add('wrong');
+    } else {
+      // uid не найден в текущем pool (возможно был подсказкой fixed) — сравним по тексту
+      if(td.textContent === expectedWord) td.classList.add('correct'); else td.classList.add('wrong');
+    }
   });
   updateTranslation();
 });
 
-// Подсказка: вставляет правильные слова в случайные пустые клетки (по одному на строку)
 document.getElementById('hint-button').addEventListener('click', ()=>{
-  document.querySelectorAll('#sentence-rows tr').forEach((tr, rowIdx) => {
-    const empties = Array.from(tr.querySelectorAll('td')).filter(td => {
-      const k = td.dataset.key;
-      return k && td.dataset.uid !== 'fixed' && (!td.dataset.uid || td.dataset.uid === '');
-    });
-    if(empties.length === 0) return;
-    const td = empties[Math.floor(Math.random()*empties.length)];
-    const part = td.dataset.part;
-    const key = td.dataset.key;
-    const correctField = (part === 'hoved') ? (sentences[rowIdx].hovedsætning || {})[key] : (sentences[rowIdx].ledsætning || {})[key];
-    if(correctField && correctField.word){
-      // помечаем как подсказка: uid = 'fixed'
-      td.textContent = correctField.word;
-      td.dataset.uid = 'fixed';
-      // убрать из пула соответствующий элемент
-      const pIdx = wordsPool.findIndex(w => w.word === correctField.word && w.typeKey === key && w.sentenceIndex === rowIdx);
-      if(pIdx !== -1) wordsPool[pIdx].inPool = false;
-    }
-  });
-
-  renderWordPool();
-  updateTranslation();
-  document.getElementById('hint-button').disabled = true;
+  const tr = document.querySelector('#sentence-rows tr');
+  if(!tr) return;
+  const empties = Array.from(tr.querySelectorAll('td')).filter(td => td.dataset.key && td.dataset.uid !== 'fixed' && (!td.dataset.uid || td.dataset.uid === ''));
+  if(empties.length === 0) return;
+  // вставим одну подсказку (рандомную пустую)
+  const td = empties[Math.floor(Math.random()*empties.length)];
+  const key = td.dataset.key;
+  const part = td.dataset.part;
+  const field = (part === 'hoved') ? (sentences[activeIndex].hovedsætning || {})[key] : (sentences[activeIndex].ledsætning || {})[key];
+  if(field && field.word){
+    td.textContent = field.word;
+    td.dataset.uid = 'fixed'; // помечаем как подсказка/фиксированное
+    // удаляем соответствующий элемент из пула (если есть)
+    const pIdx = wordsPool.findIndex(w => w.word === field.word && w.typeKey === key);
+    if(pIdx !== -1) wordsPool[pIdx].inPool = false;
+    renderWordPool();
+    updateTranslation();
+    document.getElementById('hint-button').disabled = true;
+  }
 });
 
 document.getElementById('reset-button').addEventListener('click', ()=>{
   document.getElementById('hint-button').disabled = false;
-  initSentences();
+  pickRandomSentence();
 });
 
 function updateTranslation(){
   const root = document.getElementById('translation');
   root.innerHTML = '';
-  document.querySelectorAll('#sentence-rows tr').forEach((tr, rowIdx) => {
-    tr.querySelectorAll('td').forEach(td => {
-      const key = td.dataset.key;
-      if(!key) return;
-      const uid = td.dataset.uid;
-      let text = td.textContent || '';
-      if(uid === 'fixed'){
-        // берем перевод из correct field
-        const part = td.dataset.part;
-        const correctField = (part === 'hoved') ? (sentences[rowIdx].hovedsætning || {})[key] : (sentences[rowIdx].ledsætning || {})[key];
-        const trn = correctField ? correctField.translation : '';
-        if(trn) text += ' → ' + trn;
-      } else if(uid){
-        const pIdx = findPoolIndexByUid(uid);
-        const w = pIdx !== -1 ? wordsPool[pIdx] : null;
-        if(w){
-          text += ' → ' + (w.translation || '');
-        } else {
-          // возможно слово уже исключено из pool (inPool=false) — ищем в исходных данных
-          const correctField = (td.dataset.part === 'hoved') ? (sentences[rowIdx].hovedsætning || {})[key] : (sentences[rowIdx].ledsætning || {})[key];
-          const trn = correctField ? correctField.translation : '';
-          if(trn) text += ' → ' + trn;
-        }
+  const tr = document.querySelector('#sentence-rows tr');
+  if(!tr) return;
+  const cells = Array.from(tr.querySelectorAll('td'));
+  cells.forEach(td => {
+    const key = td.dataset.key;
+    if(!key) return;
+    const uid = td.dataset.uid;
+    let text = td.textContent || '';
+    if(uid === 'fixed'){
+      const part = td.dataset.part;
+      const field = (part === 'hoved') ? (sentences[activeIndex].hovedsætning || {})[key] : (sentences[activeIndex].ledsætning || {})[key];
+      if(field && field.translation) text += ' → ' + field.translation;
+    } else if(uid){
+      const pIdx = findPoolIndexByUid(uid);
+      if(pIdx !== -1){
+        const w = wordsPool[pIdx];
+        if(w && w.translation) text += ' → ' + w.translation;
       } else {
-        // пустая ячейка — ничего не показываем
-        return;
+        // если не найден — попробовать взять перевод из исходного объекта (вдруг слово уже подставлено и удалено из пула)
+        const part = td.dataset.part;
+        const field = (part === 'hoved') ? (sentences[activeIndex].hovedsætning || {})[key] : (sentences[activeIndex].ledsætning || {})[key];
+        if(field && field.translation) text += ' → ' + field.translation;
       }
-      const div = document.createElement('div');
-      div.textContent = text;
-      root.appendChild(div);
-    });
+    } else {
+      // пустая ячейка — пропустить
+      return;
+    }
+    const d = document.createElement('div');
+    d.textContent = text;
+    root.appendChild(d);
   });
 }
 </script>
