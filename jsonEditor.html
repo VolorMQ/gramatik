@@ -41,7 +41,7 @@ let jsonData = [];
 // Загрузка words.json с сервера
 async function loadFromServer() {
   try {
-    const response = await fetch('/words.json');
+    const response = await fetch('words.json');
     const data = await response.json();
     if (Array.isArray(data.sentences)) {
       jsonData = data.sentences;
