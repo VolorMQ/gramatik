@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Hoved+Ledsætninger — 3 sætninger (подсказка: по 1 в hoved и по 1 в leds)</title>
+<title>Hoved+Ledsætninger — 3 sætninger (поддержка пустого токена)</title>
 <style>
 :root{
   --bg:#fafafa; --ink:#111827; --line:#e5e7eb;
   --hoved:#dbeafe; --leds:#f3e8ff; --pool-text:#0f172a;
+  --blank-bg:#f3f4f6;
   --blue:#2563eb; --green:#10b981; --amber:#f59e0b; --red:#ef4444;
 }
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
@@ -26,6 +27,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .word{padding:8px 12px;border-radius:8px;color:var(--pool-text);font-weight:700;cursor:grab;user-select:none}
 .pool-hoved{background:var(--hoved);border:1px solid rgba(37,99,235,0.08)}
 .pool-leds{background:var(--leds);border:1px solid rgba(139,92,246,0.08)}
+.pool-blank{background:var(--blank-bg);border:1px dashed #9ca3af;color:#6b7280;font-weight:700}
 #buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 14px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700}
 button:disabled{opacity:0.5;cursor:default}
@@ -34,12 +36,13 @@ button:disabled{opacity:0.5;cursor:default}
 .partial{background: #fef08a !important}
 .wrong{background: #fee2e2 !important}
 .info{margin-top:8px;color:#374151;font-size:13px}
+.blank-cell{background:#fff;border:2px dashed #e5e7eb}
 </style>
 </head>
 <body>
 <div class="page">
   <h1>Hoved + Ledsætninger (3 sætninger)</h1>
-  <div class="note">Перетаскивай слова из пула в пустые ячейки. <strong>Tjek</strong> — проверка, <strong>Hjælp</strong> — вставляет по 1 слову в случайную пустую ячейку каждой части (hoved и leds) для каждой строки, <strong>Nulstil</strong> — новое трио.</div>
+  <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em> — при проверке это будет считаться правильным.</div>
 
   <table aria-label="Hoved + Ledsætninger">
     <thead>
@@ -65,6 +68,7 @@ button:disabled{opacity:0.5;cursor:default}
   <div id="legend" aria-hidden="false">
     <div class="legend-item"><span class="legend-swatch legend-hoved" aria-hidden="true"></span>Слова из <strong>hovedsætning</strong></div>
     <div class="legend-item"><span class="legend-swatch legend-leds" aria-hidden="true"></span>Слова из <strong>ledsætning</strong></div>
+    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span>Специальный <strong>blank</strong> (пустой) токен</div>
   </div>
 
   <div id="word-pool" aria-live="polite"></div>
@@ -76,15 +80,15 @@ button:disabled{opacity:0.5;cursor:default}
   </div>
 
   <div id="translation"></div>
-  <div class="info">Легенда показывает, какие слова в пуле принадлежат к hovedsætning и какие — к ledsætning.</div>
+  <div class="info">Если эталон пустой — оставь ячейку пустой или используй <em>blank</em>. Это будет отмечено как правильно (зелёным).</div>
 </div>
 
 <script>
-/* Скрипт: 3 предложения, подсказка по 1 слову в hoved и 1 слову в leds на строку */
+/* Скрипт: 3 предложения + один неизрасходуемый blank токен */
 let allSentences = [];
 let selectedIdx = [];
 let selectedSentences = [];
-let wordsMaster = [];
+let wordsMaster = []; // включает обычные токены и специальный blank
 let uidCounter = 1;
 
 fetch('words.json')
@@ -100,21 +104,15 @@ fetch('words.json')
   });
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+function getField(obj, ...keys){ for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k]; return { word:'', translation:'' }; }
 
-/* безопасный доступ к возможным вариантам имен полей */
-function getField(obj, ...keys){
-  for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k];
-  return { word:'', translation:'' };
-}
-
-/* вернуть корректное поле из объекта предложения по логическому ключу */
 function getCorrectFieldFrom(sectionObj, logicalKey){
   if(!sectionObj) return {word:'', translation:''};
   switch(logicalKey){
     case 'subjekt': return getField(sectionObj,'subjekt');
     case 'verbum1': return getField(sectionObj,'verbum1','verbium1','verbum1_1','verbium1_1');
     case 'adverbium': return getField(sectionObj,'adverbium','adverbium1');
-    case 'verbum2_3': return getField(sectionObj,'verbium2-3','verbum2-3','verbium2_3','verbum2_3');
+    case 'verbum2_3': return getField(sectionObj,'verbium2-3','verbum2-3','verbium2_3','verbium2_3');
     case 'objekt': return getField(sectionObj,'objekt');
     case 'stedtid': return getField(sectionObj,'sted/tid','sted_tid','stedtid');
     case 'L-Konjuktion': return getField(sectionObj,'L-Konjuktion','lkonj','L-Konj');
@@ -131,8 +129,17 @@ function pickThreeRandom(){
   initUI();
 }
 
-function initUI(){ uidCounter = 1; buildTable(); buildPool(); renderPool(); clearHighlights(); updateTranslation(); document.getElementById('hint-button').disabled = false; }
+function initUI(){
+  uidCounter = 1;
+  buildTable();
+  buildPool();
+  renderPool();
+  clearHighlights();
+  updateTranslation();
+  document.getElementById('hint-button').disabled = false;
+}
 
+/* Build table for 3 selected sentences */
 function buildTable(){
   const tbody = document.getElementById('sentence-rows'); tbody.innerHTML = '';
   selectedSentences.forEach((s, rowIdx) => {
@@ -140,27 +147,43 @@ function buildTable(){
     const makeCell = (text, fixed, part, key) => {
       const td = document.createElement('td');
       td.dataset.part = part; td.dataset.key = key; td.dataset.row = String(rowIdx);
-      if(fixed){ td.textContent = text || ''; td.dataset.uid = 'fixed'; } else { td.textContent = ''; td.dataset.uid = ''; td.addEventListener('dragover', e=>e.preventDefault()); td.addEventListener('drop', e=>dropWord(e, td)); }
+      if(fixed){ td.textContent = text || ''; td.dataset.uid = 'fixed'; }
+      else { td.textContent = ''; td.dataset.uid = ''; td.addEventListener('dragover', e=>e.preventDefault()); td.addEventListener('drop', e=>dropWord(e, td)); td.classList.add('blank-cell'); }
       return td;
     };
     const h = s.hovedsætning || {}; const L = s.ledsætning || {};
+
+    // Hoved: subjekt (fixed), verbum1, adverbium, verbum2-3, objekt, sted/tid
     tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word, true, 'hoved', 'subjekt'));
     tr.appendChild(makeCell('', false, 'hoved', 'verbum1'));
     tr.appendChild(makeCell('', false, 'hoved', 'adverbium'));
     tr.appendChild(makeCell('', false, 'hoved', 'verbum2_3'));
     tr.appendChild(makeCell('', false, 'hoved', 'objekt'));
     tr.appendChild(makeCell('', false, 'hoved', 'stedtid'));
-    const commaTd = document.createElement('td'); commaTd.textContent = ','; commaTd.dataset.uid = 'fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
+
+    // comma
+    const commaTd = document.createElement('td');
+    commaTd.textContent = ',';
+    commaTd.dataset.uid = 'fixed';
+    commaTd.dataset.part = 'punct';
+    commaTd.dataset.key = 'comma';
+    tr.appendChild(commaTd);
+
+    // L-Konjuktion fixed and subjekt(leds)
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word, true, 'leds', 'L-Konjuktion'));
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word, true, 'leds', 'subjekt'));
+
+    // leds: verbum1, verbum2_3, objekt, stedtid
     tr.appendChild(makeCell('', false, 'leds', 'verbum1'));
     tr.appendChild(makeCell('', false, 'leds', 'verbum2_3'));
     tr.appendChild(makeCell('', false, 'leds', 'objekt'));
     tr.appendChild(makeCell('', false, 'leds', 'stedtid'));
+
     tbody.appendChild(tr);
   });
 }
 
+/* Build pool: tokens from selected sentences + a single blank token (uid='blank') */
 function buildPool(){
   wordsMaster = [];
   selectedSentences.forEach((s, idx)=>{
@@ -171,72 +194,158 @@ function buildPool(){
         wordsMaster.push({ uid: String(uidCounter++), word: f.word, translation: f.translation||'', typeKey, part, sentenceIndex: idx, inPool: true });
       }
     };
-    pushIf(h, ['verbum1','verbium1','verbum1_1','verbium1'], 'verbum1', 'hoved');
+    // hoved
+    pushIf(h, ['verbum1','verbium1','verbum1_1','verbum1'], 'verbum1', 'hoved');
     pushIf(h, ['adverbium','adverbium1'], 'adverbium', 'hoved');
-    pushIf(h, ['verbium2-3','verbum2-3','verbium2_3','verbium2_3'], 'verbum2_3', 'hoved');
+    pushIf(h, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'hoved');
     pushIf(h, ['objekt'], 'objekt', 'hoved');
     pushIf(h, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'hoved');
+    // leds
     pushIf(L, ['verbium1','verbum1','verbium1_1'], 'verbum1', 'leds');
     pushIf(L, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'leds');
     pushIf(L, ['objekt'], 'objekt', 'leds');
     pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
   });
+
+  // add single special blank token (always present, never consumed)
+  wordsMaster.push({
+    uid: 'blank',
+    word: '',                // empty visual
+    translation: '',
+    typeKey: 'blank',
+    part: 'both',
+    sentenceIndex: null,
+    inPool: true,
+    isBlank: true
+  });
+
   wordsMaster = shuffle(wordsMaster);
 }
 
+/* Render pool: show blank token with special style and label (blank) so user видит */
 function renderPool(){
   const pool = document.getElementById('word-pool'); pool.innerHTML = '';
   wordsMaster.forEach(w=>{
     if(!w.inPool) return;
     const d = document.createElement('div');
-    d.className = 'word ' + (w.part==='hoved' ? 'pool-hoved' : 'pool-leds');
-    d.textContent = w.word; d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey;
-    d.draggable = true; d.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', w.uid));
+    if(w.isBlank){
+      d.className = 'word pool-blank';
+      d.textContent = '(blank)';
+    } else {
+      d.className = 'word ' + (w.part==='hoved' ? 'pool-hoved' : 'pool-leds');
+      d.textContent = w.word;
+    }
+    d.dataset.uid = w.uid;
+    d.dataset.typeKey = w.typeKey;
+    d.draggable = true;
+    d.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', w.uid));
     pool.appendChild(d);
   });
 }
 
 function findMasterIndexByUid(uid){ return wordsMaster.findIndex(x => String(x.uid) === String(uid)); }
 
+/* Drop behavior: if uid == 'blank' — place empty content and DO NOT remove blank from pool.
+   For other tokens — behave as before, and mark token inPool=false when placed. */
 function dropWord(ev, td){
   ev.preventDefault();
-  const uid = ev.dataTransfer.getData('text/plain'); const mIdx = findMasterIndexByUid(uid);
+  const uid = ev.dataTransfer.getData('text/plain');
+  const mIdx = findMasterIndexByUid(uid);
   if(mIdx === -1) return;
   const obj = wordsMaster[mIdx];
+
+  // return old token to pool (except fixed and blank)
   const oldUid = td.dataset.uid;
-  if(oldUid && oldUid !== 'fixed' && oldUid !== ''){ const oldIdx = findMasterIndexByUid(oldUid); if(oldIdx !== -1) wordsMaster[oldIdx].inPool = true; }
-  td.textContent = obj.word; td.dataset.uid = obj.uid; obj.inPool = false;
-  renderPool(); clearHighlights(); updateTranslation();
+  if(oldUid && oldUid !== 'fixed' && oldUid !== '' && oldUid !== 'blank'){
+    const oldIdx = findMasterIndexByUid(oldUid);
+    if(oldIdx !== -1) wordsMaster[oldIdx].inPool = true;
+  }
+
+  // place new token
+  if(obj.isBlank){
+    td.textContent = '';          // keep cell empty visually
+    td.dataset.uid = 'blank';
+    // DO NOT change obj.inPool (blank stays available)
+  } else {
+    td.textContent = obj.word;
+    td.dataset.uid = obj.uid;
+    obj.inPool = false;
+  }
+
+  renderPool();
+  clearHighlights();
+  updateTranslation();
 }
 
+/* Clear highlight classes */
 function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.classList.remove('correct','partial','wrong')); }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
   clearHighlights();
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
-  rows.forEach((tr,rowIdx)=>{
+  rows.forEach((tr, rowIdx)=>{
     const tds = Array.from(tr.querySelectorAll('td'));
     tds.forEach(td=>{
-      const key = td.dataset.key; if(!key) return;
+      const key = td.dataset.key;
+      if(!key) return;
+      // fixed fields are correct
       if(td.dataset.uid === 'fixed'){ td.classList.add('correct'); return; }
-      const expectedField = (td.dataset.part==='hoved') ? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning, td.dataset.key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning, td.dataset.key);
-      const expectedWord = expectedField ? (expectedField.word||'') : '';
-      const uid = td.dataset.uid; if(!uid){ td.classList.add('wrong'); return; }
+
+      // expected field (could be empty)
+      const expectedField = (td.dataset.part === 'hoved') ? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning, td.dataset.key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning, td.dataset.key);
+      const expectedWord = expectedField ? (expectedField.word || '') : '';
+
+      const uid = td.dataset.uid;
+
+      // CASE A: expected is empty -> correct if cell left empty OR blank token used
+      if(expectedWord === ''){
+        // cell considered correct if uid == '' (never filled) OR uid == 'blank'
+        if(!uid || uid === '' || uid === 'blank' || td.textContent.trim() === '') {
+          td.classList.add('correct');
+        } else {
+          td.classList.add('wrong'); // user placed some real token where expected is empty
+        }
+        return;
+      }
+
+      // CASE B: expected not empty -> usual checks
+      if(!uid || uid === ''){
+        td.classList.add('wrong'); return;
+      }
+      if(uid === 'blank'){
+        // user put blank where non-empty expected -> wrong
+        td.classList.add('wrong'); return;
+      }
+
       const mIdx = findMasterIndexByUid(uid);
-      if(mIdx !== -1){ const w = wordsMaster[mIdx]; if(w.word === expectedWord) td.classList.add('correct'); else if(w.typeKey === td.dataset.key) td.classList.add('partial'); else td.classList.add('wrong'); }
-      else { if(td.textContent === expectedWord) td.classList.add('correct'); else td.classList.add('wrong'); }
+      if(mIdx !== -1){
+        const w = wordsMaster[mIdx];
+        if(w.word === expectedWord) td.classList.add('correct');
+        else if(w.typeKey === td.dataset.key) td.classList.add('partial');
+        else td.classList.add('wrong');
+      } else {
+        // If token was removed from pool (rare) compare by text
+        if(td.textContent === expectedWord) td.classList.add('correct'); else td.classList.add('wrong');
+      }
     });
   });
   updateTranslation();
 });
 
-// NEW: подсказка — по 1 слову в случайную пустую ячейку каждой части (hoved и leds) для каждой строки
+/* Hint: вставляет по 1 слову в случайную пустую ячейку каждой части (hoved и leds) для каждой строки.
+   НЕ трогает пустые эталоны (если эталон пустой, подсказка туда не ставит blank). */
 document.getElementById('hint-button').addEventListener('click', ()=>{
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
-  rows.forEach((tr, rowIdx) => {
-    // ------- HOVED: выбрать одну случайную пустую ячейку в части 'hoved' и подставить её правильное слово -------
+  rows.forEach((tr, rowIdx)=>{
+    // HOVED: выберем пустую НЕFIXED ячейку в части 'hoved', но только такие, где эталон НЕ пустой
     const emptiesH = Array.from(tr.querySelectorAll('td')).filter(td=>{
-      return td.dataset.part==='hoved' && td.dataset.key && td.dataset.uid !== 'fixed' && (!td.dataset.uid || td.dataset.uid === '');
+      if(td.dataset.part !== 'hoved') return false;
+      if(!td.dataset.key) return false;
+      if(td.dataset.uid === 'fixed') return false;
+      // skip if expected is empty (no need to insert)
+      const expectedFieldH = getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning, td.dataset.key);
+      if(!expectedFieldH || (expectedFieldH.word || '') === '') return false;
+      return !td.dataset.uid || td.dataset.uid === '';
     });
     if(emptiesH.length > 0){
       const tdH = emptiesH[Math.floor(Math.random()*emptiesH.length)];
@@ -245,20 +354,24 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
       if(correctFieldH && correctFieldH.word){
         tdH.textContent = correctFieldH.word;
         tdH.dataset.uid = 'fixed';
-        // удалить только соответствующую запись из пула: совпадение по слову, part='hoved', sentenceIndex=rowIdx и по typeKey (если возможно)
-        const pIdx = wordsMaster.findIndex(w => w.word === correctFieldH.word && w.part === 'hoved' && w.sentenceIndex === rowIdx && w.typeKey === keyH);
+        // remove matching master entry for this word/row/part (one only)
+        const pIdx = wordsMaster.findIndex(w => !w.isBlank && w.word === correctFieldH.word && w.part === 'hoved' && w.sentenceIndex === rowIdx && w.typeKey === keyH);
         if(pIdx !== -1) wordsMaster[pIdx].inPool = false;
         else {
-          // резервный вариант: удалить любой элемент такого слова и части для этой строки
-          const pIdx2 = wordsMaster.findIndex(w => w.word === correctFieldH.word && w.part === 'hoved' && w.sentenceIndex === rowIdx);
+          const pIdx2 = wordsMaster.findIndex(w => !w.isBlank && w.word === correctFieldH.word && w.part === 'hoved' && w.sentenceIndex === rowIdx);
           if(pIdx2 !== -1) wordsMaster[pIdx2].inPool = false;
         }
       }
     }
 
-    // ------- LEDS: выбрать одну случайную пустую ячейку в части 'leds' и подставить её правильное слово -------
+    // LEDS: аналогично, игнорируем пустые эталоны
     const emptiesL = Array.from(tr.querySelectorAll('td')).filter(td=>{
-      return td.dataset.part==='leds' && td.dataset.key && td.dataset.uid !== 'fixed' && (!td.dataset.uid || td.dataset.uid === '');
+      if(td.dataset.part !== 'leds') return false;
+      if(!td.dataset.key) return false;
+      if(td.dataset.uid === 'fixed') return false;
+      const expectedFieldL = getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning, td.dataset.key);
+      if(!expectedFieldL || (expectedFieldL.word || '') === '') return false;
+      return !td.dataset.uid || td.dataset.uid === '';
     });
     if(emptiesL.length > 0){
       const tdL = emptiesL[Math.floor(Math.random()*emptiesL.length)];
@@ -267,10 +380,10 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
       if(correctFieldL && correctFieldL.word){
         tdL.textContent = correctFieldL.word;
         tdL.dataset.uid = 'fixed';
-        const pIdxL = wordsMaster.findIndex(w => w.word === correctFieldL.word && w.part === 'leds' && w.sentenceIndex === rowIdx && w.typeKey === keyL);
+        const pIdxL = wordsMaster.findIndex(w => !w.isBlank && w.word === correctFieldL.word && w.part === 'leds' && w.sentenceIndex === rowIdx && w.typeKey === keyL);
         if(pIdxL !== -1) wordsMaster[pIdxL].inPool = false;
         else {
-          const pIdxL2 = wordsMaster.findIndex(w => w.word === correctFieldL.word && w.part === 'leds' && w.sentenceIndex === rowIdx);
+          const pIdxL2 = wordsMaster.findIndex(w => !w.isBlank && w.word === correctFieldL.word && w.part === 'leds' && w.sentenceIndex === rowIdx);
           if(pIdxL2 !== -1) wordsMaster[pIdxL2].inPool = false;
         }
       }
@@ -279,7 +392,6 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
 
   renderPool();
   updateTranslation();
-  // блокируем подсказку после одной такой операции (как было у тебя раньше)
   document.getElementById('hint-button').disabled = true;
 });
 
@@ -288,6 +400,7 @@ document.getElementById('reset-button').addEventListener('click', ()=>{
   pickThreeRandom();
 });
 
+/* Translation display: blank shows nothing */
 function updateTranslation(){
   const root = document.getElementById('translation'); root.innerHTML = '';
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
@@ -295,21 +408,22 @@ function updateTranslation(){
     const tds = Array.from(tr.querySelectorAll('td'));
     tds.forEach(td=>{
       const key = td.dataset.key; if(!key) return;
-      const uid = td.dataset.uid; let text = td.textContent||'';
+      const uid = td.dataset.uid; let text = td.textContent || '';
       if(uid === 'fixed'){
         const part = td.dataset.part;
         const field = (part==='hoved') ? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning, key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning, key);
         if(field && field.translation) text += ' → ' + field.translation;
       } else if(uid){
-        const mIdx = findMasterIndexByUid(uid);
-        if(mIdx !== -1){ const w = wordsMaster[mIdx]; if(w && w.translation) text += ' → ' + w.translation; }
-        else {
-          const part = td.dataset.part;
-          const field = (part==='hoved') ? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning, key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning, key);
-          if(field && field.translation) text += ' → ' + field.translation;
+        if(uid === 'blank'){
+          // blank: no translation shown (keeps empty)
+        } else {
+          const mIdx = findMasterIndexByUid(uid);
+          if(mIdx !== -1){ const w = wordsMaster[mIdx]; if(w && w.translation) text += ' → ' + w.translation; }
         }
       } else return;
-      const d = document.createElement('div'); d.textContent = text; root.appendChild(d);
+      if(text){
+        const d = document.createElement('div'); d.textContent = text; root.appendChild(d);
+      }
     });
   });
 }
