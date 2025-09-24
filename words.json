@@ -82,7 +82,7 @@
         "sted/tid": {"word":"i skoven","translation":"в лесу"}
       },
       "ledsætning": {
-        "L-Konjuktion": {"word":"и","translation":"и"},
+        "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"finder","translation":"находим"},
         "verbium2-3": {"word":"","translation":""},
@@ -154,7 +154,7 @@
         "sted/tid": {"word":"","translation":""}
       },
       "ledsætning": {
-        "L-Konjuktion": {"word":"и","translation":"и"},
+        "L-Konjuktion": {"word":"og","translation":"и"},
         "subjekt": {"word":"vi","translation":"мы"},
         "verbium1": {"word":"bader","translation":"купаемся"},
         "verbium2-3": {"word":"","translation":""},
