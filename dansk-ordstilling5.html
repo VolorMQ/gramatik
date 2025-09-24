@@ -25,6 +25,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .legend-leds{background:var(--leds)}
 #word-pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .word{padding:8px 12px;border-radius:8px;color:var(--pool-text);font-weight:700;cursor:grab;user-select:none}
+.word.selected{border:2px solid red}
 .pool-hoved{background:var(--hoved);border:1px solid rgba(37,99,235,0.08)}
 .pool-leds{background:var(--leds);border:1px solid rgba(139,92,246,0.08)}
 .pool-blank{background:var(--blank-bg);border:1px dashed #9ca3af;color:#6b7280;font-weight:700}
@@ -37,11 +38,13 @@ button:disabled{opacity:0.5;cursor:default}
 .wrong{background: #fee2e2 !important}
 .info{margin-top:8px;color:#374151;font-size:13px}
 .blank-cell{background:#fff;border:2px dashed #e5e7eb}
+#mobil-toggle{margin-bottom:12px;font-size:14px}
 </style>
 </head>
 <body>
 <div class="page">
   <h1>Hoved + Ledsætninger (3 spørgsmål)</h1>
+  <label id="mobil-toggle"><input type="checkbox" id="mobileVersion"/> MobilVersion (tap mode)</label>
   <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em> — при проверке это будет считаться правильным.</div>
 
   <table aria-label="Hoved + Ledsætninger">
@@ -89,6 +92,13 @@ let selectedIdx = [];
 let selectedSentences = [];
 let wordsMaster = [];
 let uidCounter = 1;
+let selectedWord = null;
+
+const mobileCheckbox = document.getElementById('mobileVersion');
+mobileCheckbox.addEventListener('change', ()=>{
+  selectedWord = null;
+  document.querySelectorAll('#word-pool .word').forEach(d=>d.classList.remove('selected'));
+});
 
 fetch('words.json')
   .then(r => r.json())
@@ -104,7 +114,6 @@ fetch('words.json')
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 function getField(obj, ...keys){ for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k]; return { word:'', translation:'' }; }
-
 function getCorrectFieldFrom(sectionObj, logicalKey){
   if(!sectionObj) return {word:'', translation:''};
   switch(logicalKey){
@@ -130,6 +139,7 @@ function pickThreeRandom(){
 
 function initUI(){
   uidCounter = 1;
+  selectedWord = null;
   buildTable();
   buildPool();
   renderPool();
@@ -146,12 +156,14 @@ function buildTable(){
       const td=document.createElement('td');
       td.dataset.part=part; td.dataset.key=key; td.dataset.row=rowIdx;
       if(fixed){ td.textContent=text||''; td.dataset.uid='fixed'; }
-      else { td.textContent=''; td.dataset.uid=''; td.addEventListener('dragover',e=>e.preventDefault()); td.addEventListener('drop',e=>dropWord(e,td)); td.classList.add('blank-cell'); }
+      else { td.textContent=''; td.dataset.uid=''; td.classList.add('blank-cell'); 
+             td.addEventListener('dragover',e=>e.preventDefault()); 
+             td.addEventListener('drop',e=>dropWord(e,td));
+             td.addEventListener('click', ()=>tapInsert(td)); }
       return td;
     };
     const h=s.hovedsætning||{}; const L=s.ledsætning||{};
 
-    // Переставляем verbum1 → subjekt, subjekt фиксировано
     tr.appendChild(makeCell('',false,'hoved','verbum1'));
     tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word,true,'hoved','subjekt'));
     tr.appendChild(makeCell('',false,'hoved','adverbium'));
@@ -159,26 +171,20 @@ function buildTable(){
     tr.appendChild(makeCell('',false,'hoved','objekt'));
     tr.appendChild(makeCell('',false,'hoved','stedtid'));
 
-    // comma
     const commaTd=document.createElement('td'); commaTd.textContent=','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
 
-    // L-Konjuktion fixed and subjekt(leds)
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word,true,'leds','L-Konjuktion'));
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word,true,'leds','subjekt'));
-
-    // leds: verbum1, verbum2_3, objekt, stedtid
     tr.appendChild(makeCell('',false,'leds','verbum1'));
     tr.appendChild(makeCell('',false,'leds','verbum2_3'));
     tr.appendChild(makeCell('',false,'leds','objekt'));
     tr.appendChild(makeCell('',false,'leds','stedtid'));
 
-    // В конце знак вопроса
     const qTd=document.createElement('td'); qTd.textContent='?'; qTd.dataset.uid='fixed'; tr.appendChild(qTd);
 
     tbody.appendChild(tr);
   });
 }
-
 
 function buildPool(){
   wordsMaster = [];
@@ -186,11 +192,9 @@ function buildPool(){
     const h = s.hovedsætning||{}; const L = s.ledsætning||{};
     const pushIf = (obj, keys, typeKey, part)=>{
       const f = getField(obj, ...keys);
-      if(f && f.word){
-        wordsMaster.push({ uid: String(uidCounter++), word: f.word, translation: f.translation||'', typeKey, part, sentenceIndex: idx, inPool: true });
-      }
+      if(f && f.word) wordsMaster.push({ uid: String(uidCounter++), word: f.word, translation: f.translation||'', typeKey, part, sentenceIndex: idx, inPool: true });
     };
-    pushIf(h, ['verbum1','verbium1','verbum1_1','verbum1'], 'verbum1', 'hoved');
+    pushIf(h, ['verbum1','verbium1','verbum1_1','verbium1'], 'verbum1', 'hoved');
     pushIf(h, ['adverbium','adverbium1'], 'adverbium', 'hoved');
     pushIf(h, ['verbium2-3','verbum2-3','verbium2_3'], 'verbum2_3', 'hoved');
     pushIf(h, ['objekt'], 'objekt', 'hoved');
@@ -214,6 +218,7 @@ function renderPool(){
     else{ d.className = 'word ' + (w.part==='hoved' ? 'pool-hoved' : 'pool-leds'); d.textContent = w.word; }
     d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey; d.draggable = true;
     d.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', w.uid));
+    d.addEventListener('click', ()=>tapSelectWord(w,d));
     pool.appendChild(d);
   });
 }
@@ -236,6 +241,31 @@ function dropWord(ev, td){
   renderPool();
   clearHighlights();
   updateTranslation();
+}
+
+// --- Mobile tap mode ---
+function tapSelectWord(obj, divEl){
+  if(!mobileCheckbox.checked) return;
+  selectedWord = obj;
+  document.querySelectorAll('#word-pool .word').forEach(d=>d.classList.remove('selected'));
+  divEl.classList.add('selected');
+}
+
+function tapInsert(td){
+  if(!mobileCheckbox.checked) return;
+  if(!selectedWord) return;
+  const oldUid = td.dataset.uid;
+  if(oldUid && oldUid !== 'fixed' && oldUid !== '' && oldUid !== 'blank'){
+    const oldIdx = findMasterIndexByUid(oldUid);
+    if(oldIdx !== -1) wordsMaster[oldIdx].inPool = true;
+  }
+  if(selectedWord.isBlank){ td.textContent=''; td.dataset.uid='blank'; }
+  else{ td.textContent = selectedWord.word; td.dataset.uid = selectedWord.uid; selectedWord.inPool=false; }
+  renderPool();
+  clearHighlights();
+  updateTranslation();
+  selectedWord = null;
+  document.querySelectorAll('#word-pool .word').forEach(d=>d.classList.remove('selected'));
 }
 
 function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.classList.remove('correct','partial','wrong')); }
