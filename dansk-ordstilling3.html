@@ -29,11 +29,16 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:#10b981}
+#mobile-toggle{margin-bottom:12px;display:block}
 </style>
 </head>
 <body>
 <div class="page">
   <h1>Ledsætninger</h1>
+
+  <label id="mobile-toggle">
+    <input type="checkbox" id="mobileVersion"> MobilVersion (tap instead of drag)
+  </label>
 
   <table class="schema">
     <thead>
@@ -63,13 +68,12 @@ button:disabled{opacity:0.5;cursor:default}
 let sentences = [];
 let selectedSentences = [];
 let wordsPool = [];
+let mobileMode = false;
+let selectedWordIndex = null;
 
 fetch('sentences2.json')
   .then(res => res.json())
-  .then(data => {
-    sentences = data.sentences;
-    initSentences();
-  })
+  .then(data => { sentences = data.sentences; initSentences(); })
   .catch(err => console.error("Fejl ved indlæsning af JSON:", err));
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
@@ -91,15 +95,15 @@ function initSentences(){
         td.textContent = s.subjekt.word;
         td.dataset.wordIndex = -1;
       } else {
-        td.addEventListener('dragover', ev=>ev.preventDefault());
-        td.addEventListener('drop', ev=>dropWord(ev,td));
+        td.addEventListener('dragover', ev=>{ if(!mobileMode) ev.preventDefault(); });
+        td.addEventListener('drop', ev=>{ if(!mobileMode) dropWord(ev,td); });
+        td.addEventListener('click', ()=>{ if(mobileMode) tapInsert(td); });
       }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
 
-  // создаем пул слов (по 3 слова каждого типа)
   wordsPool = [];
   ['L-Konjuktion','adverbium','verbium1','verbium2-3','objekt','sted/tid'].forEach(type=>{
     let typeWords = selectedSentences.map((s,index)=>({...s[type], sentenceIndex:index}));
@@ -109,8 +113,6 @@ function initSentences(){
     });
   });
 
-  // --- Добавляем специальный токен (blank) в пул ---
-  // blank отображается как '(blank)', имеет тип 'blank', не расходуется при вставке
   wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
 
   wordsPool = shuffle(wordsPool);
@@ -133,148 +135,162 @@ function renderWordPool(){
     }
     div.dataset.type = w.type;
     div.dataset.index = i;
-    div.draggable = true;
-    div.addEventListener('dragstart', ev=>{
-      ev.dataTransfer.setData('text/plain', i);
-      clearHighlights();
-    });
+
+    if(mobileMode){
+      div.style.cursor='pointer';
+      div.draggable=false;
+      div.onclick = ()=>{ selectedWordIndex=i; highlightSelection(div); };
+    } else {
+      div.style.cursor='grab';
+      div.draggable=true;
+      div.onclick = null;
+      div.addEventListener('dragstart', ev=>{ ev.dataTransfer.setData('text/plain', i); clearHighlights(); });
+    }
     pool.appendChild(div);
   });
 }
 
-function dropWord(ev, td){
-  ev.preventDefault();
-  const idx = ev.dataTransfer.getData('text/plain');
+function highlightSelection(div){
+  document.querySelectorAll('#word-pool .word').forEach(el=>el.style.outline='');
+  div.style.outline='2px solid red';
+}
+
+function tapInsert(td){
+  if(selectedWordIndex===null) return;
+  const idx = selectedWordIndex;
   const wordObj = wordsPool[idx];
   const oldWordIndex = td.dataset.wordIndex;
 
-  // вставляем слово в ячейку
   if(wordObj.type === 'blank'){
-    // blank — оставляем ячейку пустой, но ставим индекс blank-а, и не убираем его из пула
     td.textContent = '';
     td.dataset.wordIndex = idx;
-    // wordsPool[idx].inPool остаётся true (blank можно использовать многократно)
   } else {
     td.textContent = wordObj.word;
     td.dataset.wordIndex = idx;
-    wordsPool[idx].inPool = false;
+    wordsPool[idx].inPool=false;
   }
 
-  // если там было старое слово (не подсказка), возвращаем его в пул
   if(oldWordIndex!==undefined && oldWordIndex!=-1){
-    // не трогаем case, когда oldWordIndex указывает на blank — он всегда inPool=true
-    wordsPool[oldWordIndex].inPool = true;
+    const oldIdx=Number(oldWordIndex);
+    if(!isNaN(oldIdx) && wordsPool[oldIdx] && wordsPool[oldIdx].type!=='blank') wordsPool[oldIdx].inPool=true;
+  }
+
+  selectedWordIndex=null;
+  renderWordPool();
+  updateTranslation();
+}
+
+function dropWord(ev, td){
+  ev.preventDefault();
+  const idx=ev.dataTransfer.getData('text/plain');
+  const wordObj=wordsPool[idx];
+  const oldWordIndex=td.dataset.wordIndex;
+
+  if(wordObj.type==='blank'){
+    td.textContent='';
+    td.dataset.wordIndex=idx;
+  } else {
+    td.textContent=wordObj.word;
+    td.dataset.wordIndex=idx;
+    wordsPool[idx].inPool=false;
+  }
+
+  if(oldWordIndex!==undefined && oldWordIndex!=-1){
+    const oldIdx=Number(oldWordIndex);
+    if(!isNaN(oldIdx) && wordsPool[oldIdx] && wordsPool[oldIdx].type!=='blank') wordsPool[oldIdx].inPool=true;
   }
 
   renderWordPool();
   updateTranslation();
 }
 
-function clearHighlights(){
-  document.querySelectorAll('#sentence-rows td').forEach(td=>td.style.backgroundColor='');
-}
+function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.style.backgroundColor=''); }
 
-// Проверка
-document.getElementById('check-button').addEventListener('click', ()=>{
+document.getElementById('mobileVersion').addEventListener('change', e=>{
+  mobileMode=e.target.checked;
+  selectedWordIndex=null;
+  renderWordPool();
+});
+
+// === Проверка, подсказка, reset, перевод ===
+document.getElementById('check-button').addEventListener('click', ()=>{ checkAnswers(); });
+document.getElementById('hint-button').addEventListener('click', ()=>{ giveHint(); });
+document.getElementById('reset-button').addEventListener('click', ()=>{ initSentences(); document.getElementById('hint-button').disabled=false; });
+
+function checkAnswers(){
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
-      const type = td.dataset.type;
-      const correctWord = selectedSentences[rowIdx][type];
-      const idx = td.dataset.wordIndex;
+      const type=td.dataset.type;
+      const correctWord=selectedSentences[rowIdx][type];
+      const idx=td.dataset.wordIndex;
       if(idx===undefined) return;
 
-      if(idx==-1){ // подсказка
-        td.style.backgroundColor='#d1fae5';
-      } else {
-        const wordObj = wordsPool[idx];
-        // если это blank, wordObj.word == '' — это правильно только если эталон пустой
-        const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
-        if(wordObj.word===expected){
-          td.style.backgroundColor='#d1fae5'; // зеленый
-        } else if(wordObj.type===type && wordObj.type!=='blank'){
-          td.style.backgroundColor='#fef08a'; // желтый
-        } else {
-          td.style.backgroundColor='#f87171'; // красный
-        }
+      if(idx==-1){ td.style.backgroundColor='#d1fae5'; } 
+      else {
+        const wordObj=wordsPool[idx];
+        const expected = correctWord && typeof correctWord.word!=='undefined' ? correctWord.word : '';
+        if(wordObj.type==='blank'){
+          td.style.backgroundColor=(expected==='')?'#d1fae5':'#f87171';
+        } else if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
+        } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
+        } else { td.style.backgroundColor='#f87171'; }
       }
     });
   });
-});
+}
 
-// Подсказка
-document.getElementById('hint-button').addEventListener('click', ()=>{
+function giveHint(){
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
-    const cells = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.type!=='subjekt');
+    const cells=Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.type!=='subjekt');
     if(cells.length===0) return;
-    const randomCell = cells[Math.floor(Math.random()*cells.length)];
-    const type = randomCell.dataset.type;
-    const correctWord = selectedSentences[rowIdx][type];
-
-    const idx = randomCell.dataset.wordIndex;
-    let needInsert = false;
-    if(!randomCell.textContent) {
-      needInsert = true;
-    } else if(idx!==undefined && idx!=-1) {
-      const wordObj = wordsPool[idx];
-      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx) {
-        needInsert = true;
-        wordsPool[idx].inPool = true; // старое слово возвращаем в пул
+    const randomCell=cells[Math.floor(Math.random()*cells.length)];
+    const type=randomCell.dataset.type;
+    const correctWord=selectedSentences[rowIdx][type];
+    const idx=randomCell.dataset.wordIndex;
+    let needInsert=false;
+    if(!randomCell.textContent) needInsert=true;
+    else if(idx!==undefined && idx!=-1){
+      const wordObj=wordsPool[idx];
+      if(wordObj.word!==correctWord.word || wordObj.sentenceIndex!==rowIdx){
+        needInsert=true;
+        if(wordsPool[idx] && wordsPool[idx].type!=='blank') wordsPool[idx].inPool=true;
       }
     }
-
     if(needInsert){
-      randomCell.textContent = correctWord.word;
-      randomCell.dataset.wordIndex = -1; // помечаем как подсказка
-      // Убираем слово подсказки из пула
+      randomCell.textContent=correctWord.word;
+      randomCell.dataset.wordIndex=-1;
       for(let i=0;i<wordsPool.length;i++){
-        const w = wordsPool[i];
-        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx){
-          w.inPool = false;
-        }
+        const w=wordsPool[i];
+        if(w.word===correctWord.word && w.type===type && w.sentenceIndex===rowIdx) w.inPool=false;
       }
     }
   });
 
-  renderWordPool();    // обновляем пул слов, удаляя вставленные
-  updateTranslation(); // обновляем перевод
-  document.getElementById('hint-button').disabled = true;
-});
-
-// Nulstil
-document.getElementById('reset-button').addEventListener('click', ()=>{
-  initSentences();
-  document.getElementById('hint-button').disabled = false;
-});
+  renderWordPool();
+  updateTranslation();
+  document.getElementById('hint-button').disabled=true;
+}
 
 function updateTranslation(){
-  const translationDiv = document.getElementById('translation');
-  translationDiv.innerHTML = '';
+  const translationDiv=document.getElementById('translation');
+  translationDiv.innerHTML='';
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
-      const type = td.dataset.type;
-      let text = '';
-      if(td.dataset.wordIndex == -1){
-        text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
-      } else {
-        const idx = td.dataset.wordIndex;
-        if(idx!==undefined){
-          const w = wordsPool[idx];
+      const idx=td.dataset.wordIndex;
+      if(idx!==undefined){
+        let text='';
+        if(idx==-1){ 
+          const type=td.dataset.type; 
+          text=td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
+        } else {
+          const w=wordsPool[idx];
           if(!w || !w.inPool){
-            text = td.textContent + ' → ' + selectedSentences[rowIdx][type].translation;
-          } else {
-            // если это blank, w.word == '' -> не показываем перевод
-            if(w.type === 'blank'){
-              // ничего
-            } else {
-              text = w.word + ' → ' + w.translation;
-            }
+            text=td.textContent + ' → ' + selectedSentences[rowIdx][td.dataset.type].translation;
+          } else if(w.type!=='blank'){
+            text=w.word + ' → ' + w.translation;
           }
         }
-      }
-      if(text){
-        const p = document.createElement('div');
-        p.textContent=text;
-        translationDiv.appendChild(p);
+        if(text){ const p=document.createElement('div'); p.textContent=text; translationDiv.appendChild(p); }
       }
     });
   });
