@@ -28,6 +28,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:#10b981}
+.sortable-ghost {opacity:0.5;}
 </style>
 </head>
 <body>
@@ -56,6 +57,9 @@ button:disabled{opacity:0.5;cursor:default}
   </div>
   <div id="translation"></div>
 </div>
+
+<!-- Подключение SortableJS для мобильного drag & drop -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
 <script>
 let sentences = [];
@@ -127,12 +131,15 @@ function renderWordPool(){
     }
     div.dataset.type = w.type;
     div.dataset.index = i;
-    div.draggable = true;
-    div.addEventListener('dragstart', ev=>{
-      ev.dataTransfer.setData('text/plain', i);
-      clearHighlights();
-    });
     pool.appendChild(div);
+  });
+
+  // Инициализация Sortable для мобильного drag & drop
+  Sortable.create(pool, {
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    fallbackOnBody: true,
+    swapThreshold: 0.65
   });
 }
 
@@ -181,7 +188,6 @@ document.getElementById('check-button').addEventListener('click', ()=>{
       } else {
         const wordObj = wordsPool[idx];
         const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
-
         if(wordObj.type === 'blank'){
           td.style.backgroundColor = (expected==='') ? '#d1fae5' : '#f87171';
         } else {
