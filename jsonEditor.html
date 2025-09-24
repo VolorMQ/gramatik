@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Редактор words.json</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+  th, td { border: 1px solid #ccc; padding: 5px; text-align: center; }
+  input { width: 90%; box-sizing: border-box; }
+  button { margin: 5px; }
+  .delete-btn { cursor: pointer; color: red; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Редактор words.json</h1>
+
+<button onclick="addSentence()">Добавить предложение</button>
+<button onclick="saveToServer()">Сохранить на сервер</button>
+
+<table id="jsonTable">
+  <thead>
+    <tr>
+      <th colspan="6">Hovedsætning</th>
+      <th colspan="6">Ledsætning</th>
+      <th>Удалить</th>
+    </tr>
+    <tr>
+      <th>subjekt</th><th>verbium1</th><th>adverbium</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th>
+      <th>L-Konjuktion</th><th>subjekt</th><th>verbium1</th><th>verbium2-3</th><th>objekt</th><th>sted/tid</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+let jsonData = [];
+
+// Загрузка words.json с сервера
+async function loadFromServer() {
+  try {
+    const response = await fetch('/words.json');
+    const data = await response.json();
+    if (Array.isArray(data.sentences)) {
+      jsonData = data.sentences;
+      renderTable();
+    } else {
+      alert("Неверная структура JSON");
+    }
+  } catch (e) {
+    alert("Ошибка загрузки words.json с сервера");
+  }
+}
+
+// Отрисовка таблицы
+function renderTable() {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  jsonData.forEach((sentence, index) => {
+    const tr = document.createElement('tr');
+
+    ['subjekt','verbium1','adverbium','verbium2-3','objekt','sted/tid'].forEach(key => {
+      tr.appendChild(createCell(sentence.hovedsætning[key], index, 'hovedsætning', key));
+    });
+
+    ['L-Konjuktion','subjekt','verbium1','verbium2-3','objekt','sted/tid'].forEach(key => {
+      tr.appendChild(createCell(sentence.ledsætning[key], index, 'ledsætning', key));
+    });
+
+    const delTd = document.createElement('td');
+    delTd.innerHTML = `<span class="delete-btn" onclick="deleteSentence(${index})">&#10006;</span>`;
+    tr.appendChild(delTd);
+
+    tbody.appendChild(tr);
+  });
+}
+
+function createCell(obj, rowIndex, part, key) {
+  const td = document.createElement('td');
+  td.innerHTML = `<input type="text" value="${obj.word}" placeholder="word" oninput="updateCell(${rowIndex}, '${part}', '${key}', 'word', this.value)">
+                  <input type="text" value="${obj.translation}" placeholder="translation" oninput="updateCell(${rowIndex}, '${part}', '${key}', 'translation', this.value)">`;
+  return td;
+}
+
+function updateCell(rowIndex, part, key, prop, value) {
+  jsonData[rowIndex][part][key][prop] = value;
+}
+
+function addSentence() {
+  const emptySentence = {
+    "hovedsætning": {
+      "subjekt": {"word":"","translation":""},
+      "verbium1": {"word":"","translation":""},
+      "adverbium": {"word":"","translation":""},
+      "verbium2-3": {"word":"","translation":""},
+      "objekt": {"word":"","translation":""},
+      "sted/tid": {"word":"","translation":""}
+    },
+    "ledsætning": {
+      "L-Konjuktion": {"word":"","translation":""},
+      "subjekt": {"word":"","translation":""},
+      "verbium1": {"word":"","translation":""},
+      "verbium2-3": {"word":"","translation":""},
+      "objekt": {"word":"","translation":""},
+      "sted/tid": {"word":"","translation":""}
+    }
+  };
+  jsonData.push(emptySentence);
+  renderTable();
+}
+
+function deleteSentence(index) {
+  jsonData.splice(index,1);
+  renderTable();
+}
+
+// Сохранение на сервер
+async function saveToServer() {
+  try {
+    const response = await fetch('/save-json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({sentences: jsonData})
+    });
+    if (response.ok) alert('words.json успешно сохранён на сервере!');
+    else alert('Ошибка сохранения');
+  } catch (e) {
+    alert('Ошибка соединения с сервером');
+  }
+}
+
+// Инициализация
+loadFromServer();
+</script>
+
+</body>
+</html>
