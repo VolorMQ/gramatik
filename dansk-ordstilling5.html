@@ -18,7 +18,7 @@ h1{font-size:20px;margin:0 0 12px}
 table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:12px}
 th,td{border:1px solid var(--line);padding:10px;text-align:center;min-height:44px;vertical-align:middle}
 th{font-size:12px;text-transform:uppercase;background:#f8fafc}
-#legend{display:flex;gap:12px;align-items:center;margin:12px 0;flex-wrap:wrap}
+#legend{display:flex;gap:12px;align-items:center;margin:12px 0}
 .legend-item{display:flex;gap:8px;align-items:center;font-size:13px;color:#374151}
 .legend-swatch{width:18px;height:18px;border-radius:6px;border:1px solid rgba(0,0,0,0.06)}
 .legend-hoved{background:var(--hoved)}
@@ -28,7 +28,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .pool-hoved{background:var(--hoved);border:1px solid rgba(37,99,235,0.08)}
 .pool-leds{background:var(--leds);border:1px solid rgba(139,92,246,0.08)}
 .pool-blank{background:var(--blank-bg);border:1px dashed #9ca3af;color:#6b7280;font-weight:700}
-#buttons{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+#buttons{margin-top:12px;display:flex;gap:8px;align-items:center}
 button{padding:8px 14px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700}
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:var(--green)}
@@ -37,23 +37,15 @@ button:disabled{opacity:0.5;cursor:default}
 .wrong{background: #fee2e2 !important}
 .info{margin-top:8px;color:#374151;font-size:13px}
 .blank-cell{background:#fff;border:2px dashed #e5e7eb}
-
-/* Мобильная версия */
-@media (max-width:768px){
-  h1{font-size:18px}
-  table, th, td{font-size:11px;padding:6px;min-height:36px;}
-  #buttons button{padding:6px 10px;font-size:13px;}
-  #legend{gap:6px;font-size:12px}
-  .word{padding:6px 10px;font-size:13px}
-  #translation{font-size:14px}
-  .info{font-size:12px}
-}
+.tap-selected{outline:2px solid red !important;}
 </style>
 </head>
 <body>
 <div class="page">
-  <h1>Hoved + Ledsætninger (3 spørgsmål)</h1>
-  <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em> — при проверке это будет считаться правильным.</div>
+  <h1>Hoved+Ledsætninger — 3 spørgsmål</h1>
+  <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em>.</div>
+
+  <label><input type="checkbox" id="mobil-toggle"> MobilVersion</label>
 
   <table aria-label="Hoved + Ledsætninger">
     <thead>
@@ -79,7 +71,7 @@ button:disabled{opacity:0.5;cursor:default}
   <div id="legend" aria-hidden="false">
     <div class="legend-item"><span class="legend-swatch legend-hoved" aria-hidden="true"></span>Слова из <strong>hovedsætning</strong></div>
     <div class="legend-item"><span class="legend-swatch legend-leds" aria-hidden="true"></span>Слова из <strong>ledsætning</strong></div>
-    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span>Специальный <strong>blank</strong> (пустой) токен</div>
+    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span>Специальный <strong>blank</strong></div>
   </div>
 
   <div id="word-pool" aria-live="polite"></div>
@@ -91,7 +83,7 @@ button:disabled{opacity:0.5;cursor:default}
   </div>
 
   <div id="translation"></div>
-  <div class="info">Если эталон пустой — оставь ячейку пустой или используй <em>blank</em>. Это будет отмечено как правильно (зелёным).</div>
+  <div class="info">Если эталон пустой — оставь ячейку пустой или используй <em>blank</em>.</div>
 </div>
 
 <script>
@@ -100,6 +92,8 @@ let selectedIdx = [];
 let selectedSentences = [];
 let wordsMaster = [];
 let uidCounter = 1;
+let tapMode = false;
+let selectedWordUid = null;
 
 fetch('words.json')
   .then(r => r.json())
@@ -108,14 +102,10 @@ fetch('words.json')
     allSentences = d.sentences;
     pickThreeRandom();
   })
-  .catch(err => {
-    console.error(err);
-    document.body.insertAdjacentHTML('afterbegin', `<div style="color:#b91c1c;padding:12px;">Ошибка загрузки words.json: ${err.message}</div>`);
-  });
+  .catch(err => { console.error(err); });
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 function getField(obj, ...keys){ for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k]; return { word:'', translation:'' }; }
-
 function getCorrectFieldFrom(sectionObj, logicalKey){
   if(!sectionObj) return {word:'', translation:''};
   switch(logicalKey){
@@ -150,37 +140,38 @@ function initUI(){
 }
 
 function buildTable(){
-  const tbody=document.getElementById('sentence-rows'); tbody.innerHTML='';
-  selectedSentences.forEach((s,rowIdx)=>{
-    const tr=document.createElement('tr'); tr.dataset.row=rowIdx;
-    const makeCell=(text,fixed,part,key)=>{
-      const td=document.createElement('td');
-      td.dataset.part=part; td.dataset.key=key; td.dataset.row=rowIdx;
-      if(fixed){ td.textContent=text||''; td.dataset.uid='fixed'; }
-      else { td.textContent=''; td.dataset.uid=''; td.addEventListener('dragover',e=>e.preventDefault()); td.addEventListener('drop',e=>dropWord(e,td)); td.classList.add('blank-cell'); }
+  const tbody = document.getElementById('sentence-rows'); tbody.innerHTML = '';
+  selectedSentences.forEach((s, rowIdx) => {
+    const tr = document.createElement('tr'); tr.dataset.row = String(rowIdx);
+    const makeCell = (text, fixed, part, key) => {
+      const td = document.createElement('td');
+      td.dataset.part = part; td.dataset.key = key; td.dataset.row = String(rowIdx);
+      if(fixed){ td.textContent = text || ''; td.dataset.uid = 'fixed'; }
+      else {
+        td.textContent = ''; td.dataset.uid = '';
+        td.addEventListener('dragover', e=>e.preventDefault());
+        td.addEventListener('drop', e=>dropWord(e, td));
+        td.addEventListener('click', ()=>tapInsert(td));
+        td.classList.add('blank-cell');
+      }
       return td;
     };
-    const h=s.hovedsætning||{}; const L=s.ledsætning||{};
+    const h = s.hovedsætning || {}; const L = s.ledsætning || {};
 
-    tr.appendChild(makeCell('',false,'hoved','verbum1'));
-    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word,true,'hoved','subjekt'));
-    tr.appendChild(makeCell('',false,'hoved','adverbium'));
-    tr.appendChild(makeCell('',false,'hoved','verbum2_3'));
-    tr.appendChild(makeCell('',false,'hoved','objekt'));
-    tr.appendChild(makeCell('',false,'hoved','stedtid'));
-
-    const commaTd=document.createElement('td'); commaTd.textContent=','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
-
-    tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word,true,'leds','L-Konjuktion'));
-    tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word,true,'leds','subjekt'));
-
-    tr.appendChild(makeCell('',false,'leds','verbum1'));
-    tr.appendChild(makeCell('',false,'leds','verbum2_3'));
-    tr.appendChild(makeCell('',false,'leds','objekt'));
-    tr.appendChild(makeCell('',false,'leds','stedtid'));
-
-    const qTd=document.createElement('td'); qTd.textContent='?'; qTd.dataset.uid='fixed'; tr.appendChild(qTd);
-
+    // ПЕРЕСТАВЛЕНО: порядок ячеек соответствует вашему новому заголовку
+    tr.appendChild(makeCell('', false, 'hoved', 'verbum1'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(h,'subjekt').word, true, 'hoved', 'subjekt'));
+    tr.appendChild(makeCell('', false, 'hoved', 'adverbium'));
+    tr.appendChild(makeCell('', false, 'hoved', 'verbum2_3'));
+    tr.appendChild(makeCell('', false, 'hoved', 'objekt'));
+    tr.appendChild(makeCell('', false, 'hoved', 'stedtid'));
+    const commaTd = document.createElement('td'); commaTd.textContent = ','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
+    tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word, true, 'leds', 'L-Konjuktion'));
+    tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word, true, 'leds', 'subjekt'));
+    tr.appendChild(makeCell('', false, 'leds', 'verbum1'));
+    tr.appendChild(makeCell('', false, 'leds', 'verbum2_3'));
+    tr.appendChild(makeCell('', false, 'leds', 'objekt'));
+    tr.appendChild(makeCell('', false, 'leds', 'stedtid'));
     tbody.appendChild(tr);
   });
 }
@@ -205,8 +196,7 @@ function buildPool(){
     pushIf(L, ['objekt'], 'objekt', 'leds');
     pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
   });
-
-  wordsMaster.push({uid: 'blank', word: '', translation: '', typeKey: 'blank', part: 'both', sentenceIndex: null, inPool: true, isBlank: true});
+  wordsMaster.push({uid:'blank', word:'', translation:'', typeKey:'blank', part:'both', sentenceIndex:null, inPool:true, isBlank:true});
   wordsMaster = shuffle(wordsMaster);
 }
 
@@ -215,10 +205,11 @@ function renderPool(){
   wordsMaster.forEach(w=>{
     if(!w.inPool) return;
     const d = document.createElement('div');
-    if(w.isBlank){ d.className = 'word pool-blank'; d.textContent = '(blank)'; }
-    else{ d.className = 'word ' + (w.part==='hoved' ? 'pool-hoved' : 'pool-leds'); d.textContent = w.word; }
-    d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey; d.draggable = true;
+    if(w.isBlank){ d.className='word pool-blank'; d.textContent='(blank)'; }
+    else { d.className='word '+(w.part==='hoved'?'pool-hoved':'pool-leds'); d.textContent=w.word; }
+    d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey; d.draggable=true;
     d.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', w.uid));
+    d.addEventListener('click', ()=>tapSelectWord(w.uid));
     pool.appendChild(d);
   });
 }
@@ -227,69 +218,99 @@ function findMasterIndexByUid(uid){ return wordsMaster.findIndex(x => String(x.u
 
 function dropWord(ev, td){
   ev.preventDefault();
-  const uid = ev.dataTransfer.getData('text/plain');
+  if(tapMode) return; 
+  const uid = ev.dataTransfer.getData('text/plain'); 
   const mIdx = findMasterIndexByUid(uid);
-  if(mIdx === -1) return;
+  if(mIdx===-1) return;
   const obj = wordsMaster[mIdx];
   const oldUid = td.dataset.uid;
-  if(oldUid && oldUid !== 'fixed' && oldUid !== '' && oldUid !== 'blank'){
+  if(oldUid && oldUid!=='fixed' && oldUid!=='' && oldUid!=='blank'){
     const oldIdx = findMasterIndexByUid(oldUid);
-    if(oldIdx !== -1) wordsMaster[oldIdx].inPool = true;
+    if(oldIdx!==-1) wordsMaster[oldIdx].inPool=true;
   }
-  if(obj.isBlank){ td.textContent = ''; td.dataset.uid = 'blank'; }
-  else{ td.textContent = obj.word; td.dataset.uid = obj.uid; obj.inPool = false; }
-  renderPool();
-  clearHighlights();
-  updateTranslation();
+  if(obj.isBlank){ td.textContent=''; td.dataset.uid='blank'; }
+  else { td.textContent=obj.word; td.dataset.uid=obj.uid; obj.inPool=false; }
+  renderPool(); clearHighlights(); updateTranslation();
 }
+
+function tapSelectWord(uid){
+  if(!tapMode) return;
+  selectedWordUid = uid;
+  document.querySelectorAll('#word-pool .word').forEach(w=>w.classList.remove('tap-selected'));
+  const div = document.querySelector('#word-pool .word[data-uid="'+uid+'"]'); if(div) div.classList.add('tap-selected');
+}
+
+function tapInsert(td){
+  if(!tapMode || !selectedWordUid) return;
+  const objIdx = findMasterIndexByUid(selectedWordUid); if(objIdx===-1) return;
+  const obj = wordsMaster[objIdx];
+  const oldUid = td.dataset.uid;
+  if(oldUid && oldUid!=='fixed' && oldUid!=='' && oldUid!=='blank'){
+    const oldIdx = findMasterIndexByUid(oldUid); if(oldIdx!==-1) wordsMaster[oldIdx].inPool=true;
+  }
+  if(obj.isBlank){ td.textContent=''; td.dataset.uid='blank'; }
+  else { td.textContent=obj.word; td.dataset.uid=obj.uid; obj.inPool=false; }
+  selectedWordUid=null;
+  document.querySelectorAll('#word-pool .word').forEach(w=>w.classList.remove('tap-selected'));
+  renderPool(); clearHighlights(); updateTranslation();
+}
+
+document.getElementById('mobil-toggle').addEventListener('change', e=>{
+  tapMode = e.target.checked;
+  document.getElementById('word-pool').style.cursor = tapMode ? 'pointer' : 'grab';
+});
 
 function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.classList.remove('correct','partial','wrong')); }
 
 document.getElementById('check-button').addEventListener('click', ()=>{
   clearHighlights();
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
-  rows.forEach((tr, rowIdx)=>{
-    tr.querySelectorAll('td').forEach(td=>{
+  rows.forEach((tr,rowIdx)=>{
+    Array.from(tr.querySelectorAll('td')).forEach(td=>{
       const key = td.dataset.key; if(!key) return;
-      if(td.dataset.uid === 'fixed'){ td.classList.add('correct'); return; }
-      const expectedField = (td.dataset.part === 'hoved') ? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning, key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning, key);
-      const val = td.dataset.uid === 'blank' ? '' : td.textContent.replace(/\?$/,'');
-      if(val === expectedField.word) td.classList.add('correct');
-      else if(expectedField.word.startsWith(val) && val) td.classList.add('partial');
-      else td.classList.add('wrong');
+      if(td.dataset.uid==='fixed'){ td.classList.add('correct'); return; }
+      const expectedField = (td.dataset.part==='hoved')?getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key):getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key);
+      const expectedWord = expectedField?expectedField.word||'':'';
+      const uid = td.dataset.uid;
+      if(expectedWord===''){ if(!uid||uid==='blank'||td.textContent.trim()===''){ td.classList.add('correct'); } else td.classList.add('wrong'); return; }
+      if(!uid||uid===''){ td.classList.add('wrong'); return; }
+      if(uid==='blank'){ td.classList.add('wrong'); return; }
+      const mIdx = findMasterIndexByUid(uid); if(mIdx!==-1){ const w=wordsMaster[mIdx]; if(w.word===expectedWord) td.classList.add('correct'); else if(w.typeKey===td.dataset.key) td.classList.add('partial'); else td.classList.add('wrong'); } else { if(td.textContent===expectedWord) td.classList.add('correct'); else td.classList.add('wrong'); }
     });
   });
+  updateTranslation();
 });
 
 document.getElementById('hint-button').addEventListener('click', ()=>{
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
-  rows.forEach((tr, rowIdx)=>{
-    tr.querySelectorAll('td').forEach(td=>{
-      if(td.dataset.uid && td.dataset.uid !== 'fixed' && td.dataset.uid !== 'blank'){
-        const key = td.dataset.key;
-        const expectedField = (td.dataset.part==='hoved')? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key);
-        td.textContent = expectedField.word;
-        td.dataset.uid = String(uidCounter++);
-      }
-    });
+  rows.forEach((tr,rowIdx)=>{
+    const emptiesH = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.part==='hoved' && td.dataset.key && td.dataset.uid!== 'fixed' && getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,td.dataset.key).word);
+    if(emptiesH.length>0){ const td=emptiesH[Math.floor(Math.random()*emptiesH.length)]; const f=getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,td.dataset.key); td.textContent=f.word; td.dataset.uid='fixed'; const pIdx = wordsMaster.findIndex(w=>!w.isBlank && w.word===f.word && w.part==='hoved' && w.sentenceIndex===rowIdx && w.typeKey===td.dataset.key); if(pIdx!==-1) wordsMaster[pIdx].inPool = false; }
+
+    const emptiesL = Array.from(tr.querySelectorAll('td')).filter(td=>td.dataset.part==='leds' && td.dataset.key && td.dataset.uid!=='fixed' && getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,td.dataset.key).word);
+    if(emptiesL.length>0){ const td=emptiesL[Math.floor(Math.random()*emptiesL.length)]; const f=getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,td.dataset.key); td.textContent=f.word; td.dataset.uid='fixed'; const pIdx = wordsMaster.findIndex(w=>!w.isBlank && w.word===f.word && w.part==='leds' && w.sentenceIndex===rowIdx && w.typeKey===td.dataset.key); if(pIdx!==-1) wordsMaster[pIdx].inPool=false; }
   });
-  buildPool(); renderPool(); clearHighlights(); updateTranslation();
-  document.getElementById('hint-button').disabled = true;
+  renderPool(); updateTranslation(); document.getElementById('hint-button').disabled=true;
 });
 
-document.getElementById('reset-button').addEventListener('click', ()=>{ initUI(); });
+document.getElementById('reset-button').addEventListener('click', ()=>{
+  document.getElementById('hint-button').disabled=false;
+  pickThreeRandom();
+});
 
 function updateTranslation(){
-  let text = '';
-  document.querySelectorAll('#sentence-rows tr').forEach((tr, rowIdx)=>{
-    tr.querySelectorAll('td').forEach(td=>{
-      if(td.dataset.uid && td.dataset.uid !== 'fixed' && td.dataset.uid !== 'blank'){
-        const idx = findMasterIndexByUid(td.dataset.uid);
-        if(idx !== -1 && wordsMaster[idx].translation) text += wordsMaster[idx].translation+' ';
-      }
+  const root=document.getElementById('translation'); root.innerHTML='';
+  const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
+  rows.forEach((tr,rowIdx)=>{
+    Array.from(tr.querySelectorAll('td')).forEach(td=>{
+      const key=td.dataset.key; if(!key) return;
+      const uid=td.dataset.uid; let text=td.textContent||'';
+      if(uid==='fixed'){ const part=td.dataset.part; const field=(part==='hoved')?getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key):getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key); if(field && field.translation) text+=' → '+field.translation; }
+      else if(uid){ if(uid!=='blank'){ const mIdx=findMasterIndexByUid(uid); if(mIdx!==-1){ const w=wordsMaster[mIdx]; if(w && w.translation) text+=' → '+w.translation; } } }
+      else return;
+      if(text){ const d=document.createElement('div'); d.textContent=text; root.appendChild(d); }
     });
   });
-  document.getElementById('translation').textContent = text.trim();
 }
 </script>
 </body>
