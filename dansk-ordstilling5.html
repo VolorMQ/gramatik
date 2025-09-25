@@ -172,6 +172,7 @@ function buildTable(){
     tr.appendChild(makeCell('', false, 'leds', 'verbum2_3'));
     tr.appendChild(makeCell('', false, 'leds', 'objekt'));
     tr.appendChild(makeCell('', false, 'leds', 'stedtid'));
+	const qTd=document.createElement('td'); qTd.textContent='?'; qTd.dataset.uid='fixed'; tr.appendChild(qTd);
     tbody.appendChild(tr);
   });
 }
