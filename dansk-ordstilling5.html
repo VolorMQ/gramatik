@@ -317,18 +317,28 @@ document.getElementById('check-button').addEventListener('click', ()=>{
 });
 
 document.getElementById('hint-button').addEventListener('click', ()=>{
+  // Логика кнопки осталась прежней
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
   rows.forEach((tr, rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       if(td.dataset.uid && td.dataset.uid !== 'fixed' && td.dataset.uid !== 'blank'){
         const key = td.dataset.key;
-        const expectedField = (td.dataset.part==='hoved')? getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key) : getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key);
+        const expectedField = (td.dataset.part==='hoved')? 
+          getCorrectFieldFrom(selectedSentences[rowIdx].hovedsætning,key) : 
+          getCorrectFieldFrom(selectedSentences[rowIdx].ledsætning,key);
         td.textContent = expectedField.word;
         td.dataset.uid = String(uidCounter++);
       }
     });
   });
-  buildPool(); renderPool(); clearHighlights(); updateTranslation();
+  // Сбрасываем tapMode выделение слов
+  document.querySelectorAll('#word-pool .word').forEach(el=>el.style.outline='');
+  selectedWordUid = null;
+
+  buildPool(); 
+  renderPool(); 
+  clearHighlights(); 
+  updateTranslation();
   document.getElementById('hint-button').disabled = true;
 });
 
