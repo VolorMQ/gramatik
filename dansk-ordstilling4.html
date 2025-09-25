@@ -43,7 +43,6 @@ button:disabled{opacity:0.5;cursor:default}
 <body>
 <div class="page">
   <h1>Hoved + Ledsætninger (3 sætninger)</h1>
-  <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em>.</div>
 
   <label><input type="checkbox" id="mobil-toggle"> MobilVersion</label>
 
@@ -69,9 +68,9 @@ button:disabled{opacity:0.5;cursor:default}
   </table>
 
   <div id="legend" aria-hidden="false">
-    <div class="legend-item"><span class="legend-swatch legend-hoved" aria-hidden="true"></span>Слова из <strong>hovedsætning</strong></div>
-    <div class="legend-item"><span class="legend-swatch legend-leds" aria-hidden="true"></span>Слова из <strong>ledsætning</strong></div>
-    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span>Специальный <strong>blank</strong></div>
+    <div class="legend-item"><span class="legend-swatch legend-hoved" aria-hidden="true"></span><strong>hovedsætning</strong></div>
+    <div class="legend-item"><span class="legend-swatch legend-leds" aria-hidden="true"></span><strong>ledsætning</strong></div>
+    <div class="legend-item"><span class="legend-swatch pool-blank" style="width:18px;height:18px;border-radius:6px;display:inline-block"></span><strong>blank</strong></div>
   </div>
 
   <div id="word-pool" aria-live="polite"></div>
@@ -83,7 +82,7 @@ button:disabled{opacity:0.5;cursor:default}
   </div>
 
   <div id="translation"></div>
-  <div class="info">Если эталон пустой — оставь ячейку пустой или используй <em>blank</em>.</div>
+
 </div>
 
 <script>
