@@ -28,7 +28,7 @@ th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 .pool-hoved{background:var(--hoved);border:1px solid rgba(37,99,235,0.08)}
 .pool-leds{background:var(--leds);border:1px solid rgba(139,92,246,0.08)}
 .pool-blank{background:var(--blank-bg);border:1px dashed #9ca3af;color:#6b7280;font-weight:700}
-#buttons{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+#buttons{margin-top:12px;display:flex;gap:8px}
 button{padding:8px 14px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700}
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:var(--green)}
@@ -36,11 +36,27 @@ button:disabled{opacity:0.5;cursor:default}
 .partial{background: #fef08a !important}
 .wrong{background: #fee2e2 !important}
 .info{margin-top:8px;color:#374151;font-size:13px}
-.blank-cell{background:#fff;border:2px dashed #e5e7eb;transition: border 0.2s}
-.blank-cell.selected{border:2px solid red}
+.blank-cell{background:#fff;border:2px dashed #e5e7eb}
+
+/* Мобильная версия */
 @media(max-width:768px){
-  th, td{font-size:12px;padding:6px;}
-  .word{padding:6px 10px;font-size:13px;}
+  table,thead,tbody,th,td,tr{display:block}
+  th{display:none}
+  td{margin-bottom:8px;text-align:left;position:relative;padding-left:50%}
+  td::before{position:absolute;top:10px;left:10px;width:45%;white-space:nowrap;font-weight:700}
+  td[data-key="verbum1"]::before{content:"verbum1"}
+  td[data-key="subjekt"]::before{content:"subjekt"}
+  td[data-key="adverbium"]::before{content:"adverbium"}
+  td[data-key="verbum2-3"]::before{content:"verbum2-3"}
+  td[data-key="objekt"]::before{content:"objekt"}
+  td[data-key="stedtid"]::before{content:"sted/tid"}
+  td[data-key="comma"]::before{content:"comma"}
+  td[data-key="L-Konjuktion"]::before{content:"L-Konjuktion"}
+  td[data-key="verbum1"][data-part="leds"]::before{content:"verbum1 (leds)"}
+  td[data-key="verbum2-3"][data-part="leds"]::before{content:"verbum2-3 (leds)"}
+  td[data-key="objekt"][data-part="leds"]::before{content:"objekt (leds)"}
+  td[data-key="stedtid"][data-part="leds"]::before{content:"sted/tid (leds)"}
+  td[data-key="subjekt"][data-part="leds"]::before{content:"subjekt (leds)"}
 }
 </style>
 </head>
@@ -48,6 +64,8 @@ button:disabled{opacity:0.5;cursor:default}
 <div class="page">
   <h1>Hoved + Ledsætninger (3 spørgsmål)</h1>
   <div class="note">Пул содержит отдельный специальный токен <strong>(blank)</strong>. Перетаскивай слова в пустые ячейки. Если эталон пустой, оставь ячейку пустой или используй <em>blank</em> — при проверке это будет считаться правильным.</div>
+
+  <label style="display:flex;align-items:center;margin-bottom:8px"><input type="checkbox" id="mobil-toggle" style="margin-right:8px"/> MobilVersion (tap mode)</label>
 
   <table aria-label="Hoved + Ledsætninger">
     <thead>
@@ -94,7 +112,12 @@ let selectedIdx = [];
 let selectedSentences = [];
 let wordsMaster = [];
 let uidCounter = 1;
+let tapMode = false;
 let selectedWordUid = null;
+
+document.getElementById('mobil-toggle').addEventListener('change', e=>{
+  tapMode = e.target.checked;
+});
 
 fetch('words.json')
   .then(r => r.json())
@@ -110,6 +133,7 @@ fetch('words.json')
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 function getField(obj, ...keys){ for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k]; return { word:'', translation:'' }; }
+
 function getCorrectFieldFrom(sectionObj, logicalKey){
   if(!sectionObj) return {word:'', translation:''};
   switch(logicalKey){
@@ -154,10 +178,10 @@ function buildTable(){
       if(fixed){ td.textContent=text||''; td.dataset.uid='fixed'; }
       else { 
         td.textContent=''; td.dataset.uid=''; 
+        td.classList.add('blank-cell'); 
         td.addEventListener('dragover',e=>e.preventDefault()); 
         td.addEventListener('drop',e=>dropWord(e,td)); 
-        td.classList.add('blank-cell');
-        td.addEventListener('click',()=>onCellTap(td));
+        td.addEventListener('click',()=>tapCell(td));
       }
       return td;
     };
@@ -169,14 +193,19 @@ function buildTable(){
     tr.appendChild(makeCell('',false,'hoved','verbum2_3'));
     tr.appendChild(makeCell('',false,'hoved','objekt'));
     tr.appendChild(makeCell('',false,'hoved','stedtid'));
+
     const commaTd=document.createElement('td'); commaTd.textContent=','; commaTd.dataset.uid='fixed'; commaTd.dataset.part='punct'; commaTd.dataset.key='comma'; tr.appendChild(commaTd);
+
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word,true,'leds','L-Konjuktion'));
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word,true,'leds','subjekt'));
+
     tr.appendChild(makeCell('',false,'leds','verbum1'));
     tr.appendChild(makeCell('',false,'leds','verbum2_3'));
     tr.appendChild(makeCell('',false,'leds','objekt'));
     tr.appendChild(makeCell('',false,'leds','stedtid'));
+
     const qTd=document.createElement('td'); qTd.textContent='?'; qTd.dataset.uid='fixed'; tr.appendChild(qTd);
+
     tbody.appendChild(tr);
   });
 }
@@ -201,6 +230,7 @@ function buildPool(){
     pushIf(L, ['objekt'], 'objekt', 'leds');
     pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
   });
+
   wordsMaster.push({uid: 'blank', word: '', translation: '', typeKey: 'blank', part: 'both', sentenceIndex: null, inPool: true, isBlank: true});
   wordsMaster = shuffle(wordsMaster);
 }
@@ -212,9 +242,9 @@ function renderPool(){
     const d = document.createElement('div');
     if(w.isBlank){ d.className = 'word pool-blank'; d.textContent = '(blank)'; }
     else{ d.className = 'word ' + (w.part==='hoved' ? 'pool-hoved' : 'pool-leds'); d.textContent = w.word; }
-    d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey; d.draggable = true;
+    d.dataset.uid = w.uid; d.dataset.typeKey = w.typeKey; d.draggable = !tapMode;
     d.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', w.uid));
-    d.addEventListener('click',()=>selectWordForTap(w.uid));
+    d.addEventListener('click', ()=>tapWord(w.uid));
     pool.appendChild(d);
   });
 }
@@ -223,11 +253,36 @@ function findMasterIndexByUid(uid){ return wordsMaster.findIndex(x => String(x.u
 
 function dropWord(ev, td){
   ev.preventDefault();
-  const uid = ev.dataTransfer.getData('text/plain');
-  placeWordInCell(uid, td);
+  insertWordToCell(ev.dataTransfer.getData('text/plain'), td);
 }
 
-function placeWordInCell(uid, td){
+function tapWord(uid){
+  if(!tapMode) return;
+  selectedWordUid = uid;
+  document.querySelectorAll('#word-pool .word').forEach(el=>{
+    el.style.outline = el.dataset.uid===uid ? '2px solid var(--blue)' : '';
+  });
+}
+
+function tapCell(td){
+  if(!tapMode) return;
+  if(selectedWordUid){
+    insertWordToCell(selectedWordUid, td);
+    selectedWordUid = null;
+    document.querySelectorAll('#word-pool .word').forEach(el=>el.style.outline='');
+  } else {
+    // вернуть слово в пул, если уже вставлено
+    const oldUid = td.dataset.uid;
+    if(oldUid && oldUid !== 'fixed' && oldUid !== 'blank'){
+      const idx = findMasterIndexByUid(oldUid);
+      if(idx!==-1) wordsMaster[idx].inPool = true;
+      td.textContent = ''; td.dataset.uid='';
+      renderPool();
+    }
+  }
+}
+
+function insertWordToCell(uid, td){
   const mIdx = findMasterIndexByUid(uid);
   if(mIdx === -1) return;
   const obj = wordsMaster[mIdx];
@@ -241,19 +296,9 @@ function placeWordInCell(uid, td){
   renderPool();
   clearHighlights();
   updateTranslation();
-  td.classList.remove('selected');
-  selectedWordUid = null;
 }
 
 function clearHighlights(){ document.querySelectorAll('#sentence-rows td').forEach(td=>td.classList.remove('correct','partial','wrong')); }
-
-function selectWordForTap(uid){ selectedWordUid = uid; }
-
-function onCellTap(td){
-  document.querySelectorAll('.blank-cell').forEach(c=>c.classList.remove('selected'));
-  td.classList.add('selected');
-  if(selectedWordUid) placeWordInCell(selectedWordUid, td);
-}
 
 document.getElementById('check-button').addEventListener('click', ()=>{
   clearHighlights();
