@@ -15,7 +15,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe
 .page{max-width:1200px;margin:24px auto;padding:0 16px}
 h1{font-size:20px;margin:0 0 12px}
 .note{font-size:13px;color:#374151;margin-bottom:10px}
-table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:12px;table-layout:fixed;word-break:break-word}
+table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:12px}
 th,td{border:1px solid var(--line);padding:10px;text-align:center;min-height:44px;vertical-align:middle}
 th{font-size:12px;text-transform:uppercase;background:#f8fafc}
 #legend{display:flex;gap:12px;align-items:center;margin:12px 0;flex-wrap:wrap}
@@ -40,9 +40,13 @@ button:disabled{opacity:0.5;cursor:default}
 
 /* Мобильная версия */
 @media (max-width:768px){
-  th,td{padding:6px;font-size:11px;min-height:36px}
-  .word{padding:6px 8px;font-size:12px}
-  #buttons{flex-direction:column}
+  h1{font-size:18px}
+  table, th, td{font-size:11px;padding:6px;min-height:36px;}
+  #buttons button{padding:6px 10px;font-size:13px;}
+  #legend{gap:6px;font-size:12px}
+  .word{padding:6px 10px;font-size:13px}
+  #translation{font-size:14px}
+  .info{font-size:12px}
 }
 </style>
 </head>
@@ -111,6 +115,7 @@ fetch('words.json')
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 function getField(obj, ...keys){ for(const k of keys) if(obj && (k in obj) && obj[k] && typeof obj[k].word !== 'undefined') return obj[k]; return { word:'', translation:'' }; }
+
 function getCorrectFieldFrom(sectionObj, logicalKey){
   if(!sectionObj) return {word:'', translation:''};
   switch(logicalKey){
@@ -168,6 +173,7 @@ function buildTable(){
 
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'L-Konjuktion').word,true,'leds','L-Konjuktion'));
     tr.appendChild(makeCell(getCorrectFieldFrom(L,'subjekt').word,true,'leds','subjekt'));
+
     tr.appendChild(makeCell('',false,'leds','verbum1'));
     tr.appendChild(makeCell('',false,'leds','verbum2_3'));
     tr.appendChild(makeCell('',false,'leds','objekt'));
@@ -199,6 +205,7 @@ function buildPool(){
     pushIf(L, ['objekt'], 'objekt', 'leds');
     pushIf(L, ['sted/tid','sted_tid','stedtid'], 'stedtid', 'leds');
   });
+
   wordsMaster.push({uid: 'blank', word: '', translation: '', typeKey: 'blank', part: 'both', sentenceIndex: null, inPool: true, isBlank: true});
   wordsMaster = shuffle(wordsMaster);
 }
@@ -256,7 +263,7 @@ document.getElementById('check-button').addEventListener('click', ()=>{
 
 document.getElementById('hint-button').addEventListener('click', ()=>{
   const rows = Array.from(document.querySelectorAll('#sentence-rows tr'));
-  rows.forEach((tr,rowIdx)=>{
+  rows.forEach((tr, rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       if(td.dataset.uid && td.dataset.uid !== 'fixed' && td.dataset.uid !== 'blank'){
         const key = td.dataset.key;
@@ -274,7 +281,7 @@ document.getElementById('reset-button').addEventListener('click', ()=>{ initUI()
 
 function updateTranslation(){
   let text = '';
-  document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
+  document.querySelectorAll('#sentence-rows tr').forEach((tr, rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       if(td.dataset.uid && td.dataset.uid !== 'fixed' && td.dataset.uid !== 'blank'){
         const idx = findMasterIndexByUid(td.dataset.uid);
