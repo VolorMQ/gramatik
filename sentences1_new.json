@@ -1,0 +1,1829 @@
+{
+  "sentences": [
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "я"
+      },
+      "verbum1": {
+        "word": "kan",
+        "translation": "могу"
+      },
+      "adverbium": {
+        "word": "godt",
+        "translation": "хорошо"
+      },
+      "verbum2-3": {
+        "word": "at høre",
+        "translation": "слушать"
+      },
+      "objekt1": {
+        "word": "musik",
+        "translation": "музыку"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "она"
+      },
+      "verbum1": {
+        "word": "vil",
+        "translation": "хочет"
+      },
+      "adverbium": {
+        "word": "gerne",
+        "translation": "охотно"
+      },
+      "verbum2-3": {
+        "word": "at læse",
+        "translation": "читать"
+      },
+      "objekt1": {
+        "word": "en bog",
+        "translation": "книгу"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "biblioteket",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "De",
+        "translation": "они"
+      },
+      "verbum1": {
+        "word": "skal",
+        "translation": "должны"
+      },
+      "adverbium": {
+        "word": "snart",
+        "translation": "скоро"
+      },
+      "verbum2-3": {
+        "word": "at spille",
+        "translation": "играть"
+      },
+      "objekt1": {
+        "word": "fodbold",
+        "translation": "футбол"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "hallen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "må",
+        "translation": "должны"
+      },
+      "adverbium": {
+        "word": "altid",
+        "translation": "всегда"
+      },
+      "verbum2-3": {
+        "word": "at hjælpe",
+        "translation": "помогать"
+      },
+      "objekt1": {
+        "word": "børnene",
+        "translation": "детям"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "skolen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Du",
+        "translation": "ты"
+      },
+      "verbum1": {
+        "word": "kan",
+        "translation": "можешь"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": "at finde",
+        "translation": "найти"
+      },
+      "objekt1": {
+        "word": "nøglen",
+        "translation": "ключ"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "tasken",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "он"
+      },
+      "verbum1": {
+        "word": "vil",
+        "translation": "хочет"
+      },
+      "adverbium": {
+        "word": "gerne",
+        "translation": "охотно"
+      },
+      "verbum2-3": {
+        "word": "at købe",
+        "translation": "купить"
+      },
+      "objekt1": {
+        "word": "en computer",
+        "translation": "компьютер"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "butikken",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Søsteren",
+        "translation": "сестра"
+      },
+      "verbum1": {
+        "word": "kan",
+        "translation": "может"
+      },
+      "adverbium": {
+        "word": "smukt",
+        "translation": "красиво"
+      },
+      "verbum2-3": {
+        "word": "at synge",
+        "translation": "петь"
+      },
+      "objekt1": {
+        "word": "en sang",
+        "translation": "песню"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "kirken",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "skal",
+        "translation": "должны"
+      },
+      "adverbium": {
+        "word": "snart",
+        "translation": "скоро"
+      },
+      "verbum2-3": {
+        "word": "at lave",
+        "translation": "готовить"
+      },
+      "objekt1": {
+        "word": "mad",
+        "translation": "еду"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "køkkenet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Læreren",
+        "translation": "учитель"
+      },
+      "verbum1": {
+        "word": "kan",
+        "translation": "может"
+      },
+      "adverbium": {
+        "word": "tydeligt",
+        "translation": "ясно"
+      },
+      "verbum2-3": {
+        "word": "at forklare",
+        "translation": "объяснять"
+      },
+      "objekt1": {
+        "word": "reglen",
+        "translation": "правило"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "klassen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Børnene",
+        "translation": "дети"
+      },
+      "verbum1": {
+        "word": "vil",
+        "translation": "хотят"
+      },
+      "adverbium": {
+        "word": "gerne",
+        "translation": "охотно"
+      },
+      "verbum2-3": {
+        "word": "at lege",
+        "translation": "играть"
+      },
+      "objekt1": {
+        "word": "spil",
+        "translation": "в игры"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "он"
+      },
+      "verbum1": {
+        "word": "spiller",
+        "translation": "играет"
+      },
+      "adverbium": {
+        "word": "godt",
+        "translation": "хорошо"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "på guitar",
+        "translation": "на гитаре"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "arbejder",
+        "translation": "работаем"
+      },
+      "adverbium": {
+        "word": "hårdt",
+        "translation": "усердно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "projektet",
+        "translation": "над проектом"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "kontoret",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Søsteren",
+        "translation": "сестра"
+      },
+      "verbum1": {
+        "word": "maler",
+        "translation": "рисует"
+      },
+      "adverbium": {
+        "word": "smukt",
+        "translation": "красиво"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "et billede",
+        "translation": "картину"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Katten",
+        "translation": "кот"
+      },
+      "verbum1": {
+        "word": "ser",
+        "translation": "смотрит"
+      },
+      "adverbium": {
+        "word": "roligt",
+        "translation": "спокойно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "fuglen",
+        "translation": "на птицу"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "vinduet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hunden",
+        "translation": "собака"
+      },
+      "verbum1": {
+        "word": "fanger",
+        "translation": "ловит"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "bolden",
+        "translation": "мяч"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Pigen",
+        "translation": "девочка"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читает"
+      },
+      "adverbium": {
+        "word": "stille",
+        "translation": "тихо"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "en bog",
+        "translation": "книгу"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "sengen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Drengen",
+        "translation": "мальчик"
+      },
+      "verbum1": {
+        "word": "skriver",
+        "translation": "пишет"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "brevet",
+        "translation": "письмо"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "bordet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Moren",
+        "translation": "мама"
+      },
+      "verbum1": {
+        "word": "laver",
+        "translation": "готовит"
+      },
+      "adverbium": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "mad",
+        "translation": "еду"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "køkkenet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Faderen",
+        "translation": "отец"
+      },
+      "verbum1": {
+        "word": "reparerer",
+        "translation": "чинит"
+      },
+      "adverbium": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "bilen",
+        "translation": "машину"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "garagen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vennerne",
+        "translation": "друзья"
+      },
+      "verbum1": {
+        "word": "drikker",
+        "translation": "пьют"
+      },
+      "adverbium": {
+        "word": "sammen",
+        "translation": "вместе"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "kaffe",
+        "translation": "кофе"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "caféen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "я"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читаю"
+      },
+      "adverbium": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2-3": {
+        "word": "at skrive",
+        "translation": "писать"
+      },
+      "objekt1": {
+        "word": "dagbog",
+        "translation": "дневник"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "hjemme",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "она"
+      },
+      "verbum1": {
+        "word": "spiser",
+        "translation": "ест"
+      },
+      "adverbium": {
+        "word": "langsomt",
+        "translation": "медленно"
+      },
+      "verbum2-3": {
+        "word": "at bage",
+        "translation": "печь"
+      },
+      "objekt1": {
+        "word": "kager",
+        "translation": "пироги"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "køkkenet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "он"
+      },
+      "verbum1": {
+        "word": "skriver",
+        "translation": "пишет"
+      },
+      "adverbium": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "verbum2-3": {
+        "word": "at sende",
+        "translation": "отправлять"
+      },
+      "objekt1": {
+        "word": "breve",
+        "translation": "письма"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "kontoret",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "går",
+        "translation": "идём"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": "at besøge",
+        "translation": "посещать"
+      },
+      "objekt1": {
+        "word": "venner",
+        "translation": "друзей"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "byen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Du",
+        "translation": "ты"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читаешь"
+      },
+      "adverbium": {
+        "word": "stille",
+        "translation": "тихо"
+      },
+      "verbum2-3": {
+        "word": "at forstå",
+        "translation": "понимать"
+      },
+      "objekt1": {
+        "word": "teksten",
+        "translation": "текст"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "skolen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Børnene",
+        "translation": "дети"
+      },
+      "verbum1": {
+        "word": "leger",
+        "translation": "играют"
+      },
+      "adverbium": {
+        "word": "gladeligt",
+        "translation": "с радостью"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "spil",
+        "translation": "в игры"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Katten",
+        "translation": "кот"
+      },
+      "verbum1": {
+        "word": "sover",
+        "translation": "спит"
+      },
+      "adverbium": {
+        "word": "rolig",
+        "translation": "спокойно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": ""
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "sofaen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hunden",
+        "translation": "собака"
+      },
+      "verbum1": {
+        "word": "løber",
+        "translation": "бежит"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": ""
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "я"
+      },
+      "verbum1": {
+        "word": "drikker",
+        "translation": "пью"
+      },
+      "adverbium": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "kaffe",
+        "translation": "кофе"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "arbejdet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "она"
+      },
+      "verbum1": {
+        "word": "spiller",
+        "translation": "играет"
+      },
+      "adverbium": {
+        "word": "godt",
+        "translation": "хорошо"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "klaver",
+        "translation": "на пианино"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "hjemme",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "он"
+      },
+      "verbum1": {
+        "word": "ser",
+        "translation": "смотрит"
+      },
+      "adverbium": {
+        "word": "nøje",
+        "translation": "внимательно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "fjernsynet",
+        "translation": "телевизор"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "spiser",
+        "translation": "едим"
+      },
+      "adverbium": {
+        "word": "sammen",
+        "translation": "вместе"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "aftensmad",
+        "translation": "ужин"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "køkkenet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Du",
+        "translation": "ты"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читаешь"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "avisen",
+        "translation": "газету"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "caféen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Børnene",
+        "translation": "дети"
+      },
+      "verbum1": {
+        "word": "ser",
+        "translation": "смотрят"
+      },
+      "adverbium": {
+        "word": "glade",
+        "translation": "радостно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "tegnfilm",
+        "translation": "мультфильмы"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "hjemme",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Katten",
+        "translation": "кот"
+      },
+      "verbum1": {
+        "word": "jager",
+        "translation": "ловит"
+      },
+      "adverbium": {
+        "word": "rolig",
+        "translation": "спокойно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "musen",
+        "translation": "мышь"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hunden",
+        "translation": "собака"
+      },
+      "verbum1": {
+        "word": "spiser",
+        "translation": "ест"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "maden",
+        "translation": "еду"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "køkkenet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "я"
+      },
+      "verbum1": {
+        "word": "skriver",
+        "translation": "пишу"
+      },
+      "adverbium": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2-3": {
+        "word": "at sende",
+        "translation": "отправлять"
+      },
+      "objekt1": {
+        "word": "emails",
+        "translation": "электронные письма"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "arbejdet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "она"
+      },
+      "verbum1": {
+        "word": "maler",
+        "translation": "рисует"
+      },
+      "adverbium": {
+        "word": "smukt",
+        "translation": "красиво"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "billeder",
+        "translation": "картины"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "он"
+      },
+      "verbum1": {
+        "word": "bygger",
+        "translation": "строит"
+      },
+      "adverbium": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "et hus",
+        "translation": "дом"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "landet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "rejser",
+        "translation": "путешествуем"
+      },
+      "adverbium": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "til udlandet",
+        "translation": "за границу"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "om",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "sommeren",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Du",
+        "translation": "ты"
+      },
+      "verbum1": {
+        "word": "synger",
+        "translation": "поёшь"
+      },
+      "adverbium": {
+        "word": "smukt",
+        "translation": "красиво"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "en sang",
+        "translation": "песню"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "kirken",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Børnene",
+        "translation": "дети"
+      },
+      "verbum1": {
+        "word": "leger",
+        "translation": "играют"
+      },
+      "adverbium": {
+        "word": "glade",
+        "translation": "весело"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "fangeleg",
+        "translation": "в салки"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Katten",
+        "translation": "кот"
+      },
+      "verbum1": {
+        "word": "sover",
+        "translation": "спит"
+      },
+      "adverbium": {
+        "word": "roligt",
+        "translation": "спокойно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": ""
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stolen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hunden",
+        "translation": "собака"
+      },
+      "verbum1": {
+        "word": "løber",
+        "translation": "бежит"
+      },
+      "adverbium": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": ""
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "parken",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "я"
+      },
+      "verbum1": {
+        "word": "drikker",
+        "translation": "пью"
+      },
+      "adverbium": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "te",
+        "translation": "чай"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "hjemme",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "она"
+      },
+      "verbum1": {
+        "word": "spiser",
+        "translation": "ест"
+      },
+      "adverbium": {
+        "word": "langsomt",
+        "translation": "медленно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "morgenmad",
+        "translation": "завтрак"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "køkkenet",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "он"
+      },
+      "verbum1": {
+        "word": "ser",
+        "translation": "смотрит"
+      },
+      "adverbium": {
+        "word": "nøje",
+        "translation": "внимательно"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "fjernsynet",
+        "translation": "телевизор"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "мы"
+      },
+      "verbum1": {
+        "word": "spiller",
+        "translation": "играем"
+      },
+      "adverbium": {
+        "word": "godt",
+        "translation": "хорошо"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "kort",
+        "translation": "в карты"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "hjemme",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "",
+        "translation": ""
+      }
+    },
+    {
+      "subjekt": {
+        "word": "Du",
+        "translation": "ты"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читаешь"
+      },
+      "adverbium": {
+        "word": "stille",
+        "translation": "тихо"
+      },
+      "verbum2-3": {
+        "word": ""
+      },
+      "objekt1": {
+        "word": "en bog",
+        "translation": "книгу"
+      },
+      "konjuktion": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt2": {
+        "word": "",
+        "translation": ""
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": ""
+      },
+      "sted_tid_substantiv": {
+        "word": "biblioteket",
+        "translation": ""
+      }
+    }
+  ]
+}
