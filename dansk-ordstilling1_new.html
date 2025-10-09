@@ -30,6 +30,12 @@ button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-rad
 button:disabled{opacity:0.5;cursor:default}
 #translation{margin-top:12px;font-weight:600;color:#10b981}
 #mobile-toggle{margin-bottom:12px}
+
+td[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: #9ca3af; /* серый цвет */
+  font-style: italic;
+}
 </style>
 </head>
 <body>
@@ -78,22 +84,32 @@ function initSentences(){
   selectedSentences.forEach((s,i)=>{
     const tr = document.createElement('tr');
     tr.dataset.index = i;
+
     ['subjekt','verbum1','adverbium','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
+
       if(type==='subjekt'){ 
-        td.textContent = s.subjekt.word;
+        td.textContent = s.subjekt.word; // подлежащее сразу заполнено
         td.dataset.wordIndex = -1;
       } else {
+        // Добавляем серую подсказку через data-placeholder
+        if(s[type] && s[type].translation){
+          td.dataset.placeholder = s[type].translation;
+        }
+
         td.addEventListener('dragover', ev=>{ if(!mobileMode) ev.preventDefault(); });
         td.addEventListener('drop', ev=>{ if(!mobileMode) dropWord(ev,td); });
         td.addEventListener('click', ()=>{ if(mobileMode) tapInsert(td); });
       }
+
       tr.appendChild(td);
     });
+
     tbody.appendChild(tr);
   });
 
+  // Подготовка пула слов (как было)
   wordsPool = [];
   ['verbum1','adverbium','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
     let typeWords = selectedSentences.map((s,index)=>({...s[type], sentenceIndex:index}));
