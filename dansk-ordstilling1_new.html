@@ -41,7 +41,7 @@ button:disabled{opacity:0.5;cursor:default}
 <h2 class="mt-8">Ligefrem ordstilling (normal)</h2>
 <table aria-label="Omvendt ordstilling – skema" class="schema">
 <thead>
-<tr><th class="subjekt">subjekt</th><th class="verbum1">verbum 1</th><th class="adverbium">adverbium</th><th class="verbum2-3">verbum 2–3</th><th class="objekt1">objekt</th><th class="konjuktion">konjuktion</th><th class="objekt2">objekt</th><th class="sted_tid_præposition">sted/tid præposition</th><th class="sted_tid_substantiv">sted/tid substantiv</th></tr>
+<tr><th class="subjekt">subjekt</th><th class="verbum1">verbum 1</th><th class="adverbium">adverbium</th><th class="verbum2">verbum 2</th><th class="verbium3_infinitivpartikle">verbium3-infinitivpartikle</th><th class="verbium3_infinitiv">verbium3-infinitiv</th><th class="objekt1">objekt</th><th class="konjuktion">konjuktion</th><th class="objekt2">objekt</th><th class="sted_tid_præposition">sted/tid præposition</th><th class="sted_tid_substantiv">sted/tid substantiv</th></tr>
 </thead>
 <tbody id="sentence-rows"></tbody>
 </table>
@@ -60,7 +60,7 @@ let wordsPool = [];
 let mobileMode = false;
 let selectedWordIndex = null;
 
-fetch('sentences1_new.json')
+fetch('sentences.json')
   .then(res => res.json())
   .then(data => {
     sentences = data.sentences;
@@ -78,7 +78,7 @@ function initSentences(){
   selectedSentences.forEach((s,i)=>{
     const tr = document.createElement('tr');
     tr.dataset.index = i;
-    ['subjekt','verbum1','adverbium','verbum2-3','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
+    ['subjekt','verbum1','adverbium','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
       if(type==='subjekt'){ 
@@ -95,7 +95,7 @@ function initSentences(){
   });
 
   wordsPool = [];
-  ['verbum1','adverbium','verbum2-3','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
+  ['verbum1','adverbium','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
     let typeWords = selectedSentences.map((s,index)=>({...s[type], sentenceIndex:index}));
     typeWords = shuffle(typeWords);
     typeWords.forEach(w=>{
