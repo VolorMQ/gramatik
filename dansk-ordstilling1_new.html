@@ -47,7 +47,7 @@ td[data-placeholder]:empty::before {
 <h2 class="mt-8">Ligefrem ordstilling (normal)</h2>
 <table aria-label="Omvendt ordstilling – skema" class="schema">
 <thead>
-<tr><th class="subjekt">subjekt</th><th class="verbum1">verbum 1</th><th class="adverbium">adverbium</th><th class="verbum2">verbum 2</th><th class="verbium3_infinitivpartikle">verbium3-infinitivpartikle</th><th class="verbium3_infinitiv">verbium3-infinitiv</th><th class="objekt1">objekt</th><th class="konjuktion">konjuktion</th><th class="objekt2">objekt</th><th class="sted_tid_præposition">sted/tid præposition</th><th class="sted_tid_substantiv">sted/tid substantiv</th></tr>
+<tr><th class="subjekt">subjekt</th><th class="verbum1">verbium 1</th><th class="adverbium1">adverbium 1</th><th class="adverbium2">adverbium 2</th><th class="verbum2">verbium 2</th><th class="verbium3_infinitivpartikle">verbium3-infinitivpartikle</th><th class="verbium3_infinitiv">verbium3-infinitiv</th><th class="objekt1">objekt</th><th class="konjuktion">konjuktion</th><th class="objekt2">objekt</th><th class="sted_tid_præposition">sted/tid præposition</th><th class="sted_tid_substantiv">sted/tid substantiv</th></tr>
 </thead>
 <tbody id="sentence-rows"></tbody>
 </table>
@@ -85,7 +85,7 @@ function initSentences(){
     const tr = document.createElement('tr');
     tr.dataset.index = i;
 
-    ['subjekt','verbum1','adverbium','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
+    ['subjekt','verbum1','adverbium1','adverbium2','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
       const td = document.createElement('td');
       td.dataset.type = type;
 
@@ -111,7 +111,7 @@ function initSentences(){
 
   // Подготовка пула слов (как было)
   wordsPool = [];
-  ['verbum1','adverbium','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
+  ['verbum1','adverbium1','adverbium2','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
     let typeWords = selectedSentences.map((s,index)=>({...s[type], sentenceIndex:index}));
     typeWords = shuffle(typeWords);
     typeWords.forEach(w=>{

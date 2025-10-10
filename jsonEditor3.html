@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Editor Hovedsætninger</title>
+<title>Editor Hovedsætninger (Struct 12)</title>
 <style>
 body { font-family: Arial; margin: 20px; }
 select, button, label { margin: 5px; }
@@ -14,12 +14,12 @@ input { width: 90%; box-sizing: border-box; margin: 2px 0; }
 </head>
 <body>
 
-<h1>Editor Hovedsætninger</h1>
+<h1>Editor Hovedsætninger (Struct 12)</h1>
 
 <label>Выберите базу: 
   <select id="fileSelect">
-    <option value="sentences.json">Normal</option>
-    <option value="sentences1.json">Invertion</option>
+    <option value="sentences1_new.json">Normal</option>
+
   </select>
 </label>
 
@@ -37,9 +37,10 @@ input { width: 90%; box-sizing: border-box; margin: 2px 0; }
 <tr>
 <th>subjekt</th>
 <th>verbum1</th>
-<th>adverbium</th>
+<th>adverbium1</th>
+<th>adverbium2</th>
 <th>verbum2</th>
-<th>verbium3_infinitpartikle</th>
+<th>verbium3_infinitivpartikle</th>
 <th>verbium3_infinitiv</th>
 <th>objekt1</th>
 <th>konjuktion</th>
@@ -98,7 +99,7 @@ function toggleEditBoth() {
   const label = document.getElementById('selectedBases');
   if(editBoth){
     select.disabled = true;
-    label.textContent = 'Редактируем одновременно: Normal (sentences.json) и Invertion (sentences1.json)';
+    label.textContent = 'json';
     loadSelectedFile();
     loadSecondFile();
   } else {
@@ -112,16 +113,20 @@ function toggleEditBoth() {
 function renderTable() {
   const tbody = document.getElementById('tableBody');
   tbody.innerHTML = '';
-  const keys = ['subjekt','verbum1','adverbium','verbum2','verbium3_infinitpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'];
+  const keys = [
+    'subjekt','verbum1','adverbium1','adverbium2',
+    'verbum2','verbium3_infinitivpartikle','verbium3_infinitiv',
+    'objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'
+  ];
   
   jsonData.forEach((sentence, index) => {
     const tr = document.createElement('tr');
     keys.forEach(key => {
       const td = document.createElement('td');
       td.innerHTML = `
-        <input type="text" value="${sentence[key].word}" placeholder="word"
+        <input type="text" value="${sentence[key]?.word || ''}" placeholder="слово"
           oninput="updateCell(${index}, '${key}', 'word', this.value)">
-        <input type="text" value="${sentence[key].translation}" placeholder="translation"
+        <input type="text" value="${sentence[key]?.translation || ''}" placeholder="перевод"
           oninput="updateCell(${index}, '${key}', 'translation', this.value)">
       `;
       tr.appendChild(td);
@@ -136,17 +141,22 @@ function renderTable() {
 }
 
 function updateCell(rowIndex, key, prop, value) {
+  if (!jsonData[rowIndex][key]) jsonData[rowIndex][key] = { word: "", translation: "" };
   jsonData[rowIndex][key][prop] = value;
-  if(editBoth && jsonData2[rowIndex]) jsonData2[rowIndex][key][prop] = value;
+  if(editBoth && jsonData2[rowIndex]) {
+    if (!jsonData2[rowIndex][key]) jsonData2[rowIndex][key] = { word: "", translation: "" };
+    jsonData2[rowIndex][key][prop] = value;
+  }
 }
 
 function addSentence() {
   const emptySentence = {
     "subjekt":{"word":"","translation":""},
     "verbum1":{"word":"","translation":""},
-    "adverbium":{"word":"","translation":""},
+    "adverbium1":{"word":"","translation":""},
+    "adverbium2":{"word":"","translation":""},
     "verbum2":{"word":"","translation":""},
-    "verbium3_infinitpartikle":{"word":"","translation":""},
+    "verbium3_infinitivpartikle":{"word":"","translation":""},
     "verbium3_infinitiv":{"word":"","translation":""},
     "objekt1":{"word":"","translation":""},
     "konjuktion":{"word":"","translation":""},
@@ -170,7 +180,7 @@ function saveToLocalFile() {
   const url1 = URL.createObjectURL(blob1);
   const a1 = document.createElement('a');
   a1.href = url1;
-  a1.download = 'sentences1_new.json';
+  a1.download = 'sentences1_struct.json';
   a1.click();
   URL.revokeObjectURL(url1);
 
