@@ -81,7 +81,7 @@ fetch('sentences1.json')
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 
 function initSentences(){
-  selectedSentences = shuffle([...sentences]).slice(0,3);
+  selectedSentences = shuffle([...sentences]).slice(0,1);
   const tbody = document.getElementById('sentence-rows');
   tbody.innerHTML = "";
 
