@@ -65,9 +65,9 @@ let selectedWords = [];
 let dragged = null;
 let fromChoice = false;
 
-// Загрузка JSON с текстами
+// Загрузка JSON с рассказами
 fetch('texts.json')
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
     texts = data;
     loadRandomText();
@@ -85,29 +85,34 @@ function shuffleArray(arr) {
   return arr.slice().sort(() => Math.random() - 0.5);
 }
 
-// Генерация слов для вставки из текста
+// Генерация случайных слов для вставки
 function generateWords() {
   const num = parseInt(document.getElementById('numWords').value);
-  
-  // Разбиваем текст на слова (без знаков препинания для удобства)
+
+  // Разбиваем текст на слова (игнорируем знаки препинания)
   let allWords = currentText.text.match(/\b[\wæøåÆØÅ]+\b/g);
   if(!allWords) allWords = [];
   
   selectedWords = shuffleArray(allWords).slice(0, Math.min(num, allWords.length));
   availableWords = selectedWords.slice();
-  
+
   renderStory();
   renderWords();
   document.getElementById('result').textContent = '';
 }
 
-// Создание текста с placeholder для выбранных слов
+// Создание текста с placeholders для выбранных слов
 function renderStory() {
   let newText = currentText.text;
+
   selectedWords.forEach(word => {
-    // заменяем только первое вхождение
-    newText = newText.replace(new RegExp(`\\b${word}\\b`), `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)">___</span>`);
+    // Экранируем специальные символы в слове для RegExp
+    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Регулярка с флагом 'g' для всех вхождений
+    const regex = new RegExp(`\\b${escapedWord}\\b`, 'g');
+    newText = newText.replace(regex, '<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)">___</span>');
   });
+
   document.getElementById('story').innerHTML = newText;
 }
 
@@ -188,6 +193,7 @@ document.getElementById('check').addEventListener('click', () => {
 document.getElementById('refresh').addEventListener('click', loadRandomText);
 document.getElementById('generateWords').addEventListener('click', generateWords);
 </script>
+
 
 </body>
 </html>
