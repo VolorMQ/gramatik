@@ -89,12 +89,13 @@ function shuffleArray(arr) {
 function generateWords() {
   const num = parseInt(document.getElementById('numWords').value);
 
-  // Разбиваем текст на слова (игнорируем знаки препинания)
+  // Разбиваем текст на слова и оставляем только уникальные
   let allWords = currentText.text.match(/\b[\wæøåÆØÅ]+\b/g);
-  if(!allWords) allWords = [];
-  
-  selectedWords = shuffleArray(allWords).slice(0, Math.min(num, allWords.length));
-  availableWords = selectedWords.slice();
+  if (!allWords) allWords = [];
+  const uniqueWords = [...new Set(allWords)]; // уникальные слова
+
+  // Случайным образом выбираем num слов из уникальных
+  selectedWords = shuffleArray(uniqueWords).slice(0, Math.min(num, uniqueWords.length));
 
   renderStory();
   renderWords();
@@ -106,15 +107,15 @@ function renderStory() {
   let newText = currentText.text;
 
   selectedWords.forEach(word => {
-    // Экранируем специальные символы в слове для RegExp
     const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // Регулярка с флагом 'g' для всех вхождений
     const regex = new RegExp(`\\b${escapedWord}\\b`, 'g');
-    newText = newText.replace(regex, '<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)">___</span>');
+    // заменяем все вхождения слова на один placeholder
+    newText = newText.replace(regex, `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)">___</span>`);
   });
 
   document.getElementById('story').innerHTML = newText;
 }
+
 
 // Отображение доступных слов
 function renderWords() {
