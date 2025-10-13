@@ -92,10 +92,13 @@ function generateWords() {
   // Разбиваем текст на слова и оставляем только уникальные
   let allWords = currentText.text.match(/\b[\wæøåÆØÅ]+\b/g);
   if (!allWords) allWords = [];
-  const uniqueWords = [...new Set(allWords)]; // уникальные слова
+  const uniqueWords = [...new Set(allWords)];
 
-  // Случайным образом выбираем num слов из уникальных
-  selectedWords = shuffleArray(uniqueWords).slice(0, Math.min(num, uniqueWords.length));
+  // Ограничиваем numWords максимальным количеством уникальных слов
+  const maxWords = Math.min(num, uniqueWords.length);
+
+  // Выбираем ровно maxWords случайных уникальных слов
+  selectedWords = shuffleArray(uniqueWords).slice(0, maxWords);
 
   renderStory();
   renderWords();
@@ -109,7 +112,8 @@ function renderStory() {
   selectedWords.forEach(word => {
     const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`\\b${escapedWord}\\b`, 'g');
-    // заменяем все вхождения слова на один placeholder
+
+    // заменяем все вхождения выбранного слова на один placeholder
     newText = newText.replace(regex, `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)">___</span>`);
   });
 
