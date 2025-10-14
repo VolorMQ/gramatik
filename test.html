@@ -180,48 +180,60 @@ function dragWord(ev){
 }
 
 function dropWord(ev){
-  if(mobileMode) return; // в мобилке drop отключаем
+  if (mobileMode) return; // в мобилке drop отключаем
   ev.preventDefault();
   const placeholder = ev.target;
-  if(dragged){
-    const expected = placeholder.dataset && placeholder.dataset.expected ? placeholder.dataset.expected : null;
+  if (!dragged) return;
 
-    // создаём span и копируем expected
-    const span = document.createElement('span');
-    span.className = 'insertedWord';
-    span.draggable = true;
-    span.textContent = dragged.textContent.trim();
-    if(expected) span.dataset.expected = expected;
+  const expected = placeholder.dataset && placeholder.dataset.expected ? placeholder.dataset.expected : null;
+  const wordText = dragged.textContent.trim();
 
-    span.ondragstart = dragInsertedWord;
-    span.onclick = tapInsertedWord;
-    placeholder.parentNode.replaceChild(span, placeholder);
+  // создаём вставленный span и копируем expected
+  const span = document.createElement('span');
+  span.className = 'insertedWord';
+  span.draggable = true;
+  span.textContent = wordText;
+  if (expected) span.dataset.expected = expected;
 
-    if(fromChoice){
-      const index = availableWords.indexOf(dragged.textContent);
-      if(index > -1) availableWords.splice(index, 1);
-      renderWords();
-    }
+  span.ondragstart = dragInsertedWord;
+  span.onclick = tapInsertedWord;
+  placeholder.parentNode.replaceChild(span, placeholder);
+
+  if (fromChoice) {
+    const index = availableWords.indexOf(dragged.textContent);
+    if (index > -1) availableWords.splice(index, 1);
+    renderWords();
   }
+
   if (dragged) dragged.classList.remove('dragging');
   dragged = null;
 }
 
+
 function dragInsertedWord(ev){
-  if(mobileMode) return; // в мобилке отключаем
+  if (mobileMode) return;
   const wordEl = ev.target;
   dragged = wordEl;
   fromChoice = false;
   ev.dataTransfer.setData("text", wordEl.textContent);
   ev.target.classList.add('dragging');
-  availableWords.push(wordEl.textContent);
+
+  // вернуть слово в банк
+  const wordText = wordEl.textContent.trim();
+  availableWords.push(wordText);
   renderWords();
+
+  // создаём placeholder и переносим expected туда
   const placeholder = document.createElement('span');
   placeholder.className = 'placeholder';
   placeholder.textContent = '___';
+  if (wordEl.dataset && wordEl.dataset.expected) {
+    placeholder.dataset.expected = wordEl.dataset.expected;
+  }
   placeholder.ondrop = dropWord;
   placeholder.ondragover = allowDrop;
   placeholder.onclick = tapPlaceholder;
+
   wordEl.parentNode.replaceChild(placeholder, wordEl);
   dragged = null;
 }
@@ -243,56 +255,61 @@ function tapWord(ev){
 }
 
 function tapPlaceholder(ev){
-  if(!mobileMode) return;
-  if(!selectedWordForTap) return;
+  if (!mobileMode) return;
+  if (!selectedWordForTap) return;
   const placeholder = ev.target;
   const expected = placeholder.dataset && placeholder.dataset.expected ? placeholder.dataset.expected : null;
+  const wordText = selectedWordForTap;
 
   const span = document.createElement('span');
   span.className = 'insertedWord';
-  span.textContent = selectedWordForTap;
-  if(expected) span.dataset.expected = expected;
-  // в мобилке сделаем span не draggable, но оставим onclick для возврата
+  span.textContent = wordText;
+  // mobile: не делаем draggable, но сохраняем expected
+  if (expected) span.dataset.expected = expected;
   span.draggable = false;
   span.onclick = tapInsertedWord;
 
   placeholder.parentNode.replaceChild(span, placeholder);
 
+  // убрать слово из availableWords
   const idx = availableWords.indexOf(selectedWordForTap);
-  if(idx > -1) availableWords.splice(idx, 1);
+  if (idx > -1) availableWords.splice(idx, 1);
   selectedWordForTap = null;
   renderWords();
 }
 
 function tapInsertedWord(ev){
-  if(!mobileMode){
-    // в десктопе клик по вставленному возвращать не будем (drag handles it)
-    return;
-  }
-  const el = ev.target;
-  const word = el.textContent.trim();
-  // вернуть в банк
-  availableWords.push(word);
+  if (!mobileMode) return;
+  const wordEl = ev.target;
+  const wordText = wordEl.textContent.trim();
+  const expected = wordEl.dataset && wordEl.dataset.expected ? wordEl.dataset.expected : null;
+
+  // вернуть слово в банк
+  availableWords.push(wordText);
   renderWords();
-  // заменить на placeholder
+
+  // восстановить placeholder с expected (если был)
   const placeholder = document.createElement('span');
   placeholder.className = 'placeholder';
   placeholder.textContent = '___';
+  if (expected) placeholder.dataset.expected = expected;
   placeholder.ondrop = dropWord;
   placeholder.ondragover = allowDrop;
   placeholder.onclick = tapPlaceholder;
-  el.parentNode.replaceChild(placeholder, el);
+
+  wordEl.parentNode.replaceChild(placeholder, wordEl);
 }
 
 // Проверка (оставлена как в твоём рабочем коде — сравнение по позиции)
 document.getElementById('check').addEventListener('click', () => {
   const inserted = Array.from(document.querySelectorAll('.insertedWord'));
   let allCorrect = true;
-  inserted.forEach((el, i) => {
-    const actual = el.textContent.trim().toLowerCase();
-    const expected = (el.dataset && el.dataset.expected) ? el.dataset.expected.toLowerCase() : (selectedWords[i] ? selectedWords[i].toLowerCase() : null);
 
-    if(expected && actual === expected){
+  inserted.forEach(el => {
+    const actual = el.textContent.trim().toLowerCase();
+    const expected = el.dataset && el.dataset.expected ? el.dataset.expected.toLowerCase() : null;
+
+    if (expected && actual === expected) {
       el.style.background = '#d4edda';
       el.style.borderBottom = '2px solid green';
     } else {
