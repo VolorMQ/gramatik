@@ -180,27 +180,35 @@ function dragWord(ev){
   ev.target.classList.add('dragging');
 }
 
+// === Вставка слова при drag&drop (и для обычного режима) ===
 function dropWord(ev){
+  if (mobileMode) return; // в мобил. режиме DnD отключён
   ev.preventDefault();
   const placeholder = ev.target;
-  if(dragged){
-    const span = document.createElement('span');
-    span.className = 'insertedWord';
-    span.draggable = true;
-    span.textContent = dragged.textContent;
-    span.ondragstart = dragInsertedWord;
-    span.onclick = tapInsertedWord;
-    placeholder.parentNode.replaceChild(span, placeholder);
+  if(!dragged) return;
 
-    if(fromChoice){
-      const index = availableWords.indexOf(dragged.textContent);
-      if(index > -1) availableWords.splice(index, 1);
-      renderWords();
-    }
+  // создаём единообразный span-элемент для вставленного слова
+  const span = document.createElement('span');
+  span.className = 'insertedWord';
+  span.setAttribute('draggable', 'true');
+  span.textContent = dragged.textContent.trim();
+  span.dataset.word = dragged.textContent.trim().toLowerCase();
+  span.ondragstart = dragInsertedWord;
+  span.onclick = tapInsertedWord;
+
+  placeholder.parentNode.replaceChild(span, placeholder);
+
+  if(fromChoice){
+    const idx = availableWords.indexOf(dragged.textContent);
+    if(idx > -1) availableWords.splice(idx, 1);
+    renderWords();
   }
+
   if (dragged) dragged.classList.remove('dragging');
+  dragged = null;
 }
 
+// === Начало перетаскивания уже вставленного слова (возврат в choices) ===
 function dragInsertedWord(ev){
   if (mobileMode) return;
   const wordEl = ev.target;
@@ -208,9 +216,12 @@ function dragInsertedWord(ev){
   fromChoice = false;
   ev.dataTransfer.setData("text", wordEl.textContent);
   ev.target.classList.add('dragging');
-  availableWords.push(wordEl.textContent);
+
+  // вернуть слово в банк слов
+  availableWords.push(wordEl.textContent.trim());
   renderWords();
 
+  // заменить текущий span на placeholder
   const placeholder = document.createElement('span');
   placeholder.className = 'placeholder';
   placeholder.textContent = '___';
@@ -218,6 +229,7 @@ function dragInsertedWord(ev){
   placeholder.ondragover = allowDrop;
   placeholder.onclick = tapPlaceholder;
   wordEl.parentNode.replaceChild(placeholder, wordEl);
+  dragged = null;
 }
 
 // === TAP MODE ===
@@ -237,44 +249,54 @@ function tapWord(ev) {
 function tapPlaceholder(ev) {
   if (!mobileMode || !selectedWordForTap) return;
   const placeholder = ev.target;
+  // единообразный span
   const span = document.createElement('span');
   span.className = 'insertedWord';
   span.textContent = selectedWordForTap;
+  span.dataset.word = selectedWordForTap.trim().toLowerCase();
   span.onclick = tapInsertedWord;
+  span.setAttribute('draggable', mobileMode ? 'false' : 'true');
+
   placeholder.parentNode.replaceChild(span, placeholder);
 
+  // убрать слово из availableWords
   const index = availableWords.indexOf(selectedWordForTap);
   if(index > -1) availableWords.splice(index, 1);
   renderWords();
   selectedWordForTap = null;
+  // сброс подсветок слов в банке
+  document.querySelectorAll('#choices .word').forEach(el => el.style.background = '');
 }
 
 function tapInsertedWord(ev) {
   if (!mobileMode) return;
   const wordEl = ev.target;
-  availableWords.push(wordEl.textContent);
+  const wordText = wordEl.textContent.trim();
+  // вернуть в availableWords
+  availableWords.push(wordText);
   renderWords();
+
+  // заменить на placeholder
   const placeholder = document.createElement('span');
   placeholder.className = 'placeholder';
   placeholder.textContent = '___';
+  placeholder.ondrop = dropWord;
+  placeholder.ondragover = allowDrop;
   placeholder.onclick = tapPlaceholder;
   wordEl.parentNode.replaceChild(placeholder, wordEl);
 }
 
 // === Надёжная проверка: уникальные слова, регистр игнорируется ===
 document.getElementById('check').addEventListener('click', () => {
-  const insertedEls = Array.from(document.querySelectorAll('.insertedWord'));
-  const insertedTexts = insertedEls.map(el => el.textContent.trim());
+  const storyEl = document.getElementById('story');
+  // собираем все span-ы внутри текста, считаем как вставленные те, у которых текст непустой и которые не placeholder
+  const allSpans = Array.from(storyEl.querySelectorAll('span'));
+  const insertedEls = allSpans.filter(s => s.classList.contains('insertedWord') || (s.classList.contains('placeholder') === false && s.textContent.trim() !== ''));
 
-  const resultEl = document.getElementById('result');
-  // ожидаемое множество (в lower-case)
+  const insertedTextsLower = insertedEls.map(el => el.textContent.trim().toLowerCase()).filter(t => t !== '');
+  const insertedSet = new Set(insertedTextsLower); // уникальные вставленные слова
+
   const expectedSet = new Set(selectedWords.map(w => w.toLowerCase()));
-
-  // вставленные (в lower-case)
-  const insertedLower = insertedTexts.map(t => t.toLowerCase());
-
-  // множество уникально вставленных слов (без пустых)
-  const insertedSet = new Set(insertedLower.filter(t => t !== ''));
 
   // Подсветка: зелёный если вставленное слово есть в expectedSet, иначе красный
   insertedEls.forEach(el => {
@@ -288,11 +310,12 @@ document.getElementById('check').addEventListener('click', () => {
     }
   });
 
-  // Условия успеха:
-  // 1) Все поля заполнены (количество вставленных === количество выбранных слов)
-  // 2) Множество уникально вставленных слов совпадает с expectedSet
-  const allFilled = insertedEls.length === selectedWords.length;
-  // insertedSet.size must equal expectedSet.size and every expected word present
+  const resultEl = document.getElementById('result');
+
+  // все поля должны быть заполнены (количество вставленных элементов === количество выбранных слов)
+  const allFilled = insertedTextsLower.length === selectedWords.length;
+
+  // множество уникально вставленных слов должно совпадать с expectedSet
   const allMatched = allFilled &&
     insertedSet.size === expectedSet.size &&
     [...expectedSet].every(w => insertedSet.has(w));
@@ -301,7 +324,6 @@ document.getElementById('check').addEventListener('click', () => {
     resultEl.textContent = 'Alle svar er korrekte! 🎉';
     resultEl.style.color = 'green';
   } else {
-    // сколько уникально правильных слов вставлено
     const correctUnique = [...insertedSet].filter(w => expectedSet.has(w)).length;
     resultEl.textContent = `🔹 Du har ${correctUnique} korrekte ord ud af ${expectedSet.size}.`;
     resultEl.style.color = 'orange';
