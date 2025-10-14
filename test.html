@@ -2,11 +2,38 @@
 <html lang="da">
 <head>
 <meta charset="UTF-8">
-<title>Udfyld de manglende ord</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ordtræning</title>
 <style>
-body { font-family: Arial, sans-serif; background: #f2f2f2; padding: 20px; }
-h2 { color: #333; }
-#story { margin-bottom: 20px; line-height: 1.6; font-size: 18px; }
+body {
+  font-family: system-ui, sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 20px;
+}
+h2 { color: #333; text-align: center; }
+
+#controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#controls label {
+  margin-right: 15px;
+}
+#controls input[type="number"] {
+  width: 60px;
+  text-align: center;
+}
+
+#story {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
 .placeholder, .insertedWord {
   display: inline-block;
   min-width: 60px;
@@ -16,15 +43,17 @@ h2 { color: #333; }
   vertical-align: middle;
   text-align: center;
 }
-.placeholder { background: #fff; cursor: pointer; }
-.insertedWord { background: #2196F3; color: #fff; cursor: pointer; border-radius: 4px; }
+.placeholder { background: #fff; cursor: grab; }
+.insertedWord { background: #2196F3; color: #fff; cursor: grab; border-radius: 4px; }
+
 #choices {
   margin-top: 20px;
-  min-height: 50px;
+  min-height: 60px;
   padding: 10px;
   border: 1px solid #ccc;
   background: #e9e9e9;
   border-radius: 5px;
+  text-align: center;
 }
 .word {
   display: inline-block;
@@ -33,18 +62,28 @@ h2 { color: #333; }
   background: #4CAF50;
   color: #fff;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: grab;
   user-select: none;
 }
 .word.dragging, .insertedWord.dragging { opacity: 0.5; }
-#controls { margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-#check, #refresh, #generateWords { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-#result { margin-top: 15px; font-weight: bold; font-size: 18px; }
-label { font-size: 16px; }
-input[type="checkbox"] { transform: scale(1.3); margin-left: 10px; }
-@media (max-width: 600px) {
-  body { font-size: 16px; }
-  .word, .insertedWord { font-size: 16px; padding: 6px 10px; }
+
+#check, #refresh, #generateWords {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  body { padding: 10px; }
+  #story { font-size: 16px; }
+  .word { font-size: 15px; padding: 6px 10px; }
 }
 </style>
 </head>
@@ -53,15 +92,11 @@ input[type="checkbox"] { transform: scale(1.3); margin-left: 10px; }
 <h2>Udfyld de manglende ord:</h2>
 
 <div id="controls">
-  <label>Antal ord til at indsætte:
-    <input type="number" id="numWords" min="1" max="10" value="3">
-  </label>
+  <label>Antal ord: <input type="number" id="numWords" min="1" max="10" value="3"></label>
+  <label><input type="checkbox" id="mobileMode"> Mobiltilstand</label>
   <button id="generateWords">Generer ord</button>
   <button id="refresh">Opdater tekst</button>
   <button id="check">Check</button>
-  <label>Mobil tilstand
-    <input type="checkbox" id="mobileMode">
-  </label>
 </div>
 
 <div id="story"></div>
@@ -74,10 +109,11 @@ let currentText = null;
 let availableWords = [];
 let selectedWords = [];
 let dragged = null;
-let selectedWordForTap = null;
+let fromChoice = false;
 let mobileMode = false;
+let selectedWordForTap = null;
 
-// Загрузка JSON
+// === Загрузка JSON с рассказами ===
 fetch('texts.json')
   .then(res => res.json())
   .then(data => {
@@ -85,22 +121,26 @@ fetch('texts.json')
     loadRandomText();
   });
 
+// === Выбор случайного текста ===
 function loadRandomText() {
   const randomIndex = Math.floor(Math.random() * texts.length);
   currentText = JSON.parse(JSON.stringify(texts[randomIndex]));
   generateWords();
 }
 
+// === Перемешивание массива ===
 function shuffleArray(arr) {
   return arr.slice().sort(() => Math.random() - 0.5);
 }
 
+// === Генерация случайных слов ===
 function generateWords() {
   const num = parseInt(document.getElementById('numWords').value);
-  let allWords = currentText.text.match(/\b[\wæøåÆØÅ]+\b/g) || [];
+  let allWords = currentText.text.match(/\b[\wæøåÆØÅ]+\b/g);
+  if(!allWords) allWords = [];
 
-  // Берём уникальные слова
-  let uniqueWords = [...new Set(allWords)];
+  // Убираем дубликаты
+  const uniqueWords = [...new Set(allWords)];
   selectedWords = shuffleArray(uniqueWords).slice(0, Math.min(num, uniqueWords.length));
   availableWords = selectedWords.slice();
 
@@ -109,20 +149,23 @@ function generateWords() {
   document.getElementById('result').textContent = '';
 }
 
+// === Создание текста с placeholders ===
 function renderStory() {
   let newText = currentText.text;
   selectedWords.forEach(word => {
     const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`\\b${escapedWord}\\b`);
-    newText = newText.replace(regex, `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)" onclick="tapPlaceholder(event)">___</span>`);
+    const regex = new RegExp(`\\b${escapedWord}\\b`, '');
+    newText = newText.replace(regex, '<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)" onclick="tapPlaceholder(event)">___</span>');
   });
   document.getElementById('story').innerHTML = newText;
 }
 
+// === Отображение доступных слов ===
 function renderWords() {
   const choicesDiv = document.getElementById('choices');
   choicesDiv.innerHTML = availableWords.map((w,i) =>
-    `<div class="word" draggable="${!mobileMode}" id="word${i}" ondragstart="dragWord(event)" onclick="tapWord(event)">${w}</div>`
+    `<div class="word" draggable="true" id="word${i}" 
+      ondragstart="dragWord(event)" onclick="tapWord(event)">${w}</div>`
   ).join('');
 }
 
@@ -132,15 +175,15 @@ function allowDrop(ev){ ev.preventDefault(); }
 function dragWord(ev){
   if (mobileMode) return;
   dragged = ev.target;
+  fromChoice = true;
   ev.dataTransfer.setData("text", ev.target.textContent);
   ev.target.classList.add('dragging');
 }
 
 function dropWord(ev){
-  if (mobileMode) return;
   ev.preventDefault();
   const placeholder = ev.target;
-  if (dragged){
+  if(dragged){
     const span = document.createElement('span');
     span.className = 'insertedWord';
     span.draggable = true;
@@ -148,34 +191,47 @@ function dropWord(ev){
     span.ondragstart = dragInsertedWord;
     span.onclick = tapInsertedWord;
     placeholder.parentNode.replaceChild(span, placeholder);
-    availableWords = availableWords.filter(w => w !== dragged.textContent);
-    renderWords();
+
+    if(fromChoice){
+      const index = availableWords.indexOf(dragged.textContent);
+      if(index > -1) availableWords.splice(index, 1);
+      renderWords();
+    }
   }
-  dragged.classList.remove('dragging');
+  if (dragged) dragged.classList.remove('dragging');
 }
 
 function dragInsertedWord(ev){
   if (mobileMode) return;
-  dragged = ev.target;
-  ev.dataTransfer.setData("text", ev.target.textContent);
+  const wordEl = ev.target;
+  dragged = wordEl;
+  fromChoice = false;
+  ev.dataTransfer.setData("text", wordEl.textContent);
   ev.target.classList.add('dragging');
-  availableWords.push(ev.target.textContent);
+  availableWords.push(wordEl.textContent);
   renderWords();
+
   const placeholder = document.createElement('span');
   placeholder.className = 'placeholder';
   placeholder.textContent = '___';
   placeholder.ondrop = dropWord;
   placeholder.ondragover = allowDrop;
   placeholder.onclick = tapPlaceholder;
-  ev.target.parentNode.replaceChild(placeholder, ev.target);
+  wordEl.parentNode.replaceChild(placeholder, wordEl);
 }
 
-// === Мобильный TAP-режим ===
+// === TAP MODE ===
 function tapWord(ev) {
   if (!mobileMode) return;
-  selectedWordForTap = ev.target.textContent;
-  document.querySelectorAll('.word').forEach(w => w.style.background = '#4CAF50');
-  ev.target.style.background = '#2e7d32';
+  const word = ev.target.textContent.trim();
+  if (selectedWordForTap === word) {
+    selectedWordForTap = null;
+    ev.target.style.background = '#4CAF50';
+  } else {
+    selectedWordForTap = word;
+    document.querySelectorAll('.word').forEach(w => w.style.background = '#4CAF50');
+    ev.target.style.background = '#1976D2';
+  }
 }
 
 function tapPlaceholder(ev) {
@@ -186,39 +242,54 @@ function tapPlaceholder(ev) {
   span.textContent = selectedWordForTap;
   span.onclick = tapInsertedWord;
   placeholder.parentNode.replaceChild(span, placeholder);
-  availableWords = availableWords.filter(w => w !== selectedWordForTap);
-  selectedWordForTap = null;
+
+  const index = availableWords.indexOf(selectedWordForTap);
+  if(index > -1) availableWords.splice(index, 1);
   renderWords();
+  selectedWordForTap = null;
 }
 
 function tapInsertedWord(ev) {
   if (!mobileMode) return;
-  const word = ev.target.textContent;
-  availableWords.push(word);
+  const wordEl = ev.target;
+  availableWords.push(wordEl.textContent);
   renderWords();
   const placeholder = document.createElement('span');
   placeholder.className = 'placeholder';
   placeholder.textContent = '___';
   placeholder.onclick = tapPlaceholder;
-  ev.target.parentNode.replaceChild(placeholder, ev.target);
+  wordEl.parentNode.replaceChild(placeholder, wordEl);
 }
 
-// === Проверка ===
+// === ИСПРАВЛЕННАЯ ПРОВЕРКА ===
 document.getElementById('check').addEventListener('click', () => {
-  const inserted = document.querySelectorAll('.insertedWord');
-  let correctCount = 0;
-  inserted.forEach(el => {
+  const insertedEls = Array.from(document.querySelectorAll('.insertedWord'));
+  const insertedTexts = insertedEls.map(el => el.textContent.trim());
+  const expectedCount = selectedWords.length;
+  const resultEl = document.getElementById('result');
+
+  const correctSet = new Set(insertedTexts.filter(t => selectedWords.includes(t)));
+
+  insertedEls.forEach(el => {
     if (selectedWords.includes(el.textContent.trim())) {
       el.style.background = '#4CAF50';
-      correctCount++;
+      el.style.borderBottom = '2px solid green';
     } else {
       el.style.background = '#f44336';
+      el.style.borderBottom = '2px solid darkred';
     }
   });
-  const result = document.getElementById('result');
-  result.textContent = correctCount === selectedWords.length
-    ? 'Alle svar er korrekte! 🎉'
-    : 'Nogle svar er forkerte. Prøv igen.';
+
+  const allFilled = insertedTexts.length === expectedCount;
+  const allMatched = selectedWords.every(w => correctSet.has(w));
+
+  if (allFilled && allMatched) {
+    resultEl.textContent = 'Alle svar er korrekte! 🎉';
+    resultEl.style.color = 'green';
+  } else {
+    resultEl.textContent = `🔹 Du har ${correctSet.size} korrekte ord ud af ${expectedCount}.`;
+    resultEl.style.color = 'orange';
+  }
 });
 
 // === Кнопки ===
@@ -226,7 +297,7 @@ document.getElementById('refresh').addEventListener('click', loadRandomText);
 document.getElementById('generateWords').addEventListener('click', generateWords);
 document.getElementById('mobileMode').addEventListener('change', e => {
   mobileMode = e.target.checked;
-  renderWords();
+  selectedWordForTap = null;
 });
 </script>
 </body>
