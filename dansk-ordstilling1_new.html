@@ -322,6 +322,19 @@ function updateTranslation(){
     });
   });
 }
+
+
+function tjek() {
+  const correct = checkAllCorrect ? checkAllCorrect() : true;
+  const translationBox = document.getElementById('fullTranslation');
+  if (correct) {
+    const currentIndex = typeof currentSentenceIndex !== 'undefined' ? currentSentenceIndex : 0;
+    const fullTranslation = sentencesData[currentIndex]?.full_translation || '';
+    translationBox.textContent = fullTranslation;
+  } else {
+    translationBox.textContent = '';
+  }
+}
 </script>
-</body>
+<div id="fullTranslation" style="margin-top:20px;font-weight:bold;font-size:18px;color:#006400;"></div></body>
 </html>

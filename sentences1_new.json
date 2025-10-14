@@ -2,1653 +2,156 @@
   "sentences": [
     {
       "subjekt": {
-        "word": "De",
-        "translation": "Они"
-      },
-      "verbum1": {
-        "word": "bliver",
-        "translation": "становлюсь"
-      },
-      "adverbium1": {
-        "word": "aldrig",
-        "translation": "никогда"
-      },
-      "adverbium2": {
-        "word": "endnu",
-        "translation": "ещё"
-      },
-      "verbum2": {
-        "word": "snakke",
-        "translation": "разговаривать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "at",
-        "translation": "чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "konjuktion": {
-        "word": "fordi",
-        "translation": "потому что"
-      },
-      "objekt2": {
-        "word": "arbejde",
-        "translation": "работу"
-      },
-      "sted_tid_præposition": {
-        "word": "hos",
-        "translation": "у (кого-то дома)"
-      },
-      "sted_tid_substantiv": {
-        "word": "stranden",
-        "translation": "пляж"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
-      },
-      "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "konjuktion": {
-        "word": "når",
-        "translation": "когда"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "gennem",
-        "translation": "через"
-      },
-      "sted_tid_substantiv": {
-        "word": "butikken",
-        "translation": "магазин"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "har",
-        "translation": "имею"
-      },
-      "adverbium1": {
-        "word": "næsten",
-        "translation": "почти"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "sove",
-        "translation": "спать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "forstå",
-        "translation": "понимать"
-      },
-      "objekt1": {
-        "word": "nyheder",
-        "translation": "новости"
-      },
-      "konjuktion": {
-        "word": "efter at",
-        "translation": "после того как"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
-      },
-      "sted_tid_substantiv": {
-        "word": "havnen",
-        "translation": "порт"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
-      },
-      "verbum1": {
-        "word": "kan",
-        "translation": "могу"
-      },
-      "adverbium1": {
-        "word": "aldrig",
-        "translation": "никогда"
-      },
-      "adverbium2": {
-        "word": "desværre",
-        "translation": "к сожалению"
-      },
-      "verbum2": {
-        "word": "køre",
-        "translation": "ехать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "at",
-        "translation": "чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "kaffe",
-        "translation": "кофе"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "skolen",
-        "translation": "школа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
-      },
-      "verbum1": {
-        "word": "har",
-        "translation": "имею"
-      },
-      "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
-      },
-      "adverbium2": {
-        "word": "ikke",
-        "translation": "не"
-      },
-      "verbum2": {
-        "word": "se",
-        "translation": "смотреть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "hjælpe",
-        "translation": "помогать"
-      },
-      "objekt1": {
-        "word": "film",
-        "translation": "фильм"
-      },
-      "konjuktion": {
-        "word": "hvis",
-        "translation": "если"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "på",
-        "translation": "на"
-      },
-      "sted_tid_substantiv": {
-        "word": "arbejdet",
-        "translation": "работа"
-      }
-    },
-    {
-      "subjekt": {
         "word": "Jeg",
         "translation": "Я"
-      },
-      "verbum1": {
-        "word": "kommer",
-        "translation": "прихожу"
-      },
-      "adverbium1": {
-        "word": "nogle gange",
-        "translation": "иногда"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "at",
-        "translation": "чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "når",
-        "translation": "когда"
-      },
-      "objekt2": {
-        "word": "barnet",
-        "translation": "ребёнка"
-      },
-      "sted_tid_præposition": {
-        "word": "gennem",
-        "translation": "через"
-      },
-      "sted_tid_substantiv": {
-        "word": "byen",
-        "translation": "город"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
-      },
-      "verbum1": {
-        "word": "er",
-        "translation": "есть"
-      },
-      "adverbium1": {
-        "word": "altid",
-        "translation": "всегда"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "vennerne",
-        "translation": "друзей"
-      },
-      "sted_tid_præposition": {
-        "word": "under",
-        "translation": "под"
-      },
-      "sted_tid_substantiv": {
-        "word": "havnen",
-        "translation": "порт"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
-      },
-      "verbum1": {
-        "word": "kan",
-        "translation": "могу"
-      },
-      "adverbium1": {
-        "word": "snart",
-        "translation": "скоро"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "snakke",
-        "translation": "разговаривать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "før",
-        "translation": "прежде чем"
-      },
-      "objekt2": {
-        "word": "nyt hus",
-        "translation": "новый дом"
-      },
-      "sted_tid_præposition": {
-        "word": "på",
-        "translation": "на"
-      },
-      "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "snart",
-        "translation": "скоро"
-      },
-      "adverbium2": {
-        "word": "endnu",
-        "translation": "ещё"
-      },
-      "verbum2": {
-        "word": "løbe",
-        "translation": "бегать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
-      },
-      "objekt1": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "barnet",
-        "translation": "ребёнка"
-      },
-      "sted_tid_præposition": {
-        "word": "på",
-        "translation": "на"
-      },
-      "sted_tid_substantiv": {
-        "word": "biografen",
-        "translation": "кинотеатр"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Hun",
-        "translation": "Она"
-      },
-      "verbum1": {
-        "word": "har",
-        "translation": "имею"
-      },
-      "adverbium1": {
-        "word": "sandsynligvis",
-        "translation": "вероятно"
-      },
-      "adverbium2": {
-        "word": "endnu",
-        "translation": "ещё"
-      },
-      "verbum2": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "objekt1": {
-        "word": "barnet",
-        "translation": "ребёнка"
-      },
-      "konjuktion": {
-        "word": "før",
-        "translation": "прежде чем"
-      },
-      "objekt2": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
-      },
-      "sted_tid_substantiv": {
-        "word": "arbejdet",
-        "translation": "работа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
-      },
-      "adverbium1": {
-        "word": "sjældent",
-        "translation": "редко"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "snakke",
-        "translation": "разговаривать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "",
-        "translation": ""
-      },
-      "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "selvom",
-        "translation": "хотя"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "på",
-        "translation": "на"
-      },
-      "sted_tid_substantiv": {
-        "word": "landet",
-        "translation": "деревня"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
-      },
-      "adverbium1": {
-        "word": "snart",
-        "translation": "скоро"
-      },
-      "adverbium2": {
-        "word": "endnu",
-        "translation": "ещё"
-      },
-      "verbum2": {
-        "word": "snakke",
-        "translation": "разговаривать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "læse",
-        "translation": "читать"
-      },
-      "objekt1": {
-        "word": "venner",
-        "translation": "друзей"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "gennem",
-        "translation": "через"
-      },
-      "sted_tid_substantiv": {
-        "word": "hjemmet",
-        "translation": "дом"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Han",
-        "translation": "Он"
-      },
-      "verbum1": {
-        "word": "går",
-        "translation": "иду"
-      },
-      "adverbium1": {
-        "word": "sjældent",
-        "translation": "редко"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
-      },
-      "objekt1": {
-        "word": "barnet",
-        "translation": "ребёнка"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "biografen",
-        "translation": "кинотеатр"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Jeg",
-        "translation": "Я"
-      },
-      "verbum1": {
-        "word": "går",
-        "translation": "иду"
-      },
-      "adverbium1": {
-        "word": "ofte",
-        "translation": "часто"
-      },
-      "adverbium2": {
-        "word": "desværre",
-        "translation": "к сожалению"
-      },
-      "verbum2": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "",
-        "translation": ""
-      },
-      "verbium3_infinitiv": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "når",
-        "translation": "когда"
-      },
-      "objekt2": {
-        "word": "nyt hus",
-        "translation": "новый дом"
-      },
-      "sted_tid_præposition": {
-        "word": "til",
-        "translation": "к"
-      },
-      "sted_tid_substantiv": {
-        "word": "biografen",
-        "translation": "кинотеатр"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "har",
-        "translation": "имею"
-      },
-      "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "løbe",
-        "translation": "бегать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "hjælpe",
-        "translation": "помогать"
-      },
-      "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "konjuktion": {
-        "word": "hvis",
-        "translation": "если"
-      },
-      "objekt2": {
-        "word": "vennerne",
-        "translation": "друзей"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "arbejdet",
-        "translation": "работа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
-      },
-      "verbum1": {
-        "word": "er",
-        "translation": "есть"
-      },
-      "adverbium1": {
-        "word": "ofte",
-        "translation": "часто"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "sted_tid_præposition": {
-        "word": "til",
-        "translation": "к"
-      },
-      "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "bliver",
-        "translation": "становлюсь"
-      },
-      "adverbium1": {
-        "word": "altid",
-        "translation": "всегда"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "sove",
-        "translation": "спать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "rejse",
-        "translation": "путешествовать"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "når",
-        "translation": "когда"
-      },
-      "objekt2": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "sted_tid_præposition": {
-        "word": "hos",
-        "translation": "у (кого-то дома)"
-      },
-      "sted_tid_substantiv": {
-        "word": "arbejdet",
-        "translation": "работа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "har",
-        "translation": "имею"
-      },
-      "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "objekt1": {
-        "word": "nyheder",
-        "translation": "новости"
-      },
-      "konjuktion": {
-        "word": "så",
-        "translation": "так что"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "på",
-        "translation": "на"
-      },
-      "sted_tid_substantiv": {
-        "word": "butikken",
-        "translation": "магазин"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Han",
-        "translation": "Он"
-      },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "sandsynligvis",
-        "translation": "вероятно"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "te",
-        "translation": "чай"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "butikken",
-        "translation": "магазин"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
-      },
-      "verbum1": {
-        "word": "tager",
-        "translation": "беру"
-      },
-      "adverbium1": {
-        "word": "altid",
-        "translation": "всегда"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "sove",
-        "translation": "спать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "",
-        "translation": ""
-      },
-      "verbium3_infinitiv": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "objekt1": {
-        "word": "kaffe",
-        "translation": "кофе"
-      },
-      "konjuktion": {
-        "word": "hvis",
-        "translation": "если"
-      },
-      "objekt2": {
-        "word": "middag",
-        "translation": "обед"
-      },
-      "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
-      },
-      "sted_tid_substantiv": {
-        "word": "byen",
-        "translation": "город"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "tager",
-        "translation": "беру"
-      },
-      "adverbium1": {
-        "word": "altid",
-        "translation": "всегда"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "sove",
-        "translation": "спать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "te",
-        "translation": "чай"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "går",
-        "translation": "иду"
-      },
-      "adverbium1": {
-        "word": "ofte",
-        "translation": "часто"
-      },
-      "adverbium2": {
-        "word": "lige",
-        "translation": "как раз"
-      },
-      "verbum2": {
-        "word": "snakke",
-        "translation": "разговаривать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "",
-        "translation": ""
-      },
-      "verbium3_infinitiv": {
-        "word": "læse",
-        "translation": "читать"
-      },
-      "objekt1": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "til",
-        "translation": "к"
-      },
-      "sted_tid_substantiv": {
-        "word": "hjemmet",
-        "translation": "дом"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
-      },
-      "verbum1": {
-        "word": "går",
-        "translation": "иду"
-      },
-      "adverbium1": {
-        "word": "snart",
-        "translation": "скоро"
-      },
-      "adverbium2": {
-        "word": "nok",
-        "translation": "вероятно"
-      },
-      "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "forstå",
-        "translation": "понимать"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "før",
-        "translation": "прежде чем"
-      },
-      "objekt2": {
-        "word": "middag",
-        "translation": "обед"
-      },
-      "sted_tid_præposition": {
-        "word": "hos",
-        "translation": "у (кого-то дома)"
-      },
-      "sted_tid_substantiv": {
-        "word": "stranden",
-        "translation": "пляж"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "De",
-        "translation": "Они"
-      },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "aldrig",
-        "translation": "никогда"
-      },
-      "adverbium2": {
-        "word": "lige",
-        "translation": "как раз"
-      },
-      "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "objekt1": {
-        "word": "film",
-        "translation": "фильм"
-      },
-      "konjuktion": {
-        "word": "hvis",
-        "translation": "если"
-      },
-      "objekt2": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "sted_tid_præposition": {
-        "word": "ved",
-        "translation": "у"
-      },
-      "sted_tid_substantiv": {
-        "word": "hjemmet",
-        "translation": "дом"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
-      },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
-      },
-      "adverbium2": {
-        "word": "ikke",
-        "translation": "не"
-      },
-      "verbum2": {
-        "word": "se",
-        "translation": "смотреть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "tale",
-        "translation": "говорить"
-      },
-      "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "konjuktion": {
-        "word": "og",
-        "translation": "и"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
-      },
-      "sted_tid_substantiv": {
-        "word": "biografen",
-        "translation": "кинотеатр"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Han",
-        "translation": "Он"
-      },
-      "verbum1": {
-        "word": "bliver",
-        "translation": "становлюсь"
-      },
-      "adverbium1": {
-        "word": "nogle gange",
-        "translation": "иногда"
-      },
-      "adverbium2": {
-        "word": "desværre",
-        "translation": "к сожалению"
-      },
-      "verbum2": {
-        "word": "læse",
-        "translation": "читать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "før",
-        "translation": "прежде чем"
-      },
-      "objekt2": {
-        "word": "middag",
-        "translation": "обед"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "kommer",
-        "translation": "прихожу"
-      },
-      "adverbium1": {
-        "word": "næsten",
-        "translation": "почти"
-      },
-      "adverbium2": {
-        "word": "ikke",
-        "translation": "не"
-      },
-      "verbum2": {
-        "word": "se",
-        "translation": "смотреть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "mad",
-        "translation": "еду"
-      },
-      "konjuktion": {
-        "word": "selvom",
-        "translation": "хотя"
-      },
-      "objekt2": {
-        "word": "arbejde",
-        "translation": "работу"
-      },
-      "sted_tid_præposition": {
-        "word": "over",
-        "translation": "над"
-      },
-      "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Jeg",
-        "translation": "Я"
-      },
-      "verbum1": {
-        "word": "kan",
-        "translation": "могу"
-      },
-      "adverbium1": {
-        "word": "sandsynligvis",
-        "translation": "вероятно"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "tale",
-        "translation": "говорить"
-      },
-      "objekt1": {
-        "word": "venner",
-        "translation": "друзей"
-      },
-      "konjuktion": {
-        "word": "når",
-        "translation": "когда"
-      },
-      "objekt2": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
-      },
-      "sted_tid_substantiv": {
-        "word": "havnen",
-        "translation": "порт"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
-      },
-      "verbum1": {
-        "word": "er",
-        "translation": "есть"
-      },
-      "adverbium1": {
-        "word": "sandsynligvis",
-        "translation": "вероятно"
-      },
-      "adverbium2": {
-        "word": "lige",
-        "translation": "как раз"
-      },
-      "verbum2": {
-        "word": "køre",
-        "translation": "ехать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "at",
-        "translation": "чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "objekt1": {
-        "word": "kaffe",
-        "translation": "кофе"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "arbejde",
-        "translation": "работу"
-      },
-      "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
-      },
-      "sted_tid_substantiv": {
-        "word": "butikken",
-        "translation": "магазин"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
       },
       "verbum1": {
         "word": "skal",
         "translation": "должен"
       },
       "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
+        "word": "",
+        "translation": ""
       },
       "adverbium2": {
-        "word": "lige",
-        "translation": "как раз"
+        "word": "",
+        "translation": ""
       },
       "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
+        "word": "opdatere",
+        "translation": "обновить"
       },
       "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
+        "word": "",
+        "translation": ""
       },
       "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
+        "word": "systemet",
+        "translation": "систему"
       },
       "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
+        "word": "",
+        "translation": ""
       },
       "konjuktion": {
-        "word": "selvom",
-        "translation": "хотя"
+        "word": "",
+        "translation": ""
       },
       "objekt2": {
-        "word": "middag",
-        "translation": "обед"
+        "word": "",
+        "translation": ""
       },
       "sted_tid_præposition": {
-        "word": "til",
-        "translation": "к"
+        "word": "i",
+        "translation": "в"
       },
       "sted_tid_substantiv": {
-        "word": "skolen",
-        "translation": "школа"
-      }
+        "word": "morgen",
+        "translation": "утро"
+      },
+      "full_translation": "Я должен обновить систему завтра утром."
     },
     {
       "subjekt": {
-        "word": "Du",
-        "translation": "Ты"
+        "word": "Det",
+        "translation": "Это"
       },
       "verbum1": {
-        "word": "tager",
-        "translation": "беру"
+        "word": "virker",
+        "translation": "работает"
       },
       "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
+        "word": "ikke",
+        "translation": "не"
       },
       "adverbium2": {
-        "word": "desværre",
-        "translation": "к сожалению"
+        "word": "",
+        "translation": ""
       },
       "verbum2": {
-        "word": "se",
-        "translation": "смотреть"
+        "word": "prøver",
+        "translation": "пытаюсь"
       },
       "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
+        "word": "at",
+        "translation": "чтобы"
       },
       "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
+        "word": "genstarte",
+        "translation": "перезапустить"
       },
       "objekt1": {
-        "word": "nyheder",
-        "translation": "новости"
+        "word": "den",
+        "translation": "его"
       },
       "konjuktion": {
-        "word": "og",
-        "translation": "и"
+        "word": "",
+        "translation": ""
       },
       "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
+        "word": "",
+        "translation": ""
       },
       "sted_tid_præposition": {
-        "word": "til",
-        "translation": "к"
+        "word": "",
+        "translation": ""
       },
       "sted_tid_substantiv": {
-        "word": "stranden",
-        "translation": "пляж"
-      }
+        "word": "",
+        "translation": ""
+      },
+      "full_translation": "Это не работает, я пытаюсь перезапустить его."
     },
     {
       "subjekt": {
-        "word": "De",
-        "translation": "Они"
+        "word": "Jeg",
+        "translation": "Я"
       },
       "verbum1": {
         "word": "har",
         "translation": "имею"
       },
       "adverbium1": {
-        "word": "næsten",
-        "translation": "почти"
+        "word": "haft",
+        "translation": "имел"
       },
       "adverbium2": {
-        "word": "godt",
-        "translation": "охотно"
+        "word": "travlt",
+        "translation": "занят"
       },
       "verbum2": {
-        "word": "sove",
-        "translation": "спать"
+        "word": "",
+        "translation": ""
       },
       "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
+        "word": "",
+        "translation": ""
       },
       "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
+        "word": "",
+        "translation": ""
       },
       "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
+        "word": "",
+        "translation": ""
       },
       "konjuktion": {
-        "word": "når",
-        "translation": "когда"
+        "word": "",
+        "translation": ""
       },
       "objekt2": {
-        "word": "katten",
-        "translation": "кота"
+        "word": "",
+        "translation": ""
       },
       "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
+        "word": "hele",
+        "translation": "весь"
       },
       "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "De",
-        "translation": "Они"
+        "word": "dagen",
+        "translation": "день"
       },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "altid",
-        "translation": "всегда"
-      },
-      "adverbium2": {
-        "word": "lige",
-        "translation": "как раз"
-      },
-      "verbum2": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "og",
-        "translation": "и"
-      },
-      "objekt2": {
-        "word": "arbejde",
-        "translation": "работу"
-      },
-      "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
-      },
-      "sted_tid_substantiv": {
-        "word": "arbejdet",
-        "translation": "работа"
-      }
+      "full_translation": "Я был занят весь день."
     },
     {
       "subjekt": {
@@ -1656,49 +159,101 @@
         "translation": "Она"
       },
       "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
+        "word": "sender",
+        "translation": "отправляет"
       },
       "adverbium1": {
-        "word": "sandsynligvis",
-        "translation": "вероятно"
+        "word": "hurtigt",
+        "translation": "быстро"
       },
       "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
+        "word": "",
+        "translation": ""
       },
       "verbum2": {
-        "word": "læse",
-        "translation": "читать"
+        "word": "en",
+        "translation": "один"
       },
       "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
+        "word": "",
+        "translation": ""
       },
       "verbium3_infinitiv": {
-        "word": "spise",
-        "translation": "есть"
+        "word": "email",
+        "translation": "email"
       },
       "objekt1": {
-        "word": "film",
-        "translation": "фильм"
+        "word": "",
+        "translation": ""
       },
       "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
+        "word": "til",
+        "translation": "кому"
       },
       "objekt2": {
-        "word": "musik",
-        "translation": "музыку"
+        "word": "kollegaen",
+        "translation": "коллеге"
       },
       "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
+        "word": "",
+        "translation": ""
       },
       "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
+        "word": "",
+        "translation": ""
+      },
+      "full_translation": "Она быстро отправляет email коллеге."
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "Мы"
+      },
+      "verbum1": {
+        "word": "arbejder",
+        "translation": "работаем"
+      },
+      "adverbium1": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "på",
+        "translation": "над"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "",
+        "translation": ""
+      },
+      "verbium3_infinitiv": {
+        "word": "projektet",
+        "translation": "проектом"
+      },
+      "objekt1": {
+        "word": "",
+        "translation": ""
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "diskuterer",
+        "translation": "обсуждаем"
+      },
+      "sted_tid_præposition": {
+        "word": "løsninger",
+        "translation": "решения"
+      },
+      "sted_tid_substantiv": {
+        "word": "i",
+        "translation": "в"
+      },
+      "full_translation": "Мы усердно работаем над проектом и обсуждаем решения."
     },
     {
       "subjekt": {
@@ -1706,549 +261,152 @@
         "translation": "Он"
       },
       "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
+        "word": "tjekker",
+        "translation": "проверяет"
       },
       "adverbium1": {
-        "word": "nogle gange",
-        "translation": "иногда"
+        "word": "regelmæssigt",
+        "translation": "регулярно"
       },
       "adverbium2": {
-        "word": "virkelig",
-        "translation": "действительно"
-      },
-      "verbum2": {
-        "word": "skrive",
-        "translation": "писать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "rejse",
-        "translation": "путешествовать"
-      },
-      "objekt1": {
-        "word": "mad",
-        "translation": "еду"
-      },
-      "konjuktion": {
-        "word": "fordi",
-        "translation": "потому что"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "over",
-        "translation": "над"
-      },
-      "sted_tid_substantiv": {
-        "word": "landet",
-        "translation": "деревня"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
-      },
-      "verbum1": {
-        "word": "kommer",
-        "translation": "прихожу"
-      },
-      "adverbium1": {
-        "word": "aldrig",
-        "translation": "никогда"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "køre",
-        "translation": "ехать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "forstå",
-        "translation": "понимать"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
-      },
-      "sted_tid_substantiv": {
-        "word": "biografen",
-        "translation": "кинотеатр"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
-      },
-      "verbum1": {
-        "word": "går",
-        "translation": "иду"
-      },
-      "adverbium1": {
-        "word": "snart",
-        "translation": "скоро"
-      },
-      "adverbium2": {
-        "word": "ikke",
-        "translation": "не"
-      },
-      "verbum2": {
-        "word": "læse",
-        "translation": "читать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
-      },
-      "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "te",
-        "translation": "чай"
-      },
-      "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
-      },
-      "sted_tid_substantiv": {
-        "word": "byen",
-        "translation": "город"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Hun",
-        "translation": "Она"
-      },
-      "verbum1": {
-        "word": "kommer",
-        "translation": "прихожу"
-      },
-      "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
-      },
-      "adverbium2": {
-        "word": "endnu",
-        "translation": "ещё"
-      },
-      "verbum2": {
-        "word": "sove",
-        "translation": "спать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "forstå",
-        "translation": "понимать"
-      },
-      "objekt1": {
-        "word": "nyheder",
-        "translation": "новости"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "ved",
-        "translation": "у"
-      },
-      "sted_tid_substantiv": {
-        "word": "arbejdet",
-        "translation": "работа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "De",
-        "translation": "Они"
-      },
-      "verbum1": {
-        "word": "er",
-        "translation": "есть"
-      },
-      "adverbium1": {
-        "word": "ofte",
-        "translation": "часто"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "spise",
-        "translation": "есть"
-      },
-      "objekt1": {
-        "word": "barnet",
-        "translation": "ребёнка"
-      },
-      "konjuktion": {
-        "word": "og",
-        "translation": "и"
-      },
-      "objekt2": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "butikken",
-        "translation": "магазин"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Jeg",
-        "translation": "Я"
-      },
-      "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
-      },
-      "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "læse",
-        "translation": "читать"
-      },
-      "verbium3_infinitivpartikle": {
         "word": "",
         "translation": ""
       },
-      "verbium3_infinitiv": {
-        "word": "forstå",
-        "translation": "понимать"
-      },
-      "objekt1": {
-        "word": "mad",
-        "translation": "еду"
-      },
-      "konjuktion": {
-        "word": "hvis",
+      "verbum2": {
+        "word": "om",
         "translation": "если"
       },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "foran",
-        "translation": "перед"
-      },
-      "sted_tid_substantiv": {
-        "word": "byen",
-        "translation": "город"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Jeg",
-        "translation": "Я"
-      },
-      "verbum1": {
-        "word": "bliver",
-        "translation": "становлюсь"
-      },
-      "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "se",
-        "translation": "смотреть"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
-      },
-      "verbium3_infinitiv": {
-        "word": "rejse",
-        "translation": "путешествовать"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
-      },
-      "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
-      },
-      "sted_tid_substantiv": {
-        "word": "skolen",
-        "translation": "школа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Hun",
-        "translation": "Она"
-      },
-      "verbum1": {
-        "word": "kan",
-        "translation": "могу"
-      },
-      "adverbium1": {
-        "word": "ofte",
-        "translation": "часто"
-      },
-      "adverbium2": {
-        "word": "godt",
-        "translation": "охотно"
-      },
-      "verbum2": {
-        "word": "drikke",
-        "translation": "пить"
-      },
       "verbium3_infinitivpartikle": {
         "word": "",
         "translation": ""
       },
       "verbium3_infinitiv": {
-        "word": "forstå",
-        "translation": "понимать"
+        "word": "opdateringer",
+        "translation": "обновления"
       },
       "objekt1": {
-        "word": "venner",
-        "translation": "друзей"
-      },
-      "konjuktion": {
-        "word": "og",
-        "translation": "и"
-      },
-      "objekt2": {
-        "word": "arbejde",
-        "translation": "работу"
-      },
-      "sted_tid_præposition": {
-        "word": "bag",
-        "translation": "за"
-      },
-      "sted_tid_substantiv": {
-        "word": "skolen",
-        "translation": "школа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Hun",
-        "translation": "Она"
-      },
-      "verbum1": {
-        "word": "vil",
-        "translation": "хочу"
-      },
-      "adverbium1": {
-        "word": "næsten",
-        "translation": "почти"
-      },
-      "adverbium2": {
-        "word": "endnu",
-        "translation": "ещё"
-      },
-      "verbum2": {
-        "word": "sove",
-        "translation": "спать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "læse",
-        "translation": "читать"
-      },
-      "objekt1": {
-        "word": "musik",
-        "translation": "музыку"
-      },
-      "konjuktion": {
-        "word": "når",
-        "translation": "когда"
-      },
-      "objekt2": {
-        "word": "middag",
-        "translation": "обед"
-      },
-      "sted_tid_præposition": {
-        "word": "i",
-        "translation": "в"
-      },
-      "sted_tid_substantiv": {
-        "word": "skolen",
-        "translation": "школа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
-      },
-      "adverbium1": {
-        "word": "aldrig",
-        "translation": "никогда"
-      },
-      "adverbium2": {
-        "word": "desværre",
-        "translation": "к сожалению"
-      },
-      "verbum2": {
-        "word": "løbe",
-        "translation": "бегать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "uden at",
-        "translation": "не"
-      },
-      "verbium3_infinitiv": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "objekt1": {
-        "word": "venner",
-        "translation": "друзей"
-      },
-      "konjuktion": {
-        "word": "selvom",
-        "translation": "хотя"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "over",
-        "translation": "над"
-      },
-      "sted_tid_substantiv": {
-        "word": "parken",
-        "translation": "парк"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "Vi",
-        "translation": "Мы"
-      },
-      "verbum1": {
-        "word": "går",
-        "translation": "иду"
-      },
-      "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
-      },
-      "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
-      },
-      "verbum2": {
-        "word": "se",
-        "translation": "смотреть"
-      },
-      "verbium3_infinitivpartikle": {
         "word": "",
         "translation": ""
       },
-      "verbium3_infinitiv": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "objekt1": {
-        "word": "film",
-        "translation": "фильм"
-      },
       "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
         "word": "på",
         "translation": "на"
       },
+      "objekt2": {
+        "word": "serveren",
+        "translation": "сервере"
+      },
+      "sted_tid_præposition": {
+        "word": "",
+        "translation": ""
+      },
       "sted_tid_substantiv": {
-        "word": "byen",
-        "translation": "город"
-      }
+        "word": "",
+        "translation": ""
+      },
+      "full_translation": "Он регулярно проверяет обновления на сервере."
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "Я"
+      },
+      "verbum1": {
+        "word": "møder",
+        "translation": "встречаю"
+      },
+      "adverbium1": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "kunder",
+        "translation": "клиентов"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "",
+        "translation": ""
+      },
+      "verbium3_infinitiv": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt1": {
+        "word": "",
+        "translation": ""
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "kollegaer",
+        "translation": "коллег"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "kontoret",
+        "translation": "офисе"
+      },
+      "full_translation": "Я часто встречаю клиентов и коллег в офисе."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читает"
+      },
+      "adverbium1": {
+        "word": "koncentreret",
+        "translation": "сосредоточенно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "artikler",
+        "translation": "статьи"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "",
+        "translation": ""
+      },
+      "verbium3_infinitiv": {
+        "word": "",
+        "translation": ""
+      },
+      "objekt1": {
+        "word": "",
+        "translation": ""
+      },
+      "konjuktion": {
+        "word": "и",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "bøger",
+        "translation": "книги"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "biblioteket",
+        "translation": "библиотеке"
+      },
+      "full_translation": "Она сосредоточенно читает статьи и книги в библиотеке."
     },
     {
       "subjekt": {
@@ -2256,99 +414,50 @@
         "translation": "Мы"
       },
       "verbum1": {
-        "word": "tager",
-        "translation": "беру"
+        "word": "drikker",
+        "translation": "пьём"
       },
       "adverbium1": {
-        "word": "meget",
-        "translation": "очень"
+        "word": "kaffe",
+        "translation": "кофе"
       },
       "adverbium2": {
-        "word": "heller ikke",
-        "translation": "тоже не"
+        "word": "sammen",
+        "translation": "вместе"
       },
       "verbum2": {
-        "word": "sove",
-        "translation": "спать"
+        "word": "nyder",
+        "translation": "наслаждаемся"
       },
       "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
+        "word": "",
+        "translation": ""
       },
       "verbium3_infinitiv": {
-        "word": "lære",
-        "translation": "учить"
+        "word": "eftermiddagen",
+        "translation": "днём"
       },
       "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
+        "word": "",
+        "translation": ""
       },
       "konjuktion": {
-        "word": "selvom",
-        "translation": "хотя"
+        "word": "",
+        "translation": ""
       },
       "objekt2": {
-        "word": "nyt hus",
-        "translation": "новый дом"
+        "word": "",
+        "translation": ""
       },
       "sted_tid_præposition": {
         "word": "i",
         "translation": "в"
       },
       "sted_tid_substantiv": {
-        "word": "havnen",
-        "translation": "порт"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
+        "word": "køkkenet",
+        "translation": "кухне"
       },
-      "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
-      },
-      "adverbium1": {
-        "word": "nogle gange",
-        "translation": "иногда"
-      },
-      "adverbium2": {
-        "word": "alt for",
-        "translation": "слишком"
-      },
-      "verbum2": {
-        "word": "drikke",
-        "translation": "пить"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "tale",
-        "translation": "говорить"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "mens",
-        "translation": "пока"
-      },
-      "objekt2": {
-        "word": "vennerne",
-        "translation": "друзей"
-      },
-      "sted_tid_præposition": {
-        "word": "ved",
-        "translation": "у"
-      },
-      "sted_tid_substantiv": {
-        "word": "byen",
-        "translation": "город"
-      }
+      "full_translation": "Мы вместе пьём кофе и наслаждаемся днём на кухне."
     },
     {
       "subjekt": {
@@ -2356,99 +465,101 @@
         "translation": "Мы"
       },
       "verbum1": {
-        "word": "skal",
-        "translation": "должен"
+        "word": "planter",
+        "translation": "сажаем"
       },
       "adverbium1": {
-        "word": "sjældent",
-        "translation": "редко"
+        "word": "flittigt",
+        "translation": "усердно"
       },
       "adverbium2": {
-        "word": "nok",
-        "translation": "вероятно"
+        "word": "sammen",
+        "translation": "вместе"
       },
       "verbum2": {
-        "word": "løbe",
-        "translation": "бегать"
-      },
-      "verbium3_infinitivpartikle": {
-        "word": "for at",
-        "translation": "для того чтобы"
-      },
-      "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
-      },
-      "objekt1": {
-        "word": "bogen",
-        "translation": "книгу"
-      },
-      "konjuktion": {
-        "word": "men",
-        "translation": "но"
-      },
-      "objekt2": {
-        "word": "katten",
-        "translation": "кота"
-      },
-      "sted_tid_præposition": {
-        "word": "over",
-        "translation": "над"
-      },
-      "sted_tid_substantiv": {
-        "word": "skolen",
-        "translation": "школа"
-      }
-    },
-    {
-      "subjekt": {
-        "word": "I",
-        "translation": "Вы"
-      },
-      "verbum1": {
-        "word": "må",
-        "translation": "могу (разрешено)"
-      },
-      "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
-      },
-      "adverbium2": {
-        "word": "måske",
-        "translation": "может быть"
-      },
-      "verbum2": {
-        "word": "drikke",
-        "translation": "пить"
+        "word": "håber",
+        "translation": "надеемся"
       },
       "verbium3_infinitivpartikle": {
         "word": "at",
         "translation": "чтобы"
       },
       "verbium3_infinitiv": {
-        "word": "arbejde",
-        "translation": "работать"
+        "word": "få",
+        "translation": "получить"
       },
       "objekt1": {
-        "word": "barnet",
-        "translation": "ребёнка"
+        "word": "blomster",
+        "translation": "цветы"
       },
       "konjuktion": {
-        "word": "men",
-        "translation": "но"
+        "word": "og",
+        "translation": "и"
       },
       "objekt2": {
-        "word": "bogen",
-        "translation": "книгу"
+        "word": "grøntsager",
+        "translation": "овощи"
       },
       "sted_tid_præposition": {
-        "word": "gennem",
-        "translation": "через"
+        "word": "i",
+        "translation": "в"
       },
       "sted_tid_substantiv": {
-        "word": "landet",
-        "translation": "деревня"
-      }
+        "word": "haven",
+        "translation": "саду"
+      },
+      "full_translation": "Мы усердно сажаем цветы и овощи в саду, надеясь получить хороший урожай."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читает"
+      },
+      "adverbium1": {
+        "word": "koncentreret",
+        "translation": "сосредоточенно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "undersøger",
+        "translation": "изучает"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forstå",
+        "translation": "понять"
+      },
+      "objekt1": {
+        "word": "artikler",
+        "translation": "статьи"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "bøger",
+        "translation": "книги"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "biblioteket",
+        "translation": "библиотеке"
+      },
+      "full_translation": "Он сосредоточенно читает статьи и изучает книги в библиотеке, чтобы понять материал."
     },
     {
       "subjekt": {
@@ -2456,49 +567,713 @@
         "translation": "Я"
       },
       "verbum1": {
-        "word": "har",
-        "translation": "имею"
+        "word": "arbejder",
+        "translation": "работаю"
       },
       "adverbium1": {
-        "word": "bare",
-        "translation": "просто"
+        "word": "flittigt",
+        "translation": "усердно"
       },
       "adverbium2": {
-        "word": "lige",
-        "translation": "как раз"
+        "word": "",
+        "translation": ""
       },
       "verbum2": {
-        "word": "løbe",
-        "translation": "бегать"
+        "word": "planlægger",
+        "translation": "планирую"
       },
       "verbium3_infinitivpartikle": {
-        "word": "ved at",
-        "translation": "посредством того что"
+        "word": "for at",
+        "translation": "чтобы"
       },
       "verbium3_infinitiv": {
-        "word": "hjælpe",
-        "translation": "помогать"
+        "word": "afslutte",
+        "translation": "завершить"
       },
       "objekt1": {
-        "word": "bilen",
-        "translation": "машину"
+        "word": "projektet",
+        "translation": "проект"
       },
       "konjuktion": {
-        "word": "fordi",
-        "translation": "потому что"
+        "word": "og",
+        "translation": "и"
       },
       "objekt2": {
-        "word": "filmen",
-        "translation": "фильм"
+        "word": "rapporten",
+        "translation": "отчёт"
       },
       "sted_tid_præposition": {
-        "word": "under",
-        "translation": "под"
+        "word": "på",
+        "translation": "в"
       },
       "sted_tid_substantiv": {
-        "word": "biografen",
-        "translation": "кинотеатр"
-      }
+        "word": "kontoret",
+        "translation": "офисе"
+      },
+      "full_translation": "Я усердно работаю и планирую завершить проект и отчёт в офисе."
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "Я"
+      },
+      "verbum1": {
+        "word": "arbejder",
+        "translation": "работаю"
+      },
+      "adverbium1": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "planlægger",
+        "translation": "планирую"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "afslutte",
+        "translation": "завершить"
+      },
+      "objekt1": {
+        "word": "projektet",
+        "translation": "проект"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "rapporten",
+        "translation": "отчёт"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "kontoret",
+        "translation": "офисе"
+      },
+      "full_translation": "Я усердно работаю и планирую завершить проект и отчёт в офисе."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "skriver",
+        "translation": "пишет"
+      },
+      "adverbium1": {
+        "word": "langsommere",
+        "translation": "медленно"
+      },
+      "adverbium2": {
+        "word": "koncentreret",
+        "translation": "сосредоточенно"
+      },
+      "verbum2": {
+        "word": "forsøger",
+        "translation": "пытается"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "færdiggøre",
+        "translation": "закончить"
+      },
+      "objekt1": {
+        "word": "sin opgave",
+        "translation": "своё задание"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "noter",
+        "translation": "заметки"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": "комнате"
+      },
+      "full_translation": "Она медленно и сосредоточенно пишет своё задание и заметки в комнате."
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "Мы"
+      },
+      "verbum1": {
+        "word": "ser",
+        "translation": "смотрим"
+      },
+      "adverbium1": {
+        "word": "tit",
+        "translation": "часто"
+      },
+      "adverbium2": {
+        "word": "sammen",
+        "translation": "вместе"
+      },
+      "verbum2": {
+        "word": "elsker",
+        "translation": "любим"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "fange",
+        "translation": "ловить"
+      },
+      "objekt1": {
+        "word": "film",
+        "translation": "фильмы"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "serier",
+        "translation": "сериалы"
+      },
+      "sted_tid_præposition": {
+        "word": "om",
+        "translation": "по"
+      },
+      "sted_tid_substantiv": {
+        "word": "aftenen",
+        "translation": "вечерам"
+      },
+      "full_translation": "Мы часто смотрим фильмы и сериалы по вечерам, наслаждаясь вместе процессом."
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "Я"
+      },
+      "verbum1": {
+        "word": "arbejder",
+        "translation": "работаю"
+      },
+      "adverbium1": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "planlægger",
+        "translation": "планирую"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "afslutte",
+        "translation": "завершить"
+      },
+      "objekt1": {
+        "word": "projektet",
+        "translation": "проект"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "rapporten",
+        "translation": "отчёт"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "kontoret",
+        "translation": "офисе"
+      },
+      "full_translation": "Я усердно работаю и планирую завершить проект и отчёт в офисе."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "skriver",
+        "translation": "пишет"
+      },
+      "adverbium1": {
+        "word": "langsommere",
+        "translation": "медленно"
+      },
+      "adverbium2": {
+        "word": "koncentreret",
+        "translation": "сосредоточенно"
+      },
+      "verbum2": {
+        "word": "forsøger",
+        "translation": "пытается"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "færdiggøre",
+        "translation": "закончить"
+      },
+      "objekt1": {
+        "word": "sin opgave",
+        "translation": "своё задание"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "noter",
+        "translation": "заметки"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "stuen",
+        "translation": "комнате"
+      },
+      "full_translation": "Она медленно и сосредоточенно пишет своё задание и заметки в комнате."
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "Мы"
+      },
+      "verbum1": {
+        "word": "ser",
+        "translation": "смотрим"
+      },
+      "adverbium1": {
+        "word": "tit",
+        "translation": "часто"
+      },
+      "adverbium2": {
+        "word": "sammen",
+        "translation": "вместе"
+      },
+      "verbum2": {
+        "word": "elsker",
+        "translation": "любим"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "fange",
+        "translation": "ловить"
+      },
+      "objekt1": {
+        "word": "film",
+        "translation": "фильмы"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "serier",
+        "translation": "сериалы"
+      },
+      "sted_tid_præposition": {
+        "word": "om",
+        "translation": "по"
+      },
+      "sted_tid_substantiv": {
+        "word": "aftenen",
+        "translation": "вечерам"
+      },
+      "full_translation": "Мы часто смотрим фильмы и сериалы по вечерам, наслаждаясь вместе процессом."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читает"
+      },
+      "adverbium1": {
+        "word": "koncentreret",
+        "translation": "сосредоточенно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "undersøger",
+        "translation": "изучает"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forstå",
+        "translation": "понять"
+      },
+      "objekt1": {
+        "word": "artikler",
+        "translation": "статьи"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "bøger",
+        "translation": "книги"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "biblioteket",
+        "translation": "библиотеке"
+      },
+      "full_translation": "Он сосредоточенно читает статьи и изучает книги в библиотеке, чтобы понять материал."
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "Мы"
+      },
+      "verbum1": {
+        "word": "planter",
+        "translation": "сажаем"
+      },
+      "adverbium1": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "passer",
+        "translation": "ухаживаем"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "vokse",
+        "translation": "расти"
+      },
+      "objekt1": {
+        "word": "planterne",
+        "translation": "растения"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "blomsterne",
+        "translation": "цветы"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": "саду"
+      },
+      "full_translation": "Мы усердно сажаем и ухаживаем за растениями и цветами в саду, чтобы они хорошо росли."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "maler",
+        "translation": "рисует"
+      },
+      "adverbium1": {
+        "word": "smukt",
+        "translation": "красиво"
+      },
+      "adverbium2": {
+        "word": "tit",
+        "translation": "часто"
+      },
+      "verbum2": {
+        "word": "dekorerer",
+        "translation": "декорирует"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forbedre",
+        "translation": "улучшить"
+      },
+      "objekt1": {
+        "word": "værelser",
+        "translation": "комнаты"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "møbler",
+        "translation": "мебель"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "huset",
+        "translation": "доме"
+      },
+      "full_translation": "Она красиво и часто рисует, декорируя комнаты и мебель в доме, чтобы улучшить интерьер."
+    },
+    {
+      "subjekt": {
+        "word": "Jeg",
+        "translation": "Я"
+      },
+      "verbum1": {
+        "word": "lærer",
+        "translation": "учу"
+      },
+      "adverbium1": {
+        "word": "flittigt",
+        "translation": "усердно"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "prøver",
+        "translation": "пытаюсь"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forstå",
+        "translation": "понять"
+      },
+      "objekt1": {
+        "word": "dansk",
+        "translation": "датский"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "grammatik",
+        "translation": "грамматику"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "skolen",
+        "translation": "школе"
+      },
+      "full_translation": "Я усердно учу датский и пытаюсь понять грамматику в школе."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
+        "word": "spiller",
+        "translation": "играет"
+      },
+      "adverbium1": {
+        "word": "højt",
+        "translation": "громко"
+      },
+      "adverbium2": {
+        "word": "sjældent",
+        "translation": "редко"
+      },
+      "verbum2": {
+        "word": "øver",
+        "translation": "тренируется"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "blive",
+        "translation": "стать"
+      },
+      "objekt1": {
+        "word": "guitar",
+        "translation": "гитаристом"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "trommer",
+        "translation": "барабанщик"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "sted_tid_substantiv": {
+        "word": "loftet",
+        "translation": "чердаке"
+      },
+      "full_translation": "Он громко и редко играет на гитаре и тренируется на барабанах на чердаке, чтобы стать музыкантом."
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "Мы"
+      },
+      "verbum1": {
+        "word": "går",
+        "translation": "ходим"
+      },
+      "adverbium1": {
+        "word": "langsommere",
+        "translation": "медленно"
+      },
+      "adverbium2": {
+        "word": "udenfor",
+        "translation": "снаружи"
+      },
+      "verbum2": {
+        "word": "prøver",
+        "translation": "пытаемся"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "nyde",
+        "translation": "наслаждаться"
+      },
+      "objekt1": {
+        "word": "naturen",
+        "translation": "природой"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "lydene",
+        "translation": "звуками"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "parken",
+        "translation": "парке"
+      },
+      "full_translation": "Мы медленно ходим снаружи, пытаясь наслаждаться природой и звуками в парке."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "synger",
+        "translation": "поёт"
+      },
+      "adverbium1": {
+        "word": "stille",
+        "translation": "тихо"
+      },
+      "adverbium2": {
+        "word": "roligt",
+        "translation": "спокойно"
+      },
+      "verbum2": {
+        "word": "øve",
+        "translation": "тренируется"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forbedre",
+        "translation": "улучшить"
+      },
+      "objekt1": {
+        "word": "sangen",
+        "translation": "песню"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "melodien",
+        "translation": "мелодию"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "sted_tid_substantiv": {
+        "word": "værelset",
+        "translation": "комнате"
+      },
+      "full_translation": "Она тихо и спокойно поёт и тренируется, чтобы улучшить песню и мелодию в комнате."
     }
   ]
 }
