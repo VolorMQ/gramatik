@@ -234,30 +234,28 @@ document.getElementById('check-button').addEventListener('click', ()=>{
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       const type = td.dataset.type;
-      const correctWord = selectedSentences[rowIdx][type];
-
       if(type === 'subjekt') return; // подлежащее всегда заполнено
 
+      const correctWord = selectedSentences[rowIdx][type];
+      const expected = correctWord && correctWord.word ? correctWord.word : '';
       const idx = td.dataset.wordIndex;
       let isCorrect = false;
 
-      if(idx===undefined || idx==-1 || !td.textContent.trim()){
-        // Пустая ячейка или не выбранное слово — ошибка
-        isCorrect = false;
-      } else {
+      if(expected === "" && (!td.textContent || !td.textContent.trim())){
+        // Если поле должно быть пустым и пустое — правильно
+        isCorrect = true;
+      } else if(idx !== undefined && idx != -1){
         const wordObj = wordsPool[idx];
-        const expected = correctWord && correctWord.word ? correctWord.word : '';
         isCorrect = (wordObj.word === expected);
+      } else if(td.textContent && td.textContent.trim() === expected){
+        isCorrect = true;
       }
 
       if(!isCorrect) allCorrect = false;
-
-      // Подсветка: зелёный — правильно, красный — ошибка
       td.style.backgroundColor = isCorrect ? '#d1fae5' : '#f87171';
     });
   });
 
-  // Вывод полного перевода, если всё верно
   const translationBox = document.getElementById('fullTranslation');
   if(allCorrect){
     translationBox.textContent = selectedSentences.map(s=>s.full_translation).join(' ');
