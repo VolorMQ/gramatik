@@ -229,29 +229,42 @@ document.getElementById('mobileVersion').addEventListener('change', e=>{
 });
 
 document.getElementById('check-button').addEventListener('click', ()=>{
+  let allCorrect = true;
+
   document.querySelectorAll('#sentence-rows tr').forEach((tr,rowIdx)=>{
     tr.querySelectorAll('td').forEach(td=>{
       const type = td.dataset.type;
       const correctWord = selectedSentences[rowIdx][type];
       const idx = td.dataset.wordIndex;
+
       if(idx===undefined) return;
 
+      let isCorrect = false;
+
       if(idx==-1){
-        td.style.backgroundColor='#d1fae5';
+        // Подлежащее и подсказки
+        const expected = correctWord && correctWord.word ? correctWord.word : '';
+        isCorrect = (td.textContent === expected);
       } else {
         const wordObj = wordsPool[idx];
-        const expected = correctWord && typeof correctWord.word !== 'undefined' ? correctWord.word : '';
-
-        if(wordObj.type === 'blank'){
-          td.style.backgroundColor = (expected==='') ? '#d1fae5' : '#f87171';
-        } else {
-          if(wordObj.word===expected){ td.style.backgroundColor='#d1fae5';
-          } else if(wordObj.type===type){ td.style.backgroundColor='#fef08a';
-          } else { td.style.backgroundColor='#f87171'; }
-        }
+        const expected = correctWord && correctWord.word ? correctWord.word : '';
+        isCorrect = (wordObj.word === expected);
       }
+
+      if(!isCorrect) allCorrect = false;
+
+      // Подсветка
+      td.style.backgroundColor = isCorrect ? '#d1fae5' : '#f87171';
     });
   });
+
+  // Если всё верно, показываем full_translation
+  const translationBox = document.getElementById('fullTranslation');
+  if(allCorrect){
+    translationBox.textContent = selectedSentences.map(s=>s.full_translation).join(' ');
+  } else {
+    translationBox.textContent = '';
+  }
 });
 
 document.getElementById('hint-button').addEventListener('click', ()=>{
