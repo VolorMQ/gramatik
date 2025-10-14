@@ -235,16 +235,15 @@ document.getElementById('check-button').addEventListener('click', ()=>{
     tr.querySelectorAll('td').forEach(td=>{
       const type = td.dataset.type;
       const correctWord = selectedSentences[rowIdx][type];
+
+      if(type === 'subjekt') return; // подлежащее всегда заполнено
+
       const idx = td.dataset.wordIndex;
-
-      if(idx===undefined) return;
-
       let isCorrect = false;
 
-      if(idx==-1){
-        // Подлежащее и подсказки
-        const expected = correctWord && correctWord.word ? correctWord.word : '';
-        isCorrect = (td.textContent === expected);
+      if(idx===undefined || idx==-1 || !td.textContent.trim()){
+        // Пустая ячейка или не выбранное слово — ошибка
+        isCorrect = false;
       } else {
         const wordObj = wordsPool[idx];
         const expected = correctWord && correctWord.word ? correctWord.word : '';
@@ -253,12 +252,12 @@ document.getElementById('check-button').addEventListener('click', ()=>{
 
       if(!isCorrect) allCorrect = false;
 
-      // Подсветка
+      // Подсветка: зелёный — правильно, красный — ошибка
       td.style.backgroundColor = isCorrect ? '#d1fae5' : '#f87171';
     });
   });
 
-  // Если всё верно, показываем full_translation
+  // Вывод полного перевода, если всё верно
   const translationBox = document.getElementById('fullTranslation');
   if(allCorrect){
     translationBox.textContent = selectedSentences.map(s=>s.full_translation).join(' ');
