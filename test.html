@@ -145,35 +145,18 @@ function generateWords() {
 
 // ---- Создание текста с placeholders, заменяем только ОДНО (первое) вхождение каждого слова ----
 function renderStory() {
-  // Разбиваем текст на токены (слова и разделители)
-  const tokens = tokenize(currentText.text);
+  let newText = currentText.text;
 
-  // Для каждого слова из selectedWords (в том же порядке) найдём первое совпадение и заменим его на placeholder
-  for (let s = 0; s < selectedWords.length; s++) {
-    const sel = selectedWords[s];
-    const selLower = sel.toLowerCase();
+  selectedWords.forEach(word => {
+    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // ищем только первое вхождение
+    const regex = new RegExp(`\\b${escapedWord}\\b`);
+    // помещаем ожидаемое слово в data-expected (в нижнем регистре)
+    const placeholderHTML = `<span class="placeholder" data-expected="${word.toLowerCase()}" ondrop="dropWord(event)" ondragover="allowDrop(event)" onclick="tapPlaceholder(event)">___</span>`;
+    newText = newText.replace(regex, placeholderHTML);
+  });
 
-    for (let i = 0; i < tokens.length; i++) {
-      // проверяем, это ли "слово" токен (а не разделитель)
-      // используем ту же логику, что и в tokenize: слово — соответствует /[\p{L}\p{M}]+/u либо через fallback
-      let isWord;
-      try {
-        isWord = (/^[\p{L}\p{M}]+$/u).test(tokens[i]);
-      } catch (e) {
-        isWord = (/^[\wæøåÆØÅ]+$/).test(tokens[i]);
-      }
-
-      if (!isWord) continue;
-
-      // сравнение нечувствительное к регистру
-      if (tokens[i].toLowerCase() === selLower) {
-        tokens[i] = `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)" onclick="tapPlaceholder(event)">___</span>`;
-        break; // перешли к следующему выбранному слову
-      }
-    }
-  }
-
-  document.getElementById('story').innerHTML = tokens.join('');
+  document.getElementById('story').innerHTML = newText;
 }
 
 // Отображение доступных слов
@@ -201,17 +184,19 @@ function dropWord(ev){
   ev.preventDefault();
   const placeholder = ev.target;
   if(dragged){
-    if(placeholder.classList.contains('insertedWord')){
-      availableWords.push(placeholder.textContent);
-    }
+    const expected = placeholder.dataset && placeholder.dataset.expected ? placeholder.dataset.expected : null;
+
+    // создаём span и копируем expected
     const span = document.createElement('span');
     span.className = 'insertedWord';
     span.draggable = true;
-    span.textContent = dragged.textContent;
+    span.textContent = dragged.textContent.trim();
+    if(expected) span.dataset.expected = expected;
+
     span.ondragstart = dragInsertedWord;
-    // для удобства — кликом возвращаем в choices (работает в мобилке по tapInsertedWord)
     span.onclick = tapInsertedWord;
     placeholder.parentNode.replaceChild(span, placeholder);
+
     if(fromChoice){
       const index = availableWords.indexOf(dragged.textContent);
       if(index > -1) availableWords.splice(index, 1);
@@ -261,14 +246,18 @@ function tapPlaceholder(ev){
   if(!mobileMode) return;
   if(!selectedWordForTap) return;
   const placeholder = ev.target;
+  const expected = placeholder.dataset && placeholder.dataset.expected ? placeholder.dataset.expected : null;
+
   const span = document.createElement('span');
   span.className = 'insertedWord';
-  // в мобилке сделаем span не draggable, но сохраняем onclick для возврата
-  span.draggable = false;
   span.textContent = selectedWordForTap;
+  if(expected) span.dataset.expected = expected;
+  // в мобилке сделаем span не draggable, но оставим onclick для возврата
+  span.draggable = false;
   span.onclick = tapInsertedWord;
+
   placeholder.parentNode.replaceChild(span, placeholder);
-  // удалить выбранное слово из банка
+
   const idx = availableWords.indexOf(selectedWordForTap);
   if(idx > -1) availableWords.splice(idx, 1);
   selectedWordForTap = null;
@@ -297,10 +286,13 @@ function tapInsertedWord(ev){
 
 // Проверка (оставлена как в твоём рабочем коде — сравнение по позиции)
 document.getElementById('check').addEventListener('click', () => {
-  const inserted = document.querySelectorAll('.insertedWord');
+  const inserted = Array.from(document.querySelectorAll('.insertedWord'));
   let allCorrect = true;
   inserted.forEach((el, i) => {
-    if(el.textContent.trim() === selectedWords[i]){
+    const actual = el.textContent.trim().toLowerCase();
+    const expected = (el.dataset && el.dataset.expected) ? el.dataset.expected.toLowerCase() : (selectedWords[i] ? selectedWords[i].toLowerCase() : null);
+
+    if(expected && actual === expected){
       el.style.background = '#d4edda';
       el.style.borderBottom = '2px solid green';
     } else {
@@ -309,6 +301,7 @@ document.getElementById('check').addEventListener('click', () => {
       allCorrect = false;
     }
   });
+
   document.getElementById('result').textContent = allCorrect ? 'Alle svar er korrekte! 🎉' : 'Nogle svar er forkerte. Prøv igen.';
 });
 
