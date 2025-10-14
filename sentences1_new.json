@@ -1274,6 +1274,261 @@
         "translation": "комнате"
       },
       "full_translation": "Она тихо и спокойно поёт и тренируется, чтобы улучшить песню и мелодию в комнате."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "skriver",
+        "translation": "пишет"
+      },
+      "adverbium1": {
+        "word": "langsomt",
+        "translation": "медленно"
+      },
+      "adverbium2": {
+        "word": "koncentreret",
+        "translation": "сосредоточенно"
+      },
+      "verbum2": {
+        "word": "forsøger",
+        "translation": "пытается"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "færdiggøre",
+        "translation": "завершить"
+      },
+      "objekt1": {
+        "word": "opgaven",
+        "translation": "задание"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "noterne",
+        "translation": "заметки"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "kontoret",
+        "translation": "офисе"
+      },
+      "full_translation": "Она медленно и сосредоточенно пишет, пытаясь завершить задание и заметки в офисе."
+    },
+    {
+      "subjekt": {
+        "word": "Vi",
+        "translation": "Мы"
+      },
+      "verbum1": {
+        "word": "læser",
+        "translation": "читаем"
+      },
+      "adverbium1": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "adverbium2": {
+        "word": "",
+        "translation": ""
+      },
+      "verbum2": {
+        "word": "diskuterer",
+        "translation": "обсуждаем"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forstå",
+        "translation": "понять"
+      },
+      "objekt1": {
+        "word": "artiklerne",
+        "translation": "статьи"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "bøgerne",
+        "translation": "книги"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "biblioteket",
+        "translation": "библиотеке"
+      },
+      "full_translation": "Мы часто читаем и обсуждаем статьи и книги в библиотеке, чтобы понять материал."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
+        "word": "spiller",
+        "translation": "играет"
+      },
+      "adverbium1": {
+        "word": "højt",
+        "translation": "громко"
+      },
+      "adverbium2": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum2": {
+        "word": "øver",
+        "translation": "практикует"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "forbedre",
+        "translation": "улучшить"
+      },
+      "objekt1": {
+        "word": "guitar",
+        "translation": "гитару"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "trommer",
+        "translation": "барабаны"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "sted_tid_substantiv": {
+        "word": "loftet",
+        "translation": "чердаке"
+      },
+      "full_translation": "Он громко и часто играет, практикуя гитару и барабаны на чердаке, чтобы улучшить навыки."
+    },
+    {
+      "subjekt": {
+        "word": "Børnene",
+        "translation": "Дети"
+      },
+      "verbum1": {
+        "word": "leger",
+        "translation": "играют"
+      },
+      "adverbium1": {
+        "word": "glad",
+        "translation": "радостно"
+      },
+      "adverbium2": {
+        "word": "udenfor",
+        "translation": "на улице"
+      },
+      "verbum2": {
+        "word": "bygger",
+        "translation": "строят"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "for at",
+        "translation": "чтобы"
+      },
+      "verbium3_infinitiv": {
+        "word": "have",
+        "translation": "иметь"
+      },
+      "objekt1": {
+        "word": "huler",
+        "translation": "шалаши"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "tårne",
+        "translation": "башни"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "haven",
+        "translation": "саду"
+      },
+      "full_translation": "Дети радостно играют на улице и строят шалаши и башни в саду, чтобы весело провести время."
+    },
+    {
+      "subjekt": {
+        "word": "Katten",
+        "translation": "Кошка"
+      },
+      "verbum1": {
+        "word": "sover",
+        "translation": "спит"
+      },
+      "adverbium1": {
+        "word": "stille",
+        "translation": "тихо"
+      },
+      "adverbium2": {
+        "word": "hele dagen",
+        "translation": "весь день"
+      },
+      "verbum2": {
+        "word": "drømmer",
+        "translation": "мечтает"
+      },
+      "verbium3_infinitivpartikle": {
+        "word": "om",
+        "translation": "о"
+      },
+      "verbium3_infinitiv": {
+        "word": "at fange",
+        "translation": "поймать"
+      },
+      "objekt1": {
+        "word": "mus",
+        "translation": "мышей"
+      },
+      "konjuktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "objekt2": {
+        "word": "fugle",
+        "translation": "птиц"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "sted_tid_substantiv": {
+        "word": "loftet",
+        "translation": "чердаке"
+      },
+      "full_translation": "Кошка тихо спит весь день и мечтает поймать мышей и птиц на чердаке."
     }
   ]
 }
