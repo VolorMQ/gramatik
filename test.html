@@ -100,18 +100,39 @@ function shuffleArray(arr) {
   return arr.slice().sort(() => Math.random() - 0.5);
 }
 
-// Генерация случайных слов для вставки
+// ---- helper: получить все слова (Unicode-aware) ----
+function extractWords(text){
+  try {
+    // работает в современных браузерах: берём буквы и комбинации диакритики
+    return text.match(/[\p{L}\p{M}]+/gu) || [];
+  } catch(e){
+    // fallback — старые браузеры: добавим æøå вручную
+    return text.match(/\b[\wæøåÆØÅ]+\b/g) || [];
+  }
+}
+
+// ---- helper: токенизация текста (слова и всё остальное) ----
+function tokenize(text){
+  try {
+    return text.match(/[\p{L}\p{M}]+|[^\p{L}\p{M}]+/gu) || [text];
+  } catch(e){
+    // fallback: разбиваем на слова/не-слова (сохраняя разделители)
+    return text.split(/(\W+)/);
+  }
+}
+
+// ---- Генерация случайных слов для вставки (замена старой функции) ----
 function generateWords() {
   const num = parseInt(document.getElementById('numWords').value);
 
-  // Разбиваем текст на слова (игнорируем знаки препинания)
-  let allWords = currentText.text.match(/\b[\wæøåÆØÅ]+\b/g);
+  // Надёжно извлекаем слова (Unicode-aware)
+  let allWords = extractWords(currentText.text);
   if (!allWords) allWords = [];
 
   // Убираем дубликаты, чтобы слова были уникальны
   const uniqueWords = [...new Set(allWords)];
 
-  // Выбираем случайные уникальные слова
+  // Выбираем случайные уникальные слова (ровно num или меньше)
   selectedWords = shuffleArray(uniqueWords).slice(0, Math.min(num, uniqueWords.length));
 
   // Копия для отображения в списке
@@ -122,18 +143,37 @@ function generateWords() {
   document.getElementById('result').textContent = '';
 }
 
-// Создание текста с placeholders, заменяем только ОДНО вхождение каждого слова
+// ---- Создание текста с placeholders, заменяем только ОДНО (первое) вхождение каждого слова ----
 function renderStory() {
-  let newText = currentText.text;
+  // Разбиваем текст на токены (слова и разделители)
+  const tokens = tokenize(currentText.text);
 
-  selectedWords.forEach(word => {
-    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // ищем только первое вхождение
-    const regex = new RegExp(`\\b${escapedWord}\\b`);
-    newText = newText.replace(regex, `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)" onclick="tapPlaceholder(event)">___</span>`);
-  });
+  // Для каждого слова из selectedWords (в том же порядке) найдём первое совпадение и заменим его на placeholder
+  for (let s = 0; s < selectedWords.length; s++) {
+    const sel = selectedWords[s];
+    const selLower = sel.toLowerCase();
 
-  document.getElementById('story').innerHTML = newText;
+    for (let i = 0; i < tokens.length; i++) {
+      // проверяем, это ли "слово" токен (а не разделитель)
+      // используем ту же логику, что и в tokenize: слово — соответствует /[\p{L}\p{M}]+/u либо через fallback
+      let isWord;
+      try {
+        isWord = (/^[\p{L}\p{M}]+$/u).test(tokens[i]);
+      } catch (e) {
+        isWord = (/^[\wæøåÆØÅ]+$/).test(tokens[i]);
+      }
+
+      if (!isWord) continue;
+
+      // сравнение нечувствительное к регистру
+      if (tokens[i].toLowerCase() === selLower) {
+        tokens[i] = `<span class="placeholder" ondrop="dropWord(event)" ondragover="allowDrop(event)" onclick="tapPlaceholder(event)">___</span>`;
+        break; // перешли к следующему выбранному слову
+      }
+    }
+  }
+
+  document.getElementById('story').innerHTML = tokens.join('');
 }
 
 // Отображение доступных слов
