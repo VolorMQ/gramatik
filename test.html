@@ -261,17 +261,25 @@ function tapInsertedWord(ev) {
   wordEl.parentNode.replaceChild(placeholder, wordEl);
 }
 
-// === ИСПРАВЛЕННАЯ ПРОВЕРКА ===
+// === Надёжная проверка: уникальные слова, регистр игнорируется ===
 document.getElementById('check').addEventListener('click', () => {
   const insertedEls = Array.from(document.querySelectorAll('.insertedWord'));
   const insertedTexts = insertedEls.map(el => el.textContent.trim());
-  const expectedCount = selectedWords.length;
+
   const resultEl = document.getElementById('result');
+  // ожидаемое множество (в lower-case)
+  const expectedSet = new Set(selectedWords.map(w => w.toLowerCase()));
 
-  const correctSet = new Set(insertedTexts.filter(t => selectedWords.includes(t)));
+  // вставленные (в lower-case)
+  const insertedLower = insertedTexts.map(t => t.toLowerCase());
 
+  // множество уникально вставленных слов (без пустых)
+  const insertedSet = new Set(insertedLower.filter(t => t !== ''));
+
+  // Подсветка: зелёный если вставленное слово есть в expectedSet, иначе красный
   insertedEls.forEach(el => {
-    if (selectedWords.includes(el.textContent.trim())) {
+    const txt = el.textContent.trim().toLowerCase();
+    if (expectedSet.has(txt)) {
       el.style.background = '#4CAF50';
       el.style.borderBottom = '2px solid green';
     } else {
@@ -280,17 +288,26 @@ document.getElementById('check').addEventListener('click', () => {
     }
   });
 
-  const allFilled = insertedTexts.length === expectedCount;
-  const allMatched = selectedWords.every(w => correctSet.has(w));
+  // Условия успеха:
+  // 1) Все поля заполнены (количество вставленных === количество выбранных слов)
+  // 2) Множество уникально вставленных слов совпадает с expectedSet
+  const allFilled = insertedEls.length === selectedWords.length;
+  // insertedSet.size must equal expectedSet.size and every expected word present
+  const allMatched = allFilled &&
+    insertedSet.size === expectedSet.size &&
+    [...expectedSet].every(w => insertedSet.has(w));
 
-  if (allFilled && allMatched) {
+  if (allMatched) {
     resultEl.textContent = 'Alle svar er korrekte! 🎉';
     resultEl.style.color = 'green';
   } else {
-    resultEl.textContent = `🔹 Du har ${correctSet.size} korrekte ord ud af ${expectedCount}.`;
+    // сколько уникально правильных слов вставлено
+    const correctUnique = [...insertedSet].filter(w => expectedSet.has(w)).length;
+    resultEl.textContent = `🔹 Du har ${correctUnique} korrekte ord ud af ${expectedSet.size}.`;
     resultEl.style.color = 'orange';
   }
 });
+
 
 // === Кнопки ===
 document.getElementById('refresh').addEventListener('click', loadRandomText);
