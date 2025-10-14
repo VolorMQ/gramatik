@@ -304,6 +304,8 @@ document.getElementById('hint-button').addEventListener('click', ()=>{
 document.getElementById('reset-button').addEventListener('click', ()=>{
   initSentences();
   document.getElementById('hint-button').disabled = false;
+  // Очищаем поле полного перевода
+  document.getElementById('fullTranslation').textContent = '';
 });
 
 function updateTranslation(){
