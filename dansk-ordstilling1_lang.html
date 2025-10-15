@@ -35,18 +35,16 @@ td[data-placeholder]:empty::before {
   color: #9ca3af;
   font-style: italic;
 }
-/* Новый CSS для сдвига таблицы влево */
 table.schema {
-  margin-left: calc(-16px - 32px);
-  margin-right: 0;
-  width: calc(100% + 32px + 32px);
+  width: 100%;   /* занимает всю ширину экрана */
+  margin: 0;     /* без внешних отступов */
 }
 
 table.schema th,
 table.schema td {
-  text-align: left;
-  padding-left: 10px;
+  padding-left: 10px; 
 }
+
 </style>
 </head>
 <body>
@@ -56,9 +54,10 @@ table.schema td {
 <input id="mobileVersion" type="checkbox"/> MobilVersion (tap instead of drag)
 </label>
 <h2 class="mt-8">Hoved+Lædsætninger</h2>
+<!-- Таблица вынесена наружу -->
 <table aria-label="Ordstilling – skema" class="schema">
-<thead id="table-head"></thead>
-<tbody id="sentence-rows"></tbody>
+  <thead id="table-head"></thead>
+  <tbody id="sentence-rows"></tbody>
 </table>
 <div id="word-pool"></div>
 <div id="buttons">
@@ -68,6 +67,7 @@ table.schema td {
 </div>
 <div id="translation"></div>
 </div>
+
 
 <script>
 let sentences = [];
