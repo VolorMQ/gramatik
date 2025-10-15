@@ -23,7 +23,7 @@ h1 { text-align: center; color: #333; margin-bottom: 10px; }
   font-weight: bold;
   color: #00796b;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin: 0 auto 30px auto;
+  margin: 0 auto 40px auto;
 }
 
 #announcements {
@@ -59,6 +59,17 @@ h1 { text-align: center; color: #333; margin-bottom: 10px; }
   line-height: 1.5;
 }
 
+.contacts {
+  font-size: 14px;
+  color: #00796b;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.contacts span {
+  display: block;
+}
+
 .selected {
   border: 2px solid #00bcd4;
 }
@@ -89,65 +100,40 @@ button {
 button:hover {
   background-color: #0097a7;
 }
-
-#score {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #00796b;
-}
 </style>
 </head>
 <body>
 
 <h1>Find det rigtige annonce</h1>
-<div id="prompt">Indlæser...</div>
+<div style="text-align:center;">
+  <p id="prompt">Kort sætning: Indlæser...</p>
+</div>
+
 <div id="announcements"></div>
-<button id="checkBtn">Tjek svar</button>
-<button id="nextBtn" style="display:none;">Næste opgave</button>
-<div id="score">Rigtige svar: 0 / 0</div>
+
+<button onclick="checkAnswer()">Tjek svar</button>
 
 <script>
-let data = null;
-let currentSet = null;
-let selectedIndex = null;
-let score = 0;
-let usedSets = [];
-
-const promptEl = document.getElementById('prompt');
 const container = document.getElementById('announcements');
-const checkBtn = document.getElementById('checkBtn');
-const nextBtn = document.getElementById('nextBtn');
-const scoreEl = document.getElementById('score');
+let selectedIndex = null;
+let data = null;
 
 // Загружаем JSON с сервера
 fetch('announcements.json')
-  .then(response => response.json())
+  .then(res => res.json())
   .then(json => {
-    data = json.sets;
-    nextSet();
+    data = json.sets[0]; // берем первый набор для примера
+    renderAnnouncements(data);
+    document.getElementById('prompt').textContent = "Emne : " + data.prompt;
   })
   .catch(err => {
-    promptEl.textContent = "Fejl ved indlæsning af data!";
+    document.getElementById('prompt').textContent = "Fejl ved indlæsning af data!";
     console.error(err);
   });
 
-function getRandomSet() {
-  const available = data.filter((_, i) => !usedSets.includes(i));
-  if (!available.length) return null;
-  const index = Math.floor(Math.random() * available.length);
-  usedSets.push(data.indexOf(available[index]));
-  return available[index];
-}
-
-function renderSet(set) {
+function renderAnnouncements(set) {
   container.innerHTML = "";
   selectedIndex = null;
-  currentSet = set;
-  promptEl.textContent = "Kort sætning: " + set.prompt;
-  nextBtn.style.display = "none";
-  scoreEl.textContent = `Rigtige svar: ${score} / ${data.length}`;
 
   set.announcements.forEach((ann, index) => {
     const div = document.createElement('div');
@@ -160,6 +146,16 @@ function renderSet(set) {
     const p = document.createElement('p');
     p.textContent = ann.text;
     div.appendChild(p);
+
+    // Контакты вынесены в самый низ
+    const contacts = document.createElement('div');
+    contacts.className = 'contacts';
+    ann.contacts?.forEach(c => {
+      const span = document.createElement('span');
+      span.textContent = c;
+      contacts.appendChild(span);
+    });
+    div.appendChild(contacts);
 
     div.onclick = () => {
       document.querySelectorAll('.announcement').forEach(a => a.classList.remove('selected'));
@@ -175,29 +171,10 @@ function checkAnswer() {
   if (selectedIndex === null) { alert("Vælg venligst en annonce!"); return; }
   document.querySelectorAll('.announcement').forEach((div, idx) => {
     div.classList.remove('correct','wrong','selected');
-    if (idx === currentSet.correctIndex) div.classList.add('correct');
+    if (idx === data.correctIndex) div.classList.add('correct');
     else if (idx === selectedIndex) div.classList.add('wrong');
   });
-  if (selectedIndex === currentSet.correctIndex) score++;
-  scoreEl.textContent = `Rigtige svar: ${score} / ${data.length}`;
-  nextBtn.style.display = 'inline-block';
 }
-
-function nextSet() {
-  const set = getRandomSet();
-  if (!set) {
-    promptEl.textContent = "🎉 Du har gennemført alle opgaver!";
-    container.innerHTML = "";
-    checkBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    scoreEl.textContent = `Endeligt resultat: ${score} / ${data.length}`;
-    return;
-  }
-  renderSet(set);
-}
-
-checkBtn.addEventListener('click', checkAnswer);
-nextBtn.addEventListener('click', nextSet);
 </script>
 
 </body>
