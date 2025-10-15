@@ -112,7 +112,15 @@ button:hover {
 <body>
 
 <h1>Find det rigtige annonce</h1>
-<div id="counter">Emne: 0 / 5</div>
+
+<!-- Новое поле для задания количества задач пользователем -->
+<div style="text-align:center; margin-bottom:15px;">
+  <label for="totalTasksInput">Antal opgaver:</label>
+  <input type="number" id="totalTasksInput" value="5" min="1" max="20" style="width:60px; text-align:center;">
+  <button onclick="setTotalTasks()">Start med dette antal</button>
+</div>
+
+<div id="counter">Emne: 0 / 5 | Forkert: 0</div>
 <div style="text-align:center;">
   <p id="prompt">Emne : Indlæser...</p>
 </div>
@@ -128,8 +136,9 @@ let data = null;
 let currentSetIndex = null;
 let selectedIndex = null;
 let correctCount = 0;
-let wrongCount = 0; // добавили счётчик неправильных ответов
+let wrongCount = 0;
 let usedIndices = [];
+let totalTasks = 5; // пользовательское количество заданий
 
 // Загружаем JSON
 fetch('announcements.json')
@@ -142,6 +151,15 @@ fetch('announcements.json')
     document.getElementById('prompt').textContent = "Fejl ved indlæsning af data!";
     console.error(err);
   });
+
+function setTotalTasks() {
+  const input = document.getElementById('totalTasksInput').value;
+  const val = parseInt(input);
+  if(val > 0){
+    totalTasks = val;
+    restart(); // перезапускаем задания с новым количеством
+  }
+}
 
 function renderAnnouncements(set) {
   const container = document.getElementById('announcements');
@@ -162,6 +180,17 @@ function renderAnnouncements(set) {
     p.textContent = ann.text;
     div.appendChild(p);
 
+    if(ann.contacts && ann.contacts.length > 0){
+      const contacts = document.createElement('div');
+      contacts.className = 'contacts';
+      ann.contacts.forEach(c => {
+        const span = document.createElement('span');
+        span.textContent = c;
+        contacts.appendChild(span);
+      });
+      div.appendChild(contacts);
+    }
+
     div.onclick = () => {
       document.querySelectorAll('.announcement').forEach(a => a.classList.remove('selected'));
       div.classList.add('selected');
@@ -170,10 +199,6 @@ function renderAnnouncements(set) {
 
     container.appendChild(div);
   });
-}
-
-function updateCounter() {
-  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${data.length} | Forkert: ${wrongCount}`;
 }
 
 function checkAnswer() {
@@ -189,17 +214,17 @@ function checkAnswer() {
   if (selectedIndex === set.correctIndex) {
     correctCount++;
   } else {
-    wrongCount++; // увеличиваем счётчик неправильных ответов
+    wrongCount++;
   }
 
-  updateCounter();
+  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${totalTasks} | Forkert: ${wrongCount}`;
 }
 
 function nextTask() {
   if(!data) return;
 
-  if(usedIndices.length === data.length){
-    alert(`Alle opgaver gennemført! Du fik ${correctCount} rigtige og ${wrongCount} forkerte.`);
+  if(usedIndices.length === totalTasks){
+    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
     return;
   }
 
@@ -215,11 +240,11 @@ function nextTask() {
 
 function restart() {
   correctCount = 0;
-  wrongCount = 0; // сбросить неправильные ответы
+  wrongCount = 0;
   usedIndices = [];
   currentSetIndex = null;
   selectedIndex = null;
-  updateCounter();
+  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${totalTasks} | Forkert: ${wrongCount}`;
   nextTask();
 }
 </script>
