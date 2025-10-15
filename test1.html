@@ -128,6 +128,7 @@ let data = null;
 let currentSetIndex = null;
 let selectedIndex = null;
 let correctCount = 0;
+let wrongCount = 0; // добавили счётчик неправильных ответов
 let usedIndices = [];
 
 // Загружаем JSON
@@ -161,17 +162,6 @@ function renderAnnouncements(set) {
     p.textContent = ann.text;
     div.appendChild(p);
 
-    if(ann.contacts && ann.contacts.length > 0){
-      const contacts = document.createElement('div');
-      contacts.className = 'contacts';
-      ann.contacts.forEach(c => {
-        const span = document.createElement('span');
-        span.textContent = c;
-        contacts.appendChild(span);
-      });
-      div.appendChild(contacts);
-    }
-
     div.onclick = () => {
       document.querySelectorAll('.announcement').forEach(a => a.classList.remove('selected'));
       div.classList.add('selected');
@@ -180,6 +170,10 @@ function renderAnnouncements(set) {
 
     container.appendChild(div);
   });
+}
+
+function updateCounter() {
+  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${data.length} | Forkert: ${wrongCount}`;
 }
 
 function checkAnswer() {
@@ -194,16 +188,18 @@ function checkAnswer() {
 
   if (selectedIndex === set.correctIndex) {
     correctCount++;
+  } else {
+    wrongCount++; // увеличиваем счётчик неправильных ответов
   }
 
-  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${data.length}`;
+  updateCounter();
 }
 
 function nextTask() {
   if(!data) return;
 
   if(usedIndices.length === data.length){
-    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${data.length} rigtige.`);
+    alert(`Alle opgaver gennemført! Du fik ${correctCount} rigtige og ${wrongCount} forkerte.`);
     return;
   }
 
@@ -219,10 +215,11 @@ function nextTask() {
 
 function restart() {
   correctCount = 0;
+  wrongCount = 0; // сбросить неправильные ответы
   usedIndices = [];
   currentSetIndex = null;
   selectedIndex = null;
-  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${data.length}`;
+  updateCounter();
   nextTask();
 }
 </script>
