@@ -12,6 +12,13 @@ body {
 
 h1 { text-align: center; color: #333; margin-bottom: 10px; }
 
+#counter {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #00796b;
+}
+
 #prompt {
   text-align: center;
   background: linear-gradient(135deg, #ffffff, #f9faff);
@@ -23,7 +30,7 @@ h1 { text-align: center; color: #333; margin-bottom: 10px; }
   font-weight: bold;
   color: #00796b;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin: 0 auto 40px auto;
+  margin: 0 auto 20px auto;
 }
 
 #announcements {
@@ -86,7 +93,7 @@ h1 { text-align: center; color: #333; margin-bottom: 10px; }
 
 button {
   display: block;
-  margin: 30px auto 0;
+  margin: 20px auto 0;
   padding: 12px 25px;
   font-size: 16px;
   border: none;
@@ -105,6 +112,7 @@ button:hover {
 <body>
 
 <h1>Find det rigtige annonce</h1>
+<div id="counter">Emne: 0 / 5</div>
 <div style="text-align:center;">
   <p id="prompt">Emne : Indlæser...</p>
 </div>
@@ -112,19 +120,22 @@ button:hover {
 <div id="announcements"></div>
 
 <button onclick="checkAnswer()">Tjek svar</button>
+<button onclick="nextTask()">Næste opgave</button>
+<button onclick="restart()">Restart</button>
 
 <script>
-const container = document.getElementById('announcements');
-let selectedIndex = null;
 let data = null;
+let currentSetIndex = null;
+let selectedIndex = null;
+let correctCount = 0;
+let usedIndices = [];
 
-// Загружаем JSON с сервера
+// Загружаем JSON
 fetch('announcements.json')
   .then(res => res.json())
   .then(json => {
-    data = json.sets[0]; // берем первый набор для примера
-    renderAnnouncements(data);
-    document.getElementById('prompt').textContent = "Emne : " + data.prompt;
+    data = json.sets;
+    nextTask();
   })
   .catch(err => {
     document.getElementById('prompt').textContent = "Fejl ved indlæsning af data!";
@@ -132,10 +143,13 @@ fetch('announcements.json')
   });
 
 function renderAnnouncements(set) {
+  const container = document.getElementById('announcements');
   container.innerHTML = "";
   selectedIndex = null;
 
-  set.announcements.forEach((ann, index) => {
+  document.getElementById('prompt').textContent = "Emne : " + set.prompt;
+
+  set.announcements.forEach((ann, i) => {
     const div = document.createElement('div');
     div.className = 'announcement';
 
@@ -147,7 +161,6 @@ function renderAnnouncements(set) {
     p.textContent = ann.text;
     div.appendChild(p);
 
-    // Контакты вынесены в самый низ
     if(ann.contacts && ann.contacts.length > 0){
       const contacts = document.createElement('div');
       contacts.className = 'contacts';
@@ -162,7 +175,7 @@ function renderAnnouncements(set) {
     div.onclick = () => {
       document.querySelectorAll('.announcement').forEach(a => a.classList.remove('selected'));
       div.classList.add('selected');
-      selectedIndex = index;
+      selectedIndex = i;
     };
 
     container.appendChild(div);
@@ -171,11 +184,46 @@ function renderAnnouncements(set) {
 
 function checkAnswer() {
   if (selectedIndex === null) { alert("Vælg venligst en annonce!"); return; }
+
+  const set = data[currentSetIndex];
   document.querySelectorAll('.announcement').forEach((div, idx) => {
     div.classList.remove('correct','wrong','selected');
-    if (idx === data.correctIndex) div.classList.add('correct');
+    if (idx === set.correctIndex) div.classList.add('correct');
     else if (idx === selectedIndex) div.classList.add('wrong');
   });
+
+  if (selectedIndex === set.correctIndex) {
+    correctCount++;
+  }
+
+  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${data.length}`;
+}
+
+function nextTask() {
+  if(!data) return;
+
+  if(usedIndices.length === data.length){
+    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${data.length} rigtige.`);
+    return;
+  }
+
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * data.length);
+  } while(usedIndices.includes(randomIndex));
+
+  currentSetIndex = randomIndex;
+  usedIndices.push(currentSetIndex);
+  renderAnnouncements(data[currentSetIndex]);
+}
+
+function restart() {
+  correctCount = 0;
+  usedIndices = [];
+  currentSetIndex = null;
+  selectedIndex = null;
+  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${data.length}`;
+  nextTask();
 }
 </script>
 
