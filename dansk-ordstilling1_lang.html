@@ -23,17 +23,32 @@ html,body{
 //}
 h1{font-size:22px;margin:0 0 16px;}
 h2{margin-top:24px;}
-table.schema{
-  width:100%;        /* таблица занимает всю ширину экрана */
-  margin:0;          /* без внешних отступов */
-  border-collapse:collapse;
-  border:1px solid var(--line);
+/* контейнер отвечает за горизонтальный скролл только таблицы */
+.table-wrapper {
+  width: 100%;               /* занимает всю ширину доступной области */
+  overflow-x: auto;          /* горизонтальный скролл тут */
+  -webkit-overflow-scrolling: touch; /* плавный скролл на мобильных */
+  margin: 0;                 /* без внешних отступов */
+  box-sizing: border-box;
 }
-th,td{
-  border:1px solid var(--line);
-  padding:10px;
-  text-align:left;   /* текст прижат к левому краю */
-  height:42px;
+
+/* внутренний блок, чтобы таблица могла иметь max-content ширину */
+.table-inner {
+  min-width: 100%;
+}
+
+/* таблица может быть шире экрана — тогда появится скролл в .table-wrapper */
+.table-wrapper > .table-inner > table.schema {
+  width: max-content;   /* ширина по содержимому — позволяет горизонтальную прокрутку */
+  min-width: 100%;      /* если содержимое уже меньше экрана, таблица займёт минимум контейнер */
+  border-collapse: collapse;
+}
+
+/* переопределяем глобальный table{width:100%} — ставим более специфичное правило */
+table.schema th,
+table.schema td {
+  text-align: left;
+  padding: 10px;
 }
 th{font-size:12px;text-transform:uppercase;background:#f8fafc;}
 .subj{color:var(--blue);}
@@ -66,10 +81,15 @@ td[data-placeholder]:empty::before {
 </label>
 <h2 class="mt-8">Hoved+Lædsætninger</h2>
 <!-- Таблица вынесена наружу -->
-<table aria-label="Ordstilling – skema" class="schema">
-  <thead id="table-head"></thead>
-  <tbody id="sentence-rows"></tbody>
-</table>
+<!-- контейнер для горизонтального скролла таблицы -->
+<div class="table-wrapper" aria-hidden="false">
+  <div class="table-inner">
+    <table aria-label="Ordstilling – skema" class="schema">
+      <thead id="table-head"></thead>
+      <tbody id="sentence-rows"></tbody>
+    </table>
+  </div>
+</div>
 <div id="word-pool"></div>
 <div id="buttons">
 <button id="check-button">Tjek</button>
@@ -97,6 +117,25 @@ fetch('sentences1_lang.json')
   .catch(err => console.error("Fejl ved indlæsning af JSON:", err));
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+// Гарантируем, что wrapper и table существуют и находятся вне .page
+(function ensureTableWrapper() {
+  if (!document.querySelector('.table-wrapper')) {
+    // вставляем wrapper сразу после первого .page (или в body, как тебе удобно)
+    const firstPage = document.querySelector('.page');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-wrapper';
+    const inner = document.createElement('div');
+    inner.className = 'table-inner';
+    inner.innerHTML = '<table aria-label="Ordstilling – skema" class="schema"><thead id="table-head"></thead><tbody id="sentence-rows"></tbody></table>';
+    wrapper.appendChild(inner);
+    if (firstPage && firstPage.parentNode) {
+      firstPage.parentNode.insertBefore(wrapper, firstPage.nextSibling);
+    } else {
+      document.body.insertBefore(wrapper, document.body.firstChild);
+    }
+  }
+})();
 
 function initSentences(){
   selectedSentences = shuffle([...sentences]).slice(0,1);
