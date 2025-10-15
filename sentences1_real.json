@@ -1,0 +1,267 @@
+{
+  "sentences": [
+    {
+      "subjekt": {
+        "word": "Journalisten",
+        "translation": "Журналист"
+      },
+      "verbum1": {
+        "word": "undersøgte",
+        "translation": "расследовал"
+      },
+      "adverbium1": {
+        "word": "grundigt",
+        "translation": "тщательно"
+      },
+      "substantiv": {
+        "word": "sagen",
+        "translation": "дело"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "avisen",
+        "translation": "газете"
+      },
+      "full_translation": "Журналист тщательно расследовал дело в газете."
+    },
+    {
+      "subjekt": {
+        "word": "Forfatteren",
+        "translation": "Автор"
+      },
+      "verbum1": {
+        "word": "beskrev",
+        "translation": "описал"
+      },
+      "adverbium1": {
+        "word": "detaljeret",
+        "translation": "подробно"
+      },
+      "possessiv": {
+        "word": "hovedpersonens",
+        "translation": "главного"
+      },
+      "substantiv": {
+        "word": "følelser",
+        "translation": "чувства"
+      },
+      "sted_tid_præposition": {
+        "word": "gennem",
+        "translation": "через"
+      },
+      "adjektiv": {
+        "word": "hele",
+        "translation": "всю"
+      },
+      "sted_tid_substantiv": {
+        "word": "romanen",
+        "translation": "книгу"
+      },
+      "full_translation": "Автор подробно описал чувства главного героя через всю книгу."
+    },
+    {
+      "subjekt": {
+        "word": "Borgmesteren",
+        "translation": "Мэр"
+      },
+      "verbum1": {
+        "word": "annoncerede",
+        "translation": "объявил"
+      },
+      "adverbium1": {
+        "word": "officielt",
+        "translation": "официально"
+      },
+      "adjektiv": {
+        "word": "nye",
+        "translation": "новые"
+      },
+      "substantiv": {
+        "word": "planer",
+        "translation": "планы"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "sted_tid_substantiv": {
+        "word": "pressemødet",
+        "translation": "пресс-конференции"
+      },
+      "full_translation": "Мэр официально объявил новые планы на пресс-конференции."
+    },
+    {
+      "subjekt": {
+        "word": "Forskeren",
+        "translation": "Исследователь"
+      },
+      "verbum1": {
+        "word": "konkluderede",
+        "translation": "сделал вывод"
+      },
+      "adverbium1": {
+        "word": "forsigtigt",
+        "translation": "осторожно"
+      },
+      "possessiv": {
+        "word": "mange",
+        "translation": "многих"
+      },
+      "substantiv": {
+        "word": "års",
+        "translation": "лет"
+      },
+      "substantiv2": {
+        "word": "arbejde",
+        "translation": "работы"
+      },
+      "sted_tid_præposition": {
+        "word": "efter",
+        "translation": "после"
+      },
+      "substantiv3": {
+        "word": "undersøgelsen",
+        "translation": "исследования"
+      },
+      "full_translation": "Исследователь осторожно сделал выводы после многих лет работы над исследованием."
+    },
+    {
+      "subjekt": {
+        "word": "Eleverne",
+        "translation": "Ученики"
+      },
+      "verbum1": {
+        "word": "diskuterede",
+        "translation": "обсуждали"
+      },
+      "adverbium1": {
+        "word": "ivrig",
+        "translation": "энергично"
+      },
+      "substantiv": {
+        "word": "projektet",
+        "translation": "проект"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "klasselokalet",
+        "translation": "классе"
+      },
+      "full_translation": "Ученики энергично обсуждали проект в классе."
+    },
+    {
+      "subjekt": {
+        "word": "Politikeren",
+        "translation": "Политик"
+      },
+      "verbum1": {
+        "word": "kritiserede",
+        "translation": "критиковал"
+      },
+      "adverbium1": {
+        "word": "skarpt",
+        "translation": "резко"
+      },
+      "substantiv": {
+        "word": "modstanderne",
+        "translation": "противников"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "interviewet",
+        "translation": "интервью"
+      },
+      "full_translation": "Политик резко критиковал противников в интервью."
+    },
+    {
+      "subjekt": {
+        "word": "Lægen",
+        "translation": "Врач"
+      },
+      "verbum1": {
+        "word": "anbefalede",
+        "translation": "рекомендовал"
+      },
+      "adverbium1": {
+        "word": "kraftigt",
+        "translation": "настойчиво"
+      },
+      "substantiv": {
+        "word": "motion",
+        "translation": "физическую активность"
+      },
+      "sted_tid_præposition": {
+        "word": "til",
+        "translation": "для"
+      },
+      "sted_tid_substantiv": {
+        "word": "patienten",
+        "translation": "пациента"
+      },
+      "full_translation": "Врач настойчиво рекомендовал физическую активность для пациента."
+    },
+    {
+      "subjekt": {
+        "word": "Kokken",
+        "translation": "Повар"
+      },
+      "verbum1": {
+        "word": "forberedte",
+        "translation": "готовил"
+      },
+      "adverbium1": {
+        "word": "omhyggeligt",
+        "translation": "тщательно"
+      },
+      "substantiv": {
+        "word": "måltidet",
+        "translation": "блюдо"
+      },
+      "sted_tid_præposition": {
+        "word": "til",
+        "translation": "для"
+      },
+      "sted_tid_substantiv": {
+        "word": "gæsterne",
+        "translation": "гостей"
+      },
+      "full_translation": "Повар тщательно готовил блюдо для гостей."
+    },
+    {
+      "subjekt": {
+        "word": "Lederen",
+        "translation": "Руководитель"
+      },
+      "verbum1": {
+        "word": "præsenterede",
+        "translation": "представил"
+      },
+      "adverbium1": {
+        "word": "grundigt",
+        "translation": "основательно"
+      },
+      "substantiv": {
+        "word": "planen",
+        "translation": "план"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "sted_tid_substantiv": {
+        "word": "mødet",
+        "translation": "совещании"
+      },
+      "full_translation": "Руководитель основательно представил план на совещании."
+    }
+  ]
+}
