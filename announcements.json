@@ -129,6 +129,864 @@
         }
       ],
       "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil leje et studie tæt på universitetet.",
+      "announcements": [
+        {
+          "title": "Moderne studie med alt inkluderet",
+          "text": "Lyst og funktionelt studie på 30 m². Fuldt møbleret, hurtigt internet, tæt på bibliotek og caféer.",
+          "contacts": ["22114433"]
+        },
+        {
+          "title": "Hyggelig lejlighed med have",
+          "text": "Et lille hus med privat have og hyggelig stue. Roligt kvarter, 15 minutters cykeltur til centrum.",
+          "contacts": ["33445577"]
+        },
+        {
+          "title": "Værelse i kollektiv",
+          "text": "Ledigt værelse i delelejlighed. Fælles køkken og stue, gode sociale rammer og kort afstand til campus.",
+          "contacts": ["99887766"]
+        },
+        {
+          "title": "Stor lejlighed med panoramaudsigt",
+          "text": "Fire værelser og stor altan med udsigt over byen. Velegnet til familier eller deleboende.",
+          "contacts": ["55669988"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger en brugt cykel i god stand.",
+      "announcements": [
+        {
+          "title": "Sportscykel næsten ny",
+          "text": "Cykel fra 2023 med 1.000 km på tælleren. Perfekt til både by og landevej, med justerbar saddel.",
+          "contacts": ["77889900"]
+        },
+        {
+          "title": "Bycykel til hverdagen",
+          "text": "Velholdt cykel med kurv og lys. Kun brugt lidt, står klar til daglig transport.",
+          "contacts": ["11223344"]
+        },
+        {
+          "title": "El-løbehjul til salg",
+          "text": "Elektrisk scooter med lang batterilevetid, ideel til korte ture i byen.",
+          "contacts": ["66778811"]
+        },
+        {
+          "title": "Vintage racer",
+          "text": "Ældre racercykel fra 70'erne. God til samlere eller retro-entusiaster, kører stadig fint.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg leder efter et sted med stille omgivelser til weekendophold.",
+      "announcements": [
+        {
+          "title": "Sommerhus ved søen",
+          "text": "Roligt hus med terrasse og udsigt over søen. Ideelt til afslapning og fisketure i weekenden.",
+          "contacts": ["44556633"]
+        },
+        {
+          "title": "Lejlighed midt i byen",
+          "text": "Moderne bolig tæt på caféer og shopping. Perfekt til korte byophold og kulturoplevelser.",
+          "contacts": ["22334411"]
+        },
+        {
+          "title": "Hytte i skoven",
+          "text": "Træhytte omgivet af natur, ingen naboer i nærheden. Fantastisk til vandreture og ro.",
+          "contacts": ["66778844"]
+        },
+        {
+          "title": "Luksuslejlighed med pool",
+          "text": "Eksklusiv bolig med spa og panoramaudsigt. Velegnet til dem, der ønsker luksus frem for natur.",
+          "contacts": ["88990022"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Jeg vil leje en central 1-værelses lejlighed med altan.",
+      "announcements": [
+        {
+          "title": "Lyst studio nær torvet",
+          "text": "Compact 1-værelses på 28 m² med nyrenoveret køkken og lille altan mod gården. Kort gåafstand til metro og supermarked.",
+          "contacts": ["21445566"]
+        },
+        {
+          "title": "Stort rækkehus i roligt kvarter",
+          "text": "Tre værelser, stor have og garage. God skoleandgang i området, ca. 20 minutters transport til centrum.",
+          "contacts": ["77665544"]
+        },
+        {
+          "title": "Værelse i delelejlighed",
+          "text": "Møbleret værelse i hyggeligt kollektiv. Fælles køkken, internettid inkluderet. Velegnet til studerende.",
+          "contacts": ["88990011"]
+        },
+        {
+          "title": "Exklusiv penthouse",
+          "text": "Topetage med stor tagterrasse og panoramaudsigt. Flere soveværelser og moderne faciliteter. Parkering på ejendommen.",
+          "contacts": ["99887766"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger en varevogn med stort lastrum til arbejde.",
+      "announcements": [
+        {
+          "title": "Robust varevogn klar til brug",
+          "text": "Velholdt varevogn med højt lastrum og skillevæg. Ny service, god bremsepræstation — ideel til håndværkeropgaver.",
+          "contacts": ["33441122"]
+        },
+        {
+          "title": "Personbil med god komfort",
+          "text": "Fem-sæders familiebil, rummelig kabine, fin brændstoføkonomi. Passer til daglig kørsel og længere ture.",
+          "contacts": ["55663344"]
+        },
+        {
+          "title": "Trailer til kort leje",
+          "text": "Lille åben trailer perfekt til haveredskaber eller mindre flytninger. Kan lejes pr. dag eller weekend.",
+          "contacts": ["77009911"]
+        },
+        {
+          "title": "El-lastebil med lav kilometerstand",
+          "text": "Miljøvenlig lastbil med stor kapacitet og elektrisk drivlinje. Lang rækkevidde, oplader medfølger.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil finde en barnepige til weekendvagter.",
+      "announcements": [
+        {
+          "title": "Erfaren weekendbarnepige",
+          "text": "Ansvarsfuld og rolig person med anbefalinger. Kan arbejde både lørdags- og søndagsaftener. Tryghed og aktiverende leg.",
+          "contacts": ["66112233"]
+        },
+        {
+          "title": "Afløser til skolens lejrskole",
+          "text": "Kortvarig opgave som undervisningsassistent i skoletid. Kræver pædagogisk erfaring.",
+          "contacts": []
+        },
+        {
+          "title": "Husdyrspasservagt",
+          "text": "Passer hunde og katte ved ferie. Tilbyder gåture og fodring i ejerens hjem.",
+          "contacts": ["44557788"]
+        },
+        {
+          "title": "Aupair søges til langtidsophold",
+          "text": "Live-in aupair til fuldtidsopgaver og børnepasning. Bolig og løn efter aftale.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger deltidsjob som butikskassér med weekendvagter.",
+      "announcements": [
+        {
+          "title": "Butik søger deltidskasse",
+          "text": "Lokalt supermarked søger hjælpsom medarbejder til kasse, primært weekendvagter. Træning gives ved start.",
+          "contacts": ["22336655"]
+        },
+        {
+          "title": "Kontorassistent på fuld tid",
+          "text": "Administrativ rolle 37 timer/uge med faste arbejdstider og fast løn. Erfaring med regnskab er en fordel.",
+          "contacts": []
+        },
+        {
+          "title": "Barpersonale til aftenåbent sted",
+          "text": "Bar søger personer til aften- og nattevagter. Kræver fleksibilitet og erfaring med travle perioder.",
+          "contacts": ["77881100"]
+        },
+        {
+          "title": "Vikar til lager",
+          "text": "Korttidsvikar til pluk og pak i travl sæson. Fysisk arbejde, skiftende vagter.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil købe en lys, mellemstor sofa i god stand.",
+      "announcements": [
+        {
+          "title": "Lys sofa i god kvalitet",
+          "text": "Tre-personers sofa i lyst stof, pæn polstring og få brugsspor. Nem at rengøre og klar til afhentning.",
+          "contacts": ["66223344"]
+        },
+        {
+          "title": "Massiv spisebordssæt",
+          "text": "Plads til seks personer, solidt træ, få år gammelt. Velegnet til familiebrug.",
+          "contacts": []
+        },
+        {
+          "title": "Lænestol i retrostil",
+          "text": "Behagelig enkeltlænestol med blødt betræk. Perfekt til læsekrogen.",
+          "contacts": ["55443322"]
+        },
+        {
+          "title": "Sovesofa med fjederløsning",
+          "text": "Sovesofa ideel til gæsteværelse, nem at slå ud. Mørk farve, nogen brugsspor.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg leder efter en engelsklærer til online konversationslektioner.",
+      "announcements": [
+        {
+          "title": "Online samtalelærer i engelsk",
+          "text": "Erfaren underviser tilbyder skræddersyede samtaletimer via video. Fokus på udtale og flydende tale.",
+          "contacts": ["teacher@engelsk.dk"]
+        },
+        {
+          "title": "Danskundervisning for udlændinge",
+          "text": "Hold for begyndere og let øvede. Fokus på basisgrammatik og hverdagssamtaler.",
+          "contacts": []
+        },
+        {
+          "title": "Børnehavepædagog søger job",
+          "text": "Erfaring med små børn, kreative aktiviteter og pædagogisk omsorg. Til dagtimerne.",
+          "contacts": ["33440055"]
+        },
+        {
+          "title": "Sprogudveksling i caféen",
+          "text": "Uformelt møde hver onsdag aften for at øve sprog med lokale. Gratis deltagelse.",
+          "contacts": ["kontakt@sprogklub.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil booke et lokale til en lille koncert for cirka 50 personer.",
+      "announcements": [
+        {
+          "title": "Intimt spillested med scene",
+          "text": "Lokale med scene, rig mulighed for lydopsætning og plads til omkring 70 publikum. Bar og backroom tilgængelig.",
+          "contacts": ["70112233"]
+        },
+        {
+          "title": "Mødelokale i kontorbygning",
+          "text": "Funktionelt rum til præsentationer, kapacitet op til 30 personer. Ingen scene eller barfaciliteter.",
+          "contacts": []
+        },
+        {
+          "title": "Kulturhus med sal",
+          "text": "Stor sal velegnet til teater og koncerter med plads til flere hundrede. Ikke egnet til meget små arrangementer.",
+          "contacts": ["88997766"]
+        },
+        {
+          "title": "Privat stue til lille gathering",
+          "text": "Hyggelig lejlighed velegnet til intime møder og lyttesessioner, men uden professionelt lydudstyr.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil leje en cykel til daglig pendling i mindst en måned.",
+      "announcements": [
+        {
+          "title": "Månedsleje af pendlingscykel",
+          "text": "Robust bycykel til månedsleje med skærme og bagagebærer. Service inkluderet og mulighed for forlængelse.",
+          "contacts": ["44558899"]
+        },
+        {
+          "title": "Brugt racercykel til salg",
+          "text": "Let racercykel i god stand, perfekt til træning og ture i weekenden.",
+          "contacts": []
+        },
+        {
+          "title": "El-løbehjul til korttid",
+          "text": "Elektrisk scooter til dags- eller weekendudlejning. Ikke beregnet til længere lejeperioder.",
+          "contacts": ["22338877"]
+        },
+        {
+          "title": "Cykelservice og reparation",
+          "text": "Professionel værksted tilbyder service, dæk- og bremsearbejde. Hurtig afhentning same day.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger friske økologiske grøntsager fra en lokal producent.",
+      "announcements": [
+        {
+          "title": "Grøntsagskasse fra gården",
+          "text": "Ugentlig levering af sæsonens økologiske grøntsager direkte fra lokal mark. Mulighed for afhentning eller levering.",
+          "contacts": ["33771122"]
+        },
+        {
+          "title": "Supermarked med økosektion",
+          "text": "Stort udvalg af økologiske varer i butikken, åbent dagligt. Praktisk, men ikke direkte fra producent.",
+          "contacts": []
+        },
+        {
+          "title": "Gårdbutik med selvpluk",
+          "text": "Kom og pluk dine egne grøntsager i høstsæsonen. Familievenligt og velegnet til udflugt.",
+          "contacts": ["55883344"]
+        },
+        {
+          "title": "Færdiglavede plantebaserede måltider",
+          "text": "Sund take-away med fokus på grøntsager. Levering til døren i løbet af ugen.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil købe en billig, pålidelig laptop til studier.",
+      "announcements": [
+        {
+          "title": "Renoveret studie-laptop",
+          "text": "Refurbished bærbar med ny SSD og batteritestet. Hurtig nok til tekstbehandling og online undervisning.",
+          "contacts": ["22668855"]
+        },
+        {
+          "title": "Topspil-gaming rig",
+          "text": "Højtydende gaming-laptop med kraftigt grafikkort og stor køling. Ikke nødvendigt til almindeligt studiebrug.",
+          "contacts": []
+        },
+        {
+          "title": "Tablet med tastaturcover",
+          "text": "Let enhed, god til noter, men begrænset i ydeevne for større opgaver og programmer.",
+          "contacts": ["77441100"]
+        },
+        {
+          "title": "Stationær PC til kontor",
+          "text": "Stor desktop-pc med skærm. Fast installation, ikke bærbar — velegnet til hjemmekontor.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger en erfaren pianist til private lektioner.",
+      "announcements": [
+        {
+          "title": "Undervisning i klaverfærdigheder",
+          "text": "Instruktør med flere års erfaring tilbyder individuel vejledning. Fokus på teknik, repertoire og øvelsesplaner tilpasset dit niveau.",
+          "contacts": ["klaver@musik.dk"]
+        },
+        {
+          "title": "Korleder til lokale arrangementer",
+          "text": "Søger leder til fællessang og optrædener. Arbejde primært i weekender med mindre korgrupper.",
+          "contacts": []
+        },
+        {
+          "title": "Elektronisk musikudstyr til salg",
+          "text": "Digital klaverkeyboard og forstærker i god stand. Perfekt til øvelser hjemme eller små koncerter.",
+          "contacts": ["77882211"]
+        },
+        {
+          "title": "Sangcoach søger samarbejde",
+          "text": "Erfaren vokallærer tilbyder teknikker til stemmebrug og sceneangst. Velegnet til sangere på alle niveauer.",
+          "contacts": ["sang@coach.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil leje en bil i weekenden til en kort tur.",
+      "announcements": [
+        {
+          "title": "Weekendkørsel ordnet",
+          "text": "Velholdt bil til leje for et par dage. Klar til motorvejskørsel og kortere ture, fleksibel afhentning fredag eftermiddag.",
+          "contacts": ["44112233"]
+        },
+        {
+          "title": "Langtidsleje til erhverv",
+          "text": "Fordelagtige priser for månedslån af erhvervskøretøjer. Inkluderer service og forsikring.",
+          "contacts": []
+        },
+        {
+          "title": "Cykeludlejning ved havnen",
+          "text": "Udlejning af citybikes pr. dag eller weekend. God til korte ture langs kysten.",
+          "contacts": ["55001122"]
+        },
+        {
+          "title": "Trailer til flytning",
+          "text": "Stor trailer til afhentning i weekenden. Velegnet til møbler og større genstande.",
+          "contacts": ["66223311"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg leder efter en sambo (roommate) til at dele en 3-værelses lejlighed.",
+      "announcements": [
+        {
+          "title": "Plads ledig i roligt hjem",
+          "text": "Stort værelse med skab i hyggelig lejlighed. Fælles stue og køkken, renlighed og samarbejde vægtes højt.",
+          "contacts": ["33447788"]
+        },
+        {
+          "title": "Hel lejlighed til leje",
+          "text": "Tre-værelses lejlighed fuldt møbleret, egnet til familie. Ingen deleordning.",
+          "contacts": []
+        },
+        {
+          "title": "Korttidsophold for gæster",
+          "text": "Mindre sted til weekendbesøg, møbleret og centralt beliggende. Ikke egnet til fast bopæl.",
+          "contacts": ["77669900"]
+        },
+        {
+          "title": "Værelse i kollegium",
+          "text": "Studieværelse med fælles faciliteter og sociale arrangementer. Passer bedst til studerende.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil sælge en brugt smartphone i god stand.",
+      "announcements": [
+        {
+          "title": "Mobil i pæn stand til afhentning",
+          "text": "Smartphone med intakt skærm, opdateret software og nyt batteri. Oplader medfølger, klar til overdragelse.",
+          "contacts": ["55990011"]
+        },
+        {
+          "title": "Tablet og tilbehør",
+          "text": "Tablet med cover og tastatur til salg. God til studier og medier, ingen telefonfunktion.",
+          "contacts": []
+        },
+        {
+          "title": "Reparation af telefoner",
+          "text": "Serviceværksted tilbyder skærmskift og batteriskift med kort ventetid. Reservedele på lager.",
+          "contacts": ["22446688"]
+        },
+        {
+          "title": "Kameraudstyr for amatører",
+          "text": "Spejlreflekskamera og linser i god stand. Perfekt til hobbyfotografen.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger frivillig hjælp til opstart af fælleshave.",
+      "announcements": [
+        {
+          "title": "Hjælp til grønne projekter",
+          "text": "Initiativ søger hænder til planlægning og slåning af bede. Arbejde i fællesskab, kyndig vejledning tilbydes.",
+          "contacts": ["haveprojekt@mail.dk"]
+        },
+        {
+          "title": "Betalt anlægsarbejde",
+          "text": "Professionel team søger medarbejdere til landskabspleje med løn efter overenskomst.",
+          "contacts": []
+        },
+        {
+          "title": "Salg af plantesække",
+          "text": "Stort udvalg af jord og såsække til levering. Velegnet til private haver.",
+          "contacts": ["66770033"]
+        },
+        {
+          "title": "Lej en minigraver",
+          "text": "Udlejning af maskiner til have- eller byggeprojekter. Kort eller længere lejeperiode.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil booke en fotograf til bryllupsportrætter.",
+      "announcements": [
+        {
+          "title": "Portrætter med personlig stil",
+          "text": "Fotograf tilbyder heldags- eller kort sessioner med fokus på naturlige øjeblikke og efterbehandling i høj kvalitet.",
+          "contacts": ["foto@bryllup.dk"]
+        },
+        {
+          "title": "Fotostudie til produktbilleder",
+          "text": "Studio med lysopsætning og baggrunde til kommercielt brug. Perfekt til små virksomheder.",
+          "contacts": []
+        },
+        {
+          "title": "Videograf til events",
+          "text": "Optagelse og redigering af arrangementer, leverer highlight-videoer og fuld optagelse.",
+          "contacts": ["video@events.dk"]
+        },
+        {
+          "title": "Selvbetjent fotoboks",
+          "text": "Lej en fotoboks til festlige begivenheder. Sjov til gæsterne men ingen individuel fotografering.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil købe store, letplejede stueplanter til lejligheden.",
+      "announcements": [
+        {
+          "title": "Grønne planter til hjemmet",
+          "text": "Bredt udvalg af store, robuste planter som tåler indendørsmiljø. Rådgivning om pasning inkluderet ved køb.",
+          "contacts": ["plante@gront.dk"]
+        },
+        {
+          "title": "Havebuske og træer til udendørs brug",
+          "text": "Salg af robust beplantning til haver, velegnet til plantning udendørs.",
+          "contacts": []
+        },
+        {
+          "title": "Dekorationer til bordet",
+          "text": "Lille butik med vaser, lys og små dekorationer til borddækning. Ikke levende planter.",
+          "contacts": ["44550077"]
+        },
+        {
+          "title": "Krukker og pottemuld",
+          "text": "Stort udvalg af potter i forskellige størrelser og kvaliteter. Forskellige muldtyper på lager.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger en pålidelig blikkenslager til en mindre reparation.",
+      "announcements": [
+        {
+          "title": "Hurtig service ved mindre opgaver",
+          "text": "Erfaren håndværker tilbyder akut hjælp til lækager og små installationer. Rimelige priser og garanti på arbejde.",
+          "contacts": ["vvs@hurtig.dk"]
+        },
+        {
+          "title": "Totalrenovering af badeværelse",
+          "text": "Komplet pakke til større renoveringsprojekter med flere faggrupper involveret.",
+          "contacts": []
+        },
+        {
+          "title": "Vinduesmontør tilbyder udskiftning",
+          "text": "Skal du have nye vinduer eller justeret rammer? Tilbyder måltagning og montering.",
+          "contacts": ["vindue@montage.dk"]
+        },
+        {
+          "title": "Havearkitekt søger samarbejde",
+          "text": "Design af grønne områder og belægninger til private haver. Konsultation på timebasis.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil leje et lille opbevaringsrum nær mit kvarter i mindst tre måneder.",
+      "announcements": [
+        {
+          "title": "Sikret opbevaringsrum til langtidsleje",
+          "text": "Tørt og låst rum i nærområdet, adgang døgnet rundt. Mulighed for månedlig betaling og ekstra forsikring.",
+          "contacts": ["lager@safe.dk"]
+        },
+        {
+          "title": "Korttidsleje af kontorplads",
+          "text": "Fleksible arbejdsstationer til dagsbrug i coworking. Ikke egnet til opbevaring.",
+          "contacts": []
+        },
+        {
+          "title": "Garage til bilopbevaring",
+          "text": "Indendørs garage til langtidsparkering. Plads til én bil, lås og overvågning.",
+          "contacts": ["garage@park.dk"]
+        },
+        {
+          "title": "Lille butikslokale til leje",
+          "text": "Facadebutik i travlt område med gode udsigtspunkter. Kræver butikskoncept.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil finde en privat guitarlærer til begynderniveau.",
+      "announcements": [
+        {
+          "title": "Aftenskole for akkordlæring",
+          "text": "Instruktør tilbyder korte fortløbende sessioner for begyndere med fokus på rytme og simple sange.",
+          "contacts": ["guitar@toner.dk"]
+        },
+        {
+          "title": "Salg af brugte strengeinstrumenter",
+          "text": "Guitarer og ukuleler i forskellig stand. Mulighed for prøvespil i butikken.",
+          "contacts": []
+        },
+        {
+          "title": "Band søger rytmeguitarist",
+          "text": "Øvet musiker søges til faste øveraftener og små koncerter. Ikke begyndervenligt.",
+          "contacts": ["band@scene.dk"]
+        },
+        {
+          "title": "Kurser i teori og nodelære",
+          "text": "Holdbaseret undervisning i musikteori for dem, der vil forstå baggrunden for musik. Kræver noget forudgående kendskab.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil købe en tam, sort kat der trives indendørs.",
+      "announcements": [
+        {
+          "title": "Rolig lille kat søger hyggeligt hjem",
+          "text": "Sort, neutraliseret voksenkat der er vant til lejlighedsliv. Glad for sofa-kos og rolig omgang med børn. Vaccinationer i orden.",
+          "contacts": ["55112233"]
+        },
+        {
+          "title": "Store hundevenlige omgivelser",
+          "text": "Stor have og plads til glad hund. Ideel for ejere, der vil have en aktiv firbenet ven.",
+          "contacts": []
+        },
+        {
+          "title": "Akvariefisk og udstyr",
+          "text": "Komplet akvariesæt med filter og lys. Flere tropiske fisk følger med i salget.",
+          "contacts": ["66770044"]
+        },
+        {
+          "title": "Kattelem og klatrestativ",
+          "text": "Sælger robust klatremøbel og lem i god stand. Perfekt til indendørs katteaktiviteter.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg har brug for et let 2-personers telt til fjeldvandring.",
+      "announcements": [
+        {
+          "title": "Familietelt med plads",
+          "text": "Telt med ståhøjde og stor entre — godt til autocampere og familieture, men tungt at bære langt.",
+          "contacts": ["33449900"]
+        },
+        {
+          "title": "Solsejl og havstol",
+          "text": "Perfekt til stranddagene: solsejl og sammenklappelige stole. Ikke egnet til kold vind.",
+          "contacts": []
+        },
+        {
+          "title": "Letvægts telt til to",
+          "text": "Komprimerbar teltløsning designet til bjerge: lav vægt, god vindstabilitet og lille pakkestørrelse.",
+          "contacts": ["88992211"]
+        },
+        {
+          "title": "Hængekøje med myggenet",
+          "text": "Hængekøje til udendørs afslapning — hurtigt ophæng og medfølgende net. Behagelig under varme forhold.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Jeg søger en freelance webudvikler til et kort projekt (landing page).",
+      "announcements": [
+        {
+          "title": "Erfaren udvikler klar til hurtig levering",
+          "text": "Bygger en-sides sites med responsivt design og enkel CMS-integration. Hurtig kommunikation og testet på mobil.",
+          "contacts": ["dev@webfix.dk"]
+        },
+        {
+          "title": "Grafisk designer til printmateriale",
+          "text": "Producerer plakater og foldere i høj opløsning. Fokus på trykklare filer og layout.",
+          "contacts": []
+        },
+        {
+          "title": "Langsigtet supportaftale",
+          "text": "Tilbyder løbende vedligeholdelse af flere sites med månedlig fakturering. Mindre tilpasninger inkluderes.",
+          "contacts": ["support@sites.dk"]
+        },
+        {
+          "title": "Fotograf til produktbilleder",
+          "text": "Studiotid og redigering af produktfotos til e-handel. Leverer baggrundsskift og skarp efterbehandling.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil leje et mødelokale til en dags workshop for 20 personer med naturligt lys.",
+      "announcements": [
+        {
+          "title": "Konferencecenter uden naturligt lys",
+          "text": "Professionelle lokaler egnet til store events, men beliggende i kælderetage uden vinduer.",
+          "contacts": []
+        },
+        {
+          "title": "Lyst lokaler med fleksible borde",
+          "text": "Rum med store vinduer, projektor og plads til cirka 20 personer. Kaffe og pauseområde på stedet.",
+          "contacts": ["booking@lokaler.dk"]
+        },
+        {
+          "title": "Udendørs picnic-område",
+          "text": "Smukt område til uformelle møder i det fri. Ikke egnet ved dårligt vejr eller teknisk udstyr.",
+          "contacts": ["park@byrum.dk"]
+        },
+        {
+          "title": "Små gruppebokse til to-tre personer",
+          "text": "Korte bookingmuligheder til par eller små teams, ideel til hurtige møder, ikke workshops.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg vil købe en enkel, billig kaffemaskine til lejligheden.",
+      "announcements": [
+        {
+          "title": "Kompakt kapselmaskine",
+          "text": "Lille enhed der leverer hurtig espresso uden stort pladsbehov. Enkel rengøring og nem brug.",
+          "contacts": ["kaffe@hurtig.dk"]
+        },
+        {
+          "title": "Stort espressobar-udstyr",
+          "text": "Professionelt setup til cafébrug. Kræver erfaring og hyppig vedligeholdelse.",
+          "contacts": []
+        },
+        {
+          "title": "Tekande og filterpapir",
+          "text": "Gammeldags brygudstyr til langsom filterkaffe — god smag men langsom proces.",
+          "contacts": []
+        },
+        {
+          "title": "Kaffebønner i bulk",
+          "text": "Forskellige ristningsgrader fra lokale risterier, sælges i store poser. Ikke maskine.",
+          "contacts": ["bønner@rost.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil finde en fotoudstilling at besøge i weekenden.",
+      "announcements": [
+        {
+          "title": "Kunstmarked hver søndag",
+          "text": "Lokale kunstnere stiller op med små værker og håndværk — god stemning, men få fotospecifikke udstillinger.",
+          "contacts": []
+        },
+        {
+          "title": "Galleriværksteder åbent for besøg",
+          "text": "Kreative værksteder viser igangværende projekter; workshops kan bookes separat.",
+          "contacts": ["galleri@bykunst.dk"]
+        },
+        {
+          "title": "Ny fotoudstilling i centrum",
+          "text": "Serie af portrætter og bybilleder udstillet i galleriet med åbning lørdag-søndag. Fri entré nogle dage.",
+          "contacts": ["info@fotogalleri.dk"]
+        },
+        {
+          "title": "Teaterforestilling om aftenen",
+          "text": "Sceneproduktion med lokale skuespillere — flere forestillinger fredag og lørdag aften.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Jeg leder efter en certificeret cykelmekaniker til service af min elcykel.",
+      "announcements": [
+        {
+          "title": "Specialiseret elcykelservice",
+          "text": "Autoriseret værksted tilbyder batteritest, motorcheck og softwareopdatering til elcykler. Hurtig tid og reservedelslager.",
+          "contacts": ["service@elcykel.dk"]
+        },
+        {
+          "title": "Salg af brugte stel",
+          "text": "Udvalg af rammer og stel til renovering — ikke servicestøtte eller elektronisk diagnose.",
+          "contacts": []
+        },
+        {
+          "title": "Cykelkurser for begyndere",
+          "text": "Lær basale mekanikker og pleje af almindelige cykler i workshops i weekenden.",
+          "contacts": []
+        },
+        {
+          "title": "Udlejning af citybikes",
+          "text": "Dagsleje for bycykler med mulighed for at leje ved havnen. Ikke reparationstjeneste.",
+          "contacts": ["udlejning@cykler.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil købe brugte bøger inden for europæisk historie.",
+      "announcements": [
+        {
+          "title": "Bogmesse næste weekend",
+          "text": "Stort udvalg af forskellige genrer og ældre udgaver fra private sælgere. Kan indeholde historiebøger blandt mange andre titler.",
+          "contacts": []
+        },
+        {
+          "title": "Kvalitetsbrugte historie-bøger",
+          "text": "Samling af akademiske og populærhistoriske værker om europæisk historie. Mange eksemplarer i god stand.",
+          "contacts": ["bøger@antikvar.dk"]
+        },
+        {
+          "title": "Børnebøger til højtider",
+          "text": "Farverige historier til børn i alle aldre. Ikke relevante for voksenhistorie.",
+          "contacts": []
+        },
+        {
+          "title": "Bibliotekssalg af udgåede titler",
+          "text": "Mængder af gamle udgaver fra lokale biblioteker — gode fund muligt, men udvalg varierer.",
+          "contacts": ["salg@bibliotek.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg har brug for at leje babyudstyr (klapvogn, seng) i en måned.",
+      "announcements": [
+        {
+          "title": "Månedsleje af babyudstyr",
+          "text": "Komplet pakke med klapvogn, rejseseng og højstol – rengjort og sikkerhedstjekket før udlevering.",
+          "contacts": ["baby@udlejning.dk"]
+        },
+        {
+          "title": "Salg af brugt babytøj",
+          "text": "Pakker med tøj i forskellige størrelser. Ingen møbler eller større udstyr med i salget.",
+          "contacts": []
+        },
+        {
+          "title": "Barnevognsreparation",
+          "text": "Service og reparation af hjul og bremser på barnevogne. Ikke udlejningstjeneste.",
+          "contacts": ["repair@barnevogn.dk"]
+        },
+        {
+          "title": "Babyfotografering",
+          "text": "Stilfulde portrætter af nyfødte i studieopsætning. Kræver booking i god tid.",
+          "contacts": []
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil finde en løbeklub for begyndere tæt på mit område.",
+      "announcements": [
+        {
+          "title": "Intens træningsgruppe for maraton",
+          "text": "Træningsplaner og høj volumen træning — bedst for erfarne løbere, ikke begyndere.",
+          "contacts": []
+        },
+        {
+          "title": "Personlig løbetræner tilbyder sessioner",
+          "text": "En-til-en træning målrettet teknik og progression. Kan tilpasse nybegyndere, men individuel pris.",
+          "contacts": ["runcoach@fit.dk"]
+        },
+        {
+          "title": "Online træningsprogrammer",
+          "text": "Digitalt forløb med løbeplaner og videoer — fleksibelt, men uden lokal fællesskab.",
+          "contacts": []
+        },
+        {
+          "title": "Begynderhold i lokalpark",
+          "text": "Uformel gruppe mødes to gange om ugen for korte ture og fællesskab; fokus på tempo og glæde ved at løbe.",
+          "contacts": ["løb@klub.dk"]
+        }
+      ],
+      "correctIndex": 3
     }
   ]
 }
