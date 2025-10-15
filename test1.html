@@ -106,7 +106,7 @@ button:hover {
 
 <h1>Find det rigtige annonce</h1>
 <div style="text-align:center;">
-  <p id="prompt">Kort sætning: Indlæser...</p>
+  <p id="prompt">Emne : Indlæser...</p>
 </div>
 
 <div id="announcements"></div>
@@ -148,14 +148,16 @@ function renderAnnouncements(set) {
     div.appendChild(p);
 
     // Контакты вынесены в самый низ
-    const contacts = document.createElement('div');
-    contacts.className = 'contacts';
-    ann.contacts?.forEach(c => {
-      const span = document.createElement('span');
-      span.textContent = c;
-      contacts.appendChild(span);
-    });
-    div.appendChild(contacts);
+    if(ann.contacts && ann.contacts.length > 0){
+      const contacts = document.createElement('div');
+      contacts.className = 'contacts';
+      ann.contacts.forEach(c => {
+        const span = document.createElement('span');
+        span.textContent = c;
+        contacts.appendChild(span);
+      });
+      div.appendChild(contacts);
+    }
 
     div.onclick = () => {
       document.querySelectorAll('.announcement').forEach(a => a.classList.remove('selected'));

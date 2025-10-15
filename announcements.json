@@ -5,19 +5,23 @@
       "announcements": [
         {
           "title": "Lille bolig i hjertet af byen",
-          "text": "Nyrenoveret lejlighed på 45 m² med moderne indretning. Lys stue, åbent køkken og adgang til altan. Tæt på caféer, butikker og transport. Kontakt: 22334455 eller lejlighed@mail.dk"
+          "text": "Nyrenoveret lejlighed på 45 m² med moderne indretning. Lys stue, åbent køkken og adgang til altan. Tæt på caféer, butikker og transport.",
+          "contacts": ["22334455", "lejlighed@mail.dk"]
         },
         {
           "title": "Sommerhus ved havet",
-          "text": "Hyggeligt hus med stor have og terrasse. Godt udstyret køkken, plads til hele familien, og kort afstand til stranden. Kontakt: 55667788 for flere oplysninger."
+          "text": "Hyggeligt hus med stor have og terrasse. Godt udstyret køkken, plads til hele familien, og kort afstand til stranden.",
+          "contacts": ["55667788"]
         },
         {
           "title": "Rolig bolig med gode forbindelser",
-          "text": "To værelser med fuldt inventar, rummelig stue og parkeringsmulighed. Beliggende i fredeligt område, tæt på dagligvarebutikker og offentlig transport. Indflytning muligt fra næste måned. Kontakt: 33445566."
+          "text": "To værelser med fuldt inventar, rummelig stue og parkeringsmulighed. Beliggende i fredeligt område, tæt på dagligvarebutikker og offentlig transport. Indflytning muligt fra næste måned.",
+          "contacts": ["33445566"]
         },
         {
           "title": "Eksklusiv villa med udsigt",
-          "text": "Stort hus med privat pool, fem værelser og panoramaudsigt. Ideel til dem, der ønsker komfort og ro. Kontakt: 66778899 for aftale om fremvisning."
+          "text": "Stort hus med privat pool, fem værelser og panoramaudsigt. Ideel til dem, der ønsker komfort og ro.",
+          "contacts": ["66778899"]
         }
       ],
       "correctIndex": 2
@@ -27,19 +31,23 @@
       "announcements": [
         {
           "title": "Ny bil med garanti",
-          "text": "2024-model direkte fra forhandler, 0 km, fuld garanti og serviceaftale. Perfekt til dig, der vil have noget helt nyt."
+          "text": "2024-model direkte fra forhandler, 0 km, fuld garanti og serviceaftale. Perfekt til dig, der vil have noget helt nyt.",
+          "contacts": []
         },
         {
           "title": "Pålidelig bil til salg",
-          "text": "Velholdt bil fra 2017 med kun 65.000 km. Ikke-ryger, ingen skader, alt fungerer perfekt. Synet i år og klar til kørsel. Kontakt: 22997788."
+          "text": "Velholdt bil fra 2017 med kun 65.000 km. Ikke-ryger, ingen skader, alt fungerer perfekt. Synet i år og klar til kørsel.",
+          "contacts": ["22997788"]
         },
         {
           "title": "Klassisk veteranbil",
-          "text": "Restaureret bil fra 1972, kører fint og vækker opmærksomhed overalt. Sælges til samlere og entusiaster."
+          "text": "Restaureret bil fra 1972, kører fint og vækker opmærksomhed overalt. Sælges til samlere og entusiaster.",
+          "contacts": []
         },
         {
           "title": "Elbil med lavt forbrug",
-          "text": "Miljøvenlig elbil med høj rækkevidde, ideel til bykørsel. Oplader medfølger. Kontakt: 55779922."
+          "text": "Miljøvenlig elbil med høj rækkevidde, ideel til bykørsel. Oplader medfølger.",
+          "contacts": ["55779922"]
         }
       ],
       "correctIndex": 1
@@ -49,19 +57,23 @@
       "announcements": [
         {
           "title": "Sommerhus i skoven",
-          "text": "Hyggeligt træhus omgivet af natur, ideelt til afslapning og gåture. 10 km fra stranden. Kontakt: 44556677."
+          "text": "Hyggeligt træhus omgivet af natur, ideelt til afslapning og gåture. 10 km fra stranden.",
+          "contacts": ["44556677"]
         },
         {
           "title": "Hus med havudsigt",
-          "text": "Stort sommerhus direkte ved kysten. Tre værelser, stor terrasse, grill og adgang til stranden. Perfekt til familieferie. Ring: 66778899."
+          "text": "Stort sommerhus direkte ved kysten. Tre værelser, stor terrasse, grill og adgang til stranden. Perfekt til familieferie.",
+          "contacts": ["66778899"]
         },
         {
           "title": "Lejlighed i byen",
-          "text": "Moderne lejlighed midt i centrum, tæt på restauranter og kulturtilbud. Passer bedst til korte ophold."
+          "text": "Moderne lejlighed midt i centrum, tæt på restauranter og kulturtilbud. Passer bedst til korte ophold.",
+          "contacts": []
         },
         {
           "title": "Luksusvilla i bjergene",
-          "text": "Eksklusivt hus med jacuzzi og panoramaudsigt, beliggende langt fra kysten. Perfekt til ro og afslapning."
+          "text": "Eksklusivt hus med jacuzzi og panoramaudsigt, beliggende langt fra kysten. Perfekt til ro og afslapning.",
+          "contacts": []
         }
       ],
       "correctIndex": 1
@@ -71,19 +83,23 @@
       "announcements": [
         {
           "title": "Fuldtidsstilling i kontor",
-          "text": "Administrativ stilling 37 timer om ugen, gode kollegaer og fast løn. Erfaring kræves."
+          "text": "Administrativ stilling 37 timer om ugen, gode kollegaer og fast løn. Erfaring kræves.",
+          "contacts": []
         },
         {
           "title": "Deltidsjob på café",
-          "text": "Hyggelig café i centrum søger smilende medarbejder til servering. Fleksible arbejdstider, erfaring er en fordel. Kontakt: job@kaffehus.dk."
+          "text": "Hyggelig café i centrum søger smilende medarbejder til servering. Fleksible arbejdstider, erfaring er en fordel.",
+          "contacts": ["job@kaffehus.dk"]
         },
         {
           "title": "Køkkenhjælp søges",
-          "text": "Travlt pizzeria søger hjælp i køkkenet. Aften- og weekendvagter, oplæring tilbydes."
+          "text": "Travlt pizzeria søger hjælp i køkkenet. Aften- og weekendvagter, oplæring tilbydes.",
+          "contacts": []
         },
         {
           "title": "Sælger søges til butik",
-          "text": "Modebutik leder efter energisk medarbejder til fuldtidsarbejde i København K."
+          "text": "Modebutik leder efter energisk medarbejder til fuldtidsarbejde i København K.",
+          "contacts": []
         }
       ],
       "correctIndex": 1
@@ -93,19 +109,23 @@
       "announcements": [
         {
           "title": "Sød hvalp søger nyt hjem",
-          "text": "Hvid, rolig og meget kærlig hvalp. Vant til børn og andre dyr. Vaccineret og klar til adoption. Kontakt: 55667744."
+          "text": "Hvid, rolig og meget kærlig hvalp. Vant til børn og andre dyr. Vaccineret og klar til adoption.",
+          "contacts": ["55667744"]
         },
         {
           "title": "Katteunger gives væk",
-          "text": "Tre små killinger søger nye hjem. Spiser selv, meget nysgerrige og legesyge."
+          "text": "Tre små killinger søger nye hjem. Spiser selv, meget nysgerrige og legesyge.",
+          "contacts": []
         },
         {
           "title": "Hundetræning i weekenden",
-          "text": "Tilmeld dig kursus i lydighed og socialisering. Træning hver lørdag kl. 10."
+          "text": "Tilmeld dig kursus i lydighed og socialisering. Træning hver lørdag kl. 10.",
+          "contacts": []
         },
         {
           "title": "Kaniner til salg",
-          "text": "Søde dværgkaniner i flere farver, vant til håndtering, sælges med bur og foder."
+          "text": "Søde dværgkaniner i flere farver, vant til håndtering, sælges med bur og foder.",
+          "contacts": []
         }
       ],
       "correctIndex": 0
