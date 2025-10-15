@@ -59,17 +59,6 @@ h1 { text-align: center; color: #333; margin-bottom: 10px; }
   line-height: 1.5;
 }
 
-.contacts {
-  font-size: 14px;
-  color: #00796b;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.contacts span {
-  display: block;
-}
-
 .selected {
   border: 2px solid #00bcd4;
 }
@@ -132,7 +121,7 @@ const checkBtn = document.getElementById('checkBtn');
 const nextBtn = document.getElementById('nextBtn');
 const scoreEl = document.getElementById('score');
 
-// Загружаем JSON
+// Загружаем JSON с сервера
 fetch('announcements.json')
   .then(response => response.json())
   .then(json => {
@@ -156,7 +145,7 @@ function renderSet(set) {
   container.innerHTML = "";
   selectedIndex = null;
   currentSet = set;
-  promptEl.textContent = "Emne : " + set.prompt;
+  promptEl.textContent = "Kort sætning: " + set.prompt;
   nextBtn.style.display = "none";
   scoreEl.textContent = `Rigtige svar: ${score} / ${data.length}`;
 
@@ -168,20 +157,9 @@ function renderSet(set) {
     title.textContent = ann.title;
     div.appendChild(title);
 
-    ann.description.forEach(pText => {
-      const p = document.createElement('p');
-      p.textContent = pText;
-      div.appendChild(p);
-    });
-
-    const contacts = document.createElement('div');
-    contacts.className = 'contacts';
-    ann.contacts.forEach(c => {
-      const span = document.createElement('span');
-      span.textContent = c;
-      contacts.appendChild(span);
-    });
-    div.appendChild(contacts);
+    const p = document.createElement('p');
+    p.textContent = ann.text;
+    div.appendChild(p);
 
     div.onclick = () => {
       document.querySelectorAll('.announcement').forEach(a => a.classList.remove('selected'));
