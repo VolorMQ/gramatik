@@ -1,0 +1,726 @@
+{
+  "sentences": [
+    {
+      "subjekt": {
+        "word": "Rejseskribenten",
+        "translation": "писатель-путешественник"
+      },
+      "verbum1": {
+        "word": "skrev",
+        "translation": "написал"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "одну"
+      },
+      "adjektiv": {
+        "word": "lang",
+        "translation": "длинную"
+      },
+      "substantiv": {
+        "word": "artikel",
+        "translation": "статью"
+      },
+      "konjunktion": {
+        "word": "som",
+        "translation": "которая"
+      },
+      "Læd_verbum1": {
+        "word": "beskrev",
+        "translation": "описала"
+      },
+      "Læd_adjektiv": {
+        "word": "charmerende",
+        "translation": "очаровательные"
+      },
+      "Læd_substantiv": {
+        "word": "landsbyer",
+        "translation": "деревни"
+      },
+      "Læd_sted_tid_præposition": {
+        "word": "langs",
+        "translation": "вдоль"
+      },
+      "Læd_sted_tid_substantiv": {
+        "word": "kysten",
+        "translation": "побережья"
+      },
+      "full_translation": "Писатель-путешественник написал длинную статью, которая описала очаровательные деревни вдоль побережья."
+    },
+    {
+      "subjekt": {
+        "word": "Turguiden",
+        "translation": "гид"
+      },
+      "verbum1": {
+        "word": "fortalte",
+        "translation": "рассказал"
+      },
+      "objekt1": {
+        "word": "gruppen",
+        "translation": "группе"
+      },
+      "konjunktion": {
+        "word": "at",
+        "translation": "что"
+      },
+      "Læd_subjekt": {
+        "word": "byen",
+        "translation": "город"
+      },
+      "Læd_verbum1": {
+        "word": "blev",
+        "translation": "был"
+      },
+      "Læd_participium": {
+        "word": "grundlagt",
+        "translation": "основан"
+      },
+      "Læd_sted_tid_præposition": {
+        "word": "for",
+        "translation": "более"
+      },
+      "Læd_nummer": {
+        "word": "hundrede",
+        "translation": "ста"
+      },
+      "Læd_substantiv": {
+        "word": "år",
+        "translation": "лет"
+      },
+      "Læd_sted_tid_adverbium": {
+        "word": "siden",
+        "translation": "назад"
+      },
+      "full_translation": "Гид рассказал группе, что город был основан более ста лет назад."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "путешественники"
+      },
+      "verbum1": {
+        "word": "oplevede",
+        "translation": "испытали"
+      },
+      "objekt1": {
+        "word": "øjeblikke",
+        "translation": "моменты"
+      },
+      "adjektiv": {
+        "word": "uventede",
+        "translation": "неожиданные"
+      },
+      "konjunktion": {
+        "word": "mens",
+        "translation": "пока"
+      },
+      "Læd_subjekt": {
+        "word": "solen",
+        "translation": "солнце"
+      },
+      "Læd_verbum1": {
+        "word": "gik",
+        "translation": "садилось"
+      },
+      "Læd_sted_tid_præposition": {
+        "word": "bag",
+        "translation": "за"
+      },
+      "Læd_substantiv": {
+        "word": "bjerget",
+        "translation": "горой"
+      },
+      "full_translation": "Путешественники испытали неожиданные моменты, пока солнце садилось за горой."
+    },
+    {
+      "subjekt": {
+        "word": "Hun",
+        "translation": "она"
+      },
+      "verbum1": {
+        "word": "forstod",
+        "translation": "поняла"
+      },
+      "konjunktion": {
+        "word": "at",
+        "translation": "что"
+      },
+      "Læd_subjekt": {
+        "word": "rejsen",
+        "translation": "путешествие"
+      },
+      "Læd_verbum1": {
+        "word": "havde",
+        "translation": "имело"
+      },
+      "Læd_substantiv": {
+        "word": "ændret",
+        "translation": "изменило"
+      },
+      "Læd_objekt": {
+        "word": "hende",
+        "translation": "её"
+      },
+      "Læd_adverbium1": {
+        "word": "for altid",
+        "translation": "навсегда"
+      },
+      "full_translation": "Она поняла, что путешествие изменило её навсегда."
+    },
+    {
+      "subjekt": {
+        "word": "Fotografen",
+        "translation": "фотограф"
+      },
+      "verbum1": {
+        "word": "fangede",
+        "translation": "поймал"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "один"
+      },
+      "adjektiv": {
+        "word": "sjældent",
+        "translation": "редкий"
+      },
+      "substantiv": {
+        "word": "øjeblik",
+        "translation": "момент"
+      },
+      "konjunktion": {
+        "word": "da",
+        "translation": "когда"
+      },
+      "Læd_subjekt": {
+        "word": "vinden",
+        "translation": "ветер"
+      },
+      "Læd_verbum1": {
+        "word": "løftede",
+        "translation": "поднял"
+      },
+      "Læd_objekt": {
+        "word": "sand",
+        "translation": "песок"
+      },
+      "Læd_sted_tid_præposition": {
+        "word": "over",
+        "translation": "над"
+      },
+      "Læd_substantiv": {
+        "word": "ørkenen",
+        "translation": "пустыней"
+      },
+      "full_translation": "Фотограф поймал редкий момент, когда ветер поднял песок над пустыней."
+    },
+    {
+      "subjekt": {
+        "word": "vi",
+        "translation": "мы"
+      },
+      "adverbium1": {
+        "word": "ofte",
+        "translation": "часто"
+      },
+      "verbum1": {
+        "word": "ignorerer",
+        "translation": "игнорируем"
+      },
+      "adjektiv1": {
+        "word": "mange",
+        "translation": "многие"
+      },
+      "adjektiv2": {
+        "word": "mindre",
+        "translation": "мало"
+      },
+      "adjektiv3": {
+        "word": "kendte",
+        "translation": "известные"
+      },
+      "substantiv1": {
+        "word": "lande",
+        "translation": "страны"
+      },
+      "konjunktion1": {
+        "word": "til",
+        "translation": "в пользу"
+      },
+      "pronomen1": {
+        "word": "dem",
+        "translation": "тем"
+      },
+      "konjunktion2": {
+        "word": "som",
+        "translation": "которые"
+      },
+      "Læd_pronomen1": {
+        "word": "der",
+        "translation": "там"
+      },
+      "Læd_verbum1_part1": {
+        "word": "har",
+        "translation": "имеют"
+      },
+      "Læd_verbum1_part2": {
+        "word": "domineret",
+        "translation": "доминировали"
+      },
+      "Læd_substantiv1": {
+        "word": "lister",
+        "translation": "списки"
+      },
+      "Læd_præposition1": {
+        "word": "over",
+        "translation": "по"
+      },
+      "Læd_quote1": {
+        "word": "bedste",
+        "translation": "лучшие"
+      },
+      "Læd_substantiv2": {
+        "word": "lande",
+        "translation": "страны"
+      },
+      "Læd_infinitiv": {
+        "word": "at rejse",
+        "translation": "для путешествий"
+      },
+      "Læd_sted_tid_præposition": {
+        "word": "gennem",
+        "translation": "в течение"
+      },
+      "Læd_adjektiv4": {
+        "word": "de",
+        "translation": "последние"
+      },
+      "Læd_substantiv3": {
+        "word": "årti",
+        "translation": "десятилетий"
+      },
+      "Læd_konjunktion3": {
+        "word": "eller",
+        "translation": "или"
+      },
+      "Læd_nummer1": {
+        "word": "to",
+        "translation": "двух"
+      },
+      "full_translation": "Но часто мы игнорируем многие малоизвестные страны в пользу тех, которые доминировали в списках «лучшие страны для путешествий» в течение последних десятилетий или двух."
+    },
+    {
+      "konjunktion1": {
+        "word": "Hvis",
+        "translation": "Если"
+      },
+      "subjekt": {
+        "word": "man",
+        "translation": "человек"
+      },
+      "adverbium1": {
+        "word": "hele",
+        "translation": "всё"
+      },
+      "adverbium2": {
+        "word": "tiden",
+        "translation": "время"
+      },
+      "Læd_konjunktion1": {
+        "word": "mens",
+        "translation": "пока"
+      },
+      "Læd_verbum1": {
+        "word": "går",
+        "translation": "идёшь"
+      },
+      "Læd_præposition1": {
+        "word": "ud",
+        "translation": "по"
+      },
+      "Læd_substantiv1": {
+        "word": "landevejen",
+        "translation": "шоссе"
+      },
+      "Læd_præposition2": {
+        "word": "mod",
+        "translation": "к"
+      },
+      "Læd_substantiv2": {
+        "word": "Paris",
+        "translation": "Парижу"
+      },
+      "main_verbum1_part1": {
+        "word": "skal",
+        "translation": "надо"
+      },
+      "main_verbum1_part2": {
+        "word": "tænke",
+        "translation": "думать"
+      },
+      "Læd_pronomen1": {
+        "word": "hvor",
+        "translation": "как"
+      },
+      "Læd_adverbium3": {
+        "word": "langt",
+        "translation": "далеко"
+      },
+      "Læd_pronomen2": {
+        "word": "man",
+        "translation": "ты"
+      },
+      "Læd_verbum2": {
+        "word": "har",
+        "translation": "есть"
+      },
+      "Læd_adverbium4": {
+        "word": "igen",
+        "translation": "ещё"
+      },
+      "konjunktion2": {
+        "word": "så",
+        "translation": "то"
+      },
+      "main_verbum2_part1": {
+        "word": "skal",
+        "translation": "надо"
+      },
+      "main_verbum2_part2": {
+        "word": "lade",
+        "translation": "перестать"
+      },
+      "infinitiv": {
+        "word": "være",
+        "translation": "делать"
+      },
+      "forklaring": {
+        "word": "for",
+        "translation": "потому что"
+      },
+      "Læd_verbum3": {
+        "word": "når",
+        "translation": "достигнешь"
+      },
+      "modal_adverbium": {
+        "word": "måske",
+        "translation": "возможно"
+      },
+      "destination": {
+        "word": "aldrig",
+        "translation": "никогда"
+      },
+      "destination2": {
+        "word": "til Paris",
+        "translation": "до Парижа"
+      },
+      "full_translation": "Если ты всё время, пока идёшь по шоссе к Парижу, думаешь, как далеко ещё осталось, то лучше не начинать, потому что ты, возможно, никогда не доберёшься до Парижа."
+    },
+    {
+      "subjekt": {
+        "word": "Pirates",
+        "translation": "Пиратес"
+      },
+      "verbum1": {
+        "word": "er",
+        "translation": "являются"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "группа"
+      },
+      "adjektiv1": {
+        "word": "unge",
+        "translation": "молодых"
+      },
+      "substantiv1": {
+        "word": "mennesker",
+        "translation": "людей"
+      },
+      "konjunktion1": {
+        "word": "der",
+        "translation": "которые"
+      },
+      "Læd_adverbium1": {
+        "word": "engang",
+        "translation": "когда-то"
+      },
+      "Læd_verbum1": {
+        "word": "har været",
+        "translation": "были"
+      },
+      "Læd_præposition1": {
+        "word": "på",
+        "translation": "на"
+      },
+      "Læd_substantiv2": {
+        "word": "kant",
+        "translation": "грани"
+      },
+      "Læd_præposition2": {
+        "word": "med",
+        "translation": "с"
+      },
+      "Læd_substantiv3": {
+        "word": "loven",
+        "translation": "законом"
+      },
+      "konjunktion2": {
+        "word": "men",
+        "translation": "но"
+      },
+      "subordinate_clause_start": {
+        "word": "efter at",
+        "translation": "после того как"
+      },
+      "Læd_nummer1": {
+        "word": "50",
+        "translation": "50"
+      },
+      "Læd_substantiv4": {
+        "word": "teenagere",
+        "translation": "подростков"
+      },
+      "Læd_præposition3": {
+        "word": "fra",
+        "translation": "из"
+      },
+      "Læd_substantiv5": {
+        "word": "gruppen",
+        "translation": "группы"
+      },
+      "Læd_verbum2": {
+        "word": "var blevet skudt",
+        "translation": "были застрелены"
+      },
+      "Læd_præposition4": {
+        "word": "af",
+        "translation": "полицией"
+      },
+      "Læd_agent": {
+        "word": "politiet",
+        "translation": "полицией"
+      },
+      "Læd_verbum3": {
+        "word": "lykkedes",
+        "translation": "удалось"
+      },
+      "Læd_pronomen1": {
+        "word": "dem",
+        "translation": "им"
+      },
+      "Læd_stedforbindelse": {
+        "word": "sammen med",
+        "translation": "вместе с"
+      },
+      "Læd_adjektiv2": {
+        "word": "lokal",
+        "translation": "местной"
+      },
+      "Læd_substantiv6": {
+        "word": "organisation",
+        "translation": "организацией"
+      },
+      "Læd_verbum4": {
+        "word": "at ændre",
+        "translation": "изменить"
+      },
+      "Læd_substantiv7": {
+        "word": "kurs",
+        "translation": "курс"
+      },
+      "Læd_konjunktion3": {
+        "word": "og",
+        "translation": "и"
+      },
+      "Læd_nu": {
+        "word": "nu",
+        "translation": "теперь"
+      },
+      "Læd_verbum5": {
+        "word": "tilbyder",
+        "translation": "предлагают"
+      },
+      "Læd_objekt1": {
+        "word": "lektiehjælp",
+        "translation": "помощь с уроками"
+      },
+      "Læd_konjunktion4": {
+        "word": "og",
+        "translation": "и"
+      },
+      "Læd_objekt2_part1": {
+        "word": "et",
+        "translation": "место"
+      },
+      "Læd_objekt2_part2": {
+        "word": "at være",
+        "translation": "для пребывания"
+      },
+      "Læd_præposition5": {
+        "word": "til",
+        "translation": "для"
+      },
+      "Læd_substantiv8": {
+        "word": "de børn",
+        "translation": "детей"
+      },
+      "Læd_konjunktion5": {
+        "word": "der",
+        "translation": "которые"
+      },
+      "Læd_verbum6": {
+        "word": "lever",
+        "translation": "живут"
+      },
+      "Læd_præposition6": {
+        "word": "på",
+        "translation": "на"
+      },
+      "Læd_substantiv9": {
+        "word": "lossepladsen",
+        "translation": "свалке"
+      },
+      "full_translation": "Pirates — группа молодых людей, которые когда-то были на грани с законом, но после того как 50 подростков из группы были застрелены полицией, им вместе с местной организацией удалось изменить курс, и теперь они предлагают помощь с уроками и место для детей, которые живут на свалке."
+    },
+    {
+      "subjekt": {
+        "word": "Du",
+        "translation": "Ты"
+      },
+      "adverbium1": {
+        "word": "bare",
+        "translation": "просто"
+      },
+      "verbum1": {
+        "word": "bliver",
+        "translation": "становишься"
+      },
+      "adverbium2": {
+        "word": "aldrig",
+        "translation": "никогда"
+      },
+      "adjektiv1": {
+        "word": "færdig",
+        "translation": "завершён"
+      },
+      "konjunktion1": {
+        "word": ";",
+        "translation": "—"
+      },
+      "main_clause2_part1": {
+        "word": "kan",
+        "translation": "можешь"
+      },
+      "main_clause2_part2": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "main_clause2_part3": {
+        "word": "lave",
+        "translation": "составить"
+      },
+      "Læd_substantiv1": {
+        "word": "en tjekliste",
+        "translation": "чек-лист"
+      },
+      "konjunktion2": {
+        "word": "og",
+        "translation": "и"
+      },
+      "Læd_sted_tid_præposition": {
+        "word": "på",
+        "translation": "в"
+      },
+      "Læd_substantiv2": {
+        "word": "et tidspunkt",
+        "translation": "определённый момент"
+      },
+      "Læd_verbum1": {
+        "word": "forvente",
+        "translation": "ожидать"
+      },
+      "Læd_adverbium3": {
+        "word": "NU",
+        "translation": "сейчас"
+      },
+      "Læd_verbum2_part1": {
+        "word": "har",
+        "translation": "отметил"
+      },
+      "Læd_verbum2_part2": {
+        "word": "du sat",
+        "translation": "ты"
+      },
+      "Læd_objekt1": {
+        "word": "hak",
+        "translation": "галочки"
+      },
+      "Læd_præposition2": {
+        "word": "ved",
+        "translation": "по"
+      },
+      "Læd_substantiv3": {
+        "word": "alle punkter",
+        "translation": "все пункты"
+      },
+      "forklaring": {
+        "word": "for",
+        "translation": "ибо"
+      },
+      "reason1": {
+        "word": "der",
+        "translation": "там"
+      },
+      "reason2": {
+        "word": "kan",
+        "translation": "может"
+      },
+      "reason3": {
+        "word": "opstå",
+        "translation": "возникнуть"
+      },
+      "full_translation": "Ты просто никогда не будешь завершён; чек-лист нельзя составить заранее, ибо могут возникнуть неожиданные ситуации."
+    },
+    {
+      "subjekt": {
+        "word": "Rejseskribenten",
+        "translation": "Писатель-путешественник"
+      },
+      "verbum1": {
+        "word": "skrev",
+        "translation": "написал"
+      },
+      "substantiv1": {
+        "word": "artiklen",
+        "translation": "статью"
+      },
+      "konjunktion1": {
+        "word": "som",
+        "translation": "которая"
+      },
+      "Læd_verbum1": {
+        "word": "beskrev",
+        "translation": "описала"
+      },
+      "Læd_subjekt": {
+        "word": "landsbyerne",
+        "translation": "деревни"
+      },
+      "Læd_adverbium1": {
+        "word": "charmerende",
+        "translation": "очаровательные"
+      },
+      "Læd_præposition1": {
+        "word": "langs",
+        "translation": "вдоль"
+      },
+      "Læd_substantiv2": {
+        "word": "kysten",
+        "translation": "побережья"
+      },
+      "full_translation": "Писатель-путешественник написал статью, которая описала очаровательные деревни вдоль побережья."
+    }
+  ]
+}
