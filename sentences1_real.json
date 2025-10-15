@@ -262,6 +262,1596 @@
         "translation": "совещании"
       },
       "full_translation": "Руководитель основательно представил план на совещании."
+    },
+    {
+      "subjekt": {
+        "word": "Fotografen",
+        "translation": "Фотограф"
+      },
+      "verbum1": {
+        "word": "fangede",
+        "translation": "запечатлел"
+      },
+      "substantiv": {
+        "word": "øjeblikket",
+        "translation": "момент"
+      },
+      "sted_tid_præposition": {
+        "word": "med",
+        "translation": "с"
+      },
+      "possessiv": {
+        "word": "sit",
+        "translation": "своим"
+      },
+      "adjektiv": {
+        "word": "gamle",
+        "translation": "старым"
+      },
+      "substantiv2": {
+        "word": "kamera",
+        "translation": "фотоаппаратом"
+      },
+      "sted_tid_præposition2": {
+        "word": "i",
+        "translation": "в"
+      },
+      "adjektiv2": {
+        "word": "gyldne",
+        "translation": "золотом"
+      },
+      "substantiv3": {
+        "word": "lys",
+        "translation": "свете"
+      },
+      "full_translation": "Фотограф запечатлел момент своим старым фотоаппаратом в золотом свете."
+    },
+    {
+      "subjekt": {
+        "word": "Redaktøren",
+        "translation": "Редактор"
+      },
+      "verbum1": {
+        "word": "besluttede",
+        "translation": "решил"
+      },
+      "verbum2": {
+        "word": "udgive",
+        "translation": "опубликовать"
+      },
+      "substantiv": {
+        "word": "artiklen",
+        "translation": "статью"
+      },
+      "sted_tid_præposition": {
+        "word": "trods",
+        "translation": "несмотря на"
+      },
+      "substantiv2": {
+        "word": "kritik",
+        "translation": "критику"
+      },
+      "sted_tid_præposition2": {
+        "word": "fra",
+        "translation": "от"
+      },
+      "substantiv3": {
+        "word": "kollegerne",
+        "translation": "коллег"
+      },
+      "full_translation": "Редактор решил опубликовать статью несмотря на критику коллег."
+    },
+    {
+      "subjekt": {
+        "word": "Ældreparret",
+        "translation": "Пожилые супруги"
+      },
+      "verbum1": {
+        "word": "gik",
+        "translation": "шли"
+      },
+      "adverbium1": {
+        "word": "langsomt",
+        "translation": "медленно"
+      },
+      "sted_tid_præposition": {
+        "word": "gennem",
+        "translation": "через"
+      },
+      "adjektiv": {
+        "word": "lille",
+        "translation": "маленькую"
+      },
+      "substantiv": {
+        "word": "landsby",
+        "translation": "деревню"
+      },
+      "konjunktion": {
+        "word": "mens",
+        "translation": "когда"
+      },
+      "verbum2": {
+        "word": "begyndte",
+        "translation": "начал"
+      },
+      "verbum3": {
+        "word": "falde",
+        "translation": "идти (о дожде)"
+      },
+      "full_translation": "Пожилые супруги медленно шли через маленькую деревню, когда начался дождь."
+    },
+    {
+      "subjekt": {
+        "word": "Dommeren",
+        "translation": "Судья"
+      },
+      "verbum1": {
+        "word": "afsagde",
+        "translation": "вынес"
+      },
+      "substantiv": {
+        "word": "dommen",
+        "translation": "приговор"
+      },
+      "adverbium1": {
+        "word": "hurtigt",
+        "translation": "быстро"
+      },
+      "sted_tid_præposition": {
+        "word": "efter",
+        "translation": "после"
+      },
+      "adjektiv": {
+        "word": "lange",
+        "translation": "долгих"
+      },
+      "substantiv2": {
+        "word": "overvejelser",
+        "translation": "раздумий"
+      },
+      "full_translation": "Судья вынес приговор быстро после долгих раздумий."
+    },
+    {
+      "subjekt": {
+        "word": "Advokaten",
+        "translation": "Адвокат"
+      },
+      "verbum1": {
+        "word": "forsøgte",
+        "translation": "пытался"
+      },
+      "adverbium1": {
+        "word": "ihærdigt",
+        "translation": "усердно"
+      },
+      "verbum2": {
+        "word": "bevise",
+        "translation": "доказать"
+      },
+      "possessiv": {
+        "word": "sin",
+        "translation": "своего"
+      },
+      "possessiv2": {
+        "word": "klients",
+        "translation": "клиента (род.)"
+      },
+      "substantiv": {
+        "word": "uskyld",
+        "translation": "невиновность"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "retten",
+        "translation": "суде"
+      },
+      "full_translation": "Адвокат усердно пытался доказать невиновность своего клиента в суде."
+    },
+    {
+      "subjekt": {
+        "word": "Børnene",
+        "translation": "Дети"
+      },
+      "verbum1": {
+        "word": "byggede",
+        "translation": "построили"
+      },
+      "adverbium1": {
+        "word": "omhyggeligt",
+        "translation": "тщательно"
+      },
+      "possessiv": {
+        "word": "deres",
+        "translation": "свою"
+      },
+      "adjektiv": {
+        "word": "egen",
+        "translation": "собственную"
+      },
+      "substantiv": {
+        "word": "hule",
+        "translation": "хижину/шалаш"
+      },
+      "sted_tid_præposition": {
+        "word": "under",
+        "translation": "под"
+      },
+      "adjektiv2": {
+        "word": "gamle",
+        "translation": "старым"
+      },
+      "substantiv2": {
+        "word": "egetræ",
+        "translation": "дубом"
+      },
+      "full_translation": "Дети тщательно построили свою собственную хижину под старым дубом."
+    },
+    {
+      "subjekt": {
+        "word": "Kunstneren",
+        "translation": "Художник"
+      },
+      "verbum1": {
+        "word": "eksperimenterede",
+        "translation": "экспериментировал"
+      },
+      "sted_tid_præposition": {
+        "word": "med",
+        "translation": "с"
+      },
+      "adjektiv": {
+        "word": "nye",
+        "translation": "новыми"
+      },
+      "substantiv": {
+        "word": "teknikker",
+        "translation": "техниками"
+      },
+      "konjunktion": {
+        "word": "for",
+        "translation": "чтобы"
+      },
+      "verbum2": {
+        "word": "skabe",
+        "translation": "создать"
+      },
+      "adverbium1": {
+        "word": "mere",
+        "translation": "больше"
+      },
+      "substantiv2": {
+        "word": "liv",
+        "translation": "жизни"
+      },
+      "sted_tid_præposition2": {
+        "word": "i",
+        "translation": "в"
+      },
+      "sted_tid_substantiv": {
+        "word": "maleriet",
+        "translation": "картине"
+      },
+      "full_translation": "Художник экспериментировал с новыми техниками, чтобы придать картине больше жизни."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "klagede",
+        "translation": "жаловались"
+      },
+      "adverbium1": {
+        "word": "højt",
+        "translation": "громко"
+      },
+      "sted_tid_præposition": {
+        "word": "over",
+        "translation": "на"
+      },
+      "substantiv": {
+        "word": "forsinkelserne",
+        "translation": "задержки"
+      },
+      "sted_tid_præposition2": {
+        "word": "i",
+        "translation": "в/на"
+      },
+      "adjektiv": {
+        "word": "internationale",
+        "translation": "международном"
+      },
+      "substantiv2": {
+        "word": "forbindelse",
+        "translation": "сообщении/пересадке"
+      },
+      "full_translation": "Путешественники громко жаловались на задержки в международном сообщении."
+    },
+    {
+      "subjekt": {
+        "word": "Økonomerne",
+        "translation": "Экономисты"
+      },
+      "verbum1": {
+        "word": "advarede",
+        "translation": "предупреждали"
+      },
+      "adverbium1": {
+        "word": "kraftigt",
+        "translation": "решительно"
+      },
+      "sted_tid_præposition": {
+        "word": "mod",
+        "translation": "о/против"
+      },
+      "substantiv": {
+        "word": "konsekvenserne",
+        "translation": "последствиях"
+      },
+      "sted_tid_præposition2": {
+        "word": "af",
+        "translation": "от/вследствие"
+      },
+      "adjektiv": {
+        "word": "nye",
+        "translation": "новой"
+      },
+      "substantiv2": {
+        "word": "politik",
+        "translation": "политики"
+      },
+      "full_translation": "Экономисты решительно предупреждали о последствиях новой политики."
+    },
+    {
+      "subjekt": {
+        "word": "Læserne",
+        "translation": "Читатели"
+      },
+      "verbum1": {
+        "word": "reagerede",
+        "translation": "отреагировали"
+      },
+      "adverbium1": {
+        "word": "overrasket",
+        "translation": "изумлённо"
+      },
+      "konjunktion": {
+        "word": "da",
+        "translation": "когда"
+      },
+      "possessiv": {
+        "word": "novellens",
+        "translation": "новеллы"
+      },
+      "substantiv": {
+        "word": "slutning",
+        "translation": "финал/концовка"
+      },
+      "verbum2": {
+        "word": "afslørede",
+        "translation": "раскрыл"
+      },
+      "adjektiv": {
+        "word": "uventet",
+        "translation": "неожиданную"
+      },
+      "substantiv2": {
+        "word": "sandhed",
+        "translation": "правду"
+      },
+      "full_translation": "Читатели изумлённо отреагировали, когда финал новеллы раскрыл неожиданную правду."
+    },
+    {
+      "artikel": {
+        "word": "Den",
+        "translation": "тот"
+      },
+      "adjektiv": {
+        "word": "unge",
+        "translation": "молодой"
+      },
+      "substantiv": {
+        "word": "læseren",
+        "translation": "читатель"
+      },
+      "verbum1": {
+        "word": "kunne",
+        "translation": "мог"
+      },
+      "adverbium1": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "verbum2": {
+        "word": "skjule",
+        "translation": "скрыть"
+      },
+      "possessiv": {
+        "word": "sin",
+        "translation": "свой"
+      },
+      "substantiv2": {
+        "word": "begejstring",
+        "translation": "восторг"
+      },
+      "konjunktion": {
+        "word": "da",
+        "translation": "когда"
+      },
+      "possessiv2": {
+        "word": "forfatterens",
+        "translation": "автора (притяж.)"
+      },
+      "adjektiv2": {
+        "word": "seneste",
+        "translation": "последнее"
+      },
+      "substantiv3": {
+        "word": "digt",
+        "translation": "стихотворение"
+      },
+      "verbum3": {
+        "word": "afslørede",
+        "translation": "раскрыло"
+      },
+      "artikel2": {
+        "word": "en",
+        "translation": "какую-то"
+      },
+      "adjektiv3": {
+        "word": "skjult",
+        "translation": "скрытую"
+      },
+      "substantiv4": {
+        "word": "længsel",
+        "translation": "тоску"
+      },
+      "full_translation": "Молодой читатель не мог скрыть своего восторга, когда последнее стихотворение автора раскрыло скрытую тоску."
+    },
+    {
+      "sted_tid_præposition": {
+        "word": "Om",
+        "translation": "В (о времени)"
+      },
+      "sted_tid_substantiv": {
+        "word": "natten",
+        "translation": "ночью"
+      },
+      "verbum1": {
+        "word": "steg",
+        "translation": "усилился"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "небольшой"
+      },
+      "adjektiv": {
+        "word": "dæmpet",
+        "translation": "приглушённый"
+      },
+      "substantiv": {
+        "word": "sus",
+        "translation": "шорох"
+      },
+      "sted_tid_præposition2": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv2": {
+        "word": "trækronerne",
+        "translation": "кронах деревьев"
+      },
+      "konjunktion": {
+        "word": "som",
+        "translation": "который"
+      },
+      "verbum2": {
+        "word": "fik",
+        "translation": "заставил"
+      },
+      "substantiv3": {
+        "word": "naboerne",
+        "translation": "соседей"
+      },
+      "infinitiv": {
+        "word": "vågne",
+        "translation": "проснуться"
+      },
+      "full_translation": "Ночью усилился приглушённый шорох в кронах деревьев, который заставил соседей проснуться."
+    },
+    {
+      "sted_tid_præposition": {
+        "word": "Efter",
+        "translation": "После"
+      },
+      "possessiv": {
+        "word": "flere",
+        "translation": "нескольких"
+      },
+      "substantiv": {
+        "word": "års",
+        "translation": "лет"
+      },
+      "substantiv2": {
+        "word": "diskussion",
+        "translation": "обсуждений"
+      },
+      "verbum1": {
+        "word": "besluttede",
+        "translation": "решила"
+      },
+      "substantiv3": {
+        "word": "bestyrelsen",
+        "translation": "правление/совет"
+      },
+      "infinitiv": {
+        "word": "at",
+        "translation": "— (инфинитивная частица)"
+      },
+      "verbum2": {
+        "word": "afskedige",
+        "translation": "уволить"
+      },
+      "substantiv4": {
+        "word": "direktøren",
+        "translation": "директора"
+      },
+      "sted_tid_præposition2": {
+        "word": "uden",
+        "translation": "без"
+      },
+      "adjektiv": {
+        "word": "forudgående",
+        "translation": "предварительного"
+      },
+      "substantiv5": {
+        "word": "varsel",
+        "translation": "уведомления"
+      },
+      "full_translation": "После нескольких лет обсуждений правление решило уволить директора без предварительного уведомления."
+    },
+    {
+      "subjekt_pronomen": {
+        "word": "Hun",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "havde",
+        "translation": "имела/уже"
+      },
+      "adverbium1": {
+        "word": "næsten",
+        "translation": "почти"
+      },
+      "verbum2": {
+        "word": "opgivet",
+        "translation": "отказалась/потеряла надежду"
+      },
+      "substantiv": {
+        "word": "håbet",
+        "translation": "надежду"
+      },
+      "konjunktion": {
+        "word": "før",
+        "translation": "прежде чем"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "неожиданное"
+      },
+      "adjektiv": {
+        "word": "uventet",
+        "translation": "неожиданное"
+      },
+      "substantiv2": {
+        "word": "besked",
+        "translation": "сообщение"
+      },
+      "verbum3": {
+        "word": "ændrede",
+        "translation": "изменило"
+      },
+      "pronomen": {
+        "word": "alt",
+        "translation": "всё"
+      },
+      "full_translation": "Она почти потеряла надежду, прежде чем неожиданное сообщение изменило всё."
+    },
+    {
+      "subjekt": {
+        "word": "Byens",
+        "translation": "городской (притяж.)"
+      },
+      "substantiv": {
+        "word": "musikfestival",
+        "translation": "музыкальный фестиваль"
+      },
+      "verbum1": {
+        "word": "tiltrak",
+        "translation": "привлёк"
+      },
+      "substantiv2": {
+        "word": "hundredvis",
+        "translation": "сотни"
+      },
+      "sted_tid_præposition": {
+        "word": "af",
+        "translation": "— (часть сочетания)"
+      },
+      "substantiv3": {
+        "word": "besøgende",
+        "translation": "посетителей"
+      },
+      "konjunktion": {
+        "word": "trods",
+        "translation": "несмотря на"
+      },
+      "adjektiv": {
+        "word": "ustabile",
+        "translation": "неустойчивое"
+      },
+      "substantiv4": {
+        "word": "vejr",
+        "translation": "время/погода"
+      },
+      "full_translation": "Городской музыкальный фестиваль привлёк сотни посетителей, несмотря на неустойчивую погоду."
+    },
+    {
+      "subjekt": {
+        "word": "Socialrådgiveren",
+        "translation": "Социальный работник"
+      },
+      "verbum1": {
+        "word": "skrev",
+        "translation": "написала"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "одно"
+      },
+      "adjektiv": {
+        "word": "langt",
+        "translation": "длинное"
+      },
+      "substantiv": {
+        "word": "referat",
+        "translation": "резюме/отчёт"
+      },
+      "konjunktion": {
+        "word": "hvori",
+        "translation": "в котором"
+      },
+      "pronomen": {
+        "word": "hun",
+        "translation": "она"
+      },
+      "adverbium1": {
+        "word": "kritisk",
+        "translation": "критически"
+      },
+      "verbum2": {
+        "word": "gennemgik",
+        "translation": "проанализировала"
+      },
+      "possessiv": {
+        "word": "familiens",
+        "translation": "семьи (притяж.)"
+      },
+      "substantiv2": {
+        "word": "sag",
+        "translation": "дело"
+      },
+      "full_translation": "Социальный работник написала длинный отчёт, в котором она критически проанализировала дело семьи."
+    },
+    {
+      "artikel": {
+        "word": "Den",
+        "translation": "Та"
+      },
+      "adjektiv": {
+        "word": "gamle",
+        "translation": "старое"
+      },
+      "substantiv": {
+        "word": "biblioteksbygning",
+        "translation": "здание библиотеки"
+      },
+      "verbum1": {
+        "word": "står",
+        "translation": "стоит"
+      },
+      "adverbium1": {
+        "word": "stadig",
+        "translation": "до сих пор"
+      },
+      "adverbium2": {
+        "word": "tom",
+        "translation": "пустым"
+      },
+      "konjunktion": {
+        "word": "selvom",
+        "translation": "хотя"
+      },
+      "substantiv2": {
+        "word": "kommunen",
+        "translation": "муниципалитет"
+      },
+      "verbum2": {
+        "word": "planlægger",
+        "translation": "планирует"
+      },
+      "substantiv3": {
+        "word": "renovering",
+        "translation": "реновацию"
+      },
+      "full_translation": "Старое здание библиотеки до сих пор пустует, хотя муниципалитет планирует его реновацию."
+    },
+    {
+      "subjekt": {
+        "word": "Analysen",
+        "translation": "Анализ"
+      },
+      "verbum1": {
+        "word": "viste",
+        "translation": "показал"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "некую"
+      },
+      "adjektiv": {
+        "word": "overraskende",
+        "translation": "удивительную"
+      },
+      "substantiv": {
+        "word": "sammenhæng",
+        "translation": "связь"
+      },
+      "sted_tid_præposition": {
+        "word": "mellem",
+        "translation": "между"
+      },
+      "substantiv2": {
+        "word": "klimaændringer",
+        "translation": "изменениями климата"
+      },
+      "konjunktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "substantiv3": {
+        "word": "lokale",
+        "translation": "местных"
+      },
+      "substantiv4": {
+        "word": "afgrøder",
+        "translation": "урожаев"
+      },
+      "full_translation": "Анализ показал удивительную связь между изменениями климата и местными урожаями."
+    },
+    {
+      "sted_tid_præposition": {
+        "word": "Efter",
+        "translation": "После"
+      },
+      "substantiv": {
+        "word": "middagen",
+        "translation": "ужина"
+      },
+      "verbum1": {
+        "word": "gik",
+        "translation": "отправились"
+      },
+      "pronomen": {
+        "word": "de",
+        "translation": "они"
+      },
+      "adverbium1": {
+        "word": "langsommere",
+        "translation": "медленнее/медленно"
+      },
+      "infinitiv": {
+        "word": "home",
+        "translation": "домой"
+      },
+      "sted_tid_præposition2": {
+        "word": "ad",
+        "translation": "по"
+      },
+      "adjektiv": {
+        "word": "smalle",
+        "translation": "узким"
+      },
+      "substantiv2": {
+        "word": "gader",
+        "translation": "улицам"
+      },
+      "konjunktion": {
+        "word": "mens",
+        "translation": "пока"
+      },
+      "substantiv3": {
+        "word": "lygterne",
+        "translation": "фонари"
+      },
+      "verbum2": {
+        "word": "blinkede",
+        "translation": "мерцали"
+      },
+      "adverbium2": {
+        "word": "blidt",
+        "translation": "мягко"
+      },
+      "full_translation": "После ужина они медленно шли домой по узким улицам, пока фонари мягко мерцали."
+    },
+    {
+      "subjekt": {
+        "word": "Detektiven",
+        "translation": "Детектив"
+      },
+      "verbum1": {
+        "word": "undersøgte",
+        "translation": "исследовал"
+      },
+      "adverbium1": {
+        "word": "omhyggeligt",
+        "translation": "тщательно"
+      },
+      "sted_tid_præposition": {
+        "word": "på",
+        "translation": "на"
+      },
+      "substantiv": {
+        "word": "gerningsstedet",
+        "translation": "место преступления"
+      },
+      "konjunktion": {
+        "word": "hvor",
+        "translation": "где"
+      },
+      "adjektiv": {
+        "word": "svagt",
+        "translation": "слабый"
+      },
+      "substantiv2": {
+        "word": "spor",
+        "translation": "след"
+      },
+      "verbum2": {
+        "word": "førte",
+        "translation": "привёл"
+      },
+      "sted_tid_præposition2": {
+        "word": "til",
+        "translation": "к"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "одной"
+      },
+      "adjektiv2": {
+        "word": "glemt",
+        "translation": "забытой"
+      },
+      "substantiv3": {
+        "word": "notesbog",
+        "translation": "блокноту"
+      },
+      "full_translation": "Детектив тщательно исследовал место преступления, где слабый след привёл к забытому блокноту."
+    },
+    {
+      "subjekt": {
+        "word": "Efterforskeren",
+        "translation": "Следователь"
+      },
+      "verbum1": {
+        "word": "fandt",
+        "translation": "нашёл"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "один"
+      },
+      "adjektiv": {
+        "word": "blodigt",
+        "translation": "кровавый"
+      },
+      "substantiv": {
+        "word": "fingeraftryk",
+        "translation": "отпечаток пальца"
+      },
+      "konjunktion": {
+        "word": "som",
+        "translation": "который"
+      },
+      "adverbium1": {
+        "word": "senere",
+        "translation": "позже"
+      },
+      "verbum2": {
+        "word": "blev",
+        "translation": "был"
+      },
+      "verbum3": {
+        "word": "sammenlignet",
+        "translation": "сравнен"
+      },
+      "sted_tid_præposition": {
+        "word": "med",
+        "translation": "с"
+      },
+      "artikel2": {
+        "word": "en",
+        "translation": "профилем"
+      },
+      "possessiv": {
+        "word": "mistænktes",
+        "translation": "подозреваемого (притяж.)"
+      },
+      "substantiv2": {
+        "word": "databaseprofil",
+        "translation": "базой данных/профилем"
+      },
+      "full_translation": "Следователь нашёл кровавый отпечаток пальца, который позже сравнили с профилем подозреваемого в базе данных."
+    },
+    {
+      "subjekt": {
+        "word": "Vidnet",
+        "translation": "Свидетель"
+      },
+      "verbum1": {
+        "word": "beskrev",
+        "translation": "описал"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv": {
+        "word": "detaljer",
+        "translation": "деталях"
+      },
+      "possessiv": {
+        "word": "gerningsmandens",
+        "translation": "преступника (притяж.)"
+      },
+      "substantiv2": {
+        "word": "færd",
+        "translation": "передвижение"
+      },
+      "sted_tid_præposition2": {
+        "word": "gennem",
+        "translation": "через"
+      },
+      "possessiv2": {
+        "word": "nabolagets",
+        "translation": "района (притяж.)"
+      },
+      "adjektiv": {
+        "word": "mørke",
+        "translation": "тёмные"
+      },
+      "substantiv3": {
+        "word": "gader",
+        "translation": "улицы"
+      },
+      "full_translation": "Свидетель в деталях описал передвижение преступника через тёмные улицы района."
+    },
+    {
+      "possessiv": {
+        "word": "Politiets",
+        "translation": "полиции (притяж.)"
+      },
+      "adjektiv": {
+        "word": "tekniske",
+        "translation": "техническое"
+      },
+      "substantiv": {
+        "word": "enhed",
+        "translation": "подразделение"
+      },
+      "verbum1": {
+        "word": "analyserede",
+        "translation": "проанализировало"
+      },
+      "substantiv2": {
+        "word": "DNA",
+        "translation": "ДНК"
+      },
+      "substantiv3": {
+        "word": "prøver",
+        "translation": "пробы"
+      },
+      "konjunktion": {
+        "word": "men",
+        "translation": "но"
+      },
+      "substantiv4": {
+        "word": "resultaterne",
+        "translation": "результаты"
+      },
+      "verbum2": {
+        "word": "var",
+        "translation": "были"
+      },
+      "adverbium1": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "adjektiv2": {
+        "word": "entydige",
+        "translation": "однозначны"
+      },
+      "full_translation": "Техническое подразделение полиции проанализировало ДНК-пробы, но результаты не были однозначны."
+    },
+    {
+      "possessiv": {
+        "word": "Gerningsstedets",
+        "translation": "места преступления (притяж.)"
+      },
+      "substantiv": {
+        "word": "fotografier",
+        "translation": "фотографии"
+      },
+      "verbum1": {
+        "word": "blev",
+        "translation": "были"
+      },
+      "adverbium1": {
+        "word": "omhyggeligt",
+        "translation": "тщательно"
+      },
+      "verbum2": {
+        "word": "gennemgået",
+        "translation": "пересмотрены"
+      },
+      "sted_tid_præposition": {
+        "word": "for",
+        "translation": "чтобы"
+      },
+      "infinitiv": {
+        "word": "at",
+        "translation": "— (инфинитив)"
+      },
+      "verbum3": {
+        "word": "finde",
+        "translation": "найти"
+      },
+      "adjektiv": {
+        "word": "skjulte",
+        "translation": "скрытые"
+      },
+      "substantiv2": {
+        "word": "spor",
+        "translation": "следы"
+      },
+      "full_translation": "Фотографии места преступления были тщательно пересмотрены, чтобы найти скрытые следы."
+    },
+    {
+      "subjekt": {
+        "word": "Mistænkte",
+        "translation": "Подозреваемый"
+      },
+      "verbum1": {
+        "word": "afviste",
+        "translation": "отклонил/опроверг"
+      },
+      "substantiv": {
+        "word": "anklagerne",
+        "translation": "обвинения"
+      },
+      "konjunktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "verbum2": {
+        "word": "hævdede",
+        "translation": "заявил"
+      },
+      "konjunktion2": {
+        "word": "at",
+        "translation": "что"
+      },
+      "pronomen": {
+        "word": "han",
+        "translation": "он"
+      },
+      "verbum3": {
+        "word": "havde",
+        "translation": "имел"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "одно"
+      },
+      "substantiv2": {
+        "word": "alibi",
+        "translation": "алиби"
+      },
+      "konjunktion3": {
+        "word": "der",
+        "translation": "которое"
+      },
+      "verbum4": {
+        "word": "blev",
+        "translation": "было"
+      },
+      "verbum5": {
+        "word": "bekræftet",
+        "translation": "подтверждено"
+      },
+      "sted_tid_præposition": {
+        "word": "af",
+        "translation": "— (кем/чем)"
+      },
+      "adjektiv": {
+        "word": "flere",
+        "translation": "несколькими"
+      },
+      "substantiv3": {
+        "word": "vidner",
+        "translation": "свидетелями"
+      },
+      "full_translation": "Подозреваемый опроверг обвинения и заявил, что у него есть алиби, которое подтвердили несколько свидетелей."
+    },
+    {
+      "artikel": {
+        "word": "En",
+        "translation": "Один"
+      },
+      "adjektiv": {
+        "word": "skjult",
+        "translation": "скрытый"
+      },
+      "substantiv": {
+        "word": "nøgle",
+        "translation": "ключ"
+      },
+      "participle": {
+        "word": "gemt",
+        "translation": "спрятанный"
+      },
+      "sted_tid_præposition": {
+        "word": "bag",
+        "translation": "за"
+      },
+      "artikel2": {
+        "word": "det",
+        "translation": "этим"
+      },
+      "adjektiv2": {
+        "word": "falmende",
+        "translation": "выцветшим"
+      },
+      "substantiv2": {
+        "word": "tapet",
+        "translation": "обоями"
+      },
+      "verbum1": {
+        "word": "åbnede",
+        "translation": "открыл"
+      },
+      "artikel3": {
+        "word": "en",
+        "translation": "некоторую"
+      },
+      "substantiv3": {
+        "word": "kiste",
+        "translation": "сундук"
+      },
+      "sted_tid_præposition2": {
+        "word": "med",
+        "translation": "с"
+      },
+      "adjektiv3": {
+        "word": "gamle",
+        "translation": "старыми"
+      },
+      "substantiv4": {
+        "word": "familiedokumenter",
+        "translation": "семейными документами"
+      },
+      "full_translation": "Скрытый ключ, спрятанный за выцветшими обоями, открыл сундук со старыми семейными документами."
+    },
+    {
+      "subjekt": {
+        "word": "Spor",
+        "translation": "Следы"
+      },
+      "sted_tid_præposition": {
+        "word": "af",
+        "translation": "из"
+      },
+      "substantiv": {
+        "word": "sand",
+        "translation": "песка"
+      },
+      "sted_tid_præposition2": {
+        "word": "fra",
+        "translation": "с"
+      },
+      "substantiv2": {
+        "word": "stranden",
+        "translation": "пляжа"
+      },
+      "sted_tid_præposition3": {
+        "word": "på",
+        "translation": "на"
+      },
+      "possessiv": {
+        "word": "offrets",
+        "translation": "жертвы (притяж.)"
+      },
+      "substantiv3": {
+        "word": "sko",
+        "translation": "ботинках"
+      },
+      "verbum1": {
+        "word": "antydede",
+        "translation": "намекали"
+      },
+      "konjunktion": {
+        "word": "at",
+        "translation": "что"
+      },
+      "substantiv4": {
+        "word": "gerningsmanden",
+        "translation": "преступник"
+      },
+      "verbum2": {
+        "word": "havde",
+        "translation": "возможно"
+      },
+      "verbum3": {
+        "word": "undsluppet",
+        "translation": "скрылся"
+      },
+      "sted_tid_præposition4": {
+        "word": "til",
+        "translation": "к"
+      },
+      "substantiv5": {
+        "word": "kysten",
+        "translation": "берегу"
+      },
+      "full_translation": "Следы песка с пляжа на ботинках жертвы намекали, что преступник скрылся к берегу."
+    },
+    {
+      "subjekt": {
+        "word": "Retssagen",
+        "translation": "Судебный процесс"
+      },
+      "verbum1": {
+        "word": "trak",
+        "translation": "затянулся"
+      },
+      "adverbium1": {
+        "word": "ud",
+        "translation": "— (продолжительно)"
+      },
+      "sted_tid_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv": {
+        "word": "måneder",
+        "translation": "месяцы"
+      },
+      "konjunktion": {
+        "word": "mens",
+        "translation": "пока"
+      },
+      "adjektiv": {
+        "word": "nye",
+        "translation": "новые"
+      },
+      "substantiv2": {
+        "word": "vidnesbyrd",
+        "translation": "свидетельские показания"
+      },
+      "konjunktion2": {
+        "word": "og",
+        "translation": "и"
+      },
+      "adjektiv2": {
+        "word": "tekniske",
+        "translation": "технические"
+      },
+      "substantiv3": {
+        "word": "fund",
+        "translation": "находки"
+      },
+      "verbum2": {
+        "word": "ændrede",
+        "translation": "изменили"
+      },
+      "possessiv": {
+        "word": "efterforskningens",
+        "translation": "расследования (притяж.)"
+      },
+      "substantiv4": {
+        "word": "kurs",
+        "translation": "курс/направление"
+      },
+      "full_translation": "Судебный процесс затянулся на месяцы, пока новые свидетельские показания и технические находки изменяли направление расследования."
+    },
+    {
+      "adverbium1": {
+        "word": "Endelig",
+        "translation": "Наконец"
+      },
+      "verbum1": {
+        "word": "førte",
+        "translation": "привела"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "случайное"
+      },
+      "adjektiv": {
+        "word": "tilfældig",
+        "translation": "случайное"
+      },
+      "substantiv": {
+        "word": "observation",
+        "translation": "наблюдение"
+      },
+      "sted_tid_præposition": {
+        "word": "fra",
+        "translation": "от"
+      },
+      "artikel2": {
+        "word": "en",
+        "translation": "одного"
+      },
+      "substantiv2": {
+        "word": "forbipasserende",
+        "translation": "прохожего"
+      },
+      "substantiv3": {
+        "word": "politiet",
+        "translation": "полицию"
+      },
+      "sted_tid_præposition2": {
+        "word": "til",
+        "translation": "к"
+      },
+      "adjektiv2": {
+        "word": "skjult",
+        "translation": "скрытому"
+      },
+      "substantiv4": {
+        "word": "indgang",
+        "translation": "входу"
+      },
+      "full_translation": "Наконец случайное наблюдение от прохожего привело полицию к скрытому входу."
+    },
+    {
+      "subjekt": {
+        "word": "Forfatteren",
+        "translation": "Автор"
+      },
+      "verbum1": {
+        "word": "beskriver",
+        "translation": "описывает"
+      },
+      "substantiv": {
+        "word": "den farverige",
+        "translation": "яркую"
+      },
+      "substantiv2": {
+        "word": "markedsplads",
+        "translation": "рыночную площадь"
+      },
+      "adjektiv": {
+        "word": "fyldt",
+        "translation": "наполненную"
+      },
+      "substantiv3": {
+        "word": "dufte",
+        "translation": "ароматами"
+      },
+      "full_translation": "Автор описывает яркую рыночную площадь, наполненную ароматами."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "nyder",
+        "translation": "наслаждаются"
+      },
+      "substantiv": {
+        "word": "den spektakulære",
+        "translation": "захватывающим"
+      },
+      "substantiv2": {
+        "word": "solnedgang",
+        "translation": "закатом"
+      },
+      "sted_tid_præposition": {
+        "word": "fra",
+        "translation": "с"
+      },
+      "substantiv3": {
+        "word": "bjerget",
+        "translation": "горы"
+      },
+      "full_translation": "Путешественники наслаждаются захватывающим закатом с горы."
+    },
+    {
+      "subjekt": {
+        "word": "Guiden",
+        "translation": "Гид"
+      },
+      "verbum1": {
+        "word": "anbefaler",
+        "translation": "рекомендует"
+      },
+      "substantiv": {
+        "word": "den lokale",
+        "translation": "местную"
+      },
+      "substantiv2": {
+        "word": "restaurant",
+        "translation": "ресторан"
+      },
+      "adjektiv": {
+        "word": "berømt",
+        "translation": "известный"
+      },
+      "substantiv3": {
+        "word": "for",
+        "translation": "своими"
+      },
+      "substantiv4": {
+        "word": "retter",
+        "translation": "блюдами"
+      },
+      "full_translation": "Гид рекомендует местный ресторан, известный своими блюдами."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "deler",
+        "translation": "делятся"
+      },
+      "substantiv": {
+        "word": "deres",
+        "translation": "своими"
+      },
+      "substantiv2": {
+        "word": "oplevelser",
+        "translation": "впечатлениями"
+      },
+      "sted_tid_præposition": {
+        "word": "fra",
+        "translation": "с"
+      },
+      "substantiv3": {
+        "word": "deres rejse",
+        "translation": "своего путешествия"
+      },
+      "full_translation": "Путешественники делятся своими впечатлениями с путешествия."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "besøger",
+        "translation": "посещают"
+      },
+      "substantiv": {
+        "word": "den historiske",
+        "translation": "исторический"
+      },
+      "substantiv2": {
+        "word": "bymur",
+        "translation": "городскую стену"
+      },
+      "adjektiv": {
+        "word": "velbevaret",
+        "translation": "хорошо сохранившуюся"
+      },
+      "full_translation": "Путешественники посещают хорошо сохранившуюся историческую городскую стену."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "nyder",
+        "translation": "наслаждаются"
+      },
+      "substantiv": {
+        "word": "den rolige",
+        "translation": "спокойной"
+      },
+      "substantiv2": {
+        "word": "strandområde",
+        "translation": "пляжной зоной"
+      },
+      "adjektiv": {
+        "word": "afsondret",
+        "translation": "отдалённой"
+      },
+      "full_translation": "Путешественники наслаждаются спокойной отдалённой пляжной зоной."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "besøger",
+        "translation": "посещают"
+      },
+      "substantiv": {
+        "word": "den imponerende",
+        "translation": "впечатляющую"
+      },
+      "substantiv2": {
+        "word": "katedral",
+        "translation": "кафедральный собор"
+      },
+      "adjektiv": {
+        "word": "gotisk",
+        "translation": "готический"
+      },
+      "full_translation": "Путешественники посещают впечатляющий готический кафедральный собор."
+    },
+    {
+      "subjekt": {
+        "word": "Forfatteren",
+        "translation": "Автор"
+      },
+      "verbum1": {
+        "word": "reflekterer",
+        "translation": "размышляет"
+      },
+      "substantiv": {
+        "word": "over",
+        "translation": "о"
+      },
+      "substantiv2": {
+        "word": "rejseoplevelsen",
+        "translation": "опыте путешествия"
+      },
+      "adjektiv": {
+        "word": "berigende",
+        "translation": "обогащающем"
+      },
+      "full_translation": "Автор размышляет о обогащающем опыте путешествия."
+    },
+    {
+      "subjekt": {
+        "word": "Rejsende",
+        "translation": "Путешественники"
+      },
+      "verbum1": {
+        "word": "deler",
+        "translation": "делятся"
+      },
+      "substantiv": {
+        "word": "deres",
+        "translation": "своими"
+      },
+      "substantiv2": {
+        "word": "rejseoplevelser",
+        "translation": "впечатлениями о путешествии"
+      },
+      "full_translation": "Путешественники делятся своими впечатлениями о путешествии."
     }
   ]
 }
