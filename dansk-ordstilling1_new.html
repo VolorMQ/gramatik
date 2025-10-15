@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="da">
 <head>
 <meta charset="utf-8"/>
@@ -33,7 +32,7 @@ button:disabled{opacity:0.5;cursor:default}
 
 td[data-placeholder]:empty::before {
   content: attr(data-placeholder);
-  color: #9ca3af; /* серый цвет */
+  color: #9ca3af;
   font-style: italic;
 }
 </style>
@@ -43,12 +42,10 @@ td[data-placeholder]:empty::before {
 <h1>Hovedsætninger</h1>
 <label id="mobile-toggle">
 <input id="mobileVersion" type="checkbox"/> MobilVersion (tap instead of drag)
-  </label>
+</label>
 <h2 class="mt-8">Ligefrem ordstilling (normal)</h2>
-<table aria-label="Omvendt ordstilling – skema" class="schema">
-<thead>
-<tr><th class="subjekt">subjekt</th><th class="verbum1">verbium 1</th><th class="adverbium1">adverbium 1</th><th class="adverbium2">adverbium 2</th><th class="verbum2">verbium 2</th><th class="verbium3_infinitivpartikle">verbium3-infinitivpartikle</th><th class="verbium3_infinitiv">verbium3-infinitiv</th><th class="objekt1">objekt</th><th class="konjuktion">konjuktion</th><th class="objekt2">objekt</th><th class="sted_tid_præposition">sted/tid præposition</th><th class="sted_tid_substantiv">sted/tid substantiv</th></tr>
-</thead>
+<table aria-label="Ordstilling – skema" class="schema">
+<thead id="table-head"></thead>
 <tbody id="sentence-rows"></tbody>
 </table>
 <div id="word-pool"></div>
@@ -59,6 +56,7 @@ td[data-placeholder]:empty::before {
 </div>
 <div id="translation"></div>
 </div>
+
 <script>
 let sentences = [];
 let selectedSentences = [];
@@ -66,6 +64,7 @@ let wordsPool = [];
 let mobileMode = false;
 let selectedWordIndex = null;
 
+// Подгрузка JSON с предложениями
 fetch('sentences1_new.json')
   .then(res => res.json())
   .then(data => {
@@ -77,52 +76,66 @@ fetch('sentences1_new.json')
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
 
 function initSentences(){
-  selectedSentences = shuffle([...sentences]).slice(0,1);  //Здесь количество предложений для отображения
-  const tbody = document.getElementById('sentence-rows');
-  tbody.innerHTML = "";
+  selectedSentences = shuffle([...sentences]).slice(0,1);
 
+  const tbody = document.getElementById('sentence-rows');
+  const thead = document.getElementById('table-head');
+  tbody.innerHTML = "";
+  thead.innerHTML = "";
+
+  // Динамическая шапка
+  const headerRow = document.createElement('tr');
+  const firstSentence = selectedSentences[0];
+  for(const key in firstSentence){
+    if(key === "full_translation") continue;
+    const th = document.createElement('th');
+    th.textContent = key;
+    headerRow.appendChild(th);
+  }
+  thead.appendChild(headerRow);
+
+  // Тело таблицы
   selectedSentences.forEach((s,i)=>{
     const tr = document.createElement('tr');
     tr.dataset.index = i;
 
-    ['subjekt','verbum1','adverbium1','adverbium2','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
+    for(const key in s){
+      if(key === "full_translation") continue;
       const td = document.createElement('td');
-      td.dataset.type = type;
+      td.dataset.type = key;
 
-      if(type==='subjekt'){ 
-        td.textContent = s.subjekt.word; // подлежащее сразу заполнено
+      if(key==='subjekt'){ 
+        td.textContent = s.subjekt.word; 
         td.dataset.wordIndex = -1;
       } else {
-        // Добавляем серую подсказку через data-placeholder
-        if(s[type] && s[type].translation){
-          td.dataset.placeholder = s[type].translation;
+        if(s[key] && s[key].translation){
+          td.dataset.placeholder = s[key].translation;
         }
-
         td.addEventListener('dragover', ev=>{ if(!mobileMode) ev.preventDefault(); });
         td.addEventListener('drop', ev=>{ if(!mobileMode) dropWord(ev,td); });
         td.addEventListener('click', ()=>{ if(mobileMode) tapInsert(td); });
       }
-
       tr.appendChild(td);
-    });
+    }
 
     tbody.appendChild(tr);
   });
 
-  // Подготовка пула слов (как было)
+  // Подготовка пула слов
   wordsPool = [];
-  ['verbum1','adverbium1','adverbium2','verbum2','verbium3_infinitivpartikle','verbium3_infinitiv','objekt1','konjuktion','objekt2','sted_tid_præposition','sted_tid_substantiv'].forEach(type=>{
-    let typeWords = selectedSentences.map((s,index)=>({...s[type], sentenceIndex:index}));
+  for(const key in firstSentence){
+    if(key === "full_translation" || key==="subjekt") continue;
+    let typeWords = selectedSentences.map((s,index)=>({...s[key], sentenceIndex:index}));
     typeWords = shuffle(typeWords);
     typeWords.forEach(w=>{
-      wordsPool.push({word:w.word,type:type,translation:w.translation,sentenceIndex:w.sentenceIndex,inPool:true});
+      wordsPool.push({word:w.word,type:key,translation:w.translation,sentenceIndex:w.sentenceIndex,inPool:true});
     });
-  });
+  }
 
   // Жёлтый blank
   wordsPool.push({word:'', type:'blank', translation:'', sentenceIndex:null, inPool:true});
-
   wordsPool = shuffle(wordsPool);
+
   renderWordPool();
   updateTranslation();
 }
