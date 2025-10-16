@@ -34,6 +34,19 @@ button:disabled{opacity:0.5;cursor:default}
 </head>
 <body>
 <div class="page">
+<div id="sentence-counter" style="
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+">
+  Sætninger : 0
+</div>
   <h1>Ledsætninger</h1>
 
   <label id="mobile-toggle">
@@ -74,9 +87,15 @@ let selectedWordIndex = null;
 fetch('sentences2.json')
   .then(res => res.json())
   .then(data => { sentences = data.sentences; initSentences(); })
+    updateSentenceCounter(); // обновляем сразу после загрузки
   .catch(err => console.error("Fejl ved indlæsning af JSON:", err));
-
+  
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+function updateSentenceCounter() {
+  const counter = document.getElementById('sentence-counter');
+  counter.textContent = `Sætninger : ${sentences.length}`;
+}
 
 function initSentences(){
   selectedSentences = shuffle([...sentences]).slice(0,1);
@@ -298,4 +317,5 @@ function updateTranslation(){
 </script>
 </body>
 </html>
+
 
