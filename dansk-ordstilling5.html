@@ -42,6 +42,19 @@ button:disabled{opacity:0.5;cursor:default}
 </head>
 <body>
 <div class="page">
+<div id="sentence-counter" style="
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+">
+  Sætninger : 0
+</div>
   <h1>Hoved+Ledsætninger — 1 spørgsmål</h1>
 
   <label><input type="checkbox" id="mobil-toggle"> MobilVersion</label>
@@ -99,6 +112,7 @@ fetch('words.json')
   .then(d => {
     if(!d || !Array.isArray(d.sentences)) throw new Error('words.json должен содержать массив sentences');
     allSentences = d.sentences;
+	updateSentenceCounter(); // обновляем сразу после загрузки
     pickThreeRandom();
   })
   .catch(err => { console.error(err); });
@@ -117,6 +131,11 @@ function getCorrectFieldFrom(sectionObj, logicalKey){
     case 'L-Konjuktion': return getField(sectionObj,'L-Konjuktion','lkonj','L-Konj');
     default: return getField(sectionObj, logicalKey);
   }
+}
+
+function updateSentenceCounter() {
+  const counter = document.getElementById('sentence-counter');
+  counter.textContent = `Sætninger : ${sentences.length}`;
 }
 
 function pickThreeRandom(){
@@ -315,3 +334,4 @@ function updateTranslation(){
 </script>
 </body>
 </html>
+
