@@ -219,24 +219,22 @@ function checkAnswer() {
     else if (idx === selectedIndex) div.classList.add('wrong');
   });
 
-  // обновляем счетчики
+  // сохраняем статус
   if (selectedIndex === set.correctIndex) correctCount++;
   else wrongCount++;
 
   // обновляем счетчик выполненных заданий
-  document.getElementById('task-number').textContent = `Opgave: ${correctCount + wrongCount} / ${totalTasks}`;
+  document.getElementById('taskNumber').textContent = `Opgave: ${correctCount + wrongCount} / ${totalTasks}`;
 
   // проверка завершения всех заданий
   if(correctCount + wrongCount === totalTasks){
     alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
-    // можно тут блокировать кнопку Далее, если нужно
-//    document.getElementById('nextButton').disabled = true;
   }
-}
 
   // можно сразу переходить к следующей задаче
   nextTask();
 }
+
 
 function nextTask() {
   if(!data) return;
@@ -280,6 +278,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
