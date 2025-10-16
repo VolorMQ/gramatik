@@ -20,7 +20,7 @@
         },
         {
           "title": "Eksklusiv villa med udsigt",
-          "text": "Stort hus med privat pool, fem værelser og panoramaudsigt. Ideel til dem, der ønsker komfort og ro.",
+          "text": "Lille hus med privat pool, 2 værelser og panoramaudsigt. Ideel til dem, der ønsker komfort og ro.",
           "contacts": ["66778899"]
         }
       ],
@@ -72,7 +72,7 @@
         },
         {
           "title": "Luksusvilla i bjergene",
-          "text": "Eksklusivt hus med jacuzzi og panoramaudsigt, beliggende langt fra kysten. Perfekt til ro og afslapning.",
+          "text": "Eksklusivt sommerhus med jacuzzi og panoramaudsigt, beliggende langt fra kysten. Perfekt til ro og afslapning.",
           "contacts": []
         }
       ],
@@ -93,7 +93,7 @@
         },
         {
           "title": "Køkkenhjælp søges",
-          "text": "Travlt pizzeria søger hjælp i køkkenet. Aften- og weekendvagter, oplæring tilbydes.",
+          "text": "Travlt pizzeria søger hjælp i køkkenet og nogle gang servering. Aften- og weekendvagter, oplæring tilbydes.",
           "contacts": []
         },
         {
@@ -114,7 +114,7 @@
         },
         {
           "title": "Katteunger gives væk",
-          "text": "Tre små killinger søger nye hjem. Spiser selv, meget nysgerrige og legesyge.",
+          "text": "Tre små hvid killinger søger nye hjem. Spiser selv, meget nysgerrige og legesyge.",
           "contacts": []
         },
         {
@@ -223,7 +223,7 @@
         },
         {
           "title": "Værelse i delelejlighed",
-          "text": "Møbleret værelse i hyggeligt kollektiv. Fælles køkken, internettid inkluderet. Velegnet til studerende.",
+          "text": "Møbleret 1 værelse i hyggeligt kollektiv. Fælles køkken, internettid inkluderet. Velegnet til studerende.",
           "contacts": ["88990011"]
         },
         {
@@ -238,19 +238,19 @@
       "prompt": "Jeg søger en varevogn med stort lastrum til arbejde.",
       "announcements": [
         {
-          "title": "Robust varevogn klar til brug",
-          "text": "Velholdt varevogn med højt lastrum og skillevæg. Ny service, god bremsepræstation — ideel til håndværkeropgaver.",
-          "contacts": ["33441122"]
-        },
-        {
-          "title": "Personbil med god komfort",
-          "text": "Fem-sæders familiebil, rummelig kabine, fin brændstoføkonomi. Passer til daglig kørsel og længere ture.",
-          "contacts": ["55663344"]
-        },
-        {
           "title": "Trailer til kort leje",
           "text": "Lille åben trailer perfekt til haveredskaber eller mindre flytninger. Kan lejes pr. dag eller weekend.",
           "contacts": ["77009911"]
+        },
+        {
+          "title": "Varevogn med god komfort",
+          "text": "Syv-sæders familiebil, rummelig kabine, fin brændstoføkonomi. Passer til daglig kørsel og længere ture.",
+          "contacts": ["55663344"]
+        },
+        {
+		  "title": "Robust varevogn klar til brug",
+          "text": "Velholdt varevogn med højt lastrum og skillevæg. Ny service, god bremsepræstation — ideel til håndværkeropgaver.",
+          "contacts": ["33441122"]        
         },
         {
           "title": "El-lastebil med lav kilometerstand",
@@ -258,13 +258,13 @@
           "contacts": []
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 2
     },
     {
       "prompt": "Jeg vil finde en barnepige til weekendvagter.",
       "announcements": [
         {
-          "title": "Erfaren weekendbarnepige",
+          "title": "Erfaren weekendbarnet",
           "text": "Ansvarsfuld og rolig person med anbefalinger. Kan arbejde både lørdags- og søndagsaftener. Tryghed og aktiverende leg.",
           "contacts": ["66112233"]
         },
@@ -290,9 +290,9 @@
       "prompt": "Jeg søger deltidsjob som butikskassér med weekendvagter.",
       "announcements": [
         {
-          "title": "Butik søger deltidskasse",
-          "text": "Lokalt supermarked søger hjælpsom medarbejder til kasse, primært weekendvagter. Træning gives ved start.",
-          "contacts": ["22336655"]
+          "title": "Vikar til lager",
+          "text": "Korttidsvikar til pluk og pak i travl sæson. Fysisk arbejde, skiftende vagter.",
+          "contacts": []
         },
         {
           "title": "Kontorassistent på fuld tid",
@@ -305,12 +305,12 @@
           "contacts": ["77881100"]
         },
         {
-          "title": "Vikar til lager",
-          "text": "Korttidsvikar til pluk og pak i travl sæson. Fysisk arbejde, skiftende vagter.",
-          "contacts": []
+		  "title": "Butik søger deltidskasse",
+          "text": "Lokalt supermarked søger hjælpsom medarbejder til kasse, primært weekendvagter. Træning gives ved start.",
+          "contacts": ["22336655"]          
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 3
     },
     {
       "prompt": "Jeg vil købe en lys, mellemstor sofa i god stand.",
@@ -342,9 +342,9 @@
       "prompt": "Jeg leder efter en engelsklærer til online konversationslektioner.",
       "announcements": [
         {
-          "title": "Online samtalelærer i engelsk",
-          "text": "Erfaren underviser tilbyder skræddersyede samtaletimer via video. Fokus på udtale og flydende tale.",
-          "contacts": ["teacher@engelsk.dk"]
+          "title": "Børnehavepædagog søger job",
+          "text": "Erfaring med små børn, kreative aktiviteter og pædagogisk omsorg. Til dagtimerne.",
+          "contacts": ["33440055"]
         },
         {
           "title": "Danskundervisning for udlændinge",
@@ -352,9 +352,9 @@
           "contacts": []
         },
         {
-          "title": "Børnehavepædagog søger job",
-          "text": "Erfaring med små børn, kreative aktiviteter og pædagogisk omsorg. Til dagtimerne.",
-          "contacts": ["33440055"]
+		  "title": "Online samtalelærer i engelsk",
+          "text": "Erfaren underviser tilbyder skræddersyede samtaletimer via video. Fokus på udtale og flydende tale.",
+          "contacts": ["teacher@engelsk.dk"]        
         },
         {
           "title": "Sprogudveksling i caféen",
@@ -362,7 +362,7 @@
           "contacts": ["kontakt@sprogklub.dk"]
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 2
     },
     {
       "prompt": "Jeg vil booke et lokale til en lille koncert for cirka 50 personer.",
@@ -394,14 +394,14 @@
       "prompt": "Jeg vil leje en cykel til daglig pendling i mindst en måned.",
       "announcements": [
         {
-          "title": "Månedsleje af pendlingscykel",
-          "text": "Robust bycykel til månedsleje med skærme og bagagebærer. Service inkluderet og mulighed for forlængelse.",
-          "contacts": ["44558899"]
-        },
-        {
           "title": "Brugt racercykel til salg",
           "text": "Let racercykel i god stand, perfekt til træning og ture i weekenden.",
           "contacts": []
+        },
+        {
+		  "title": "Månedsleje af pendlingscykel",
+          "text": "Robust bycykel til månedsleje med skærme og bagagebærer. Service inkluderet og mulighed for forlængelse.",
+          "contacts": ["44558899"]         
         },
         {
           "title": "El-løbehjul til korttid",
@@ -414,7 +414,7 @@
           "contacts": []
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 1
     },
     {
       "prompt": "Jeg søger friske økologiske grøntsager fra en lokal producent.",
@@ -472,9 +472,9 @@
       "prompt": "Jeg søger en erfaren pianist til private lektioner.",
       "announcements": [
         {
-          "title": "Undervisning i klaverfærdigheder",
-          "text": "Instruktør med flere års erfaring tilbyder individuel vejledning. Fokus på teknik, repertoire og øvelsesplaner tilpasset dit niveau.",
-          "contacts": ["klaver@musik.dk"]
+          "title": "Elektronisk musikudstyr til salg",
+          "text": "Digital klaverkeyboard og forstærker i god stand. Perfekt til øvelser hjemme eller små koncerter.",
+          "contacts": ["77882211"]
         },
         {
           "title": "Korleder til lokale arrangementer",
@@ -482,9 +482,9 @@
           "contacts": []
         },
         {
-          "title": "Elektronisk musikudstyr til salg",
-          "text": "Digital klaverkeyboard og forstærker i god stand. Perfekt til øvelser hjemme eller små koncerter.",
-          "contacts": ["77882211"]
+		  "title": "Undervisning i klaverfærdigheder",
+          "text": "Instruktør med flere års erfaring tilbyder individuel vejledning. Fokus på teknik, repertoire og øvelsesplaner tilpasset dit niveau.",
+          "contacts": ["klaver@musik.dk"]         
         },
         {
           "title": "Sangcoach søger samarbejde",
@@ -492,7 +492,7 @@
           "contacts": ["sang@coach.dk"]
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 2
     },
     {
       "prompt": "Jeg vil leje en bil i weekenden til en kort tur.",
@@ -524,9 +524,9 @@
       "prompt": "Jeg leder efter en sambo (roommate) til at dele en 3-værelses lejlighed.",
       "announcements": [
         {
-          "title": "Plads ledig i roligt hjem",
-          "text": "Stort værelse med skab i hyggelig lejlighed. Fælles stue og køkken, renlighed og samarbejde vægtes højt.",
-          "contacts": ["33447788"]
+          "title": "Værelse i kollegium",
+          "text": "Studieværelse med fælles faciliteter og sociale arrangementer. Passer bedst til studerende.",
+          "contacts": []
         },
         {
           "title": "Hel lejlighed til leje",
@@ -539,12 +539,12 @@
           "contacts": ["77669900"]
         },
         {
-          "title": "Værelse i kollegium",
-          "text": "Studieværelse med fælles faciliteter og sociale arrangementer. Passer bedst til studerende.",
-          "contacts": []
+		  "title": "Plads ledig i roligt hjem",
+          "text": "Stort værelse med skab i hyggelig lejlighed. Fælles stue og køkken, renlighed og samarbejde vægtes højt.",
+          "contacts": ["33447788"]          
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 3
     },
     {
       "prompt": "Jeg vil sælge en brugt smartphone i god stand.",
@@ -602,9 +602,9 @@
       "prompt": "Jeg vil booke en fotograf til bryllupsportrætter.",
       "announcements": [
         {
-          "title": "Portrætter med personlig stil",
-          "text": "Fotograf tilbyder heldags- eller kort sessioner med fokus på naturlige øjeblikke og efterbehandling i høj kvalitet.",
-          "contacts": ["foto@bryllup.dk"]
+          "title": "Videograf til events",
+          "text": "Optagelse og redigering af arrangementer, leverer highlight-videoer og fuld optagelse.",
+          "contacts": ["video@events.dk"]
         },
         {
           "title": "Fotostudie til produktbilleder",
@@ -612,9 +612,9 @@
           "contacts": []
         },
         {
-          "title": "Videograf til events",
-          "text": "Optagelse og redigering af arrangementer, leverer highlight-videoer og fuld optagelse.",
-          "contacts": ["video@events.dk"]
+		  "title": "Portrætter med personlig stil",
+          "text": "Fotograf tilbyder heldags- eller kort sessioner med fokus på naturlige øjeblikke og efterbehandling i høj kvalitet.",
+          "contacts": ["foto@bryllup.dk"]         
         },
         {
           "title": "Selvbetjent fotoboks",
@@ -622,7 +622,7 @@
           "contacts": []
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 2
     },
     {
       "prompt": "Jeg vil købe store, letplejede stueplanter til lejligheden.",
@@ -706,14 +706,14 @@
       "prompt": "Jeg vil finde en privat guitarlærer til begynderniveau.",
       "announcements": [
         {
-          "title": "Aftenskole for akkordlæring",
-          "text": "Instruktør tilbyder korte fortløbende sessioner for begyndere med fokus på rytme og simple sange.",
-          "contacts": ["guitar@toner.dk"]
-        },
-        {
           "title": "Salg af brugte strengeinstrumenter",
           "text": "Guitarer og ukuleler i forskellig stand. Mulighed for prøvespil i butikken.",
           "contacts": []
+        },
+        {
+		  "title": "Aftenskole for akkordlæring",
+          "text": "Instruktør tilbyder korte fortløbende sessioner for begyndere med fokus på rytme og simple sange.",
+          "contacts": ["guitar@toner.dk"]         
         },
         {
           "title": "Band søger rytmeguitarist",
@@ -726,7 +726,7 @@
           "contacts": []
         }
       ],
-      "correctIndex": 0
+      "correctIndex": 1
     },
     {
       "prompt": "Jeg vil købe en tam, sort kat der trives indendørs.",
@@ -987,6 +987,162 @@
         }
       ],
       "correctIndex": 3
+    },
+    {
+      "prompt": "Jeg søger arbejde inden for IT med fleksible arbejdstider.",
+      "announcements": [
+        {
+          "title": "Konsulentopgaver — kortere engagementer",
+          "text": "Timebetalte opgaver inden for cloud-migrering og sikkerhedsvurdering. Fleksibel planlægning af timer, remote arbejde muligt ved behov.",
+          "contacts": ["+45 77660011", "contact@konsulthub.dk"]
+        },
+        {
+          "title": "Drift og overvågning — projektbaseret",
+          "text": "Opgaver med overvågning af systemer, incident-håndtering og dokumentation. Projektkontrakter med fleksible vagter efter aftale. Erfaring med scripts og automatisering ønskes.",
+          "contacts": ["+45 33442200", "ops@driftpartner.dk"]
+        },
+        {
+          "title": "Helpdesk — mentorordning for nyuddannede",
+          "text": "Rolle for nyuddannede med mentorordning og mulighed for at skifte mellem onsite og hjemmebaseret støtte. Fokus på læring og praktisk erfaring i hardware- og softwarefejlfinding.",
+          "contacts": ["+45 44553322", "talent@itstart.dk"]
+        },
+        {
+		  "title": "Teknisk kundesupport — skiftordning",
+          "text": "Supportrolle med direkte kundekontakt og fjernassistance. Vagtplan med mulighed for tilpasning, oplæring ved erfarne kolleger. Krav: grundlæggende kendskab til netværk og Windows-miljøer.",
+		  "contacts": ["+45 21210011", "hr@supportcenter.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Jeg vil læse videre — søger informationsmateriale om masteruddannelser.",
+      "announcements": [
+        {
+          "title": "Kort kursus i ansøgningsskrivning",
+          "text": "Intensivt kursus der hjælper med CV, motivationsskrivelse og interviewforberedelse til videre kvalificerende forløb. Begrænset deltagerantal.",
+          "contacts": ["+45 22334455", "kursus@akademisk.dk"]
+        },
+        {
+		  "title": "Online introduktion til kandidatprogrammer",
+          "text": "Gratis webinar om faglige profiler, adgangskrav og finansieringsmuligheder for avancerede uddannelsesforløb. Spørgerunde med studiekoordinatorer efter præsentationen.",
+          "contacts": ["+45 70223344", "info@studieguide.dk"]         
+        },
+        {
+          "title": "Finansieringsworkshop for dem på kandidatniveau",
+          "text": "Introduktion til stipendier, legater og betalingsplaner samt individuel rådgivning om økonomisk planlægning under videre kvalificering.",
+          "contacts": ["+45 33445566", "fond@støtte.dk"]
+        },
+        {
+          "title": "Hybridforløb med fleksibel deltagelse",
+          "text": "Programmer med kombineret online- og campusundervisning, mulighed for deltidsdeltagelse samtidig med erhvervserfaring. Informationspakke og prøvelektion.",
+          "contacts": ["+45 99887700", "kontakt@hybridstudier.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg leder efter tilbud og butikker til dagligvareindkøb tæt på mig.",
+      "announcements": [
+        {
+          "title": "Aftenåbent og convenience — hurtigt udvalg",
+          "text": "Butik med lange åbningstider og klar-til-brug produkter. Velegnet til hurtige indkøb sent på dagen.",
+          "contacts": ["+45 22330044"]
+        },
+        {
+          "title": "Specialmarked med økologiske varer",
+          "text": "Små producenter og lokale specialiteter samlet under ét tag. Mulighed for abonnementspakke med ugentlige leveringstider.",
+          "contacts": ["+45 44332211", "kontakt@økologiskmarked.dk"]
+        },
+        {
+		  "title": "Ugens frugt- og grønttilbud i lokalbutikken",
+          "text": "Stort udvalg af sæsonens varer til særlige priser hele ugen. Friske leverancer hver morgen og loyalitetsfordele ved gentagne køb.",
+          "contacts": ["+45 66112233", "tilbud@lokalmark.dk"]         
+        },
+        {
+          "title": "Weekendmarked — lokale sælgere og secondhand",
+          "text": "Hver weekend samles boder med friskbag, lokale delikatesser og genstande med historie. Gratis adgang og gode parkeringsmuligheder.",
+          "contacts": ["+45 33447700", "event@markedsplads.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Jeg planlægger en rejse i Europa, billigt og praktisk.",
+      "announcements": [
+        {
+          "title": "Grupperejse med lave omkostninger",
+          "text": "Tur for mindre grupper med fordelagtige priser gennem fælles bookinger. Transport og indkvartering organiseres centralt for at spare tid.",
+          "contacts": ["+45 55668800", "gruppe@easytravel.dk"]
+        },
+        {
+          "title": "Kompakt weekendpakke — kultur og byliv",
+          "text": "Kort ophold med sene afgange og praktisk overnatning tæt på offentlige forbindelser. Fokus på centrale oplevelser uden lange transfer.",
+          "contacts": ["+45 33112244", "weekend@citytours.dk"]
+        },
+        {
+		  "title": "Budgetrundtur — flere byer på kort tid",
+          "text": "Pakke med transport mellem byer, overnatninger på enkle steder og forslag til økonomiske spisesteder. Fleksible datoer og mulighed for at tilkøbe guidede ture.",
+          "contacts": ["+45 22446688", "budget@rundtur.dk"]          
+        },
+        {
+          "title": "Langrute med stop–over og fleksible billetmuligheder",
+          "text": "Rejseplan der kombinerer korte stop på flere destinationer. Billetter kan ændres mod gebyr, forslag til lokale oplevelser med lav pris.",
+          "contacts": ["+45 77889900", "plan@multistop.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Søger steder til afslapning og wellness i nærheden.",
+      "announcements": [
+        {
+          "title": "Weekend-retreat i naturskønne omgivelser",
+          "text": "Hel weekend med fokus på ro, enkel kost og stillhed. Begrænset antal pladser og tidspunkter med fysiske aktiviteter.",
+          "contacts": ["+45 99885544", "retreat@naturpause.dk"]
+        },
+        {
+          "title": "Kurcenter med rolig atmosfære og naturture",
+          "text": "Sted omgivet af skov med guidede gåture, stille ophold og mulighed for individuelle behandlinger efter behov.",
+          "contacts": ["+45 33441100", "kontakt@kurhuset.dk"]
+        },
+        {
+          "title": "Mindful-pakke: korte sessions og vejrtrækningsøvelser",
+          "text": "Program bestående af korte guidede sessions, teknikker til ro i sindet og en lille folder til daglig praksis derhjemme.",
+          "contacts": ["+45 44553300", "mindful@pause.dk"]
+        },
+        {
+		  "title": "Spa-dag med sauna og massage",
+          "text": "En-dags pakke med adgang til saunafaciliteter, afslappende behandling og let forplejning. Bookning anbefales i weekenden.",
+          "contacts": ["+45 66117788", "spa@rocenter.dk"]       
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Jeg vil holde ferie — leder efter strandophold eller bjergretreat.",
+      "announcements": [
+        {
+		  "title": "Højlandspakke med friske luft-oplevelser",
+          "text": "Ophold i højtliggende omgivelser med korte vandreture, fælles måltider og tid til fordybelse. Velegnet til dem der søger naturens ro.",
+          "contacts": ["+45 33449900", "højland@udflugt.dk"]
+        },
+        {
+          "title": "Kystophold ved lavt tempo",
+          "text": "Overnatning tæt på vandet med muligheden for lange gåture ved kysten, enkel forplejning og rolige aftener. Transporthjælp på forespørgsel.",
+          "contacts": ["+45 22335566", "kyst@havblik.dk"]
+        },
+        {
+          "title": "All-inclusive roophold — begrænset antal",
+          "text": "Et par dage med fuld forplejning, aktiviteter efter lyst og stille zoner til afslapning. Mulighed for at bestille ekstra behandlinger.",
+          "contacts": ["+45 77665500", "book@roophold.dk"]
+        },
+        {
+          "title": "Kombinationspakke: kyst og kuperet terræn",
+          "text": "Planlagt rute der kombinerer kystnære oplevelser og dage i kuperet landskab. Transport mellem steder er inkluderet i pakken.",
+          "contacts": ["+45 66778800", "mix@oplevelser.dk"]
+        }
+      ],
+      "correctIndex": 1
     }
   ]
 }
