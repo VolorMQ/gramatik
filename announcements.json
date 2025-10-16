@@ -1143,6 +1143,838 @@
         }
       ],
       "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg søger deltidsjob inden for kundeservice.",
+      "announcements": [
+        {
+          "title": "Supportmedarbejder på deltid — tilpas vagtplan",
+          "text": "Rolig kundeservicefunktion med telefonsupport og chat. Arbejdstider kan tilpasses studier eller andre forpligtelser. Grundlæggende oplæring gives og kollegialt team sikrer sparring.",
+          "contacts": ["+45 40125500", "rekruttering@kundeservice.dk"]
+        },
+        {
+          "title": "Aften- og weekendvagter i butikskundeservice",
+          "text": "Stillinger med fokus på kundekontakt i butik og enkel administration. Velegnet hvis du har fleksibilitet om aftenen og i weekenden.",
+          "contacts": ["+45 22331100"]
+        },
+        {
+          "title": "Telefonisk ordrehåndtering — løbende tilkaldevagter",
+          "text": "Opkaldsbaseret arbejde med fokus på ordrer og opfølgning. Timeløn og mulighed for flere korte vagter pr. uge.",
+          "contacts": ["+45 33446677", "ordrehåndtering@logistik.dk"]
+        },
+        {
+          "title": "Studenterjob: kundesupport og lagerhjælp",
+          "text": "Kombineret rolle hvor du deler tid mellem kundeservice og let lagerarbejde. Giver praktisk erfaring og fleksible timer omkring studieplan.",
+          "contacts": ["+45 77660022", "studentjob@handel.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg vil starte på et masterkursus i miljøvidenskab.",
+      "announcements": [
+        {
+          "title": "Kort informationsmøde om videreuddannelse",
+          "text": "Generel gennemgang af muligheder for efteruddannelse inden for natur- og miljøfag. Nyttigt for dem, der overvejer skifte af retning.",
+          "contacts": ["+45 70220011", "info@uddannelsescenter.dk"]
+        },
+        {
+          "title": "Master i miljøvidenskab — åben vejledning",
+          "text": "Detaljeret præsentation af studieindhold, praktikmuligheder og optagelseskrav. Individuel vejledning om specialiseringer og stipendier.",
+          "contacts": ["+45 33117744", "master@miljøuni.dk"]
+        },
+        {
+          "title": "Kort kursus i bæredygtighedsprincipper",
+          "text": "Intensivt kursus rettet mod praktiske værktøjer i grøn omstilling, egnet som supplement til faglig baggrund.",
+          "contacts": ["+45 22330011"]
+        },
+        {
+          "title": "Feltworkshop — prøv praktiske metoder",
+          "text": "Weekendworkshop med hands-on metoder i felten, god mulighed for at afklare interesse før formel ansøgning.",
+          "contacts": ["+45 44332255", "felt@naturstudie.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Leder efter steder at købe elektronik til rimelige priser.",
+      "announcements": [
+        {
+          "title": "Butik med designfokus og service",
+          "text": "Sted med god rådgivning, reparationstilbud og mulighed for at prøve produkter inden køb. Prisniveau moderat.",
+          "contacts": ["+45 55112233", "service@elektra.dk"]
+        },
+        {
+          "title": "Specialforretning for lyd- og fotoentusiaster",
+          "text": "Bredt udvalg af tilbehør og mulighed for at få vejledning fra fagfolk. Tilbyder også bytteordninger og testmuligheder.",
+          "contacts": ["+45 33441166"]
+        },
+        {
+          "title": "Outlet og online-tilbud — lavere priser",
+          "text": "Sted med regelmæssige kampagner og refubrished-enheder til reduceret pris. Godt valg hvis pris er styrende kriterium.",
+          "contacts": ["+45 22337700", "tilbud@outlettech.dk"]
+        },
+        {
+          "title": "Større kæde med brede åbningstider",
+          "text": "Praktisk hvis du ønsker at handle sent; stor lagerkapacitet og standardiseret returpolitik gør købet trygt.",
+          "contacts": ["+45 66770033"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Planlægger en budgetrejse til Sydeuropa i sommer.",
+      "announcements": [
+        {
+          "title": "Kulturelle weekendture — hurtig oversigt",
+          "text": "Kortere ture med fokus på byens højdepunkter og offentlig transport. Velegnet til korte ophold uden store forberedelser.",
+          "contacts": ["+45 33112288", "city@korttur.dk"]
+        },
+        {
+          "title": "Selvorganiseret rute med delte transportmuligheder",
+          "text": "Pakker der hjælper med fleksibel transport mellem byer og forslag til økonomiske overnatninger undervejs.",
+          "contacts": ["+45 55668811", "delerejser@flextravel.dk"]
+        },
+        {
+          "title": "Vintertilbud — rabat uden for højsæsonen",
+          "text": "Godt hvis du kan rejse uden for sommerperioden; billigere priser og mindre trængsel ved seværdigheder.",
+          "contacts": ["+45 77880099"]
+        },
+        {
+          "title": "Sommerbudgetpakke med overnatning og lokal transport",
+          "text": "Pakke designet til sommerrejser med enkle logier, lokale forbindelser og tips til billige spisesteder.",
+          "contacts": ["+45 22446611", "budget@sommerrejser.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Søger wellnessoplevelse med kort ophold.",
+      "announcements": [
+        {
+          "title": "Kort spaophold med massage og ro",
+          "text": "En-dags pakke med adgang til varme rum og en kort behandling. Velegnet som afbræk fra en travl uge.",
+          "contacts": ["+45 66118877", "spa@roligdag.dk"]
+        },
+        {
+          "title": "Mindful-sessioner og afslappende gåture",
+          "text": "Program med korte guidede øvelser og lette ture i nærområdets grønne omgivelser. Fokus på nærvær og restitution.",
+          "contacts": ["+45 33441177", "mindful@pausecenter.dk"]
+        },
+        {
+          "title": "Weekendpakke med fuld forplejning og aktiviteter",
+          "text": "To-nætters ophold med struktur på aktiviteter og måltider, god for dem der ønsker både aktivitet og hvile.",
+          "contacts": ["+45 99884433", "book@weekendretreat.dk"]
+        },
+        {
+          "title": "Aftenbesøg i lokale saunaer — drop-in",
+          "text": "Mulighed for kortvarig adgang og enkelt booking. Praktisk hvis du ønsker spontan afslapning efter arbejde.",
+          "contacts": ["+45 22334488"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Ønsker familievenlig strandferie med aktiviteter.",
+      "announcements": [
+        {
+          "title": "Rolig kystcamp med fokus på afslapning",
+          "text": "Enkle faciliteter tæt på vandet, små legepladser og mulighed for fælles grill. Velegnet hvis familien vil have fred og natur.",
+          "contacts": ["+45 33448800", "camp@kystliv.dk"]
+        },
+        {
+          "title": "Aktiv strandpakke med børneaktiviteter",
+          "text": "Ophold hvor børn kan deltage i organiserede aktiviteter, mens voksne kan vælge mellem ture eller hvile. Praktisk beliggenhed og familievenlige måltider.",
+          "contacts": ["+45 66770088", "familie@strandpakker.dk"]
+        },
+        {
+          "title": "Luksusophold med rolig strandadgang",
+          "text": "Højere standard, private områder og ekstra service. Passer hvis I vil kombinere komfort med strandliv.",
+          "contacts": ["+45 44552211"]
+        },
+        {
+          "title": "Kort city & strand kombination",
+          "text": "Kombination af byoplevelser og enkelte stranddage, praktisk hvis I ønsker kultur og strand i samme tur.",
+          "contacts": ["+45 22336677", "mix@byogstrand.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Har brug for en privat tutor i matematik for gymnasieniveau.",
+      "announcements": [
+        {
+          "title": "Gruppecenter med lektiehjælp",
+          "text": "Plads til mindre hold hvor eleverne kan få støtte i specifikke emner. Fast skema og mulighed for ekstra øvelser.",
+          "contacts": ["+45 33117700", "lektie@hjælp.dk"]
+        },
+        {
+          "title": "Erfaren underviser for individuel undervisning",
+          "text": "Skræddersyet forløb med fokus på eksamensforberedelse og svage områder. Mulighed for online-sessioner efter aftale.",
+          "contacts": ["+45 44330055", "underviser@privatlektion.dk"]
+        },
+        {
+          "title": "Studenter-tutorer — fleksible aftener",
+          "text": "Tutorer der selv studerer med erfaring i gymnasiefag og med fleksibilitet til aftenundervisning. Prisvenligt og praktisk.",
+          "contacts": ["+45 55662233", "tutor@studenterhjælp.dk"]
+        },
+        {
+          "title": "Intensiv køreplan før prøver",
+          "text": "Korte forløb med fokus på nøgleemner og prøveøvelser; velegnet hvis du har begrænset tid til forberedelse.",
+          "contacts": ["+45 77881144"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Søger tilbud på møbler til nyt hjem.",
+      "announcements": [
+        {
+          "title": "Lokal snedker med specialmål",
+          "text": "Mulighed for at bestille møbler efter mål og få personlig rådgivning om materialer. God løsning hvis du vil have holdbare løsninger.",
+          "contacts": ["+45 33445500", "snedker@hjem.dk"]
+        },
+        {
+          "title": "Outlet med demo-modeller",
+          "text": "Sted med nedsatte priser på udstillingsmodeller; ofte gode køb når det handler om sofaer og opbevaring.",
+          "contacts": ["+45 22334466", "outlet@møbler.dk"]
+        },
+        {
+          "title": "Møbelkæde med levering og montage",
+          "text": "Bredt udvalg og mulighed for hurtig levering. Praktisk hvis du ønsker en samlet løsning uden at koordinere flere leverandører.",
+          "contacts": ["+45 66770044"]
+        },
+        {
+          "title": "Secondhand-marked for møbler med historie",
+          "text": "Find unikke fund og genbrugsmøbler i god stand. Gode priser og mulighed for at give møbler nyt liv.",
+          "contacts": ["+45 99881100", "brugte@møbelmarked.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Jeg søger deltidsjob i restauration med fleksible aftenvagter.",
+      "announcements": [
+        {
+          "title": "Serviceteam søger ekstra hænder",
+          "text": "Vi har brug for en stabil person til aftenarbejde med kundeopgaver og lettere køkkenhjælp. Arbejdet kræver smil og ansvarsfølelse; oplæring tilbydes.",
+          "contacts": ["+45 33110022", "ansøg@spisehus.dk"]
+        },
+        {
+          "title": "Aften- og weekendstillinger i caféen",
+          "text": "Café søger personale til skiftende vagter om aftenen og i weekenden. Godt arbejdsmiljø og mulighed for ekstra timer ved behov.",
+          "contacts": ["+45 22443311", "cafe@lokaltsted.dk"]
+        },
+        {
+          "title": "Barhjælp — erfaring foretrækkes",
+          "text": "Rolle med ansvar for bestillinger og baropsætning. Erfaring en fordel, men ikke et krav ved kort oplæring.",
+          "contacts": ["+45 66112200"]
+        },
+        {
+          "title": "Køkkenmedhjælp til begivenheder",
+          "text": "Vikariater ved events og private arrangementer. Kort varsel kan forekomme; fleksibilitet værdsættes.",
+          "contacts": ["+45 44332266", "events@madteam.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg vil tage et sprogkursus — foretrækker aftentimer eller weekend.",
+      "announcements": [
+        {
+          "title": "Intensivt dagskursus i sprogforståelse",
+          "text": "Kompakt kursus over to uger med dagtimer. Velegnet hvis du kan afsætte heldagsperioder til fordybelse.",
+          "contacts": ["+45 70221100"]
+        },
+        {
+          "title": "Online-moduler med fleksibel studieplan",
+          "text": "Korte lektioner du kan tage når det passer, suppleret med live sparring en gang om ugen.",
+          "contacts": ["+45 33440077", "online@studieflex.dk"]
+        },
+        {
+          "title": "Aftenhold og weekendworkshops tæt på centrum",
+          "text": "Hold med undervisning om aftenen og enkelte intensive weekendmoduler. Fokus på samtale og praktisk brug.",
+          "contacts": ["+45 22331155", "tilmelding@sprogcenter.dk"]
+        },
+        {
+          "title": "Privatundervisning — individuel plan",
+          "text": "Skræddersyet forløb hvor undervisning tilrettelægges efter dine tidspunkter. Mulighed for både online og onsite møder.",
+          "contacts": ["+45 99881122", "privat@sprogundervisning.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Leder efter nem levering af dagligvarer og faste leveringsmuligheder.",
+      "announcements": [
+        {
+          "title": "Lokalt kooperativ med afhentningspunkter",
+          "text": "Mulighed for ugentlig bestilling og afhentning tæt på dig. Friske varer fra lokale leverandører.",
+          "contacts": ["+45 33447755", "info@kooperativet.dk"]
+        },
+        {
+          "title": "Abonnement på frugt- og grøntkasser",
+          "text": "Få en kasse med sæsonens varer leveret hver uge. Fleksible størrelser og betalingsperioder.",
+          "contacts": ["+45 66114433"]
+        },
+        {
+          "title": "Aftenlevering til døren — hurtig service",
+          "text": "Dagligvarer leveret samme dag sent om aftenen. Tilgængelig i udvalgte zoner, bestilling via app.",
+          "contacts": ["+45 22330088", "levering@senlevering.dk"]
+        },
+        {
+          "title": "Markedspakker med faste leveringsdage",
+          "text": "Samlede pakker med basisvarer leveret en gang om ugen. God løsning hvis du vil planlægge ukens indkøb.",
+          "contacts": ["+45 77881100", "pakker@markedet.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Planlægger en kort togrejse i Norden — økonomisk og praktisk.",
+      "announcements": [
+        {
+          "title": "Kompakt rute med færre stop og billige forbindelser",
+          "text": "Forslag til rute med fokus på korte rejsetider mellem byer og praktiske forbindelser. Inkluderer opholdsforslag ved centrale stationer.",
+          "contacts": ["+45 22446655", "rute@togrejser.dk"]
+        },
+        {
+          "title": "Weekendkort med rabat på flere togtjenester",
+          "text": "Kort til weekendrejser med nedsatte priser og mulighed for fri omstigning inden for tidsrum.",
+          "contacts": ["+45 33112200"]
+        },
+        {
+          "title": "Gruppetilbud til korte ture",
+          "text": "Fordele ved fælles booking og muligheden for at spare på billetter ved rejser i mindre grupper.",
+          "contacts": ["+45 55668822"]
+        },
+        {
+          "title": "Lavprispakke med fleksible afgange",
+          "text": "Billetpakke med lave priser og mulighed for at vælge mellem flere afrejsedage. Perfekt hvis du har smidige planer.",
+          "contacts": ["+45 66770011", "budget@jernbanen.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Søger kortvarig ro — aktiviteter der hjælper med stressreduktion.",
+      "announcements": [
+        {
+          "title": "Guidede gåture i nærmiljøet",
+          "text": "Korte ture i naturen med fokus på tempo og pauser, velegnet som afbræk i hverdagen. Ingen forudgående erfaring nødvendig.",
+          "contacts": ["+45 33443322", "vandring@naturoplev.dk"]
+        },
+        {
+          "title": "Aftensessioner med vejrtrækningsøvelser",
+          "text": "Korte aftenhold der lærer enkle teknikker til afspænding, kan kombineres med hjemmeøvelser.",
+          "contacts": ["+45 66117700", "tilmelding@roligånd.dk"]
+        },
+        {
+          "title": "Weekendkursus med mindfulness og samtale",
+          "text": "To-dages forløb med fokus på nærvær, meditation og samtale i lille gruppe. Begrænsede pladser.",
+          "contacts": ["+45 44330088", "book@mindfulweekend.dk"]
+        },
+        {
+          "title": "Kort massagepakke — drop-in tider",
+          "text": "Kortere behandlinger du kan booke efter arbejde; god mulighed for hurtig restitution uden stor planlægning.",
+          "contacts": ["+45 22334455"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Vil holde sommerferie med børn — søger familievenlige steder.",
+      "announcements": [
+        {
+          "title": "Sted med legeområde og planlagte aktiviteter",
+          "text": "Tilbud med daglige aktiviteter for børn og roligere zoner til forældre. Praktisk beliggenhed ved vandet.",
+          "contacts": ["+45 33448811", "familie@aktivitetsferie.dk"]
+        },
+        {
+          "title": "Ferielejligheder med køkken og børnevenlige faciliteter",
+          "text": "Selvhusholdningsløsning med plads til familier, sikker adgang til strand og legeplads i nærheden.",
+          "contacts": ["+45 66770022", "lejlighed@familieferie.dk"]
+        },
+        {
+          "title": "Kort familiepakke med guidede ture for børn",
+          "text": "Planlagt ophold med børnevenlige ture og tilbud om underholdning i lavsæsonen; velegnet ved fleksible datoer.",
+          "contacts": ["+45 44552233", "pakke@børneferie.dk"]
+        },
+        {
+          "title": "Weekendophold med børnepasningstilbud",
+          "text": "Kort ophold hvor der tilbydes børnepasservice i bestemte tidsrum, så forældre kan få pause.",
+          "contacts": ["+45 22336600", "weekend@pauserum.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Søger praktikplads inden for marketing — gerne kreativt fokus.",
+      "announcements": [
+        {
+          "title": "Kortvarig praktik i kommunikationsteamet",
+          "text": "Projektbaseret praktik med opgaver i tekstproduktion og sociale medier. Mulighed for portfolio-arbejde.",
+          "contacts": ["+45 33117755", "praktik@kommunikation.dk"]
+        },
+        {
+          "title": "Kreativt bureau søger praktikant — vis portfolio",
+          "text": "Mulighed for at arbejde med kampagner og visuelt indhold. Vi prioriterer kreativ tænkning og samarbejde.",
+          "contacts": ["+45 44331100", "apply@kreativbureau.dk"]
+        },
+        {
+          "title": "Digital marketing — analytisk praktik",
+          "text": "Fokus på data, annoncering og performance. Velegnet hvis du ønsker praktisk erfaring med digitale værktøjer.",
+          "contacts": ["+45 55660011", "data@digitalhub.dk"]
+        },
+        {
+          "title": "Event- og kampagnepraktik for mindre teams",
+          "text": "Praktik hvor du bliver en del af et lille team og får ansvar for konkrete dele af eventplanlægningen.",
+          "contacts": ["+45 77881100"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Har brug for billig billeje til weekendtur — fleksible afhentningstider.",
+      "announcements": [
+        {
+          "title": "Weekendudlejning med frit kilomterforbrug",
+          "text": "Kort leje til konkurrencedygtige priser med afhentning fredag og aflevering mandag. Enkel online booking.",
+          "contacts": ["+45 22447788", "weekend@biludlejning.dk"]
+        },
+        {
+          "title": "Delingsordning med korttidsleje",
+          "text": "Mulighed for at leje bil på time- eller dagsbasis via app; praktisk hvis du kun har brug for bilen få timer.",
+          "contacts": ["+45 33119900"]
+        },
+        {
+          "title": "Kompakt bilpakke med begrænset kilometer",
+          "text": "Lav pris ved begrænset km-forbrug. God hvis du planlægger korte ture i nærheden.",
+          "contacts": ["+45 55668833", "tilbud@kompaktbil.dk"]
+        },
+        {
+          "title": "Familiebil med ekstra plads — weekendtilbud",
+          "text": "Større bil til fordelagtig pris i weekenden; reserveres online med fleksible afhentningsvinduer.",
+          "contacts": ["+45 66771122", "familie@rentacar.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger deltidsjob i lager/logistik, gerne eftermiddag/aften.",
+      "announcements": [
+        {
+          "title": "Aftenvagter til pluk og pak",
+          "text": "Vi mangler stabilt personale til ordrepluk og forsendelse. Opgaverne kræver præcision og lidt fysisk formåen. Arbejdstider fordeles fleksibelt efter aftale.",
+          "contacts": ["+45 33119988", "lager@logistikteam.dk"]
+        },
+        {
+          "title": "Transportassistent — deltid",
+          "text": "Hjælp med at håndtere leverancer, sortering og klargøring til afhentning. Kort oplæring, teamorienteret miljø.",
+          "contacts": ["+45 22445500"]
+        },
+        {
+          "title": "Varemodtagelse og kvalitetskontrol",
+          "text": "Rolle med fokus på kontrol af leverancer og registrering. Arbejdstider kan ligge om eftermiddagen og aftenen.",
+          "contacts": ["+45 77221100", "kontrol@varemodtagelse.dk"]
+        },
+        {
+          "title": "Sæsonvikar til lageropgaver",
+          "text": "Kortere ansættelse med mulighed for forlængelse ved travlhed. Velegnet hvis du ønsker ekstra timer i en periode.",
+          "contacts": ["+45 44332211"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg vil tage et online kursus i webudvikling — fleksibel tid.",
+      "announcements": [
+        {
+          "title": "Modulbaseret kursus i frontend-teknologier",
+          "text": "Selvstyrede moduler med korte videolektioner og praktiske øvelser. Mulighed for at få feedback på opgaver fra undervisere.",
+          "contacts": ["+45 70223300", "frontend@kursuscenter.dk"]
+        },
+        {
+          "title": "Aftenhold med projektarbejde",
+          "text": "Holdundervisning hvor du arbejder på et projekt gennem semesteret med undervisning om aftenen. Praktisk fokus på moderne værktøjer.",
+          "contacts": ["+45 33113344", "tilmelding@devskole.dk"]
+        },
+        {
+          "title": "Weekend-workshop: byg din første hjemmeside",
+          "text": "Intensivt to-dages forløb hvor du bygger en simpel side fra bunden og får introduktion til deployment.",
+          "contacts": ["+45 22337711", "workshop@kodehuset.dk"]
+        },
+        {
+          "title": "Mentorforløb med individuel vejledning",
+          "text": "Længere forløb hvor du får en fast mentor tilknyttet og arbejde mod specifikke læringsmål efter eget tempo.",
+          "contacts": ["+45 44660033", "mentor@growth.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Leder efter gode steder at købe husholdningsapparater til fornuftige priser.",
+      "announcements": [
+        {
+          "title": "Butik med garantimuligheder og vejledning",
+          "text": "Her får du hjælp til valg og mulighed for serviceaftale. Praktisk hvis du ønsker sikkerhed omkring købet.",
+          "contacts": ["+45 55112299", "service@hjemtech.dk"]
+        },
+        {
+          "title": "Outlet for demo- og udstillingsmodeller",
+          "text": "Nedsatte priser på modeller fra udstillingslokaler. Perfekt hvis du ønsker lav pris uden kompromis på funktionalitet.",
+          "contacts": ["+45 22330099", "tilbud@outlet.dk"]
+        },
+        {
+          "title": "Online markedsplads med levering til døren",
+          "text": "Stort udvalg og fleksible leveringsmuligheder, mulighed for retur inden for en given periode.",
+          "contacts": ["+45 33441122"]
+        },
+        {
+          "title": "Lokalt værksted med køb af reparerede enheder",
+          "text": "Refurbished apparater med tjek og begrænset garanti. God balance mellem pris og bæredygtighed.",
+          "contacts": ["+45 66778844", "repareret@værksted.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Planlægger cykeltur på budget gennem flere europæiske byer.",
+      "announcements": [
+        {
+          "title": "Ruteforslag med korte dagsetaper",
+          "text": "Praktiske ruteforslag der tager højde for indkvartering og transport mellem startpunkter. Velegnet til passelige tempoetaper.",
+          "contacts": ["+45 22446600", "ruteplan@cykelrejser.dk"]
+        },
+        {
+          "title": "Udlejningspakke med cykel og bagageløsning",
+          "text": "Kort lejeperiode inkl. bagagegrej og teknisk assistance under turen. Praktisk når du rejser uden eget udstyr.",
+          "contacts": ["+45 33112266"]
+        },
+        {
+          "title": "Budgetovernatninger nær ruter",
+          "text": "Liste over simple overnatningssteder tæt på populære cykelruter, med mulighed for tidlig booking til lav pris.",
+          "contacts": ["+45 55668844", "overnat@budgetstay.dk"]
+        },
+        {
+          "title": "Guidet tur for små grupper",
+          "text": "Fælles tur med guide, bagageflyt og planlagt rute. Mindre fleksibel, men praktisk hvis du vil have støtte undervejs.",
+          "contacts": ["+45 66770066", "guide@gruppecykling.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Søger kortvarige wellness-tilbud, gerne efter arbejde.",
+      "announcements": [
+        {
+          "title": "Aftenåbent wellnesscenter med drop-in",
+          "text": "Mulighed for at booke kortere behandlinger efter arbejde og adgang til afslapningsområder uden lang planlægning.",
+          "contacts": ["+45 66117799", "booking@wellway.dk"]
+        },
+        {
+          "title": "Yoga-aften: kort session og vejrtrækning",
+          "text": "45-minutters session til at skabe ro og forbedre vejrtrækning. Ideel som pause i en travl hverdag.",
+          "contacts": ["+45 33441199", "tilmelding@yogaspace.dk"]
+        },
+        {
+          "title": "Eftermiddagsmassage med fleksible tider",
+          "text": "Kortere massagebehandlinger med mulighed for sen booking. Enkel procedure og professionel personale.",
+          "contacts": ["+45 22334411"]
+        },
+        {
+          "title": "Mindful-café med guidede pauser",
+          "text": "Kort, guidet pause i caféformat hvor man kan prøve vejrtrækning og lette øvelser over en kop te.",
+          "contacts": ["+45 99881177", "pause@mindcafe.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Vil holde ferie i bjergene — ro og naturoplevelser vigtigst.",
+      "announcements": [
+        {
+          "title": "Hytteophold med korte vandreture fra døren",
+          "text": "Små hytter i fredelige omgivelser med korte ruter og mulighed for selvforplejning. Velegnet til dem, der søger ro.",
+          "contacts": ["+45 33448822", "hytte@bjergro.dk"]
+        },
+        {
+          "title": "Guidede ture med lokal naturvejledning",
+          "text": "Dagsture med fokus på flora og fauna, egnet hvis du ønsker faglig indsigt under opholdet.",
+          "contacts": ["+45 66770033", "guide@naturoplev.dk"]
+        },
+        {
+          "title": "Refugium med enkel kost og stilhed",
+          "text": "Sted med få pladser, enkel kost og fokus på stilhed og fordybelse. Forudbestilling nødvendigt.",
+          "contacts": ["+45 44553344", "refugium@stilhed.dk"]
+        },
+        {
+          "title": "Aktivt ophold med vandring og fælles måltider",
+          "text": "Program med daglige ruter og aftensamlinger, godt hvis I vil kombinere fællesskab og natur.",
+          "contacts": ["+45 22336688", "aktiv@udflugt.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Jeg søger sprogudveksling — foretrækker korte møder i weekenden.",
+      "announcements": [
+        {
+          "title": "Sprogcafé med ugentlige møder",
+          "text": "Uformelle møder hvor deltagerne skiftes til at øve samtale. Kort varighed og hyggelig atmosfære.",
+          "contacts": ["+45 33110077", "sprogcafe@lokalhus.dk"]
+        },
+        {
+          "title": "Online tandemsessioner i weekenden",
+          "text": "Kortere sessioner med native speakers via video. Fleksible tidspunkter og mulighed for at vælge emner.",
+          "contacts": ["+45 44332277", "tandem@online.dk"]
+        },
+        {
+          "title": "Weekendworkshop med fokus på udtale",
+          "text": "Intensiv kort workshop som hjælper dig med at forbedre forståelighed og selvtillid i tale.",
+          "contacts": ["+45 55660077", "workshop@sprogforbedring.dk"]
+        },
+        {
+          "title": "Møde i parkerne — uformel samtalegruppe",
+          "text": "Små grupper der mødes i weekenden for korte samtaler og sociale aktiviteter, ingen tilmelding nødvendig.",
+          "contacts": ["+45 77881155"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Søger freelanceopgaver inden for grafisk design — korte projekter.",
+      "announcements": [
+        {
+          "title": "Kortvarige opgaver: logo og visuel identitet",
+          "text": "Projekter af kort varighed hvor du leverer koncept og færdigt materiale til brug online og print.",
+          "contacts": ["+45 22447700", "design@kortprojekt.dk"]
+        },
+        {
+          "title": "Illustrationsopgaver til digitale kampagner",
+          "text": "Samarbejde om enkelte illustrationer og assets til sociale medier og annoncer. Hurtig levering prioriteres.",
+          "contacts": ["+45 33117788"]
+        },
+        {
+          "title": "Langsigtede freelanceaftaler for flere små leverancer",
+          "text": "Mulighed for faste månedlige leverancer med varierende opgaver. Godt hvis du vil have stabilitet over tid.",
+          "contacts": ["+45 55668855", "freelance@kreativteam.dk"]
+        },
+        {
+          "title": "One-shot opgaver: plakater og tryk",
+          "text": "Enkelte opgaver med klart brief og hurtig godkendelsesproces; betaling pr. projekt.",
+          "contacts": ["+45 66770044", "tryk@enkeltdesign.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger arbejde med fleksible aftenvagter inden for servicebranchen.",
+      "announcements": [
+        {
+          "title": "Aftenhold med kundekontakt",
+          "text": "Vi søger en stabil person til opgaver i butikken og ved kasse. Oplæring gives, og arbejdstider aftales efter behov.",
+          "contacts": ["+45 33110099", "ansøg@butikteam.dk"]
+        },
+        {
+          "title": "Rolig position i et tæt team",
+          "text": "Små hold, hvor du skiftes om opgaver efter en fast plan. God kollegial støtte og mulighed for ekstra timer ved behov.",
+          "contacts": ["+45 22443399"]
+        },
+        {
+          "title": "Kortvarige vagter til events",
+          "text": "Vikariater ved arrangementer med afvekslende opgaver. Perfekt hvis du vil arbejde sporadisk i weekender og aftener.",
+          "contacts": ["+45 66112299", "events@hjælp.dk"]
+        },
+        {
+          "title": "Let køkkenhjælp til travle aftener",
+          "text": "Assistance i køkkenet ved opvask og klargøring. Hurtig introduktion og fleksibel vagtplan.",
+          "contacts": ["+45 44332299"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Jeg vil starte på et kursus i grafisk design — foretrækker aftenundervisning.",
+      "announcements": [
+        {
+          "title": "Praktiske moduler med opgaveløsning",
+          "text": "Lær at omsætte idéer til visuelle løsninger gennem korte øvelser og feedback fra instruktører.",
+          "contacts": ["+45 70223399", "design@kursus.dk"]
+        },
+        {
+          "title": "Hold med fysisk fremmøde om aftenen",
+          "text": "Undervisning planlagt efter arbejdstid med fokus på software og kreativ proces. Begrænset deltagerantal.",
+          "contacts": ["+45 33113399", "tilmelding@skole.dk"]
+        },
+        {
+          "title": "Selvstyrede online-lektioner med deadlines",
+          "text": "Fleksible lektioner du kan passe ind i eget skema, suppleret med faste feedbacksessioner.",
+          "contacts": ["+45 22337799"]
+        },
+        {
+          "title": "Weekend-workshops for visuel profilering",
+          "text": "Intensive sessions hvor du bygger konkrete materialer til porteføljen i løbet af få dage.",
+          "contacts": ["+45 44660099", "workshop@vstudio.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Søger steder at handle tøj til rimelige priser i byen.",
+      "announcements": [
+        {
+          "title": "Lokalt udvalg med personlig service",
+          "text": "Butik hvor medarbejdere hjælper med størrelser og pasform. Hyppige små restordre-tilbud.",
+          "contacts": ["+45 55112211", "service@tøjbutik.dk"]
+        },
+        {
+          "title": "Marked med blandet udvalg hver weekend",
+          "text": "Boder med både nye og brugte fund, velegnet hvis du vil gøre et kup eller finde unika.",
+          "contacts": ["+45 22330011", "markedsinfo@weekend.dk"]
+        },
+        {
+          "title": "Online platform med prisfiltre",
+          "text": "Find varer fra flere leverandører samlet ét sted; mulighed for at sortere på pris og leveringstid.",
+          "contacts": ["+45 33441111"]
+        },
+        {
+          "title": "Outlet med sæsonvarer til nedsatte priser",
+          "text": "Udstillingsmodeller og overskudslager sælges til reducerede priser — godt sted for budgetbevidste købere.",
+          "contacts": ["+45 66778811", "tilbud@outlet.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Planlægger en kort byferie — vil have praktisk transport og centralt logi.",
+      "announcements": [
+        {
+          "title": "Central base med nem adgang til seværdigheder",
+          "text": "Overnatning tæt på byens centrum med korte gangafstande til vigtig infrastruktur og oplevelser.",
+          "contacts": ["+45 22446611", "book@bybase.dk"]
+        },
+        {
+          "title": "Praktiske løsninger til korte ophold",
+          "text": "Pakker som kombinerer overnatning og lokale forbindelser, så du undgår lange rejsetider i byen.",
+          "contacts": ["+45 33112211"]
+        },
+        {
+          "title": "Budgetvenlig indkvartering i rolige kvarterer",
+          "text": "Enkle værelser med gode forbindelser ind til centrum; velegnet hvis du prioriterer pris over luksus.",
+          "contacts": ["+45 55668811", "tilbud@hostel.dk"]
+        },
+        {
+          "title": "Weekendpakke med offentlig transport inkluderet",
+          "text": "Kort ophold hvor billetter til lokale ruter er en del af pakken, praktisk til hurtige ture.",
+          "contacts": ["+45 66770011", "weekend@rejsepakker.dk"]
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "prompt": "Jeg søger hurtige måder at finde brugte bøger og studiematerialer.",
+      "announcements": [
+        {
+          "title": "Byttebænk for studieressourcer",
+          "text": "Et sted hvor studerende kan aflevere og hente materialer uden store omkostninger. Hyppigt opdateret udvalg.",
+          "contacts": ["+45 33117722", "bytte@studiekammer.dk"]
+        },
+        {
+          "title": "Online grupper for køb og salg blandt studerende",
+          "text": "Platform hvor brugere annoncerer pensum og noter; ofte gode priser og mulighed for afhentning tæt på campus.",
+          "contacts": ["+45 44330022", "kontakt@studyshare.dk"]
+        },
+        {
+          "title": "Lokalt genbrugscenter med bogsektion",
+          "text": "Hyppigt fund af fagbøger og litteratur til lave priser. Åbningstider varierer efter sæson.",
+          "contacts": ["+45 55660022", "info@genbrug.dk"]
+        },
+        {
+          "title": "Byttearrangementer ved semesterstart",
+          "text": "Events hvor studerende kan lade overskydende materialer cirkulere — nyttigt ved kursusstart.",
+          "contacts": ["+45 77881122", "events@campus.dk"]
+        }
+      ],
+      "correctIndex": 1
+    },
+    {
+      "prompt": "Vil finde kortvarige opbevaringsmuligheder under flytning.",
+      "announcements": [
+        {
+          "title": "Små rum til midlertidig opbevaring",
+          "text": "Enheder i forskellig størrelse til korttidsleje med adgang efter aftale. Nemt og hurtigt at booke.",
+          "contacts": ["+45 22447722", "opbevaring@box.dk"]
+        },
+        {
+          "title": "Fleksible løsninger med afhentningsservice",
+          "text": "Service hvor vi henter og returnerer dine kasser efter behov — praktisk ved travle flyttedage.",
+          "contacts": ["+45 33119922"]
+        },
+        {
+          "title": "Lagre tæt på centrum med døgnadgang",
+          "text": "Ejendomme med adgang uden for normal arbejdstid, velegnet hvis planerne skifter hurtigt.",
+          "contacts": ["+45 55668822", "lager@citystore.dk"]
+        },
+        {
+          "title": "Kombipakker med transport og opbevaring",
+          "text": "Pakkeløsning hvor kørsel og opbevaring indgår i én pris, overskueligt for kortere perioder.",
+          "contacts": ["+45 66771133", "pakke@flyttehjælp.dk"]
+        }
+      ],
+      "correctIndex": 2
+    },
+    {
+      "prompt": "Søger lokale aktiviteter for små børn i weekenden.",
+      "announcements": [
+        {
+          "title": "Legestue med guidede aktiviteter",
+          "text": "Kort sessioner hvor børn og voksne leger sammen i trygge rammer. Fokus på social leg og motorik.",
+          "contacts": ["+45 33448833", "leg@familieforum.dk"]
+        },
+        {
+          "title": "Kreativ workshop for forældre og børn",
+          "text": "Enkle, praktiske projekter der kan laves sammen; materialer inkluderet og pladsbegrænsning kan gælde.",
+          "contacts": ["+45 66770044", "krea@workshop.dk"]
+        },
+        {
+          "title": "Udflugter til nærliggende naturlegeplads",
+          "text": "Guidede ture til sikre udeområder med mulighed for picnick og fri leg. Velegnet på solrige dage.",
+          "contacts": ["+45 44552244"]
+        },
+        {
+          "title": "Mini-sportsevent for små grupper",
+          "text": "Kortvarige aktiviteter med enkle øvelser og lege, god introduktion til bevægelsesglæde for de yngste.",
+          "contacts": ["+45 22336644", "sport@børneaktiviteter.dk"]
+        }
+      ],
+      "correctIndex": 3
+    },
+    {
+      "prompt": "Har brug for kortvarig hjælp til havearbejde og vedligehold.",
+      "announcements": [
+        {
+          "title": "Hjælp til sæsonarbejde i haven",
+          "text": "Opgaver som rengøring, beskæring og forberedelse til næste sæson. Kortvarige aftaler ved behov.",
+          "contacts": ["+45 33119933", "have@hjælp.dk"]
+        },
+        {
+          "title": "Timeløsning til plæne- og bedpleje",
+          "text": "Udvalgte services du kan bestille pr. time; praktisk hvis du kun har brug for ét eller få besøg.",
+          "contacts": ["+45 22445533"]
+        },
+        {
+          "title": "Weekendhold til større projekter",
+          "text": "Hold der kommer i weekenden og hjælper med større opgaver som anlæg eller større beskæringer.",
+          "contacts": ["+45 77221133", "projekter@udendørs.dk"]
+        },
+        {
+          "title": "Lokalt værksted tilbyder småreparationer",
+          "text": "Reparation af haveredskaber og rådgivning om vedligehold — nyttigt mellem sæsoner.",
+          "contacts": ["+45 44332233"]
+        }
+      ],
+      "correctIndex": 0
     }
   ]
 }
