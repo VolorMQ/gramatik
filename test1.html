@@ -230,23 +230,27 @@ function checkAnswer() {
 
 function renderTaskNumber() {
   const counter = document.getElementById('task-number');
-  if (!counter) return;
-  counter.textContent = `Opgave: ${taskNumber} / ${totalTasks}`;
+  if(counter) counter.textContent = `Opgave: ${taskNumber} / ${totalTasks}`;
 }
 
 
 function nextTask() {
   if(!data) return;
 
+  if(taskNumber >= totalTasks){
+    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
+    return;
+  }
+
   // выбираем случайно непройденные задания
-  const remainingIndices = [];
-  for(let i = 0; i < data.length; i++){
+  let remainingIndices = [];
+  for(let i=0; i<data.length; i++){
     if(!usedIndices.includes(i)) remainingIndices.push(i);
   }
 
   let nextIndex;
   if(remainingIndices.length === 0){
-    usedIndices = []; // сбрасываем, если все уже были показаны
+    usedIndices = []; // если все были — сброс
     nextIndex = Math.floor(Math.random() * data.length);
   } else {
     nextIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
@@ -255,8 +259,8 @@ function nextTask() {
   currentSetIndex = nextIndex;
   usedIndices.push(currentSetIndex);
 
-  taskNumber++;        // увеличиваем счётчик Opgave
-  renderTaskNumber();  // обновляем отображение
+  taskNumber++; // обязательно увеличиваем счётчик
+  renderTaskNumber(); // обновляем span с номером задачи
   renderAnnouncements(data[currentSetIndex]);
 }
 
@@ -274,6 +278,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
