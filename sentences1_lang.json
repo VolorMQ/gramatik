@@ -1385,13 +1385,13 @@
         "word": "var",
         "translation": "было"
       },
-      "verbum2": {
+      "adverbium": {
         "word": "for",
         "translation": "слишком"
       },
       "adjektiv": {
         "word": "stor",
-        "translation": "большое"
+        "translation": "большим"
       },
       "præposition": {
         "word": "for",
@@ -1405,7 +1405,7 @@
         "word": "så",
         "translation": "поэтому"
       },
-      "verbum3": {
+      "verbum2": {
         "word": "måtte",
         "translation": "должно было"
       },
@@ -1414,70 +1414,69 @@
         "translation": "оно"
       },
       "Læd_verbum1": {
-        "word": "i",
-        "translation": "лежало"
+        "word": "ligge",
+        "translation": "лежать"
       },
       "Læd_substantiv": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv2": {
         "word": "frakkelomme",
-        "translation": "в кармане пальто"
+        "translation": "кармане пальто"
       },
-      "konjunktion2": {
-        "word": "Her",
-        "translation": "Здесь"
+      "full_translation": "Оно было слишком большим для кармана, поэтому должно было лежать в кармане пальто."
+    },
+    {
+      "subjekt": {
+        "word": "Den",
+        "translation": "Оно"
       },
-      "verbum4": {
+      "verbum1": {
         "word": "lå",
         "translation": "лежало"
-      },
-      "Læd_pronomen": {
-        "word": "den",
-        "translation": "оно"
       },
       "adverbium": {
         "word": "tit",
         "translation": "часто"
       },
-      "præposition2": {
+      "præposition": {
         "word": "i",
         "translation": "в"
       },
-      "adjektiv2": {
+      "adjektiv": {
         "word": "mørke",
         "translation": "темноте"
       },
-      "konjunktion3": {
+      "konjunktion": {
         "word": "men",
         "translation": "но"
       },
-      "Læd_verbum2": {
+      "verbum2": {
         "word": "havde",
         "translation": "имело"
       },
-      "Læd_pronomen2": {
-        "word": "den",
-        "translation": "оно"
-      },
-      "Læd_adjektiv": {
+      "adjektiv2": {
         "word": "sin",
         "translation": "своё"
       },
-      "Læd_adjektiv2": {
+      "adjektiv3": {
         "word": "bestemte",
         "translation": "определённое"
       },
-      "Læd_substantiv2": {
+      "substantiv3": {
         "word": "plads",
         "translation": "место"
       },
-      "præposition3": {
+      "præposition2": {
         "word": "på",
         "translation": "на"
       },
-      "substantiv2": {
+      "substantiv4": {
         "word": "væggen",
         "translation": "стене"
       },
-      "full_translation": "Оно было слишком большим для кармана, поэтому должно было лежать в кармане пальто. Здесь оно лежало часто в темноте, но имело своё определённое место на стене."
+      "full_translation": "Здесь оно лежало часто в темноте, но имело своё определённое место на стене."
     },
     {
       "subjekt": {
@@ -1707,19 +1706,22 @@
         "word": "blade",
         "translation": "журналы"
       },
-      "verbum5": {
+      "full_translation": "Он очень любил ходить в книжные магазины, смотреть в книги и журналы."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
         "word": "gav",
         "translation": "давал"
-      },
-      "subjekt2": {
-        "word": "han",
-        "translation": "он"
       },
       "objekt1": {
         "word": "sin",
         "translation": "своему"
       },
-      "substantiv4": {
+      "substantiv": {
         "word": "boghandler",
         "translation": "книжному торговцу"
       },
@@ -1727,47 +1729,47 @@
         "word": "et",
         "translation": "маленькое"
       },
-      "substantiv5": {
+      "substantiv2": {
         "word": "honorar",
         "translation": "вознаграждение"
       },
-      "konjunktion2": {
+      "konjunktion": {
         "word": "for",
         "translation": "за"
       },
       "Læd_præposition": {
-        "word": "hjemme",
-        "translation": "дома"
-      },
-      "præposition4": {
-        "word": "hos",
-        "translation": "у себя"
-      },
-      "verbum6": {
         "word": "at",
         "translation": "чтобы"
       },
-      "verbum7": {
+      "verbum2": {
         "word": "turde",
         "translation": "осмелиться"
       },
-      "verbum8": {
+      "verbum3": {
         "word": "læse",
         "translation": "читать"
+      },
+      "præposition2": {
+        "word": "hjemme",
+        "translation": "дома"
+      },
+      "præposition3": {
+        "word": "hos",
+        "translation": "у себя"
       },
       "artikel2": {
         "word": "de",
         "translation": "эти"
       },
-      "adjektiv2": {
+      "adjektiv": {
         "word": "nye",
         "translation": "новые"
       },
-      "substantiv6": {
+      "substantiv3": {
         "word": "bøger",
         "translation": "книги"
       },
-      "full_translation": "Он очень любил ходить в книжные магазины, смотреть в книги и журналы. Он давал своему книжному торговцу маленькое вознаграждение за то, чтобы дома осмелиться читать эти новые книги."
+      "full_translation": "Он давал своему книжному торговцу маленькое вознаграждение за то, чтобы дома осмелиться читать эти новые книги."
     },
     {
       "subjekt": {
