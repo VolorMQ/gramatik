@@ -209,25 +209,6 @@ function renderAnnouncements(set) {
   });
 }
 
-function checkAnswer() {
-  if (selectedIndex === null) { alert("Vælg venligst en annonce!"); return; }
-
-  const set = data[currentSetIndex];
-  document.querySelectorAll('.announcement').forEach((div, idx) => {
-    div.classList.remove('correct','wrong','selected');
-    if (idx === set.correctIndex) div.classList.add('correct');
-    else if (idx === selectedIndex) div.classList.add('wrong');
-  });
-
-  if (selectedIndex === set.correctIndex) {
-    correctCount++;
-  } else {
-    wrongCount++;
-  }
-
-  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${totalTasks} | Forkert: ${wrongCount}`;
-}
-
 function nextTask() {
   if(!data) return;
 
@@ -251,6 +232,28 @@ function nextTask() {
   renderAnnouncements(data[currentSetIndex]);
 }
 
+
+function nextTask() {
+  if(!data) return;
+
+  // выбираем случайное задание, которое еще не было выполнено
+  let remainingIndices = [];
+  for(let i=0; i<data.length; i++){
+    if(!usedIndices.includes(i)) remainingIndices.push(i);
+  }
+
+  if(remainingIndices.length === 0){
+    // все задания использованы, можно сбросить цикл
+    usedIndices = [];
+    remainingIndices = [...Array(data.length).keys()];
+  }
+
+  const randomIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
+  currentSetIndex = randomIndex;
+  usedIndices.push(currentSetIndex);
+
+  renderAnnouncements(data[currentSetIndex]);
+}
   
 function restart() {
   correctCount = 0;
@@ -265,6 +268,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
