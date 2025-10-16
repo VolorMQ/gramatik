@@ -50,7 +50,19 @@ label { margin-right: 10px; }
 </style>
 </head>
 <body>
-
+<div id="sentence-counter" style="
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+">
+  Emne : 0
+</div>
 <h2>Udfyld de manglende ord:</h2>
 
 <div id="controls">
@@ -80,6 +92,7 @@ fetch('texts.json')
   .then(res => res.json())
   .then(data => {
     texts = data;
+    updateSentenceCounter(); // обновляем сразу после загрузки
     loadRandomText();
   })
   .catch(()=> {
@@ -87,6 +100,11 @@ fetch('texts.json')
     texts = [{ text: "I morges sprang jeg hurtigt ud af sengen, og prøvede jeg at finde mine sko, men de lå gemt under sofaen. Da jeg endelig fandt dem, løb jeg ud af døren og nåede lige bussen i sidste øjeblik." }];
     loadRandomText();
   });
+
+function updateSentenceCounter() {
+  const counter = document.getElementById('sentence-counter');
+  counter.textContent = `Sætninger : ${sentences.length}`;
+}
 
 // Случайный выбор текста
 function loadRandomText() {
@@ -335,3 +353,4 @@ document.getElementById('mobileMode').addEventListener('change', (e) => {
 
 </body>
 </html>
+
