@@ -236,22 +236,17 @@ function renderTaskNumber() {
 
 
 function nextTask() {
-  if (!data) return;
+  if(!data) return;
 
-  // если достигли общего количества заданий — показываем результат
-  if (taskNumber >= totalTasks) {
-    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
-    return;
+  // выбираем случайно непройденные задания
+  const remainingIndices = [];
+  for(let i = 0; i < data.length; i++){
+    if(!usedIndices.includes(i)) remainingIndices.push(i);
   }
 
-  // выбираем случайно из непройденных
-  const allIndices = Array.from({length: data.length}, (_, i) => i);
-  const remainingIndices = allIndices.filter(i => !usedIndices.includes(i));
-
   let nextIndex;
-  if (remainingIndices.length === 0) {
-    // если все задания уже были показаны, но totalTasks ещё не достигнут — сбросить usedIndices
-    usedIndices = [];
+  if(remainingIndices.length === 0){
+    usedIndices = []; // сбрасываем, если все уже были показаны
     nextIndex = Math.floor(Math.random() * data.length);
   } else {
     nextIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
@@ -260,11 +255,12 @@ function nextTask() {
   currentSetIndex = nextIndex;
   usedIndices.push(currentSetIndex);
 
-  taskNumber++;             // увеличиваем номер задания
-  renderTaskNumber();       // обновляем Opgave: X / Y
+  taskNumber++;        // увеличиваем счётчик Opgave
+  renderTaskNumber();  // обновляем отображение
   renderAnnouncements(data[currentSetIndex]);
 }
 
+  
 function restart() {
   correctCount = 0;
   wrongCount = 0;
@@ -278,6 +274,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
