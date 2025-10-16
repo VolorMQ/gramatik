@@ -86,8 +86,11 @@ let selectedWordIndex = null;
 
 fetch('sentences2.json')
   .then(res => res.json())
-  .then(data => { sentences = data.sentences; initSentences(); })
-    updateSentenceCounter(); // обновляем сразу после загрузки
+  .then(data => {
+    sentences = data.sentences;
+	  updateSentenceCounter(); // обновляем сразу после загрузки
+    initSentences();
+  })
   .catch(err => console.error("Fejl ved indlæsning af JSON:", err));
   
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
@@ -317,5 +320,6 @@ function updateTranslation(){
 </script>
 </body>
 </html>
+
 
 
