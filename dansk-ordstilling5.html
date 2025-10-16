@@ -135,8 +135,9 @@ function getCorrectFieldFrom(sectionObj, logicalKey){
 
 function updateSentenceCounter() {
   const counter = document.getElementById('sentence-counter');
-  counter.textContent = `Sætninger : ${sentences.length}`;
+  counter.textContent = `Sætninger: ${allSentences.length}`;
 }
+
 
 function pickThreeRandom(){
   if(!allSentences.length) return;
@@ -334,4 +335,5 @@ function updateTranslation(){
 </script>
 </body>
 </html>
+
 
