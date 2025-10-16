@@ -144,6 +144,7 @@ let correctCount = 0;
 let wrongCount = 0;
 let usedIndices = [];
 let totalTasks = 5; // пользовательское количество заданий
+let taskNumber = 0; // сколько заданий уже показано
 
 // Загружаем JSON
 fetch('announcements.json')
@@ -227,33 +228,40 @@ function checkAnswer() {
   document.getElementById('counter').textContent = `Emne: ${correctCount} / ${totalTasks} | Forkert: ${wrongCount}`;
 }
 
+function renderTaskNumber() {
+  const counter = document.getElementById('task-number');
+  if (!counter) return;
+  counter.textContent = `Opgave: ${taskNumber} / ${totalTasks}`;
+}
+
+
 function nextTask() {
   if (!data) return;
 
-  // если все задания выполнены — показываем результат и останавливаем
-  if (correctCount + wrongCount >= totalTasks) {
+  // если достигли общего количества заданий — показываем результат
+  if (taskNumber >= totalTasks) {
     alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
     return;
   }
 
-  // создаём массив индексов всех заданий
+  // выбираем случайно из непройденных
   const allIndices = Array.from({length: data.length}, (_, i) => i);
-
-  // фильтруем только непройденные
   const remainingIndices = allIndices.filter(i => !usedIndices.includes(i));
 
   let nextIndex;
   if (remainingIndices.length === 0) {
-    // если все задания использованы, но totalTasks ещё не достигнут — сбрасываем usedIndices
+    // если все задания уже были показаны, но totalTasks ещё не достигнут — сбросить usedIndices
     usedIndices = [];
     nextIndex = Math.floor(Math.random() * data.length);
   } else {
-    // выбираем случайно из оставшихся
     nextIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
   }
 
   currentSetIndex = nextIndex;
   usedIndices.push(currentSetIndex);
+
+  taskNumber++;             // увеличиваем номер задания
+  renderTaskNumber();       // обновляем Opgave: X / Y
   renderAnnouncements(data[currentSetIndex]);
 }
 
@@ -270,6 +278,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
