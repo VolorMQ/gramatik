@@ -10,7 +10,7 @@
   --blue:#2563eb; --red:#ef4444; --green:#10b981; --amber:#f59e0b; --violet:#8b5cf6;
 }
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
-//.page{max-width:980px;margin:32px auto;padding:0 16px}
+.page{max-width:980px;margin:32px auto;padding:0 16px}
 h1{font-size:22px;margin:0 0 16px}
 table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin-bottom:16px}
 th,td{border:1px solid var(--line);padding:10px;text-align:center;height:42px}
@@ -33,6 +33,19 @@ button:disabled{opacity:0.5;cursor:default}
 </head>
 <body>
 <div class="page">
+<div id="sentence-counter" style="
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+">
+  Sætninger : 0
+</div>
   <h1>Hovedsætninger</h1>
   <label id="mobile-toggle">
     <input type="checkbox" id="mobileVersion"> MobilVersion (tap instead of drag)
@@ -73,11 +86,17 @@ fetch('sentences.json')
   .then(res => res.json())
   .then(data => {
     sentences = data.sentences;
+	updateSentenceCounter(); // обновляем сразу после загрузки
     initSentences();
   })
   .catch(err => console.error("Fejl ved indlæsning af JSON:", err));
 
 function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+function updateSentenceCounter() {
+  const counter = document.getElementById('sentence-counter');
+  counter.textContent = `Sætninger : ${sentences.length}`;
+}
 
 function initSentences(){
   selectedSentences = shuffle([...sentences]).slice(0,1);
@@ -318,4 +337,3 @@ function updateTranslation(){
 </script>
 </body>
 </html>
-
