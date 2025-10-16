@@ -721,6 +721,1275 @@
         "translation": "побережья"
       },
       "full_translation": "Писатель-путешественник написал статью, которая описала очаровательные деревни вдоль побережья."
+    },
+    {
+      "subjekt": {
+        "word": "En",
+        "translation": "Один"
+      },
+      "adjektiv": {
+        "word": "engel",
+        "translation": "ангел"
+      },
+      "verbum1": {
+        "word": "fløj",
+        "translation": "летел"
+      },
+      "præposition": {
+        "word": "med",
+        "translation": "с"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "одним"
+      },
+      "substantiv": {
+        "word": "blomst",
+        "translation": "цветком"
+      },
+      "præposition2": {
+        "word": "fra",
+        "translation": "из"
+      },
+      "substantiv2": {
+        "word": "Himmelens",
+        "translation": "небесного"
+      },
+      "substantiv3": {
+        "word": "have",
+        "translation": "сада"
+      },
+      "konjunktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "Læd_subjekt": {
+        "word": "han",
+        "translation": "он"
+      },
+      "Læd_verbum1": {
+        "word": "trykkede",
+        "translation": "прикоснулся"
+      },
+      "Læd_artikel": {
+        "word": "et",
+        "translation": "одним"
+      },
+      "Læd_substantiv": {
+        "word": "kys",
+        "translation": "поцелуем"
+      },
+      "Læd_præposition": {
+        "word": "på",
+        "translation": "по"
+      },
+      "Læd_objekt": {
+        "word": "blomsten",
+        "translation": "цветку"
+      },
+      "verbum2": {
+        "word": "gik",
+        "translation": "отвалился"
+      },
+      "artikel2": {
+        "word": "et",
+        "translation": "один"
+      },
+      "adjektiv2": {
+        "word": "lillebitte",
+        "translation": "крошечный"
+      },
+      "substantiv4": {
+        "word": "blad",
+        "translation": "лист"
+      },
+      "verbum3": {
+        "word": "faldt",
+        "translation": "упал"
+      },
+      "præposition3": {
+        "word": "på",
+        "translation": "на"
+      },
+      "artikel3": {
+        "word": "den",
+        "translation": "грязную"
+      },
+      "adjektiv3": {
+        "word": "dyndede",
+        "translation": "грязную"
+      },
+      "substantiv5": {
+        "word": "jord",
+        "translation": "землю"
+      },
+      "sted": {
+        "word": "midt",
+        "translation": "посреди"
+      },
+      "præposition4": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv6": {
+        "word": "skoven",
+        "translation": "лесу"
+      },
+      "verbum4": {
+        "word": "fæstede",
+        "translation": "пустил"
+      },
+      "objekt2": {
+        "word": "det",
+        "translation": "он"
+      },
+      "substantiv7": {
+        "word": "rod",
+        "translation": "корни"
+      },
+      "verbum5": {
+        "word": "satte",
+        "translation": "пустил"
+      },
+      "substantiv8": {
+        "word": "skud",
+        "translation": "росток"
+      },
+      "sted2": {
+        "word": "midt",
+        "translation": "среди"
+      },
+      "præposition5": {
+        "word": "imellem",
+        "translation": "между"
+      },
+      "artikel4": {
+        "word": "de",
+        "translation": "других"
+      },
+      "substantiv9": {
+        "word": "andre",
+        "translation": "других"
+      },
+      "substantiv10": {
+        "word": "urter",
+        "translation": "трав"
+      },
+      "full_translation": "Один ангел летел с цветком из небесного сада, и когда он прикоснулся поцелуем к цветку, один крошечный лист упал на грязную землю посреди леса, сразу пустил корни и росток среди других трав."
+    },
+    {
+      "subjekt": {
+        "word": "Vinteren",
+        "translation": "Зима"
+      },
+      "verbum1": {
+        "word": "kom",
+        "translation": "пришла"
+      },
+      "subjekt2": {
+        "word": "sneen",
+        "translation": "снег"
+      },
+      "verbum2": {
+        "word": "lå",
+        "translation": "лежал"
+      },
+      "præposition": {
+        "word": "hen",
+        "translation": "поверх"
+      },
+      "objekt1": {
+        "word": "planten",
+        "translation": "растения"
+      },
+      "konjunktion": {
+        "word": "men",
+        "translation": "но"
+      },
+      "Læd_præposition": {
+        "word": "fra",
+        "translation": "от"
+      },
+      "Læd_subjekt": {
+        "word": "den",
+        "translation": "него"
+      },
+      "Læd_verbum1": {
+        "word": "fik",
+        "translation": "получил"
+      },
+      "Læd_substantiv": {
+        "word": "snelaget",
+        "translation": "снежный покров"
+      },
+      "Læd_artikel": {
+        "word": "en",
+        "translation": "один"
+      },
+      "Læd_substantiv2": {
+        "word": "glans",
+        "translation": "блеск"
+      },
+      "konjunktion2": {
+        "word": "som",
+        "translation": "который"
+      },
+      "Læd_verbum2": {
+        "word": "blev",
+        "translation": "стал"
+      },
+      "Læd_adverbium": {
+        "word": "nedenfra",
+        "translation": "снизу"
+      },
+      "Læd_verbum3": {
+        "word": "gennemstrømmet",
+        "translation": "пронизан"
+      },
+      "præposition2": {
+        "word": "af",
+        "translation": "солнечным"
+      },
+      "substantiv3": {
+        "word": "sollys",
+        "translation": "светом"
+      },
+      "full_translation": "Зима пришла, снег лежал поверх растения, но от него снежный покров получил блеск, который стал пронизан солнечным светом снизу."
+    },
+    {
+      "subjekt": {
+        "word": "Der",
+        "translation": "Там"
+      },
+      "verbum1": {
+        "word": "stod",
+        "translation": "выросло"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "одна"
+      },
+      "adjektiv": {
+        "word": "blomstrende",
+        "translation": "цветущая"
+      },
+      "substantiv": {
+        "word": "vækst",
+        "translation": "растение"
+      },
+      "konjunktion": {
+        "word": "dejlig",
+        "translation": "прекрасная"
+      },
+      "Læd_konjunktion": {
+        "word": "som",
+        "translation": "как"
+      },
+      "Læd_pronomen": {
+        "word": "ingen",
+        "translation": "никакая"
+      },
+      "Læd_adjektiv": {
+        "word": "anden",
+        "translation": "другая"
+      },
+      "Læd_præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "Læd_substantiv": {
+        "word": "skoven",
+        "translation": "лесу"
+      },
+      "full_translation": "Весной выросло цветущее растение, прекрасная как никакая другая в лесу."
+    },
+    {
+      "subjekt": {
+        "word": "De",
+        "translation": "Они"
+      },
+      "adjektiv": {
+        "word": "store",
+        "translation": "большие"
+      },
+      "substantiv": {
+        "word": "træer",
+        "translation": "деревья"
+      },
+      "sted": {
+        "word": "rundt",
+        "translation": "вокруг"
+      },
+      "præposition": {
+        "word": "om",
+        "translation": "около"
+      },
+      "verbum1": {
+        "word": "hørte",
+        "translation": "слышали"
+      },
+      "pronomen": {
+        "word": "hvad",
+        "translation": "что"
+      },
+      "pronomen2": {
+        "word": "der",
+        "translation": "было"
+      },
+      "verbum2": {
+        "word": "blev",
+        "translation": "сказано"
+      },
+      "verbum3": {
+        "word": "sagt",
+        "translation": "сказано"
+      },
+      "konjunktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "Læd_subjekt": {
+        "word": "de",
+        "translation": "они"
+      },
+      "Læd_verbum1": {
+        "word": "så",
+        "translation": "видели"
+      },
+      "Læd_pronomen": {
+        "word": "at",
+        "translation": "что"
+      },
+      "Læd_pronomen2": {
+        "word": "det",
+        "translation": "это"
+      },
+      "Læd_verbum2": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "Læd_verbum3": {
+        "word": "var",
+        "translation": "было"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "одно"
+      },
+      "substantiv2": {
+        "word": "træ",
+        "translation": "дерево"
+      },
+      "præposition2": {
+        "word": "af",
+        "translation": "из"
+      },
+      "pronomen3": {
+        "word": "deres",
+        "translation": "их"
+      },
+      "substantiv3": {
+        "word": "slags",
+        "translation": "вида"
+      },
+      "konjunktion2": {
+        "word": "men",
+        "translation": "но"
+      },
+      "Læd_verbum4": {
+        "word": "sagde",
+        "translation": "не сказали"
+      },
+      "pronomen4": {
+        "word": "ikke",
+        "translation": "ничего"
+      },
+      "adjektiv2": {
+        "word": "ondt",
+        "translation": "плохого"
+      },
+      "konjunktion3": {
+        "word": "eller",
+        "translation": "или"
+      },
+      "adjektiv3": {
+        "word": "godt",
+        "translation": "хорошего"
+      },
+      "konjunktion4": {
+        "word": "og",
+        "translation": "и"
+      },
+      "Læd_verbum5": {
+        "word": "er",
+        "translation": "является"
+      },
+      "adjektiv4": {
+        "word": "altid",
+        "translation": "всегда"
+      },
+      "substantiv4": {
+        "word": "det",
+        "translation": "самое"
+      },
+      "adjektiv5": {
+        "word": "sikreste",
+        "translation": "надёжное"
+      },
+      "konjunktion5": {
+        "word": "når",
+        "translation": "когда"
+      },
+      "pronomen5": {
+        "word": "man",
+        "translation": "человек"
+      },
+      "verbum6": {
+        "word": "er",
+        "translation": "является"
+      },
+      "adjektiv6": {
+        "word": "dum",
+        "translation": "глупым"
+      },
+      "full_translation": "Большие деревья вокруг слышали, что было сказано, и они видели, что это не было деревом их вида, но не сказали ничего ни плохого, ни хорошего, и это всегда самое надёжное, когда человек глуп."
+    },
+    {
+      "subjekt": {
+        "word": "Den",
+        "translation": "Она"
+      },
+      "verbum1": {
+        "word": "blomstrede",
+        "translation": "цвела"
+      },
+      "præposition": {
+        "word": "ude",
+        "translation": "вдали"
+      },
+      "præposition2": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv": {
+        "word": "skoven",
+        "translation": "лесу"
+      },
+      "adjektiv": {
+        "word": "vidunderlige",
+        "translation": "чудесная"
+      },
+      "substantiv2": {
+        "word": "vækst",
+        "translation": "растительность"
+      },
+      "konjunktion": {
+        "word": "den",
+        "translation": "она"
+      },
+      "verbum2": {
+        "word": "var",
+        "translation": "была"
+      },
+      "adverbium": {
+        "word": "snart",
+        "translation": "почти"
+      },
+      "konjunktion2": {
+        "word": "som",
+        "translation": "как"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "одно"
+      },
+      "substantiv3": {
+        "word": "træ",
+        "translation": "дерево"
+      },
+      "verbum3": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbum4": {
+        "word": "se",
+        "translation": "видеть"
+      },
+      "præposition3": {
+        "word": "til",
+        "translation": "для"
+      },
+      "konjunktion3": {
+        "word": "og",
+        "translation": "и"
+      },
+      "subjekt2": {
+        "word": "alle",
+        "translation": "все"
+      },
+      "substantiv4": {
+        "word": "trækfugle",
+        "translation": "птицы"
+      },
+      "verbum5": {
+        "word": "kom",
+        "translation": "приходили"
+      },
+      "konjunktion4": {
+        "word": "og",
+        "translation": "и"
+      },
+      "verbum6": {
+        "word": "bøjede",
+        "translation": "кланялись"
+      },
+      "pronomen": {
+        "word": "sig",
+        "translation": "себе"
+      },
+      "præposition4": {
+        "word": "for",
+        "translation": "перед"
+      },
+      "Læd_objekt": {
+        "word": "den",
+        "translation": "ней"
+      },
+      "subjekt3": {
+        "word": "svalen",
+        "translation": "ласточка"
+      },
+      "konjunktion5": {
+        "word": "og",
+        "translation": "и"
+      },
+      "subjekt4": {
+        "word": "storken",
+        "translation": "аист"
+      },
+      "adverbium2": {
+        "word": "især",
+        "translation": "особенно"
+      },
+      "full_translation": "Чудесная растительность цвела в лесу, она была почти как дерево для наблюдения, и все птицы приходили и кланялись ей, особенно ласточка и аист."
+    },
+    {
+      "subjekt": {
+        "word": "Den",
+        "translation": "Оно"
+      },
+      "verbum1": {
+        "word": "var",
+        "translation": "было"
+      },
+      "verbum2": {
+        "word": "blevet",
+        "translation": "сделано"
+      },
+      "præposition": {
+        "word": "til",
+        "translation": "у"
+      },
+      "artikel": {
+        "word": "hos",
+        "translation": "у"
+      },
+      "substantiv": {
+        "word": "en",
+        "translation": "одного"
+      },
+      "substantiv2": {
+        "word": "klejnsmed",
+        "translation": "мелкого кузнеца"
+      },
+      "konjunktion": {
+        "word": "men",
+        "translation": "но"
+      },
+      "Læd_subjekt": {
+        "word": "den",
+        "translation": "оно"
+      },
+      "Læd_verbum1": {
+        "word": "kunne",
+        "translation": "могло"
+      },
+      "Læd_adverbium": {
+        "word": "godt",
+        "translation": "считаться"
+      },
+      "Læd_verbum2": {
+        "word": "tro",
+        "translation": "за"
+      },
+      "Læd_pronomen": {
+        "word": "at",
+        "translation": "что/чтобы"
+      },
+      "Læd_subjekt2": {
+        "word": "det",
+        "translation": "это"
+      },
+      "Læd_verbum3": {
+        "word": "var",
+        "translation": "было"
+      },
+      "Læd_præposition": {
+        "word": "hos",
+        "translation": "у"
+      },
+      "Læd_substantiv3": {
+        "word": "en",
+        "translation": "одного"
+      },
+      "Læd_substantiv4": {
+        "word": "grovsmed",
+        "translation": "грубого кузнеца"
+      },
+      "konjunktion2": {
+        "word": "således",
+        "translation": "так"
+      },
+      "verbum3": {
+        "word": "tog",
+        "translation": "брал"
+      },
+      "subjekt3": {
+        "word": "manden",
+        "translation": "мужчина"
+      },
+      "præposition2": {
+        "word": "på",
+        "translation": "с"
+      },
+      "Læd_objekt": {
+        "word": "den",
+        "translation": "ним"
+      },
+      "verbum4": {
+        "word": "hamrede",
+        "translation": "молотил"
+      },
+      "verbum5": {
+        "word": "filede",
+        "translation": "и обрабатывал"
+      },
+      "full_translation": "Оно было сделано у мелкого кузнеца, но оно могло считаться, что это было у грубого кузнеца, так мужчина брал его, молотил и обрабатывал."
+    },
+    {
+      "subjekt": {
+        "word": "Den",
+        "translation": "Оно"
+      },
+      "verbum1": {
+        "word": "var",
+        "translation": "было"
+      },
+      "verbum2": {
+        "word": "for",
+        "translation": "слишком"
+      },
+      "adjektiv": {
+        "word": "stor",
+        "translation": "большое"
+      },
+      "præposition": {
+        "word": "for",
+        "translation": "для"
+      },
+      "substantiv": {
+        "word": "bukselomme",
+        "translation": "кармана"
+      },
+      "konjunktion": {
+        "word": "så",
+        "translation": "поэтому"
+      },
+      "verbum3": {
+        "word": "måtte",
+        "translation": "должно было"
+      },
+      "Læd_præposition": {
+        "word": "den",
+        "translation": "оно"
+      },
+      "Læd_verbum1": {
+        "word": "i",
+        "translation": "лежало"
+      },
+      "Læd_substantiv": {
+        "word": "frakkelomme",
+        "translation": "в кармане пальто"
+      },
+      "konjunktion2": {
+        "word": "Her",
+        "translation": "Здесь"
+      },
+      "verbum4": {
+        "word": "lå",
+        "translation": "лежало"
+      },
+      "Læd_pronomen": {
+        "word": "den",
+        "translation": "оно"
+      },
+      "adverbium": {
+        "word": "tit",
+        "translation": "часто"
+      },
+      "præposition2": {
+        "word": "i",
+        "translation": "в"
+      },
+      "adjektiv2": {
+        "word": "mørke",
+        "translation": "темноте"
+      },
+      "konjunktion3": {
+        "word": "men",
+        "translation": "но"
+      },
+      "Læd_verbum2": {
+        "word": "havde",
+        "translation": "имело"
+      },
+      "Læd_pronomen2": {
+        "word": "den",
+        "translation": "оно"
+      },
+      "Læd_adjektiv": {
+        "word": "sin",
+        "translation": "своё"
+      },
+      "Læd_adjektiv2": {
+        "word": "bestemte",
+        "translation": "определённое"
+      },
+      "Læd_substantiv2": {
+        "word": "plads",
+        "translation": "место"
+      },
+      "præposition3": {
+        "word": "på",
+        "translation": "на"
+      },
+      "substantiv2": {
+        "word": "væggen",
+        "translation": "стене"
+      },
+      "full_translation": "Оно было слишком большим для кармана, поэтому должно было лежать в кармане пальто. Здесь оно лежало часто в темноте, но имело своё определённое место на стене."
+    },
+    {
+      "subjekt": {
+        "word": "Hans",
+        "translation": "Его"
+      },
+      "substantiv": {
+        "word": "fader",
+        "translation": "отец"
+      },
+      "verbum1": {
+        "word": "skubbede",
+        "translation": "толкнул"
+      },
+      "objekt1": {
+        "word": "ham",
+        "translation": "его"
+      },
+      "præposition": {
+        "word": "ind",
+        "translation": "в"
+      },
+      "præposition2": {
+        "word": "på",
+        "translation": "на"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "один"
+      },
+      "substantiv2": {
+        "word": "kontor",
+        "translation": "офис"
+      },
+      "konjunktion": {
+        "word": "hans",
+        "translation": "его"
+      },
+      "substantiv3": {
+        "word": "moder",
+        "translation": "мать"
+      },
+      "verbum2": {
+        "word": "skubbede",
+        "translation": "толкнула"
+      },
+      "objekt2": {
+        "word": "ham",
+        "translation": "его"
+      },
+      "præposition3": {
+        "word": "ind",
+        "translation": "в"
+      },
+      "præposition4": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv4": {
+        "word": "ægtestanden",
+        "translation": "брак"
+      },
+      "konjunktion2": {
+        "word": "og",
+        "translation": "и"
+      },
+      "subjekt2": {
+        "word": "hans",
+        "translation": "его"
+      },
+      "substantiv5": {
+        "word": "kone",
+        "translation": "жена"
+      },
+      "verbum3": {
+        "word": "skubbede",
+        "translation": "толкнула"
+      },
+      "objekt3": {
+        "word": "ham",
+        "translation": "его"
+      },
+      "præposition5": {
+        "word": "op",
+        "translation": "к"
+      },
+      "præposition6": {
+        "word": "til",
+        "translation": "к"
+      },
+      "substantiv6": {
+        "word": "kammerråd",
+        "translation": "камерраду"
+      },
+      "konjunktion3": {
+        "word": "men",
+        "translation": "но"
+      },
+      "Læd_verbum1": {
+        "word": "sagde",
+        "translation": "сказала"
+      },
+      "pronomen": {
+        "word": "hun",
+        "translation": "она"
+      },
+      "adjektiv": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "subjekt3": {
+        "word": "det",
+        "translation": "это"
+      },
+      "Læd_verbum2": {
+        "word": "hun",
+        "translation": "она"
+      },
+      "verbum3": {
+        "word": "var",
+        "translation": "была"
+      },
+      "adjektiv2": {
+        "word": "besindig",
+        "translation": "рассудительная"
+      },
+      "adjektiv3": {
+        "word": "brav",
+        "translation": "добросовестная"
+      },
+      "substantiv7": {
+        "word": "kone",
+        "translation": "жена"
+      },
+      "verbum4": {
+        "word": "tav",
+        "translation": "молчала"
+      },
+      "præposition7": {
+        "word": "på",
+        "translation": "в"
+      },
+      "adjektiv4": {
+        "word": "rette",
+        "translation": "правильном"
+      },
+      "substantiv8": {
+        "word": "sted",
+        "translation": "месте"
+      },
+      "verbum5": {
+        "word": "talte",
+        "translation": "говорила"
+      },
+      "konjunktion4": {
+        "word": "og",
+        "translation": "и"
+      },
+      "verbum6": {
+        "word": "skubbede",
+        "translation": "толкала"
+      },
+      "præposition8": {
+        "word": "på",
+        "translation": "в"
+      },
+      "adjektiv5": {
+        "word": "rette",
+        "translation": "правильном"
+      },
+      "substantiv9": {
+        "word": "sted",
+        "translation": "месте"
+      },
+      "full_translation": "Его отец толкнул его в офис, его мать толкнула его в брак, и его жена толкнула его к каммерраду, но она этого не сказала, она была рассудительная, добросовестная жена, молчала в правильном месте, говорила и толкала в правильном месте."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
+        "word": "holdt",
+        "translation": "любил"
+      },
+      "adverbium": {
+        "word": "meget",
+        "translation": "очень"
+      },
+      "præposition": {
+        "word": "af",
+        "translation": "к"
+      },
+      "verbum2": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbum3": {
+        "word": "gå",
+        "translation": "ходить"
+      },
+      "præposition2": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv": {
+        "word": "boglader",
+        "translation": "книжные магазины"
+      },
+      "verbum4": {
+        "word": "se",
+        "translation": "смотреть"
+      },
+      "præposition3": {
+        "word": "i",
+        "translation": "в"
+      },
+      "substantiv2": {
+        "word": "bøger",
+        "translation": "книги"
+      },
+      "konjunktion": {
+        "word": "og",
+        "translation": "и"
+      },
+      "substantiv3": {
+        "word": "blade",
+        "translation": "журналы"
+      },
+      "verbum5": {
+        "word": "gav",
+        "translation": "давал"
+      },
+      "subjekt2": {
+        "word": "han",
+        "translation": "он"
+      },
+      "objekt1": {
+        "word": "sin",
+        "translation": "своему"
+      },
+      "substantiv4": {
+        "word": "boghandler",
+        "translation": "книжному торговцу"
+      },
+      "artikel": {
+        "word": "et",
+        "translation": "маленькое"
+      },
+      "substantiv5": {
+        "word": "honorar",
+        "translation": "вознаграждение"
+      },
+      "konjunktion2": {
+        "word": "for",
+        "translation": "за"
+      },
+      "Læd_præposition": {
+        "word": "hjemme",
+        "translation": "дома"
+      },
+      "præposition4": {
+        "word": "hos",
+        "translation": "у себя"
+      },
+      "verbum6": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbum7": {
+        "word": "turde",
+        "translation": "осмелиться"
+      },
+      "verbum8": {
+        "word": "læse",
+        "translation": "читать"
+      },
+      "artikel2": {
+        "word": "de",
+        "translation": "эти"
+      },
+      "adjektiv2": {
+        "word": "nye",
+        "translation": "новые"
+      },
+      "substantiv6": {
+        "word": "bøger",
+        "translation": "книги"
+      },
+      "full_translation": "Он очень любил ходить в книжные магазины, смотреть в книги и журналы. Он давал своему книжному торговцу маленькое вознаграждение за то, чтобы дома осмелиться читать эти новые книги."
+    },
+    {
+      "subjekt": {
+        "word": "Det",
+        "translation": "Это"
+      },
+      "verbum1": {
+        "word": "vil",
+        "translation": "может"
+      },
+      "verbum2": {
+        "word": "sige",
+        "translation": "значить"
+      },
+      "verbum3": {
+        "word": "have",
+        "translation": "иметь"
+      },
+      "objekt1": {
+        "word": "lov",
+        "translation": "разрешение"
+      },
+      "præposition": {
+        "word": "til",
+        "translation": "на"
+      },
+      "verbum4": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "verbum5": {
+        "word": "skære",
+        "translation": "разрезать"
+      },
+      "substantiv": {
+        "word": "bøgerne",
+        "translation": "книги"
+      },
+      "præposition2": {
+        "word": "op",
+        "translation": "по"
+      },
+      "præposition3": {
+        "word": "på",
+        "translation": "вдоль"
+      },
+      "substantiv2": {
+        "word": "langs",
+        "translation": "книги"
+      },
+      "konjunktion": {
+        "word": "men",
+        "translation": "но"
+      },
+      "adverbium": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "præposition4": {
+        "word": "på",
+        "translation": "поперёк"
+      },
+      "substantiv3": {
+        "word": "tværs",
+        "translation": ""
+      },
+      "konjunktion2": {
+        "word": "thi",
+        "translation": "потому что"
+      },
+      "Læd_verbum1": {
+        "word": "da",
+        "translation": "тогда"
+      },
+      "verbum6": {
+        "word": "kan",
+        "translation": "не"
+      },
+      "verbum7": {
+        "word": "de",
+        "translation": "они"
+      },
+      "verbum8": {
+        "word": "ikke",
+        "translation": "не"
+      },
+      "verbum9": {
+        "word": "sælges",
+        "translation": "могут продаваться"
+      },
+      "adjektiv": {
+        "word": "som",
+        "translation": "как"
+      },
+      "adjektiv2": {
+        "word": "nye",
+        "translation": "новые"
+      },
+      "full_translation": "Это значит иметь разрешение разрезать книги вдоль, но не поперёк, потому что тогда они не могут продаваться как новые."
+    },
+    {
+      "subjekt": {
+        "word": "Han",
+        "translation": "Он"
+      },
+      "verbum1": {
+        "word": "var",
+        "translation": "был"
+      },
+      "artikel": {
+        "word": "en",
+        "translation": "одна"
+      },
+      "adjektiv": {
+        "word": "levende",
+        "translation": "живая"
+      },
+      "substantiv": {
+        "word": "avis",
+        "translation": "газета"
+      },
+      "præposition": {
+        "word": "i",
+        "translation": "в"
+      },
+      "adjektiv2": {
+        "word": "al",
+        "translation": "вся"
+      },
+      "substantiv2": {
+        "word": "skikkelighed",
+        "translation": "серьёзности"
+      },
+      "verbum2": {
+        "word": "vidste",
+        "translation": "знал"
+      },
+      "objekt1": {
+        "word": "besked",
+        "translation": "сведения"
+      },
+      "præposition2": {
+        "word": "om",
+        "translation": "о"
+      },
+      "substantiv3": {
+        "word": "forlovelser",
+        "translation": "помолвках"
+      },
+      "konjunktion": {
+        "word": "bryllupper",
+        "translation": "свадьбах"
+      },
+      "konjunktion2": {
+        "word": "og",
+        "translation": "и"
+      },
+      "substantiv4": {
+        "word": "begravelser",
+        "translation": "похоронах"
+      },
+      "konjunktion3": {
+        "word": "bogsnak",
+        "translation": "книжные сплетни"
+      },
+      "konjunktion4": {
+        "word": "og",
+        "translation": "и"
+      },
+      "substantiv5": {
+        "word": "bysnak",
+        "translation": "городские сплетни"
+      },
+      "konjunktion5": {
+        "word": "ja",
+        "translation": "даже"
+      },
+      "verbum3": {
+        "word": "henkastede",
+        "translation": "он бросал"
+      },
+      "adjektiv3": {
+        "word": "hemmelighedsfulde",
+        "translation": "загадочные"
+      },
+      "substantiv6": {
+        "word": "hentydninger",
+        "translation": "намёки"
+      },
+      "præposition3": {
+        "word": "om",
+        "translation": "о"
+      },
+      "verbum4": {
+        "word": "at",
+        "translation": "знать"
+      },
+      "verbum5": {
+        "word": "vide",
+        "translation": "сведения"
+      },
+      "objekt2": {
+        "word": "besked",
+        "translation": "секреты"
+      },
+      "præposition4": {
+        "word": "hvor",
+        "translation": "где"
+      },
+      "adverbium": {
+        "word": "ingen",
+        "translation": "никто"
+      },
+      "verbum6": {
+        "word": "vidste",
+        "translation": "не знал"
+      },
+      "pronomen": {
+        "word": "den",
+        "translation": "их"
+      },
+      "full_translation": "Он был живой газетой в полной серьёзности, знал сведения о помолвках, свадьбах и похоронах, о книжных и городских сплетнях, даже бросал загадочные намёки о секретах, которые никто не знал."
     }
   ]
 }
