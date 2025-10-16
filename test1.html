@@ -125,7 +125,7 @@ button:hover {
 </div>
 
 <div id="counter">Sluttede opgave: 0 / 5 | Forkert: 0</div>
-<div id="taskNumber">Opgave: 0 / 5</div>
+<div id="taskNumber">Opgave: 0</div>
 <div style="text-align:center;">
   <p id="prompt">Emne : Indlæser...</p>
 </div>
@@ -219,17 +219,20 @@ function checkAnswer() {
     else if (idx === selectedIndex) div.classList.add('wrong');
   });
 
-  // сохраняем статус
+  // обновляем счетчики
   if (selectedIndex === set.correctIndex) correctCount++;
   else wrongCount++;
 
   // обновляем счетчик выполненных заданий
-  document.getElementById('taskNumber').textContent = `Opgave: ${correctCount + wrongCount} / ${totalTasks}`;
+  document.getElementById('task-number').textContent = `Opgave: ${correctCount + wrongCount} / ${totalTasks}`;
 
   // проверка завершения всех заданий
   if(correctCount + wrongCount === totalTasks){
     alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
+    // можно тут блокировать кнопку Далее, если нужно
+//    document.getElementById('nextButton').disabled = true;
   }
+}
 
   // можно сразу переходить к следующей задаче
   nextTask();
@@ -238,22 +241,9 @@ function checkAnswer() {
 function nextTask() {
   if(!data) return;
 
-  // выбираем случайное задание, которое еще не было выполнено
-  let remainingIndices = [];
-  for(let i=0; i<data.length; i++){
-    if(!usedIndices.includes(i)) remainingIndices.push(i);
-  }
-
-  if(remainingIndices.length === 0){
-    // все задания использованы, можно сбросить цикл
-    usedIndices = [];
-    remainingIndices = [...Array(data.length).keys()];
-  }
-
-  const randomIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
-  currentSetIndex = randomIndex;
-  usedIndices.push(currentSetIndex);
-
+  // выбираем случайное задание из непройденных (или просто случайное)
+  currentSetIndex = Math.floor(Math.random() * data.length);
+  selectedIndex = null;
   renderAnnouncements(data[currentSetIndex]);
 }
   
@@ -270,6 +260,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
