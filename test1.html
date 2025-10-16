@@ -125,7 +125,7 @@ button:hover {
 </div>
 
 <div id="counter">Sluttede opgave: 0 / 5 | Forkert: 0</div>
-<div id="taskNumber">Opgave: 0 / 5</div>
+<div id="taskNumber">Opgave: 0</div>
 <div style="text-align:center;">
   <p id="prompt">Emne : Indlæser...</p>
 </div>
@@ -241,10 +241,30 @@ function checkAnswer() {
 function nextTask() {
   if(!data) return;
 
-  // выбираем случайное задание из непройденных (или просто случайное)
-  currentSetIndex = Math.floor(Math.random() * data.length);
-  selectedIndex = null;
+  // проверяем, достигнут ли лимит totalTasks (правильных+неправильных)
+  if(correctCount + wrongCount >= totalTasks){
+    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
+    return;
+  }
+
+  // выбираем случайную задачу, которая ещё не выполнена
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * data.length);
+  } while(usedIndices.includes(randomIndex) && usedIndices.length < data.length);
+
+  currentSetIndex = randomIndex;
+  if(!usedIndices.includes(currentSetIndex)) usedIndices.push(currentSetIndex);
+
+  // обновляем счётчик выполненных заданий
+  document.getElementById('task-number').textContent = `Opgave: ${usedIndices.length} / ${totalTasks}`;
+
+  // показываем задачу
   renderAnnouncements(data[currentSetIndex]);
+
+  // сбрасываем выбор
+  selectedIndex = null;
+  document.querySelectorAll('.announcement').forEach(a => a.classList.remove('correct','wrong','selected'));
 }
   
 function restart() {
@@ -260,6 +280,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
