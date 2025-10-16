@@ -78,7 +78,7 @@
       },
       "Læd_sted_tid_præposition": {
         "word": "for",
-        "translation": "более"
+        "translation": "для/ради/в течение"
       },
       "Læd_nummer": {
         "word": "hundrede",
@@ -121,7 +121,7 @@
       },
       "Læd_verbum1": {
         "word": "gik",
-        "translation": "садилось"
+        "translation": "шёл"
       },
       "Læd_sted_tid_præposition": {
         "word": "bag",
@@ -152,19 +152,23 @@
       },
       "Læd_verbum1": {
         "word": "havde",
-        "translation": "имело"
-      },
-      "Læd_substantiv": {
-        "word": "ændret",
         "translation": "изменило"
       },
       "Læd_objekt": {
+        "word": "ændret",
+        "translation": ""
+      },
+      "Læd_pronomen": {
         "word": "hende",
         "translation": "её"
       },
-      "Læd_adverbium1": {
-        "word": "for altid",
+      "Læd_adverbium1_part1": {
+        "word": "for",
         "translation": "навсегда"
+      },
+      "Læd_adverbium1_part2": {
+        "word": "altid",
+        "translation": ""
       },
       "full_translation": "Она поняла, что путешествие изменило её навсегда."
     },
@@ -411,9 +415,13 @@
         "word": "aldrig",
         "translation": "никогда"
       },
-      "destination2": {
-        "word": "til Paris",
-        "translation": "до Парижа"
+      "Læd_præposition3": {
+        "word": "til",
+        "translation": "до"
+      },
+      "Læd_substantiv3": {
+        "word": "Paris",
+        "translation": "Парижа"
       },
       "full_translation": "Если ты всё время, пока идёшь по шоссе к Парижу, думаешь, как далеко ещё осталось, то лучше не начинать, потому что ты, возможно, никогда не доберёшься до Парижа."
     },
@@ -426,9 +434,9 @@
         "word": "er",
         "translation": "являются"
       },
-      "artikel": {
+      "artikel1": {
         "word": "en",
-        "translation": "группа"
+        "translation": "одних"
       },
       "adjektiv1": {
         "word": "unge",
@@ -447,7 +455,11 @@
         "translation": "когда-то"
       },
       "Læd_verbum1": {
-        "word": "har været",
+        "word": "har",
+        "translation": "имею/есть/обладает/был"
+      },
+      "Læd_verbum2": {
+        "word": "været",
         "translation": "были"
       },
       "Læd_præposition1": {
@@ -471,8 +483,12 @@
         "translation": "но"
       },
       "subordinate_clause_start": {
-        "word": "efter at",
-        "translation": "после того как"
+        "word": "efter",
+        "translation": "после"
+      },
+      "subordinate_clause_word2": {
+        "word": "at",
+        "translation": "того как"
       },
       "Læd_nummer1": {
         "word": "50",
@@ -490,19 +506,27 @@
         "word": "gruppen",
         "translation": "группы"
       },
-      "Læd_verbum2": {
-        "word": "var blevet skudt",
-        "translation": "были застрелены"
+      "Læd_verbum3": {
+        "word": "var",
+        "translation": "были"
+      },
+      "Læd_verbum4": {
+        "word": "blevet",
+        "translation": "стал/стала/были/стали"
+      },
+      "Læd_verbum5": {
+        "word": "skudt",
+        "translation": "застрелены"
       },
       "Læd_præposition4": {
         "word": "af",
-        "translation": "полицией"
+        "translation": "от/кем-то/посредством"
       },
-      "Læd_agent": {
+      "Læd_agent1": {
         "word": "politiet",
         "translation": "полицией"
       },
-      "Læd_verbum3": {
+      "Læd_verbum6": {
         "word": "lykkedes",
         "translation": "удалось"
       },
@@ -510,9 +534,13 @@
         "word": "dem",
         "translation": "им"
       },
-      "Læd_stedforbindelse": {
-        "word": "sammen med",
-        "translation": "вместе с"
+      "Læd_stedforbindelse1": {
+        "word": "sammen",
+        "translation": "вместе"
+      },
+      "Læd_stedforbindelse2": {
+        "word": "med",
+        "translation": "с"
       },
       "Læd_adjektiv2": {
         "word": "lokal",
@@ -522,8 +550,12 @@
         "word": "organisation",
         "translation": "организацией"
       },
-      "Læd_verbum4": {
-        "word": "at ændre",
+      "Læd_verbum7": {
+        "word": "at",
+        "translation": "чтобы"
+      },
+      "Læd_verbum8": {
+        "word": "ændre",
         "translation": "изменить"
       },
       "Læd_substantiv7": {
@@ -538,7 +570,7 @@
         "word": "nu",
         "translation": "теперь"
       },
-      "Læd_verbum5": {
+      "Læd_verbum9": {
         "word": "tilbyder",
         "translation": "предлагают"
       },
@@ -555,22 +587,30 @@
         "translation": "место"
       },
       "Læd_objekt2_part2": {
-        "word": "at være",
-        "translation": "для пребывания"
+        "word": "at",
+        "translation": "для"
+      },
+      "Læd_objekt2_part3": {
+        "word": "være",
+        "translation": "пребывания"
       },
       "Læd_præposition5": {
         "word": "til",
         "translation": "для"
       },
       "Læd_substantiv8": {
-        "word": "de børn",
+        "word": "de",
+        "translation": "их"
+      },
+      "Læd_substantiv9": {
+        "word": "børn",
         "translation": "детей"
       },
       "Læd_konjunktion5": {
         "word": "der",
         "translation": "которые"
       },
-      "Læd_verbum6": {
+      "Læd_verbum10": {
         "word": "lever",
         "translation": "живут"
       },
@@ -578,7 +618,7 @@
         "word": "på",
         "translation": "на"
       },
-      "Læd_substantiv9": {
+      "Læd_substantiv10": {
         "word": "lossepladsen",
         "translation": "свалке"
       },
@@ -605,10 +645,6 @@
         "word": "færdig",
         "translation": "завершён"
       },
-      "konjunktion1": {
-        "word": ";",
-        "translation": "—"
-      },
       "main_clause2_part1": {
         "word": "kan",
         "translation": "можешь"
@@ -621,21 +657,29 @@
         "word": "lave",
         "translation": "составить"
       },
-      "Læd_substantiv1": {
-        "word": "en tjekliste",
+      "Læd_substantiv1_part1": {
+        "word": "en",
         "translation": "чек-лист"
+      },
+      "Læd_substantiv1_part2": {
+        "word": "tjekliste",
+        "translation": ""
       },
       "konjunktion2": {
         "word": "og",
         "translation": "и"
       },
-      "Læd_sted_tid_præposition": {
+      "Læd_præposition1": {
         "word": "på",
         "translation": "в"
       },
-      "Læd_substantiv2": {
-        "word": "et tidspunkt",
-        "translation": "определённый момент"
+      "Læd_substantiv2_part1": {
+        "word": "et",
+        "translation": "определённый"
+      },
+      "Læd_substantiv2_part2": {
+        "word": "tidspunkt",
+        "translation": "момент"
       },
       "Læd_verbum1": {
         "word": "forvente",
@@ -650,8 +694,12 @@
         "translation": "отметил"
       },
       "Læd_verbum2_part2": {
-        "word": "du sat",
+        "word": "du",
         "translation": "ты"
+      },
+      "Læd_verbum2_part3": {
+        "word": "sat",
+        "translation": ""
       },
       "Læd_objekt1": {
         "word": "hak",
@@ -661,9 +709,13 @@
         "word": "ved",
         "translation": "по"
       },
-      "Læd_substantiv3": {
-        "word": "alle punkter",
-        "translation": "все пункты"
+      "Læd_substantiv3_part1": {
+        "word": "alle",
+        "translation": "все"
+      },
+      "Læd_substantiv3_part2": {
+        "word": "punkter",
+        "translation": "пункты"
       },
       "forklaring": {
         "word": "for",
@@ -1866,11 +1918,11 @@
       },
       "præposition4": {
         "word": "på",
-        "translation": "поперёк"
+        "translation": "на"
       },
       "substantiv3": {
         "word": "tværs",
-        "translation": ""
+        "translation": "поперёк/через/напротив"
       },
       "konjunktion2": {
         "word": "thi",
