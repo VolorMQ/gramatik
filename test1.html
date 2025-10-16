@@ -125,7 +125,7 @@ button:hover {
 </div>
 
 <div id="counter">Sluttede opgave: 0 / 5 | Forkert: 0</div>
-<div id="taskNumber">Opgave: 0</div>
+<div id="taskNumber">Opgave: 0 / 5</div>
 <div style="text-align:center;">
   <p id="prompt">Emne : Indlæser...</p>
 </div>
@@ -219,50 +219,37 @@ function checkAnswer() {
     else if (idx === selectedIndex) div.classList.add('wrong');
   });
 
-  // сохраняем статус
-  if (selectedIndex === set.correctIndex) correctCount++;
-  else wrongCount++;
-
-  // обновляем счетчик выполненных заданий
-  document.getElementById('taskNumber').textContent = `Opgave: ${correctCount + wrongCount} / ${totalTasks}`;
-
-  // проверка завершения всех заданий
-  if(correctCount + wrongCount === totalTasks){
-    alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
+  if (selectedIndex === set.correctIndex) {
+    correctCount++;
+  } else {
+    wrongCount++;
   }
 
-  // можно сразу переходить к следующей задаче
-  nextTask();
+  document.getElementById('counter').textContent = `Emne: ${correctCount} / ${totalTasks} | Forkert: ${wrongCount}`;
 }
 
 
 function nextTask() {
   if(!data) return;
 
-  // проверяем, достигнут ли лимит totalTasks (правильных+неправильных)
-  if(correctCount + wrongCount >= totalTasks){
+  // если все задания выполнены, цикл по кругу (только непройденные)
+  if(usedIndices.length === totalTasks){
     alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
     return;
   }
 
-  // выбираем случайную задачу, которая ещё не выполнена
   let randomIndex;
   do {
     randomIndex = Math.floor(Math.random() * data.length);
-  } while(usedIndices.includes(randomIndex) && usedIndices.length < data.length);
+  } while(usedIndices.includes(randomIndex));
 
   currentSetIndex = randomIndex;
-  if(!usedIndices.includes(currentSetIndex)) usedIndices.push(currentSetIndex);
+  usedIndices.push(currentSetIndex);
 
-  // обновляем счётчик выполненных заданий
-  document.getElementById('task-number').textContent = `Opgave: ${usedIndices.length} / ${totalTasks}`;
+  // показываем номер задания
+  document.getElementById('taskNumber').textContent = `Opgave: ${usedIndices.length} / ${totalTasks}`;
 
-  // показываем задачу
   renderAnnouncements(data[currentSetIndex]);
-
-  // сбрасываем выбор
-  selectedIndex = null;
-  document.querySelectorAll('.announcement').forEach(a => a.classList.remove('correct','wrong','selected'));
 }
   
 function restart() {
@@ -278,6 +265,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
