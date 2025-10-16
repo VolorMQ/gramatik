@@ -723,43 +723,71 @@
       "full_translation": "Писатель-путешественник написал статью, которая описала очаровательные деревни вдоль побережья."
     },
     {
-      "subjekt": {
-        "word": "En",
-        "translation": "Один"
+      "adverbium1": {
+        "word": "Højt",
+        "translation": "Высоко"
       },
-      "adjektiv": {
-        "word": "engel",
-        "translation": "ангел"
+      "adverbium2": {
+        "word": "oppe",
+        "translation": "вверху"
+      },
+      "præposition1": {
+        "word": "i",
+        "translation": "в"
+      },
+      "artikel1": {
+        "word": "den",
+        "translation": "тот"
+      },
+      "adjektiv1": {
+        "word": "tynde",
+        "translation": "тонкий"
+      },
+      "adjektiv2": {
+        "word": "klare",
+        "translation": "чистый"
+      },
+      "substantiv1": {
+        "word": "luft",
+        "translation": "воздух"
       },
       "verbum1": {
         "word": "fløj",
         "translation": "летел"
       },
-      "præposition": {
+      "artikel2": {
+        "word": "en",
+        "translation": "один"
+      },
+      "substantiv2": {
+        "word": "engel",
+        "translation": "ангел"
+      },
+      "præposition2": {
         "word": "med",
         "translation": "с"
       },
-      "artikel": {
+      "artikel3": {
         "word": "en",
         "translation": "одним"
       },
-      "substantiv": {
+      "substantiv3": {
         "word": "blomst",
         "translation": "цветком"
       },
-      "præposition2": {
+      "præposition3": {
         "word": "fra",
         "translation": "из"
       },
-      "substantiv2": {
+      "substantiv4": {
         "word": "Himmelens",
         "translation": "небесного"
       },
-      "substantiv3": {
+      "substantiv5": {
         "word": "have",
         "translation": "сада"
       },
-      "konjunktion": {
+      "konjunktion1": {
         "word": "og",
         "translation": "и"
       },
@@ -781,25 +809,25 @@
       },
       "Læd_præposition": {
         "word": "på",
-        "translation": "по"
+        "translation": "к"
       },
       "Læd_objekt": {
         "word": "blomsten",
         "translation": "цветку"
       },
-      "verbum2": {
+      "Læd_verbum2": {
         "word": "gik",
-        "translation": "отвалился"
+        "translation": "отпало"
       },
-      "artikel2": {
+      "artikel4": {
         "word": "et",
         "translation": "один"
       },
-      "adjektiv2": {
+      "adjektiv3": {
         "word": "lillebitte",
         "translation": "крошечный"
       },
-      "substantiv4": {
+      "substantiv6": {
         "word": "blad",
         "translation": "лист"
       },
@@ -807,51 +835,59 @@
         "word": "faldt",
         "translation": "упал"
       },
-      "præposition3": {
+      "præposition4": {
         "word": "på",
         "translation": "на"
       },
-      "artikel3": {
+      "artikel5": {
         "word": "den",
         "translation": "грязную"
       },
-      "adjektiv3": {
+      "adjektiv4": {
         "word": "dyndede",
         "translation": "грязную"
       },
-      "substantiv5": {
+      "substantiv7": {
         "word": "jord",
         "translation": "землю"
       },
-      "sted": {
+      "sted1": {
         "word": "midt",
         "translation": "посреди"
       },
-      "præposition4": {
+      "præposition5": {
         "word": "i",
         "translation": "в"
       },
-      "substantiv6": {
+      "substantiv8": {
         "word": "skoven",
         "translation": "лесу"
       },
-      "verbum4": {
+      "konjunktion2": {
+        "word": "og",
+        "translation": "и"
+      },
+      "adverbium3": {
+        "word": "straks",
+        "translation": "сразу"
+      },
+      "Læd_verbum4": {
         "word": "fæstede",
         "translation": "пустил"
       },
-      "objekt2": {
+      "Læd_objekt2": {
         "word": "det",
         "translation": "он"
       },
-      "substantiv7": {
+      "substantiv9": {
         "word": "rod",
         "translation": "корни"
       },
-      "verbum5": {
+      "Læd_verbum5": {
         "word": "satte",
         "translation": "пустил"
       },
-      "substantiv8": {
+      "substantiv10": {
         "word": "skud",
         "translation": "росток"
       },
@@ -859,23 +895,23 @@
         "word": "midt",
         "translation": "среди"
       },
-      "præposition5": {
+      "præposition6": {
         "word": "imellem",
         "translation": "между"
       },
-      "artikel4": {
+      "artikel6": {
         "word": "de",
         "translation": "других"
       },
-      "substantiv9": {
+      "substantiv11": {
         "word": "andre",
         "translation": "других"
       },
-      "substantiv10": {
+      "substantiv12": {
         "word": "urter",
         "translation": "трав"
       },
-      "full_translation": "Один ангел летел с цветком из небесного сада, и когда он прикоснулся поцелуем к цветку, один крошечный лист упал на грязную землю посреди леса, сразу пустил корни и росток среди других трав."
+      "full_translation": "Высоко в тонкой чистой воздухе летел один ангел с цветком из небесного сада, и когда он прикоснулся поцелуем к цветку, один крошечный лист упал на грязную землю посреди леса, сразу пустил корни и росток среди других трав."
     },
     {
       "subjekt": {
