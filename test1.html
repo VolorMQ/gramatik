@@ -125,6 +125,7 @@ button:hover {
 </div>
 
 <div id="counter">Emne: 0 / 5 | Forkert: 0</div>
+<div id="taskNumber">Opgave: 0 / 5</div>
 <div style="text-align:center;">
   <p id="prompt">Emne : Indlæser...</p>
 </div>
@@ -229,6 +230,7 @@ function checkAnswer() {
 function nextTask() {
   if(!data) return;
 
+  // если все задания выполнены, цикл по кругу (только непройденные)
   if(usedIndices.length === totalTasks){
     alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
     return;
@@ -241,8 +243,13 @@ function nextTask() {
 
   currentSetIndex = randomIndex;
   usedIndices.push(currentSetIndex);
+
+  // показываем номер задания
+  document.getElementById('taskNumber').textContent = `Opgave: ${usedIndices.length} / ${totalTasks}`;
+
   renderAnnouncements(data[currentSetIndex]);
 }
+
 
 function restart() {
   correctCount = 0;
@@ -257,3 +264,4 @@ function restart() {
 
 </body>
 </html>
+
