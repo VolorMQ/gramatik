@@ -228,39 +228,26 @@ function checkAnswer() {
   document.getElementById('counter').textContent = `Emne: ${correctCount} / ${totalTasks} | Forkert: ${wrongCount}`;
 }
 
-function renderTaskNumber() {
-  const counter = document.getElementById('task-number');
-  if(counter) counter.textContent = `Opgave: ${taskNumber} / ${totalTasks}`;
-}
-
-
 function nextTask() {
   if(!data) return;
 
-  if(taskNumber >= totalTasks){
+  // если все задания выполнены, цикл по кругу (только непройденные)
+  if(usedIndices.length === totalTasks){
     alert(`Alle opgaver gennemført! Du fik ${correctCount} / ${totalTasks} rigtige og ${wrongCount} forkerte.`);
     return;
   }
 
-  // выбираем случайно непройденные задания
-  let remainingIndices = [];
-  for(let i=0; i<data.length; i++){
-    if(!usedIndices.includes(i)) remainingIndices.push(i);
-  }
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * data.length);
+  } while(usedIndices.includes(randomIndex));
 
-  let nextIndex;
-  if(remainingIndices.length === 0){
-    usedIndices = []; // если все были — сброс
-    nextIndex = Math.floor(Math.random() * data.length);
-  } else {
-    nextIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
-  }
-
-  currentSetIndex = nextIndex;
+  currentSetIndex = randomIndex;
   usedIndices.push(currentSetIndex);
 
-  taskNumber++; // обязательно увеличиваем счётчик
-  renderTaskNumber(); // обновляем span с номером задачи
+  // показываем номер задания
+  document.getElementById('taskNumber').textContent = `Opgave: ${usedIndices.length} / ${totalTasks}`;
+
   renderAnnouncements(data[currentSetIndex]);
 }
 
@@ -278,6 +265,7 @@ function restart() {
 
 </body>
 </html>
+
 
 
 
